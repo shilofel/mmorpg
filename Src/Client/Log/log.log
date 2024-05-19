@@ -1,0 +1,24 @@
+2024-05-19 06:06:51,909 [ 1] INFO  Unity: LoadingManager start
+2024-05-19 06:06:55,056 [ 1] INFO  Unity: DataManager > DataManager()
+2024-05-19 06:07:03,494 [ 1] INFO  Unity: UserLoginRequest::user :user psw:111
+2024-05-19 06:07:03,496 [ 1] INFO  Unity: ConnectToServer() Start 
+2024-05-19 06:07:03,497 [ 1] INFO  Unity: DoConnect
+2024-05-19 06:07:03,499 [ 1] INFO  Unity: NetClient.DoConnect on 127.0.0.1:8000
+2024-05-19 06:07:03,502 [ 1] INFO  Unity: Connect[0] to server 127.0.0.1:8000
+
+2024-05-19 06:07:03,505 [ 1] INFO  Unity: LoadingMesager::OnGameServerConnect :0 reason:Success
+2024-05-19 06:07:10,296 [ 1] INFO  Unity: OnLogin:Success [None]
+2024-05-19 06:07:10,299 [ 1] INFO  Unity: LoadLevel: CharSelect
+2024-05-19 06:07:10,614 [ 1] INFO  Unity: LevelLoadCompleted:1
+2024-05-19 06:07:11,799 [ 1] INFO  Unity: Select Char:[1]¿âÄ·½´[Warrior]
+2024-05-19 06:07:12,781 [ 1] INFO  Unity: UserSendGameEnterRequest::characterIdx :0
+2024-05-19 06:07:12,798 [ 1] INFO  Unity: OnUserCreateCharacter:Success [None]
+2024-05-19 06:07:12,810 [ 1] INFO  Unity: OnCharacterEnter:1
+2024-05-19 06:07:12,811 [ 1] INFO  Unity: LoadLevel: MainCity
+2024-05-19 06:07:13,214 [ 1] INFO  Unity: LevelLoadCompleted:1
+2024-05-19 06:07:19,009 [ 1] INFO  Unity: OnDestroy NetworkManager.
+2024-05-19 06:07:19,010 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+UnityEngine.Debug:LogWarning(Object)
+Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:180)
+Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:175)
+
