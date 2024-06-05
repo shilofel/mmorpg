@@ -1,106 +1,146 @@
-2024-05-14 02:09:04,039 [ 1] INFO  Unity: LoadingManager start
-2024-05-14 02:09:07,672 [ 1] INFO  Unity: DataManager > DataManager()
-2024-05-14 02:09:08,160 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
-{1}</format><args>{FormatException: Input string was not in the correct format, System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Int32.cs:640)
-System.Int32.Parse (System.String s, IFormatProvider provider) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Int32.cs:208)
-System.Convert.ToInt32 (System.String value, IFormatProvider provider) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Convert.cs:1277)
-System.String.System.IConvertible.ToInt32 (IFormatProvider provider) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/String.cs:2391)
-System.Convert.ToType (System.Object value, System.Type conversionType, IFormatProvider provider, Boolean try_target_to_type) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Convert.cs:2910)
-System.Convert.ChangeType (System.Object value, System.Type conversionType, IFormatProvider provider) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Convert.cs:2511)
-Newtonsoft.Json.Serialization.JsonSerializerInternalReader.EnsureType (Newtonsoft.Json.JsonReader reader, System.Object value, System.Globalization.CultureInfo culture, Newtonsoft.Json.Serialization.JsonContract contract, System.Type targetType)
-Rethrow as JsonSerializationException: Error converting value "ID" to type 'System.Int32'. Path '1.ID', line 3, position 9.
-Newtonsoft.Json.Serialization.JsonSerializerInternalReader.EnsureType (Newtonsoft.Json.JsonReader reader, System.Object value, System.Globalization.CultureInfo culture, Newtonsoft.Json.Serialization.JsonContract contract, System.Type targetType)
-Newtonsoft.Json.Serialization.JsonSerializerInternalReader.PopulateDictionary (IDictionary dictionary, Newtonsoft.Json.JsonReader reader, Newtonsoft.Json.Serialization.JsonDictionaryContract contract, Newtonsoft.Json.Serialization.JsonProperty containerProperty, System.String id)
-Rethrow as JsonSerializationException: Could not convert string 'ID' to dictionary key type 'System.Int32'. Create a TypeConverter to convert from the string to the key type object. Path '1.ID', line 3, position 9.
-Newtonsoft.Json.Serialization.JsonSerializerInternalReader.PopulateDictionary (IDictionary dictionary, Newtonsoft.Json.JsonReader reader, Newtonsoft.Json.Serialization.JsonDictionaryContract contract, Newtonsoft.Json.Serialization.JsonProperty containerProperty, System.String id)
-}</args></log4net.Error>
-2024-05-14 02:09:14,347 [ 1] INFO  Unity: UserLoginRequest::user :user psw:111
-2024-05-14 02:09:14,356 [ 1] INFO  Unity: ConnectToServer() Start 
-2024-05-14 02:09:14,357 [ 1] INFO  Unity: DoConnect
-2024-05-14 02:09:14,358 [ 1] INFO  Unity: NetClient.DoConnect on 127.0.0.1:8000
-2024-05-14 02:09:14,361 [ 1] INFO  Unity: Connect[0] to server 127.0.0.1:8000
+2024-05-28 02:18:12,930 [ 1] INFO  Unity: LoadingManager start
+2024-05-28 02:18:16,045 [ 1] INFO  Unity: DataManager > DataManager()
+2024-05-28 02:18:22,851 [ 1] INFO  Unity: UserLoginRequest::user :user psw:111
+2024-05-28 02:18:22,853 [ 1] INFO  Unity: ConnectToServer() Start 
+2024-05-28 02:18:22,854 [ 1] INFO  Unity: DoConnect
+2024-05-28 02:18:22,856 [ 1] INFO  Unity: NetClient.DoConnect on 127.0.0.1:8000
+2024-05-28 02:18:22,859 [ 1] INFO  Unity: Connect[0] to server 127.0.0.1:8000
 
-2024-05-14 02:09:14,365 [ 1] INFO  Unity: LoadingMesager::OnGameServerConnect :0 reason:Success
-2024-05-14 02:09:15,137 [ 1] INFO  Unity: OnLogin:Success [None]
-2024-05-14 02:09:15,142 [ 1] INFO  Unity: LoadLevel: CharSelect
-2024-05-14 02:09:15,474 [ 1] INFO  Unity: LevelLoadCompleted:1
-2024-05-14 02:09:52,594 [ 1] INFO  Unity: UserCreateCharacterRequest::name :m class:Wizard
-2024-05-14 02:09:52,645 [ 1] INFO  Unity: OnUserCreateCharacter:Success [None]
-2024-05-14 02:12:20,360 [ 1] INFO  Unity: ProcessReceive exception:System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
-
-  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer, Int32 offset, Int32 size, SocketFlags flags) [0x00000] in <filename unknown>:0 
-  at Network.NetClient.ProcessRecv () [0x00084] in D:\Unity\mmorpg\Src\Client\Assets\Scripts\Network\NetClient.cs:340 
-
-2024-05-14 02:12:20,361 [ 1] WARN  Unity: CloseConnection(), errorCode: 1001
+2024-05-28 02:18:22,862 [ 1] INFO  Unity: LoadingMesager::OnGameServerConnect :0 reason:Success
+2024-05-28 02:18:22,939 [ 1] INFO  Unity: OnLogin:Success [None]
+2024-05-28 02:18:22,941 [ 1] INFO  Unity: LoadLevel: CharSelect
+2024-05-28 02:18:23,199 [ 1] INFO  Unity: LevelLoadCompleted:1
+2024-05-28 02:18:24,128 [ 1] INFO  Unity: Select Char:[2]shilofel[Wizard]
+2024-05-28 02:18:24,134 [ 1] INFO  Unity: SetPosition:(20800, 0, 0)
+2024-05-28 02:18:27,655 [ 1] INFO  Unity: UserSendGameEnterRequest::characterIdx :1
+2024-05-28 02:18:27,674 [ 1] INFO  Unity: OnUserCreateCharacter:Success [None]
+2024-05-28 02:18:27,676 [ 1] INFO  Unity: OnMapCharacterEnter:Map:1 Count:2
+2024-05-28 02:18:27,677 [ 1] INFO  Unity: AddCharacter:2:shilofel Map:1 Entity:(0:pos:(5000,4000,820),dir:(100,0,0),spd:0
+2024-05-28 02:18:27,678 [ 1] INFO  Unity: AddCharacter:2:shilofel Map:1 Entity:(0:pos:(5000,4000,820),dir:(100,0,0),spd:0
+2024-05-28 02:18:27,680 [ 1] INFO  Unity: LoadLevel: MainCity
+2024-05-28 02:18:27,976 [ 1] INFO  Unity: Wizard OnDestroy :ID:0 POS:(20800, 0, 0) DIR:(0, 100, 0) SPD:0 
+2024-05-28 02:18:28,054 [ 1] INFO  Unity: LevelLoadCompleted:1
+2024-05-28 02:18:50,145 [ 1] INFO  Unity: MoveForward
+2024-05-28 02:18:50,405 [ 1] INFO  Unity: SetPosition:(5035, 4000, 823)
+2024-05-28 02:18:50,487 [ 1] INFO  Unity: Stop
+2024-05-28 02:18:50,611 [ 1] INFO  Unity: SetPosition:(5021, 4000, 860)
+2024-05-28 02:18:50,797 [ 1] INFO  Unity: SetPosition:(5021, 4000, 912)
+2024-05-28 02:18:51,259 [ 1] INFO  Unity: MoveForward
+2024-05-28 02:18:51,493 [ 1] INFO  Unity: Stop
+2024-05-28 02:18:52,282 [ 1] INFO  Unity: SetDirection:(-49, -17, -85)
+2024-05-28 02:18:54,216 [ 1] INFO  Unity: SetDirection:(-12, -49, -86)
+2024-05-28 02:18:54,422 [ 1] INFO  Unity: SetDirection:(26, -55, -80)
+2024-05-28 02:18:54,925 [ 1] INFO  Unity: MoveForward
+2024-05-28 02:18:54,987 [ 1] INFO  Unity: SetPosition:(5115, 3986, 833)
+2024-05-28 02:18:55,119 [ 1] INFO  Unity: SetPosition:(5123, 3969, 851)
+2024-05-28 02:18:55,189 [ 1] INFO  Unity: Stop
+2024-05-28 02:18:55,574 [ 1] INFO  Unity: MoveForward
+2024-05-28 02:18:55,668 [ 1] INFO  Unity: SetPosition:(5124, 3969, 851)
+2024-05-28 02:18:55,835 [ 1] INFO  Unity: SetPosition:(5126, 3970, 851)
+2024-05-28 02:18:56,003 [ 1] INFO  Unity: SetPosition:(5128, 3970, 851)
+2024-05-28 02:18:56,173 [ 1] INFO  Unity: SetPosition:(5129, 3971, 851)
+2024-05-28 02:18:56,346 [ 1] INFO  Unity: Stop
+2024-05-28 02:18:56,361 [ 1] INFO  Unity: MoveBack
+2024-05-28 02:18:56,386 [ 1] INFO  Unity: SetPosition:(5127, 3980, 871)
+2024-05-28 02:18:56,456 [ 1] INFO  Unity: SetPosition:(5122, 3990, 949)
+2024-05-28 02:18:56,491 [ 1] INFO  Unity: SetPosition:(5119, 3996, 1010)
+2024-05-28 02:18:56,517 [ 1] INFO  Unity: SetPosition:(5117, 4001, 1085)
+2024-05-28 02:18:56,556 [ 1] INFO  Unity: SetPosition:(5114, 4006, 1174)
+2024-05-28 02:18:56,591 [ 1] INFO  Unity: SetPosition:(5112, 4012, 1278)
+2024-05-28 02:18:56,605 [ 1] INFO  Unity: SetPosition:(5110, 4014, 1336)
+2024-05-28 02:18:56,616 [ 1] INFO  Unity: SetPosition:(5109, 4017, 1397)
+2024-05-28 02:18:56,640 [ 1] INFO  Unity: SetPosition:(5108, 4020, 1461)
+2024-05-28 02:18:56,652 [ 1] INFO  Unity: SetPosition:(5106, 4022, 1529)
+2024-05-28 02:18:56,677 [ 1] INFO  Unity: SetPosition:(5105, 4025, 1601)
+2024-05-28 02:18:56,697 [ 1] INFO  Unity: SetPosition:(5104, 4027, 1676)
+2024-05-28 02:18:56,712 [ 1] INFO  Unity: SetPosition:(5103, 4030, 1755)
+2024-05-28 02:18:56,723 [ 1] INFO  Unity: SetPosition:(5101, 4033, 1838)
+2024-05-28 02:18:56,737 [ 1] INFO  Unity: SetPosition:(5100, 4035, 1924)
+2024-05-28 02:18:56,761 [ 1] INFO  Unity: SetPosition:(5099, 4038, 2014)
+2024-05-28 02:18:56,774 [ 1] INFO  Unity: SetPosition:(5098, 4041, 2107)
+2024-05-28 02:18:56,787 [ 1] INFO  Unity: SetPosition:(5096, 4043, 2204)
+2024-05-28 02:18:56,810 [ 1] INFO  Unity: SetPosition:(5095, 4046, 2305)
+2024-05-28 02:18:56,822 [ 1] INFO  Unity: SetPosition:(5094, 4049, 2409)
+2024-05-28 02:18:56,847 [ 1] INFO  Unity: SetPosition:(5093, 4051, 2517)
+2024-05-28 02:18:56,858 [ 1] INFO  Unity: SetPosition:(5091, 4054, 2628)
+2024-05-28 02:18:56,872 [ 1] INFO  Unity: SetPosition:(5090, 4057, 2743)
+2024-05-28 02:18:56,884 [ 1] INFO  Unity: SetPosition:(5089, 4059, 2862)
+2024-05-28 02:18:56,907 [ 1] INFO  Unity: SetPosition:(5087, 4062, 2984)
+2024-05-28 02:18:56,918 [ 1] INFO  Unity: SetPosition:(5086, 4065, 3110)
+2024-05-28 02:18:56,941 [ 1] INFO  Unity: SetPosition:(5085, 4067, 3240)
+2024-05-28 02:18:56,956 [ 1] INFO  Unity: SetPosition:(5084, 4070, 3373)
+2024-05-28 02:18:56,968 [ 1] INFO  Unity: SetPosition:(5082, 4072, 3509)
+2024-05-28 02:18:56,992 [ 1] INFO  Unity: SetPosition:(5081, 4075, 3649)
+2024-05-28 02:18:57,004 [ 1] INFO  Unity: SetPosition:(5080, 4078, 3793)
+2024-05-28 02:18:57,027 [ 1] INFO  Unity: SetPosition:(5079, 4080, 3941)
+2024-05-28 02:18:57,041 [ 1] INFO  Unity: SetPosition:(5077, 4083, 4092)
+2024-05-28 02:18:57,052 [ 1] INFO  Unity: SetPosition:(5076, 4086, 4246)
+2024-05-28 02:18:57,074 [ 1] INFO  Unity: SetPosition:(5075, 4088, 4405)
+2024-05-28 02:18:57,089 [ 1] INFO  Unity: SetPosition:(5073, 4091, 4567)
+2024-05-28 02:18:57,111 [ 1] INFO  Unity: SetPosition:(5072, 4094, 4732)
+2024-05-28 02:18:57,124 [ 1] INFO  Unity: SetPosition:(5071, 4096, 4901)
+2024-05-28 02:18:57,137 [ 1] INFO  Unity: SetPosition:(5070, 4099, 5074)
+2024-05-28 02:18:57,160 [ 1] INFO  Unity: SetPosition:(5068, 4101, 5250)
+2024-05-28 02:18:57,174 [ 1] INFO  Unity: SetPosition:(5067, 4104, 5430)
+2024-05-28 02:18:57,185 [ 1] INFO  Unity: SetPosition:(5066, 4107, 5613)
+2024-05-28 02:18:57,209 [ 1] INFO  Unity: Stop
+2024-05-28 02:18:57,304 [ 1] INFO  Unity: MoveForward
+2024-05-28 02:18:57,378 [ 1] INFO  Unity: SetPosition:(5072, 4092, 5542)
+2024-05-28 02:18:57,403 [ 1] INFO  Unity: SetPosition:(5075, 4086, 5484)
+2024-05-28 02:18:57,440 [ 1] INFO  Unity: SetPosition:(5078, 4081, 5408)
+2024-05-28 02:18:57,476 [ 1] INFO  Unity: SetPosition:(5080, 4075, 5314)
+2024-05-28 02:18:57,489 [ 1] INFO  Unity: SetPosition:(5082, 4072, 5260)
+2024-05-28 02:18:57,512 [ 1] INFO  Unity: SetPosition:(5083, 4069, 5203)
+2024-05-28 02:18:57,524 [ 1] INFO  Unity: SetPosition:(5084, 4066, 5140)
+2024-05-28 02:18:57,537 [ 1] INFO  Unity: SetPosition:(5086, 4063, 5074)
+2024-05-28 02:18:57,560 [ 1] INFO  Unity: SetPosition:(5087, 4060, 5003)
+2024-05-28 02:18:57,573 [ 1] INFO  Unity: SetPosition:(5089, 4057, 4927)
+2024-05-28 02:18:57,586 [ 1] INFO  Unity: SetPosition:(5090, 4055, 4847)
+2024-05-28 02:18:57,610 [ 1] INFO  Unity: SetPosition:(5091, 4052, 4763)
+2024-05-28 02:18:57,621 [ 1] INFO  Unity: SetPosition:(5093, 4049, 4674)
+2024-05-28 02:18:57,646 [ 1] INFO  Unity: SetPosition:(5094, 4046, 4581)
+2024-05-28 02:18:57,658 [ 1] INFO  Unity: SetPosition:(5095, 4043, 4483)
+2024-05-28 02:18:57,671 [ 1] INFO  Unity: SetPosition:(5097, 4040, 4381)
+2024-05-28 02:18:57,693 [ 1] INFO  Unity: SetPosition:(5098, 4037, 4275)
+2024-05-28 02:18:57,705 [ 1] INFO  Unity: SetPosition:(5099, 4034, 4164)
+2024-05-28 02:18:57,730 [ 1] INFO  Unity: SetPosition:(5101, 4031, 4049)
+2024-05-28 02:18:57,741 [ 1] INFO  Unity: SetPosition:(5102, 4029, 3929)
+2024-05-28 02:18:57,755 [ 1] INFO  Unity: SetPosition:(5103, 4026, 3805)
+2024-05-28 02:18:57,779 [ 1] INFO  Unity: SetPosition:(5105, 4023, 3677)
+2024-05-28 02:18:57,792 [ 1] INFO  Unity: SetPosition:(5106, 4020, 3544)
+2024-05-28 02:18:57,804 [ 1] INFO  Unity: SetPosition:(5107, 4017, 3407)
+2024-05-28 02:18:57,822 [ 1] INFO  Unity: SetPosition:(5109, 4014, 3265)
+2024-05-28 02:18:57,848 [ 1] INFO  Unity: SetPosition:(5110, 4011, 3119)
+2024-05-28 02:18:57,863 [ 1] INFO  Unity: SetPosition:(5111, 4008, 2969)
+2024-05-28 02:18:57,877 [ 1] INFO  Unity: SetPosition:(5113, 4005, 2814)
+2024-05-28 02:18:57,889 [ 1] INFO  Unity: SetPosition:(5114, 4002, 2654)
+2024-05-28 02:18:57,913 [ 1] INFO  Unity: SetPosition:(5115, 4000, 2491)
+2024-05-28 02:18:57,925 [ 1] INFO  Unity: SetPosition:(5117, 3997, 2322)
+2024-05-28 02:18:57,938 [ 1] INFO  Unity: SetPosition:(5118, 3994, 2150)
+2024-05-28 02:18:57,961 [ 1] INFO  Unity: SetPosition:(5119, 3991, 1973)
+2024-05-28 02:18:57,974 [ 1] INFO  Unity: SetPosition:(5121, 3988, 1792)
+2024-05-28 02:18:57,986 [ 1] INFO  Unity: SetPosition:(5122, 3985, 1606)
+2024-05-28 02:18:58,010 [ 1] INFO  Unity: SetPosition:(5123, 3982, 1416)
+2024-05-28 02:18:58,023 [ 1] INFO  Unity: SetPosition:(5125, 3979, 1221)
+2024-05-28 02:18:58,047 [ 1] INFO  Unity: SetPosition:(5126, 3976, 1022)
+2024-05-28 02:18:58,059 [ 1] INFO  Unity: SetPosition:(5127, 3973, 818)
+2024-05-28 02:18:58,072 [ 1] INFO  Unity: SetPosition:(5151, 3919, 882)
+2024-05-28 02:18:58,236 [ 1] INFO  Unity: SetPosition:(5144, 3939, 851)
+2024-05-28 02:18:58,408 [ 1] INFO  Unity: SetPosition:(5145, 3939, 851)
+2024-05-28 02:18:58,574 [ 1] INFO  Unity: SetPosition:(5146, 3939, 851)
+2024-05-28 02:18:58,596 [ 1] INFO  Unity: Stop
+2024-05-28 02:18:58,658 [ 1] INFO  Unity: MoveForward
+2024-05-28 02:18:58,808 [ 1] INFO  Unity: SetPosition:(5147, 3940, 851)
+2024-05-28 02:18:58,974 [ 1] INFO  Unity: SetPosition:(5148, 3940, 851)
+2024-05-28 02:18:59,149 [ 1] INFO  Unity: SetPosition:(5149, 3940, 851)
+2024-05-28 02:18:59,313 [ 1] INFO  Unity: SetPosition:(5151, 3940, 851)
+2024-05-28 02:18:59,325 [ 1] INFO  Unity: SetDirection:(-20, -8, -98)
+2024-05-28 02:18:59,492 [ 1] INFO  Unity: SetPosition:(5143, 3934, 850)
+2024-05-28 02:18:59,515 [ 1] INFO  Unity: Stop
+2024-05-28 02:19:13,705 [ 1] INFO  Unity: OnDestroy NetworkManager.
+2024-05-28 02:19:13,706 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:180)
-Network.NetClient:ProcessRecv() (at Assets/Scripts/Network/NetClient.cs:354)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:434)
+Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:175)
 
-2024-05-14 02:12:20,372 [ 1] INFO  Unity: DoConnect
-2024-05-14 02:12:20,373 [ 1] INFO  Unity: NetClient.DoConnect on 127.0.0.1:8000
-2024-05-14 02:12:20,376 [ 1] INFO  Unity: Connect[0] to server 127.0.0.1:8000
-
-2024-05-14 02:12:22,423 [ 1] WARN  Unity: CloseConnection(), errorCode: 1005
-UnityEngine.Debug:LogWarning(Object)
-Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:180)
-Network.NetClient:DoConnect() (at Assets/Scripts/Network/NetClient.cs:274)
-Network.NetClient:Connect(Int32) (at Assets/Scripts/Network/NetClient.cs:169)
-Network.NetClient:KeepConnect() (at Assets/Scripts/Network/NetClient.cs:315)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:432)
-
-2024-05-14 02:12:22,424 [ 1] ERROR Unity: DoConnect SocketException:[10061,ConnectionRefused,10061]System.Net.Sockets.SocketException: 由于目标计算机积极拒绝，无法连接。
-
-  at System.Net.Sockets.Socket.Connect (System.Net.EndPoint remoteEP, Boolean requireSocketPolicy) [0x00000] in <filename unknown>:0 
-  at System.Net.Sockets.Socket+Worker.Connect () [0x00000] in <filename unknown>:0  
-UnityEngine.Debug:LogErrorFormat(String, Object[])
-Network.NetClient:DoConnect() (at Assets/Scripts/Network/NetClient.cs:276)
-Network.NetClient:Connect(Int32) (at Assets/Scripts/Network/NetClient.cs:169)
-Network.NetClient:KeepConnect() (at Assets/Scripts/Network/NetClient.cs:315)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:432)
-
-2024-05-14 02:12:22,447 [ 1] INFO  Unity: DoConnect
-2024-05-14 02:12:22,448 [ 1] INFO  Unity: NetClient.DoConnect on 127.0.0.1:8000
-2024-05-14 02:12:22,449 [ 1] INFO  Unity: Connect[1] to server 127.0.0.1:8000
-
-2024-05-14 02:12:24,507 [ 1] WARN  Unity: CloseConnection(), errorCode: 1005
-UnityEngine.Debug:LogWarning(Object)
-Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:180)
-Network.NetClient:DoConnect() (at Assets/Scripts/Network/NetClient.cs:274)
-Network.NetClient:Connect(Int32) (at Assets/Scripts/Network/NetClient.cs:169)
-Network.NetClient:KeepConnect() (at Assets/Scripts/Network/NetClient.cs:315)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:432)
-
-2024-05-14 02:12:24,508 [ 1] ERROR Unity: DoConnect SocketException:[10061,ConnectionRefused,10061]System.Net.Sockets.SocketException: 由于目标计算机积极拒绝，无法连接。
-
-  at System.Net.Sockets.Socket.Connect (System.Net.EndPoint remoteEP, Boolean requireSocketPolicy) [0x00000] in <filename unknown>:0 
-  at System.Net.Sockets.Socket+Worker.Connect () [0x00000] in <filename unknown>:0  
-UnityEngine.Debug:LogErrorFormat(String, Object[])
-Network.NetClient:DoConnect() (at Assets/Scripts/Network/NetClient.cs:276)
-Network.NetClient:Connect(Int32) (at Assets/Scripts/Network/NetClient.cs:169)
-Network.NetClient:KeepConnect() (at Assets/Scripts/Network/NetClient.cs:315)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:432)
-
-2024-05-14 02:12:24,535 [ 1] INFO  Unity: DoConnect
-2024-05-14 02:12:24,536 [ 1] INFO  Unity: NetClient.DoConnect on 127.0.0.1:8000
-2024-05-14 02:12:24,538 [ 1] INFO  Unity: Connect[2] to server 127.0.0.1:8000
-
-2024-05-14 02:12:26,592 [ 1] WARN  Unity: CloseConnection(), errorCode: 1005
-UnityEngine.Debug:LogWarning(Object)
-Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:180)
-Network.NetClient:DoConnect() (at Assets/Scripts/Network/NetClient.cs:274)
-Network.NetClient:Connect(Int32) (at Assets/Scripts/Network/NetClient.cs:169)
-Network.NetClient:KeepConnect() (at Assets/Scripts/Network/NetClient.cs:315)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:432)
-
-2024-05-14 02:12:26,593 [ 1] ERROR Unity: DoConnect SocketException:[10061,ConnectionRefused,10061]System.Net.Sockets.SocketException: 由于目标计算机积极拒绝，无法连接。
-
-  at System.Net.Sockets.Socket.Connect (System.Net.EndPoint remoteEP, Boolean requireSocketPolicy) [0x00000] in <filename unknown>:0 
-  at System.Net.Sockets.Socket+Worker.Connect () [0x00000] in <filename unknown>:0  
-UnityEngine.Debug:LogErrorFormat(String, Object[])
-Network.NetClient:DoConnect() (at Assets/Scripts/Network/NetClient.cs:276)
-Network.NetClient:Connect(Int32) (at Assets/Scripts/Network/NetClient.cs:169)
-Network.NetClient:KeepConnect() (at Assets/Scripts/Network/NetClient.cs:315)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:432)
-
-2024-05-14 02:12:26,593 [ 1] INFO  Unity: LoadingMesager::OnGameServerConnect :1 reason:Cannot connect to server
+2024-05-28 02:19:13,707 [ 1] INFO  Unity: Character_2_shilofel OnDestroy :ID:0 POS:(5143, 3934, 850) DIR:(-20, -8, -98) SPD:0 

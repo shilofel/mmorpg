@@ -7,7 +7,7 @@ using System.IO;
 using SkillBridge.Message;
 using ProtoBuf;
 using Services;
-
+//todo 添加地图初始化
 public class LoadingManager : MonoBehaviour {
 
     public GameObject UITips;
@@ -37,7 +37,7 @@ public class LoadingManager : MonoBehaviour {
         yield return DataManager.Instance.LoadData();
 
         //Init basic services
-        //MapService.Instance.Init();
+        MapService.Instance.Init();
         UserService.Instance.Init();
 
 

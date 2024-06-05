@@ -1,25 +1,21 @@
-2024-05-19 05:48:16,727 [ 1] INFO  Unity: LoadingManager start
-2024-05-19 05:48:20,446 [ 1] INFO  Unity: DataManager > DataManager()
-2024-05-19 05:48:30,648 [ 1] INFO  Unity: UserLoginRequest::user :user psw:111
-2024-05-19 05:48:30,655 [ 1] INFO  Unity: ConnectToServer() Start 
-2024-05-19 05:48:30,657 [ 1] INFO  Unity: DoConnect
-2024-05-19 05:48:30,658 [ 1] INFO  Unity: NetClient.DoConnect on 127.0.0.1:8000
-2024-05-19 05:48:30,660 [ 1] INFO  Unity: Connect[0] to server 127.0.0.1:8000
+2024-05-28 02:49:20,563 [ 1] INFO  Unity: LoadingManager start
+2024-05-28 02:49:23,746 [ 1] INFO  Unity: DataManager > DataManager()
+2024-05-28 02:49:40,563 [ 1] INFO  Unity: UserLoginRequest::user :user psw:111
+2024-05-28 02:49:40,565 [ 1] INFO  Unity: ConnectToServer() Start 
+2024-05-28 02:49:40,566 [ 1] INFO  Unity: DoConnect
+2024-05-28 02:49:40,568 [ 1] INFO  Unity: NetClient.DoConnect on 127.0.0.1:8000
+2024-05-28 02:49:40,570 [ 1] INFO  Unity: Connect[0] to server 127.0.0.1:8000
 
-2024-05-19 05:48:30,665 [ 1] INFO  Unity: LoadingMesager::OnGameServerConnect :0 reason:Success
-2024-05-19 05:48:31,718 [ 1] INFO  Unity: OnLogin:Success [None]
-2024-05-19 05:48:31,722 [ 1] INFO  Unity: LoadLevel: CharSelect
-2024-05-19 05:48:32,675 [ 1] INFO  Unity: LevelLoadCompleted:1
-2024-05-19 05:48:39,172 [ 1] INFO  Unity: Select Char:[1]库姆酱[Warrior]
-2024-05-19 05:48:40,491 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
-{1}</format><args>{FormatException: Index (zero based) must be greater than or equal to zero and less than the size of the argument list., System.String.FormatHelper (System.Text.StringBuilder result, IFormatProvider provider, System.String format, System.Object[] args) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/String.cs:1925)
-System.String.Format (IFormatProvider provider, System.String format, System.Object[] args) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/String.cs:1873)
-System.String.Format (System.String format, System.Object[] args) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/String.cs:1868)
-UnityEngine.DebugLogHandler.LogFormat (LogType logType, UnityEngine.Object context, System.String format, System.Object[] args) (at D:/unity/Runtime/Export/Logger/DebugLogHandler.cs:9)
-UnityEngine.Logger.LogFormat (LogType logType, System.String format, System.Object[] args) (at D:/unity/Runtime/Export/Logger/Logger.cs:113)
-UnityEngine.Debug.LogFormat (System.String format, System.Object[] args) (at D:/unity/Runtime/Export/Debug.bindings.cs:108)
-Services.UserService.SendGameEnter (Int32 characterIdx) (at Assets/Scripts/Services/UserService.cs:230)
-UICharacterSelect.OnClickPlay () (at Assets/Scripts/UI/UICharacterSelect.cs:143)
+2024-05-28 02:49:40,573 [ 1] INFO  Unity: LoadingMesager::OnGameServerConnect :0 reason:Success
+2024-05-28 02:49:43,893 [ 1] INFO  Unity: OnLogin:Success [None]
+2024-05-28 02:49:43,896 [ 1] INFO  Unity: LoadLevel: CharSelect
+2024-05-28 02:49:44,214 [ 1] INFO  Unity: LevelLoadCompleted:1
+2024-05-28 02:49:45,527 [ 1] INFO  Unity: Select Char:[2]shilofel[Wizard]
+2024-05-28 02:49:45,529 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
 UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
 UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
 UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
@@ -28,87 +24,683 @@ UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, Un
 UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
 UnityEngine.EventSystems.EventSystem:Update()
 }</args></log4net.Error>
-2024-05-19 05:49:53,744 [ 1] INFO  Unity: ProcessReceive exception:System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
-
-  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer, Int32 offset, Int32 size, SocketFlags flags) [0x00000] in <filename unknown>:0 
-  at Network.NetClient.ProcessRecv () [0x00084] in D:\Unity\mymorpg\Src\Client\Assets\Scripts\Network\NetClient.cs:340 
-
-2024-05-19 05:49:53,745 [ 1] WARN  Unity: CloseConnection(), errorCode: 1001
-UnityEngine.Debug:LogWarning(Object)
-Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:180)
-Network.NetClient:ProcessRecv() (at Assets/Scripts/Network/NetClient.cs:354)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:434)
-
-2024-05-19 05:49:53,766 [ 1] INFO  Unity: DoConnect
-2024-05-19 05:49:53,767 [ 1] INFO  Unity: NetClient.DoConnect on 127.0.0.1:8000
-2024-05-19 05:49:53,769 [ 1] INFO  Unity: Connect[0] to server 127.0.0.1:8000
-
-2024-05-19 05:49:55,816 [ 1] WARN  Unity: CloseConnection(), errorCode: 1005
-UnityEngine.Debug:LogWarning(Object)
-Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:180)
-Network.NetClient:DoConnect() (at Assets/Scripts/Network/NetClient.cs:274)
-Network.NetClient:Connect(Int32) (at Assets/Scripts/Network/NetClient.cs:169)
-Network.NetClient:KeepConnect() (at Assets/Scripts/Network/NetClient.cs:315)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:432)
-
-2024-05-19 05:49:55,818 [ 1] ERROR Unity: DoConnect SocketException:[10061,ConnectionRefused,10061]System.Net.Sockets.SocketException: 由于目标计算机积极拒绝，无法连接。
-
-  at System.Net.Sockets.Socket.Connect (System.Net.EndPoint remoteEP, Boolean requireSocketPolicy) [0x00000] in <filename unknown>:0 
-  at System.Net.Sockets.Socket+Worker.Connect () [0x00000] in <filename unknown>:0  
-UnityEngine.Debug:LogErrorFormat(String, Object[])
-Network.NetClient:DoConnect() (at Assets/Scripts/Network/NetClient.cs:276)
-Network.NetClient:Connect(Int32) (at Assets/Scripts/Network/NetClient.cs:169)
-Network.NetClient:KeepConnect() (at Assets/Scripts/Network/NetClient.cs:315)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:432)
-
-2024-05-19 05:49:55,836 [ 1] INFO  Unity: DoConnect
-2024-05-19 05:49:55,837 [ 1] INFO  Unity: NetClient.DoConnect on 127.0.0.1:8000
-2024-05-19 05:49:55,839 [ 1] INFO  Unity: Connect[1] to server 127.0.0.1:8000
-
-2024-05-19 05:49:57,877 [ 1] WARN  Unity: CloseConnection(), errorCode: 1005
-UnityEngine.Debug:LogWarning(Object)
-Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:180)
-Network.NetClient:DoConnect() (at Assets/Scripts/Network/NetClient.cs:274)
-Network.NetClient:Connect(Int32) (at Assets/Scripts/Network/NetClient.cs:169)
-Network.NetClient:KeepConnect() (at Assets/Scripts/Network/NetClient.cs:315)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:432)
-
-2024-05-19 05:49:57,878 [ 1] ERROR Unity: DoConnect SocketException:[10061,ConnectionRefused,10061]System.Net.Sockets.SocketException: 由于目标计算机积极拒绝，无法连接。
-
-  at System.Net.Sockets.Socket.Connect (System.Net.EndPoint remoteEP, Boolean requireSocketPolicy) [0x00000] in <filename unknown>:0 
-  at System.Net.Sockets.Socket+Worker.Connect () [0x00000] in <filename unknown>:0  
-UnityEngine.Debug:LogErrorFormat(String, Object[])
-Network.NetClient:DoConnect() (at Assets/Scripts/Network/NetClient.cs:276)
-Network.NetClient:Connect(Int32) (at Assets/Scripts/Network/NetClient.cs:169)
-Network.NetClient:KeepConnect() (at Assets/Scripts/Network/NetClient.cs:315)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:432)
-
-2024-05-19 05:49:57,901 [ 1] INFO  Unity: DoConnect
-2024-05-19 05:49:57,901 [ 1] INFO  Unity: NetClient.DoConnect on 127.0.0.1:8000
-2024-05-19 05:49:57,903 [ 1] INFO  Unity: Connect[2] to server 127.0.0.1:8000
-
-2024-05-19 05:49:59,957 [ 1] WARN  Unity: CloseConnection(), errorCode: 1005
-UnityEngine.Debug:LogWarning(Object)
-Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:180)
-Network.NetClient:DoConnect() (at Assets/Scripts/Network/NetClient.cs:274)
-Network.NetClient:Connect(Int32) (at Assets/Scripts/Network/NetClient.cs:169)
-Network.NetClient:KeepConnect() (at Assets/Scripts/Network/NetClient.cs:315)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:432)
-
-2024-05-19 05:49:59,957 [ 1] ERROR Unity: DoConnect SocketException:[10061,ConnectionRefused,10061]System.Net.Sockets.SocketException: 由于目标计算机积极拒绝，无法连接。
-
-  at System.Net.Sockets.Socket.Connect (System.Net.EndPoint remoteEP, Boolean requireSocketPolicy) [0x00000] in <filename unknown>:0 
-  at System.Net.Sockets.Socket+Worker.Connect () [0x00000] in <filename unknown>:0  
-UnityEngine.Debug:LogErrorFormat(String, Object[])
-Network.NetClient:DoConnect() (at Assets/Scripts/Network/NetClient.cs:276)
-Network.NetClient:Connect(Int32) (at Assets/Scripts/Network/NetClient.cs:169)
-Network.NetClient:KeepConnect() (at Assets/Scripts/Network/NetClient.cs:315)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:432)
-
-2024-05-19 05:49:59,958 [ 1] INFO  Unity: LoadingMesager::OnGameServerConnect :1 reason:Cannot connect to server
-2024-05-19 05:50:33,249 [ 1] INFO  Unity: OnDestroy NetworkManager.
-2024-05-19 05:50:33,250 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2024-05-28 02:49:45,709 [ 1] INFO  Unity: Select Char:[2]shilofel[Wizard]
+2024-05-28 02:49:45,711 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:49:45,874 [ 1] INFO  Unity: Select Char:[2]shilofel[Wizard]
+2024-05-28 02:49:45,875 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:49:50,967 [ 1] INFO  Unity: Select Char:[2]shilofel[Wizard]
+2024-05-28 02:49:50,968 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:49:51,280 [ 1] INFO  Unity: Select Char:[2]shilofel[Wizard]
+2024-05-28 02:49:51,281 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:49:51,449 [ 1] INFO  Unity: Select Char:[2]shilofel[Wizard]
+2024-05-28 02:49:51,450 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:49:51,736 [ 1] INFO  Unity: Select Char:[2]shilofel[Wizard]
+2024-05-28 02:49:51,737 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:49:52,101 [ 1] INFO  Unity: Select Char:[2]shilofel[Wizard]
+2024-05-28 02:49:52,103 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:49:52,509 [ 1] INFO  Unity: Select Char:[1]库姆酱[Warrior]
+2024-05-28 02:49:52,510 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:49:52,695 [ 1] INFO  Unity: Select Char:[1]库姆酱[Warrior]
+2024-05-28 02:49:52,696 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:49:52,887 [ 1] INFO  Unity: Select Char:[1]库姆酱[Warrior]
+2024-05-28 02:49:52,888 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:49:53,282 [ 1] INFO  Unity: Select Char:[2]shilofel[Wizard]
+2024-05-28 02:49:53,283 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:49:53,475 [ 1] INFO  Unity: Select Char:[2]shilofel[Wizard]
+2024-05-28 02:49:53,476 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:49:53,654 [ 1] INFO  Unity: Select Char:[2]shilofel[Wizard]
+2024-05-28 02:49:53,655 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:49:54,916 [ 1] INFO  Unity: Select Char:[2]shilofel[Wizard]
+2024-05-28 02:49:54,917 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:49:56,645 [ 1] INFO  Unity: Select Char:[2]shilofel[Wizard]
+2024-05-28 02:49:56,646 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:49:56,809 [ 1] INFO  Unity: Select Char:[2]shilofel[Wizard]
+2024-05-28 02:49:56,810 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:49:57,011 [ 1] INFO  Unity: Select Char:[2]shilofel[Wizard]
+2024-05-28 02:49:57,012 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:49:57,172 [ 1] INFO  Unity: Select Char:[2]shilofel[Wizard]
+2024-05-28 02:49:57,173 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:49:57,361 [ 1] INFO  Unity: Select Char:[2]shilofel[Wizard]
+2024-05-28 02:49:57,363 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:50:25,897 [ 1] INFO  Unity: SetPosition:(20800, 0, 0)
+2024-05-28 02:50:29,027 [ 1] INFO  Unity: Select Char:[2]shilofel[Wizard]
+2024-05-28 02:50:29,029 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:50:29,464 [ 1] INFO  Unity: Select Char:[1]库姆酱[Warrior]
+2024-05-28 02:50:29,465 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:50:29,801 [ 1] INFO  Unity: Select Char:[1]库姆酱[Warrior]
+2024-05-28 02:50:29,802 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:50:29,968 [ 1] INFO  Unity: Select Char:[1]库姆酱[Warrior]
+2024-05-28 02:50:29,970 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:50:30,140 [ 1] INFO  Unity: Select Char:[1]库姆酱[Warrior]
+2024-05-28 02:50:30,141 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:50:30,482 [ 1] INFO  Unity: Select Char:[2]shilofel[Wizard]
+2024-05-28 02:50:30,483 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:50:30,689 [ 1] INFO  Unity: Select Char:[2]shilofel[Wizard]
+2024-05-28 02:50:30,691 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:50:30,978 [ 1] INFO  Unity: Select Char:[1]库姆酱[Warrior]
+2024-05-28 02:50:30,980 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:50:31,114 [ 1] INFO  Unity: Select Char:[1]库姆酱[Warrior]
+2024-05-28 02:50:31,116 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:50:39,402 [ 1] INFO  Unity: Select Char:[2]shilofel[Wizard]
+2024-05-28 02:50:39,403 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:50:39,563 [ 1] INFO  Unity: Select Char:[2]shilofel[Wizard]
+2024-05-28 02:50:39,564 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:50:39,744 [ 1] INFO  Unity: Select Char:[2]shilofel[Wizard]
+2024-05-28 02:50:39,746 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:50:39,965 [ 1] INFO  Unity: Select Char:[2]shilofel[Wizard]
+2024-05-28 02:50:39,966 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:50:40,140 [ 1] INFO  Unity: Select Char:[2]shilofel[Wizard]
+2024-05-28 02:50:40,141 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:50:40,301 [ 1] INFO  Unity: Select Char:[2]shilofel[Wizard]
+2024-05-28 02:50:40,302 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:50:40,475 [ 1] INFO  Unity: Select Char:[2]shilofel[Wizard]
+2024-05-28 02:50:40,477 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:50:40,660 [ 1] INFO  Unity: Select Char:[2]shilofel[Wizard]
+2024-05-28 02:50:40,661 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:50:40,827 [ 1] INFO  Unity: Select Char:[2]shilofel[Wizard]
+2024-05-28 02:50:40,828 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:50:40,970 [ 1] INFO  Unity: Select Char:[2]shilofel[Wizard]
+2024-05-28 02:50:40,971 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterView.UpdateCharacter () (at Assets/Scripts/UI/UICharacterView.cs:39)
+UICharacterView.set_CurrectCharacter (Int32 value) (at Assets/Scripts/UI/UICharacterView.cs:21)
+UICharacterSelect.OnSelectCharacter (Int32 idx) (at Assets/Scripts/UI/UICharacterSelect.cs:129)
+UICharacterSelect+<InitCharacterSelect>c__AnonStorey0.<>m__0 () (at Assets/Scripts/UI/UICharacterSelect.cs:65)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-05-28 02:50:41,993 [ 1] INFO  Unity: UserSendGameEnterRequest::characterIdx :1
+2024-05-28 02:50:42,018 [ 1] INFO  Unity: OnUserCreateCharacter:Success [None]
+2024-05-28 02:50:42,020 [ 1] INFO  Unity: OnMapCharacterEnter:Map:1 Count:2
+2024-05-28 02:50:42,021 [ 1] INFO  Unity: AddCharacter:2:shilofel Map:1 Entity:(0:pos:(5000,4000,820),dir:(100,0,0),spd:0
+2024-05-28 02:50:42,023 [ 1] INFO  Unity: AddCharacter:2:shilofel Map:1 Entity:(0:pos:(5000,4000,820),dir:(100,0,0),spd:0
+2024-05-28 02:50:42,024 [ 1] INFO  Unity: LoadLevel: MainCity
+2024-05-28 02:50:42,351 [ 1] INFO  Unity: Wizard OnDestroy :ID:0 POS:(0, 0, 0) DIR:(0, 100, 0) SPD:0 
+2024-05-28 02:50:42,352 [ 1] INFO  Unity: Archer OnDestroy :ID:0 POS:(20800, 0, 0) DIR:(0, 100, 0) SPD:0 
+2024-05-28 02:50:42,435 [ 1] INFO  Unity: LevelLoadCompleted:1
+2024-05-28 02:50:49,512 [ 1] INFO  Unity: MoveForward
+2024-05-28 02:50:49,782 [ 1] INFO  Unity: Stop
+2024-05-28 02:50:49,783 [ 1] INFO  Unity: SetPosition:(5030, 4000, 824)
+2024-05-28 02:50:49,975 [ 1] INFO  Unity: SetPosition:(4996, 4000, 864)
+2024-05-28 02:50:50,180 [ 1] INFO  Unity: SetPosition:(4994, 4000, 915)
+2024-05-28 02:50:50,804 [ 1] INFO  Unity: MoveForward
+2024-05-28 02:50:50,983 [ 1] INFO  Unity: SetPosition:(5079, 4000, 959)
+2024-05-28 02:50:51,246 [ 1] INFO  Unity: SetPosition:(5199, 4000, 994)
+2024-05-28 02:50:51,430 [ 1] INFO  Unity: SetPosition:(5304, 4000, 991)
+2024-05-28 02:50:51,585 [ 1] INFO  Unity: SetPosition:(5387, 4000, 955)
+2024-05-28 02:50:51,698 [ 1] INFO  Unity: SetPosition:(5444, 4000, 902)
+2024-05-28 02:50:51,784 [ 1] INFO  Unity: SetPosition:(5476, 4000, 849)
+2024-05-28 02:50:51,844 [ 1] INFO  Unity: Stop
+2024-05-28 02:50:52,101 [ 1] INFO  Unity: MoveBack
+2024-05-28 02:50:53,403 [ 1] INFO  Unity: Stop
+2024-05-28 02:50:53,414 [ 1] INFO  Unity: MoveForward
+2024-05-28 02:50:53,686 [ 1] INFO  Unity: Stop
+2024-05-28 02:50:54,099 [ 1] INFO  Unity: MoveForward
+2024-05-28 02:50:54,340 [ 1] INFO  Unity: Stop
+2024-05-28 02:50:54,600 [ 1] INFO  Unity: MoveBack
+2024-05-28 02:50:55,306 [ 1] INFO  Unity: Stop
+2024-05-28 02:50:55,916 [ 1] INFO  Unity: MoveBack
+2024-05-28 02:50:55,970 [ 1] INFO  Unity: SetPosition:(5066, 4000, 850)
+2024-05-28 02:50:56,191 [ 1] INFO  Unity: Stop
+2024-05-28 02:50:56,862 [ 1] INFO  Unity: MoveForward
+2024-05-28 02:50:57,057 [ 1] INFO  Unity: Stop
+2024-05-28 02:50:57,476 [ 1] INFO  Unity: MoveBack
+2024-05-28 02:50:57,697 [ 1] INFO  Unity: Stop
+2024-05-28 02:50:58,089 [ 1] INFO  Unity: MoveForward
+2024-05-28 02:50:58,334 [ 1] INFO  Unity: Stop
+2024-05-28 02:50:58,547 [ 1] INFO  Unity: MoveBack
+2024-05-28 02:50:58,913 [ 1] INFO  Unity: Stop
+2024-05-28 02:50:59,243 [ 1] INFO  Unity: MoveForward
+2024-05-28 02:50:59,882 [ 1] INFO  Unity: Stop
+2024-05-28 02:51:01,431 [ 1] INFO  Unity: MoveBack
+2024-05-28 02:51:01,654 [ 1] INFO  Unity: Stop
+2024-05-28 02:51:02,438 [ 1] INFO  Unity: MoveBack
+2024-05-28 02:51:02,750 [ 1] INFO  Unity: Stop
+2024-05-28 02:51:03,090 [ 1] INFO  Unity: MoveForward
+2024-05-28 02:51:04,104 [ 1] INFO  Unity: Stop
+2024-05-28 02:51:04,125 [ 1] INFO  Unity: MoveBack
+2024-05-28 02:51:05,245 [ 1] INFO  Unity: SetPosition:(5007, 4000, 850)
+2024-05-28 02:51:05,608 [ 1] INFO  Unity: Stop
+2024-05-28 02:51:05,628 [ 1] INFO  Unity: MoveForward
+2024-05-28 02:51:07,140 [ 1] INFO  Unity: Stop
+2024-05-28 02:51:07,159 [ 1] INFO  Unity: MoveBack
+2024-05-28 02:51:09,168 [ 1] INFO  Unity: SetPosition:(4802, 4000, 854)
+2024-05-28 02:51:09,904 [ 1] INFO  Unity: Stop
+2024-05-28 02:51:10,297 [ 1] INFO  Unity: MoveForward
+2024-05-28 02:51:11,100 [ 1] INFO  Unity: Stop
+2024-05-28 02:51:11,353 [ 1] INFO  Unity: MoveForward
+2024-05-28 02:51:11,584 [ 1] INFO  Unity: Stop
+2024-05-28 02:51:12,160 [ 1] INFO  Unity: MoveForward
+2024-05-28 02:51:12,937 [ 1] INFO  Unity: Stop
+2024-05-28 02:51:13,012 [ 1] INFO  Unity: MoveBack
+2024-05-28 02:51:13,358 [ 1] INFO  Unity: Stop
+2024-05-28 02:51:13,629 [ 1] INFO  Unity: MoveForward
+2024-05-28 02:51:14,109 [ 1] INFO  Unity: Stop
+2024-05-28 02:51:15,542 [ 1] INFO  Unity: SetDirection:(0, -18, 98)
+2024-05-28 02:51:16,150 [ 1] INFO  Unity: SetDirection:(-87, -6, 48)
+2024-05-28 02:51:16,308 [ 1] INFO  Unity: SetDirection:(-87, 14, 47)
+2024-05-28 02:51:16,687 [ 1] INFO  Unity: SetDirection:(-84, 34, 43)
+2024-05-28 02:51:16,794 [ 1] INFO  Unity: SetDirection:(-75, 52, 41)
+2024-05-28 02:51:16,902 [ 1] INFO  Unity: SetDirection:(-62, 69, 38)
+2024-05-28 02:51:17,001 [ 1] INFO  Unity: SetDirection:(-45, 82, 35)
+2024-05-28 02:51:17,099 [ 1] INFO  Unity: SetDirection:(-25, 91, 31)
+2024-05-28 02:51:17,193 [ 1] INFO  Unity: SetDirection:(-5, 96, 28)
+2024-05-28 02:51:17,301 [ 1] INFO  Unity: SetDirection:(16, 95, 25)
+2024-05-28 02:51:17,413 [ 1] INFO  Unity: SetDirection:(36, 91, 22)
+2024-05-28 02:51:17,497 [ 1] INFO  Unity: SetDirection:(55, 81, 19)
+2024-05-28 02:51:17,566 [ 1] INFO  Unity: SetPosition:(5180, 3967, 817)
+2024-05-28 02:51:17,598 [ 1] INFO  Unity: SetDirection:(71, 68, 17)
+2024-05-28 02:51:17,701 [ 1] INFO  Unity: SetDirection:(84, 52, 17)
+2024-05-28 02:51:17,806 [ 1] INFO  Unity: SetDirection:(93, 33, 17)
+2024-05-28 02:51:17,898 [ 1] INFO  Unity: SetDirection:(98, 13, 16)
+2024-05-28 02:51:17,982 [ 1] INFO  Unity: SetDirection:(99, -5, 16)
+2024-05-28 02:51:18,085 [ 1] INFO  Unity: SetDirection:(95, -26, 16)
+2024-05-28 02:51:18,187 [ 1] INFO  Unity: SetDirection:(88, -45, 16)
+2024-05-28 02:51:18,270 [ 1] INFO  Unity: SetDirection:(78, -60, 16)
+2024-05-28 02:51:18,371 [ 1] INFO  Unity: SetDirection:(64, -75, 16)
+2024-05-28 02:51:18,450 [ 1] INFO  Unity: SetDirection:(50, -85, 15)
+2024-05-28 02:51:18,536 [ 1] INFO  Unity: SetDirection:(34, -93, 15)
+2024-05-28 02:51:18,618 [ 1] INFO  Unity: SetDirection:(17, -97, 15)
+2024-05-28 02:51:18,700 [ 1] INFO  Unity: SetDirection:(-1, -99, 15)
+2024-05-28 02:51:18,807 [ 1] INFO  Unity: SetDirection:(-21, -97, 15)
+2024-05-28 02:51:18,881 [ 1] INFO  Unity: SetDirection:(-38, -91, 15)
+2024-05-28 02:51:18,985 [ 1] INFO  Unity: SetDirection:(-57, -81, 14)
+2024-05-28 02:51:19,092 [ 1] INFO  Unity: SetDirection:(-72, -67, 14)
+2024-05-28 02:51:19,192 [ 1] INFO  Unity: SetDirection:(-85, -51, 14)
+2024-05-28 02:51:19,267 [ 1] INFO  Unity: SetDirection:(-93, -35, 14)
+2024-05-28 02:51:19,373 [ 1] INFO  Unity: SetDirection:(-98, -15, 14)
+2024-05-28 02:51:19,464 [ 1] INFO  Unity: SetDirection:(-99, 3, 14)
+2024-05-28 02:51:19,553 [ 1] INFO  Unity: SetDirection:(-96, 23, 14)
+2024-05-28 02:51:19,706 [ 1] INFO  Unity: SetDirection:(-90, 41, 13)
+2024-05-28 02:51:20,652 [ 1] INFO  Unity: SetDirection:(-81, 57, 14)
+2024-05-28 02:51:20,862 [ 1] INFO  Unity: SetDirection:(-68, 72, 14)
+2024-05-28 02:51:20,957 [ 1] INFO  Unity: SetDirection:(-52, 84, 14)
+2024-05-28 02:51:21,054 [ 1] INFO  Unity: SetDirection:(-33, 93, 14)
+2024-05-28 02:51:21,159 [ 1] INFO  Unity: SetDirection:(-13, 98, 14)
+2024-05-28 02:51:21,257 [ 1] INFO  Unity: SetDirection:(8, 99, 13)
+2024-05-28 02:51:21,355 [ 1] INFO  Unity: SetDirection:(29, 95, 13)
+2024-05-28 02:51:21,453 [ 1] INFO  Unity: SetDirection:(48, 87, 13)
+2024-05-28 02:51:21,559 [ 1] INFO  Unity: SetDirection:(65, 75, 13)
+2024-05-28 02:51:21,647 [ 1] INFO  Unity: SetDirection:(77, 62, 13)
+2024-05-28 02:51:21,742 [ 1] INFO  Unity: SetDirection:(89, 45, 13)
+2024-05-28 02:51:21,824 [ 1] INFO  Unity: SetDirection:(95, 28, 13)
+2024-05-28 02:51:21,926 [ 1] INFO  Unity: SetDirection:(99, 8, 12)
+2024-05-28 02:51:22,027 [ 1] INFO  Unity: SetDirection:(99, -11, 12)
+2024-05-28 02:51:22,208 [ 1] INFO  Unity: SetDirection:(95, -28, 12)
+2024-05-28 02:51:22,364 [ 1] INFO  Unity: MoveBack
+2024-05-28 02:51:22,544 [ 1] INFO  Unity: SetPosition:(5167, 3970, 823)
+2024-05-28 02:51:22,771 [ 1] INFO  Unity: SetPosition:(5138, 3979, 847)
+2024-05-28 02:51:22,910 [ 1] INFO  Unity: Stop
+2024-05-28 02:51:23,139 [ 1] INFO  Unity: MoveForward
+2024-05-28 02:51:23,393 [ 1] INFO  Unity: SetPosition:(5189, 3965, 907)
+2024-05-28 02:51:23,544 [ 1] INFO  Unity: SetPosition:(5233, 3952, 966)
+2024-05-28 02:51:23,649 [ 1] INFO  Unity: SetPosition:(5263, 3943, 1022)
+2024-05-28 02:51:23,729 [ 1] INFO  Unity: SetPosition:(5288, 3936, 1077)
+2024-05-28 02:51:23,808 [ 1] INFO  Unity: SetPosition:(5312, 3929, 1142)
+2024-05-28 02:51:23,882 [ 1] INFO  Unity: SetPosition:(5332, 3923, 1200)
+2024-05-28 02:51:23,951 [ 1] INFO  Unity: SetPosition:(5351, 3918, 1263)
+2024-05-28 02:51:24,008 [ 1] INFO  Unity: SetPosition:(5371, 3912, 1332)
+2024-05-28 02:51:24,043 [ 1] INFO  Unity: Stop
+2024-05-28 02:51:25,751 [ 1] INFO  Unity: SetPosition:(5364, 3914, 1284)
+2024-05-28 02:51:27,173 [ 1] INFO  Unity: SetPosition:(5344, 3917, 1238)
+2024-05-28 02:51:28,794 [ 1] INFO  Unity: SetPosition:(5316, 3920, 1196)
+2024-05-28 02:51:30,728 [ 1] INFO  Unity: SetPosition:(5281, 3922, 1160)
+2024-05-28 02:51:33,349 [ 1] INFO  Unity: SetPosition:(5241, 3924, 1130)
+2024-05-28 02:51:38,692 [ 1] INFO  Unity: SetPosition:(5201, 3923, 1099)
+2024-05-28 02:51:45,687 [ 1] INFO  Unity: SetPosition:(5213, 3918, 1050)
+2024-05-28 02:51:49,881 [ 1] INFO  Unity: SetPosition:(5233, 3915, 1004)
+2024-05-28 02:51:49,996 [ 1] INFO  Unity: OnDestroy NetworkManager.
+2024-05-28 02:51:49,997 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:180)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:175)
 
+2024-05-28 02:51:50,007 [ 1] INFO  Unity: Character_2_shilofel OnDestroy :ID:0 POS:(5233, 3915, 1004) DIR:(95, -28, 12) SPD:0 
