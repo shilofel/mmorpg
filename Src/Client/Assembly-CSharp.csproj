@@ -83,8 +83,12 @@
     <Compile Include="Assets\Scripts\UI\UICharacterView.cs" />
     <Compile Include="Assets\Scripts\UI\UICharInfo.cs" />
     <Compile Include="Assets\Scripts\UI\UILogin.cs" />
+    <Compile Include="Assets\Scripts\UI\UIMainCity.cs" />
     <Compile Include="Assets\Scripts\UI\UIMessageBox.cs" />
+    <Compile Include="Assets\Scripts\UI\UINameBar.cs" />
     <Compile Include="Assets\Scripts\UI\UIRegister.cs" />
+    <Compile Include="Assets\Scripts\UI\UIWorldElement.cs" />
+    <Compile Include="Assets\Scripts\UI\UIWorldElementManager.cs" />
     <Compile Include="Assets\Scripts\Utilities\GameUtil.cs" />
     <Compile Include="Assets\Scripts\Utilities\MonoSingleton.cs" />
     <Compile Include="Assets\Scripts\Utilities\Singleton.cs" />

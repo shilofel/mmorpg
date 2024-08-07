@@ -684,8 +684,8 @@ GameObject:
   - component: {fileID: 4174984745379422}
   - component: {fileID: 54255169930946384}
   - component: {fileID: 136599443910912012}
-  - component: {fileID: 114235788583523946}
-  - component: {fileID: 114502010742392998}
+  - component: {fileID: 114379617363847916}
+  - component: {fileID: 114993706621082294}
   m_Layer: 0
   m_Name: Warrior
   m_TagString: Untagged
@@ -1416,7 +1416,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114235788583523946
+--- !u!114 &114379617363847916
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1436,7 +1436,7 @@ MonoBehaviour:
   animSpeed: 1.5
   jumpPower: 3
   isPlayer: 0
---- !u!114 &114502010742392998
+--- !u!114 &114993706621082294
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1448,7 +1448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 54255169930946384}
-  entityController: {fileID: 114235788583523946}
+  entityController: {fileID: 114379617363847916}
   rotateSpeed: 2
   turnAngle: 10
   speed: 0

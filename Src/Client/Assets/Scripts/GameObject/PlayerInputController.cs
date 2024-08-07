@@ -101,6 +101,8 @@ public class PlayerInputController : MonoBehaviour {
                 this.SendEntityEvent(EntityEvent.None);
             }
         }
+        Debug.LogFormat("velocity {0}", this.rb.velocity.magnitude);
+
     }
 
     Vector3 lastPos;
