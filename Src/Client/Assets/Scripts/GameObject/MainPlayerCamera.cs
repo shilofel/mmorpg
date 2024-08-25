@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Models;
 public class MainPlayerCamera : MonoSingleton<MainPlayerCamera>
 {
     public Camera camera;
@@ -20,6 +20,10 @@ public class MainPlayerCamera : MonoSingleton<MainPlayerCamera>
     //相机位置始终跟随玩家位置
     private void LateUpdate()
     {
+        if (player == null)
+        {
+            player = User.Instance.CurrentCharacterObject;
+        }
         if (player == null)
             return;
 

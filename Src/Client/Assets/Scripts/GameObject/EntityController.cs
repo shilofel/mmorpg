@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Entities;
+using Managers;
 
-
-public class EntityController : MonoBehaviour
+public class EntityController : MonoBehaviour,IEntityNotify
 {
     public Animator anim;
     public Rigidbody rb;
@@ -31,6 +31,8 @@ public class EntityController : MonoBehaviour
     {
         if (entity != null)
         {
+            //注册接口
+            EntieyManager.Instance.RegisterEntityChangedNotify(entity.entityId, this);
             this.UpdateTransform();
         }
         //去除重力
@@ -92,5 +94,12 @@ public class EntityController : MonoBehaviour
                 anim.SetTrigger("Jump");
                 break;
         }
+    }
+
+    public void OnEntityRemoved()
+    {
+        if (UIWorldElementManager.Instance != null)
+            UIWorldElementManager.Instance.RemoveCharacterNameBar(this.transform);
+        Destroy(this.gameObject);
     }
 }

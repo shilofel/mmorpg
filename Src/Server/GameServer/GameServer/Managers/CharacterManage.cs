@@ -6,12 +6,13 @@ using SkillBridge.Message;
 
 namespace GameServer.Managers
 {
-    class CharacterManage : Singleton<CharacterManage>
+    class CharacterManager : Singleton<CharacterManager>
     {
         public Dictionary<int, Character> Characters = new Dictionary<int, Character>();
         public Character AddCharacter(TCharacter cha)
         {
             Character character = new Character(CharacterType.Player, cha);
+            EntityManager.Instance.AddEntity(cha.MapID, character);
             this.Characters[cha.ID] = character;
             return character;
         }
@@ -23,6 +24,8 @@ namespace GameServer.Managers
 
         public void Remove(int characterID)
         {
+            var cha = this.Characters[characterID];
+            EntityManager.Instance.RemoveEntity(cha.Data.MapID, cha);
             Characters.Remove(characterID);
         }
 

@@ -37,7 +37,12 @@ namespace Services
 
         private void OnMapCharacterLeave(object sender, MapCharacterLeaveResponse response)
         {
-            //Debug.LogFormat("OnMapCharacterLeave:Map:{0} Count:{1}", response.map, response.Errormsg);
+            Debug.LogFormat("OnMapCharacterLeave:CharId:{0}}", response.characterId);
+            //如果是自己离开，清除所有；如果不是，清除其他人
+            if (response.characterId != User.Instance.CurrentCharacter.Id)
+                CharacterManager.Instance.RemoveCharacter(response.characterId);
+            else
+                CharacterManager.Instance.Clear();
         }
 
         private void OnMapCharacterEnter(object sender, MapCharacterEnterResponse response)
@@ -64,6 +69,7 @@ namespace Services
             if(DataManager.Instance.Maps.ContainsKey(mapId))
             {
                 MapDefine map = DataManager.Instance.Maps[mapId];
+                User.Instance.CurrentMapData = map;
                 SceneManager.Instance.LoadScene(map.Resource);
             }
             else

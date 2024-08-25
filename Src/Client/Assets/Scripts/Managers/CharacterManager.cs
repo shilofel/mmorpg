@@ -9,6 +9,7 @@ using UnityEngine.Events;
 
 using Entities;
 using SkillBridge.Message;
+using Managers;
 
 namespace Services
 {
@@ -18,6 +19,7 @@ namespace Services
 
 
         public UnityAction<Character> OnCharacterEnter;
+        public UnityAction<Character> OnCharacterLeave;
 
         public CharacterManager()
         {
@@ -35,6 +37,12 @@ namespace Services
 
         public void Clear()
         {
+            int[] keys = this.Characters.Keys.ToArray();
+            //通知其他管理器
+            foreach(var key in keys)
+            {
+                this.RemoveCharacter(key);
+            }
             this.Characters.Clear();
         }
 
@@ -43,6 +51,7 @@ namespace Services
             Debug.LogFormat("AddCharacter:{0}:{1} Map:{2} Entity:{3}", cha.Id, cha.Name, cha.mapId, cha.Entity.String());
             Character character = new Character(cha);
             this.Characters[cha.Id] = character;
+            EntieyManager.Instance.AddEntity(character);
 
             if(OnCharacterEnter!=null)
             {
@@ -54,8 +63,16 @@ namespace Services
         public void RemoveCharacter(int characterId)
         {
             Debug.LogFormat("RemoveCharacter:{0}", characterId);
-            this.Characters.Remove(characterId);
 
+            if(Characters.ContainsKey(characterId))
+            {
+                EntieyManager.Instance.RemoveEntity(this.Characters[characterId].Info.Entity);
+                if(OnCharacterLeave !=null)
+                {
+                    OnCharacterLeave(this.Characters[characterId]);
+                }
+                this.Characters.Remove(characterId);
+            }
         }
     }
 }
