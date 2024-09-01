@@ -144,15 +144,15 @@ namespace GameServer.Services
         private void OnGameEnter(NetConnection<NetSession> sender, UserGameEnterRequest request)
         {
             TCharacter dbChar = sender.Session.User.Player.Characters.ElementAt(request.characterIdx);
-            Log.InfoFormat("UserGameEnterRequest: characterIdx:{0}", request.characterIdx);
+            Log.InfoFormat("UserGameEnterRequest: characterID:{0}:{1} Map:{2}", dbChar.ID, dbChar.Name, dbChar.MapID);
 
             Character character = CharacterManager.Instance.AddCharacter(dbChar);
 
             NetMessage message = new NetMessage();
             message.Response = new NetMessageResponse();
-            message.Response.createChar = new UserCreateCharacterResponse();
-            message.Response.createChar.Result = Result.Success;
-            message.Response.createChar.Errormsg = "None";
+            message.Response.gameEnter = new UserGameEnterResponse();
+            message.Response.gameEnter.Result = Result.Success;
+            message.Response.gameEnter.Errormsg = "None";
 
             byte[] data = PackageHandler.PackMessage(message);
             sender.SendData(data, 0, data.Length);

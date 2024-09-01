@@ -98,7 +98,7 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
         PlayerInputController pc = go.GetComponent<PlayerInputController>();
         if (pc != null)
         {
-            if (cha.entityId == Models.User.Instance.CurrentCharacter.Id)
+            if (cha.Info.Id == Models.User.Instance.CurrentCharacter.Id)
             {
                 User.Instance.CurrentCharacterObject = go;
                 MainPlayerCamera.Instance.player = go;
