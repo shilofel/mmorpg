@@ -15,18 +15,20 @@ namespace Services
     class MapService : Singleton<MapService>, IDisposable
     {
 
-        public int CurrentMapId { get; private set; }
+        public int CurrentMapId { get; set; }
 
         public MapService()
         {
             MessageDistributer.Instance.Subscribe<MapCharacterEnterResponse>(this.OnMapCharacterEnter);
             MessageDistributer.Instance.Subscribe<MapCharacterLeaveResponse>(this.OnMapCharacterLeave);
+            MessageDistributer.Instance.Subscribe<MapEntitySyncResponse>(this.OnMapEntitySync);
         }
 
         public void Dispose()
         {
             MessageDistributer.Instance.Unsubscribe<MapCharacterEnterResponse>(this.OnMapCharacterEnter);
             MessageDistributer.Instance.Unsubscribe<MapCharacterLeaveResponse>(this.OnMapCharacterLeave);
+            MessageDistributer.Instance.Unsubscribe<MapEntitySyncResponse>(this.OnMapEntitySync);
         }
 
         public void Init()
@@ -37,7 +39,7 @@ namespace Services
 
         private void OnMapCharacterLeave(object sender, MapCharacterLeaveResponse response)
         {
-            Debug.LogFormat("OnMapCharacterLeave:CharId:{0}}", response.characterId);
+            Debug.LogFormat("OnMapCharacterLeave:CharId:{0}", response.characterId);
             //如果是自己离开，清除所有；如果不是，清除其他人
             if (response.characterId != User.Instance.CurrentCharacter.Id)
                 CharacterManager.Instance.RemoveCharacter(response.characterId);
@@ -76,6 +78,37 @@ namespace Services
             {
                 Debug.LogErrorFormat("EnterMap:Map {1} not existed", mapId);
             }
+        }
+
+        internal void SendMapEntitySync(EntityEvent entityEvent, NEntity entity)
+        {
+            Debug.LogFormat("MapEntityUpdateSync:ID :{0} POS:{1} DIR:{2} SPD:{3}", entity.Id, entity.Position.ToString(),entity.Direction.ToString(),entity.Speed);
+            NetMessage message = new NetMessage();
+            message.Request = new NetMessageRequest();
+            message.Request.mapEntitySync = new MapEntitySyncRequest();
+            message.Request.mapEntitySync.entitySync = new NEntitySync()
+            {
+                Id = entity.Id,
+                Event = entityEvent,
+                Entity = entity
+            };
+
+            NetClient.Instance.SendMessage(message);
+        }
+
+        private void OnMapEntitySync(object sender, MapEntitySyncResponse response)
+        {
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            sb.AppendFormat("MapEntityUpdateResponse:Entity:{0}", response.entitySyncs.Count);
+            sb.AppendLine();
+            foreach(var entity in response.entitySyncs)
+            {
+                Managers.EntieyManager.Instance.OnEntitySync(entity);
+                sb.AppendFormat("   [{0}]evt:{1}  entity:{2}",entity.Id,entity.Event,entity.Entity.String());
+                sb.AppendLine();
+            }
+
+            Debug.Log(sb.ToString());
         }
     }
 }

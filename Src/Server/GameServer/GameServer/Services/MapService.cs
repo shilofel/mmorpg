@@ -16,24 +16,28 @@ namespace GameServer.Services
 
         public MapService()
         {
-            MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<MapCharacterEnterResponse>(this.OnMapCharacterEnter);
-            MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<MapCharacterLeaveResponse>(this.OnMapCharacterLeave);
+            MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<MapCharacterEnterRequest>(this.OnMapCharacterEnter);
+            MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<MapEntitySyncRequest>(this.OnMapEntitySync);
         }
-
 
         public void Init()
         {
-
+            MapManager.Instance.Init();
         }
 
-        private void OnMapCharacterLeave(NetConnection<NetSession> sender, MapCharacterLeaveResponse message)
+        private void OnMapCharacterEnter(NetConnection<NetSession> sender, MapCharacterEnterRequest message)
         {
             throw new NotImplementedException();
         }
 
-        private void OnMapCharacterEnter(NetConnection<NetSession> sender, MapCharacterEnterResponse message)
+        private void OnMapEntitySync(NetConnection<NetSession> sender, MapEntitySyncRequest request)
         {
-            throw new NotImplementedException();
+            Character character = sender.Session.Character;
+
+            Log.InfoFormat("OnMapEntitySync: CharacterID:{0}:{1} EntityID:{2} Evt:{3} Entity:{4}",
+                character.Id, character.Info.Name, request.entitySync.Id, request.entitySync.Event, request.entitySync.Entity);
+
+            MapManager.Instance[character.Info.mapId].UpdateEntity(request.entitySync);
         }
 
         void OnLogin(NetConnection<NetSession> sender, UserLoginRequest request)
@@ -78,6 +82,19 @@ namespace GameServer.Services
             }
             byte[] data = PackageHandler.PackMessage(message);
             sender.SendData(data, 0, data.Length);
+        }
+
+        //自身信息send给其他角色
+        internal void SendEntityUpdate(NetConnection<NetSession> connection, NEntitySync entity)
+        {
+            NetMessage message = new NetMessage();
+            message.Response = new NetMessageResponse();
+
+            message.Response.mapEntitySync = new MapEntitySyncResponse();
+            message.Response.mapEntitySync.entitySyncs.Add(entity);
+
+            byte[] data = PackageHandler.PackMessage(message);
+            connection.SendData(data, 0, data.Length);
         }
     }
 }

@@ -11,6 +11,7 @@ using Network;
 using GameServer.Entities;
 using GameServer.Managers;
 using Common.Data;
+using GameServer.Services;
 
 namespace GameServer.Models
 {
@@ -48,15 +49,14 @@ namespace GameServer.Models
 
         internal void CharacterLeave(NCharacterInfo character)
         {
-            Log.InfoFormat("CharacterEnter: Map:{0} characterId:{1}", this.Define.ID, character.Id);
-
-            this.MapCharacters.Remove(character.Id);
+            Log.InfoFormat("CharacterLeave: Map:{0} characterId:{1}", this.Define.ID, character.Id);
 
             //告知其他角色自己离开某地图
             foreach (var kv in this.MapCharacters)
             {
                 this.SendCharacterLeaveMap(kv.Value.connection, character);
             }
+            this.MapCharacters.Remove(character.Id);
         }
 
         internal void CharacterEnter(NetConnection<NetSession> conn, Character character)
@@ -78,7 +78,7 @@ namespace GameServer.Models
                 this.SendCharacterEnterMap(kv.Value.connection, character.Info);
             }
             //告诉自己进入某地图
-            this.MapCharacters[character.Id] = new MapCharacter(conn, character);
+            this.MapCharacters[character.Info.Id] = new MapCharacter(conn, character);
 
             byte[] data = PackageHandler.PackMessage(message);
             conn.SendData(data, 0, data.Length);
@@ -107,6 +107,23 @@ namespace GameServer.Models
 
             byte[] data = PackageHandler.PackMessage(message);
             conn.SendData(data, 0, data.Length);
+        }
+        //更新自己、通知他人
+        internal void UpdateEntity(NEntitySync entity)
+        {
+            foreach(var kv in this.MapCharacters)
+            {
+                if(kv.Value.character.entityId == entity.Id)
+                {
+                    kv.Value.character.Position = entity.Entity.Position;
+                    kv.Value.character.Direction = entity.Entity.Direction;
+                    kv.Value.character.Speed = entity.Entity.Speed;
+                }
+                else
+                {
+                    MapService.Instance.SendEntityUpdate(kv.Value.connection, entity);
+                }
+            }
         }
     }
 }

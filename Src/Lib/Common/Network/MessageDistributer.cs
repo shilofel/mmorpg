@@ -31,6 +31,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using Common;
+using SkillBridge.Message;
 
 namespace Network
 {
@@ -226,5 +227,6 @@ namespace Network
         {
             throw new NotImplementedException();
         }
+
     }
 }

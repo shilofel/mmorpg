@@ -30,7 +30,7 @@ namespace Services
             MessageDistributer.Instance.Subscribe<UserRegisterResponse>(this.OnUserRegister);
             MessageDistributer.Instance.Subscribe<UserCreateCharacterResponse>(this.OnUserCreateCharacter);
             MessageDistributer.Instance.Subscribe<UserGameEnterResponse>(this.OnGameEnter);
-            //MessageDistributer.Instance.Subscribe<UserGameLeaveResponse>(this.OnGameLeave);
+            MessageDistributer.Instance.Subscribe<UserGameLeaveResponse>(this.OnGameLeave);
             //MessageDistributer.Instance.Subscribe<MapCharacterEnterResponse>(this.OnCharacterEnter);
         }
 
@@ -40,7 +40,7 @@ namespace Services
             MessageDistributer.Instance.Unsubscribe<UserRegisterResponse>(this.OnUserRegister);
             MessageDistributer.Instance.Unsubscribe<UserCreateCharacterResponse>(this.OnUserCreateCharacter);
             MessageDistributer.Instance.Unsubscribe<UserGameEnterResponse>(this.OnGameEnter);
-            //MessageDistributer.Instance.Subscribe<UserGameLeaveResponse>(this.OnGameLeave);
+            MessageDistributer.Instance.Unsubscribe<UserGameLeaveResponse>(this.OnGameLeave);
             //MessageDistributer.Instance.Unsubscribe<MapCharacterEnterResponse>(this.OnCharacterEnter);
             NetClient.Instance.OnConnect -= OnGameServerConnect;
             NetClient.Instance.OnDisconnect -= OnGameServerDisconnect;
@@ -280,13 +280,16 @@ namespace Services
             }
         }
 
-        void OnGameLeave(object sender, UserGameEnterResponse response)
+        void OnGameLeave(object sender, UserGameLeaveResponse response)
         {
             //MapSer
             Debug.LogFormat("OnGameLeave:{0} [{1}]", response.Result, response.Errormsg);
 
+            //重置mapID防止无法重复进入
+            MapService.Instance.CurrentMapId = 0;
             if (response.Result == Result.Success)
             {
+
                 //Models.User.Instance.Info.Player.Characters.Clear();
                 //Models.User.Instance.Info.Player.Characters.AddRange(response.Characters);
             }

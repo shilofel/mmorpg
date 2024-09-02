@@ -15,6 +15,8 @@ namespace Managers
     interface IEntityNotify
     {
         void OnEntityRemoved();
+        void OnEntityEvent(EntityEvent @event);
+        void OnEntityChanged(Entity entity);
     }
     class EntieyManager:Singleton<EntieyManager>
     {
@@ -39,6 +41,24 @@ namespace Managers
             {
                 notifiers[entity.Id].OnEntityRemoved();
                 notifiers.Remove(entity.Id);
+            }
+        }
+
+        //更新变更的entity的本地数据
+        internal void OnEntitySync(NEntitySync data)
+        {
+            Entity entity = null;
+            entities.TryGetValue(data.Id, out entity);
+
+            if(entity !=null)
+            {
+                if (data.Entity != null)
+                    entity.EntityData = data.Entity;
+                if(notifiers.ContainsKey(data.Id))
+                {
+                    notifiers[entity.entityId].OnEntityChanged(entity);
+                    notifiers[entity.entityId].OnEntityEvent(data.Event);
+                }
             }
         }
     }
