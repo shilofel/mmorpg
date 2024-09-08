@@ -74,10 +74,11 @@ public class PlayerInputController : MonoBehaviour {
             if (state != SkillBridge.Message.CharacterState.Idle)
             {
                 state = SkillBridge.Message.CharacterState.Idle;
+                this.rb.velocity = Vector3.zero;
                 character.Stop();
+                character.EntityData.Speed = 0;
                 this.SendEntityEvent(EntityEvent.Idle);
             }
-            this.rb.velocity = Vector3.zero;
         }
 
         if (Input.GetButtonDown("Jump"))
@@ -102,7 +103,7 @@ public class PlayerInputController : MonoBehaviour {
                 this.SendEntityEvent(EntityEvent.None);
             }
         }
-        Debug.LogFormat("velocity {0}", this.rb.velocity.magnitude);
+        //Debug.LogFormat("velocity {0}", this.rb.velocity.magnitude);
 
     }
 

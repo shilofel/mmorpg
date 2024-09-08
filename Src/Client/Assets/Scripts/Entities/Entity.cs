@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using SkillBridge.Message;
+using Common;
 
 //位置、速度、方向
 namespace Entities
@@ -21,6 +22,7 @@ namespace Entities
         public NEntity EntityData
         {
             get {
+                UpdateEntityData();
                 return entityData;
             }
             set {
@@ -36,7 +38,7 @@ namespace Entities
             //进行数据设置更新
             this.SetEntityData(entity);
         }
-
+        
         public virtual void OnUpdate(float delta)
         {
             if (this.speed != 0)
@@ -44,9 +46,6 @@ namespace Entities
                 Vector3 dir = this.direction;
                 this.position += Vector3Int.RoundToInt(dir * speed * delta / 100f);
             }
-            entityData.Position.FromVector3Int(this.position);
-            entityData.Direction.FromVector3Int(this.direction);
-            entityData.Speed = this.speed;
         }
 
         public void SetEntityData(NEntity entity)
@@ -55,5 +54,13 @@ namespace Entities
             this.direction = this.direction.FromNVector3(entity.Direction);
             this.speed = entity.Speed;
         }
+
+        private void UpdateEntityData()
+        {
+            entityData.Speed = this.speed;
+            entityData.Position.FromVector3Int(this.position);
+            entityData.Direction.FromVector3Int(this.direction);
+        }
+
     }
 }

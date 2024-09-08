@@ -20,7 +20,16 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
 
     void Start()
     {
-        if (global) DontDestroyOnLoad(this.gameObject);
+        if (global)
+        {
+            //单例对象产生多个，检测到已经存在实例，销毁自身
+            if(instance!=null)
+            {
+                Destroy(this.gameObject);
+                return;
+            }
+            DontDestroyOnLoad(this.gameObject);
+        }
         this.OnStart();
     }
 
