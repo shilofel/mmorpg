@@ -5,12 +5,12 @@ using UnityEngine.UI;
 using Models;
 using System;
 
-public class UIMainCity : MonoBehaviour {
+public class UIMainCity : MonoSingleton<UIMainCity> {
 
     public Text AvatarName;
     public Text AvatarLevel;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    protected override void OnStart () {
         this.UpdateAvatar();
 	}
 

@@ -37,12 +37,12 @@ namespace Services
 
         public void Clear()
         {
-            int[] keys = this.Characters.Keys.ToArray();
+            //int[] keys = this.Characters.Keys.ToArray();
             //通知其他管理器
-            foreach(var key in keys)
-            {
-                this.RemoveCharacter(key);
-            }
+           // foreach(var key in keys)
+            //{
+                //this.RemoveCharacter(key);
+            //}
             this.Characters.Clear();
         }
 

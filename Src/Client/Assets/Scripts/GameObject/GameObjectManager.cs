@@ -14,6 +14,7 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
 
     Dictionary<int, GameObject> Characters = new Dictionary<int, GameObject>();
     // Use this for initialization
+    //重载start
     protected override void OnStart()
     {
         StartCoroutine(InitGameObjects());
@@ -23,7 +24,6 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
 
     private void OnDestroy()
     {
-        CharacterManager.Instance.OnCharacterEnter = null;
         CharacterManager.Instance.OnCharacterEnter -= OnCharacterEnter;
         CharacterManager.Instance.OnCharacterLeave -= OnCharacterLeave;
     }
@@ -72,11 +72,11 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
                 return;
             }
 
-            GameObject go = (GameObject)Instantiate(obj);
+            GameObject go = (GameObject)Instantiate(obj, this.transform);
             go.name = "Character_" + cha.Info.Id + "_" + cha.Info.Name;
 
             Characters[cha.entityId] = go;
-
+            
             UIWorldElementManager.Instance.AddCharacterNameBar(go.transform, cha);
         }
         this.InitGameObject(Characters[cha.entityId], cha);
