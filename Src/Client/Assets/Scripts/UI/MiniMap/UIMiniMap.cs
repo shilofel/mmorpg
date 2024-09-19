@@ -15,26 +15,30 @@ public class UIMiniMap : MonoBehaviour {
     private Transform playerTransform;
 	// Use this for initialization
 	void Start () {
-        this.InitMap();
+        MinimapManager.Instance.minimap = this;
+        this.UpdateMap();
 	}
-
-    private void InitMap()
+    //更换地图 调用
+    public void UpdateMap()
     {
         this.mapName.text = User.Instance.CurrentMapData.Name;
-        if(this.miniMap.overrideSprite == null)
-        {
-            this.miniMap.overrideSprite = MinimapManager.Instance.LoadCurrentMinimap();
-        }
+
+        this.miniMap.overrideSprite = MinimapManager.Instance.LoadCurrentMinimap();
 
         this.miniMap.SetNativeSize();
         this.miniMap.transform.localPosition = Vector3.zero;
-
+        this.miniMapBoundingBox = MinimapManager.Instance.MiniMapBoundingBox;
+        this.playerTransform = null;
     }
 
     // Update is called once per frame
     void Update () {
-        if(this.playerTransform ==null&& User.Instance.CurrentCharacterObject!=null)
-            this.playerTransform = User.Instance.CurrentCharacterObject.transform;
+
+        //if(this.playerTransform ==null&& User.Instance.CurrentCharacterObject!=null)
+        if (this.playerTransform == null)
+            playerTransform = MinimapManager.Instance.PlayerTransform;
+            //this.playerTransform = User.Instance.CurrentCharacterObject.transform;
+        if (miniMapBoundingBox == null || playerTransform == null) return;
         //坐标转换
         float realWidth = miniMapBoundingBox.bounds.size.x;
         float realHeight = miniMapBoundingBox.bounds.size.z;
