@@ -8,8 +8,10 @@
         <EntityTypeShape EntityType="ExtremeWorldModel.TUser" Width="1.5" PointX="1" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ExtremeWorldModel.TPlayer" Width="1.5" PointX="4.25" PointY="2.375" />
         <AssociationConnector Association="ExtremeWorldModel.UserPlayer" />
-        <EntityTypeShape EntityType="ExtremeWorldModel.TCharacter" Width="1.5" PointX="7.25" PointY="2.75" />
+        <EntityTypeShape EntityType="ExtremeWorldModel.TCharacter" Width="1.5" PointX="7.25" PointY="2.125" />
         <AssociationConnector Association="ExtremeWorldModel.PlayerCharacter" />
+        <EntityTypeShape EntityType="ExtremeWorldModel.TCharacterItem" Width="1.5" PointX="9.5" PointY="2.25" />
+        <AssociationConnector Association="ExtremeWorldModel.TCharacterTCharacterItem" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

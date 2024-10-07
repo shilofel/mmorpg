@@ -8,6 +8,7 @@ using UnityEngine;
 
 using SkillBridge.Message;
 using Models;
+using Managers;
 
 namespace Services
 {
@@ -251,8 +252,10 @@ namespace Services
 
             if (response.Result == Result.Success)
             {
-                //Models.User.Instance.Info.Player.Characters.Clear();
-                //Models.User.Instance.Info.Player.Characters.AddRange(response.Characters);
+                if (response.Character != null)
+                {
+                    ItemManager.Instance.init(response.Character.Items);
+                }
             }
 
             if (this.OnCharacterCreate != null)
