@@ -15,15 +15,15 @@ namespace Managers
 {
     class ItemManager : Singleton<ItemManager>
     {
-        public Dictionary<int, Item> items = new Dictionary<int, Item>();
+        public Dictionary<int, Item> Items = new Dictionary<int, Item>();
 
         public void init(List<NItemInfo> items)
         {
-            this.items.Clear();
+            this.Items.Clear();
             foreach (var info in items)
             {
                 Item item = new Item(info);
-                this.items.Add(item.Id, item);
+                this.Items.Add(item.Id, item);
 
                 Debug.LogFormat("ItemManager:Init[{0}]", item);
             }

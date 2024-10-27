@@ -9,8 +9,13 @@ namespace Common.Data
     public enum ItemFunction
     {
         None = 0,
-        InvokeShop = 1,
-        InvokeInsrance = 2
+        RecoverMP = 1,
+        RecoverHP = 2,
+        AddBuff = 3,
+        AddExp = 4,
+        AddMoney = 5,
+        AddItem = 6,
+        AddSkillPoint = 7
     }
     public class ItemDefine
     {
@@ -23,6 +28,9 @@ namespace Common.Data
         public float UseCD { get; set; }
         public int Price { get; set; }
         public int SellPrice { get; set; }
+        public int StackLimit { get; set; }
+        public string Icon { get; set; }
+        public string Item { get; set; }
         public ItemFunction Function { get; set; }
         public int Param { get; set; }
         public List<int> Params { get; set; }

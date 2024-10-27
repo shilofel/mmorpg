@@ -77,7 +77,7 @@ namespace GameServer.Managers
             }
             Log.InfoFormat("[{0}]AddItem[{1}] addCount:{2}]", this.Owner, itemId, count);
             //同步数据库，异步
-            DBService.Instance.Save();
+            //DBService.Instance.Save();
             return true;
         }
 
