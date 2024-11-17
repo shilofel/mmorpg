@@ -56,7 +56,7 @@ namespace GameServer.Managers
             Log.InfoFormat("[{0}]UseItem[{1}:{2}]", this.Owner, itemId, item);
             return item;
         }
-
+        //背包添加道具
         public bool AddItem(int itemId, int count)
         {
             Item item = null;
@@ -75,6 +75,7 @@ namespace GameServer.Managers
                 item = new Item(dbItem);
                 this.Items.Add(itemId, item);
             }
+            this.Owner.StatusManager.AddItemChange(itemId, count, StatusAction.Add);
             Log.InfoFormat("[{0}]AddItem[{1}] addCount:{2}]", this.Owner, itemId, count);
             //同步数据库，异步
             //DBService.Instance.Save();
@@ -91,8 +92,9 @@ namespace GameServer.Managers
             if (item.Count < count)
                 return false;
             item.Remove(count);
+            this.Owner.StatusManager.AddItemChange(itemId, count, StatusAction.Delete);
             Log.InfoFormat("[{0}]RemoveItem[{1}] RemoveCount:{2}]", this.Owner, itemId, count);
-            DBService.Instance.Save();
+            //DBService.Instance.Save();
             return true;
         }
         //内存数据转换为网络数据
