@@ -115,6 +115,7 @@ namespace GameServer.Services
                 MapPosY = 4000,
                 MapPosZ = 820,
                 Gold = 1000000,
+                Equips = new byte[28]
             };
 
             //物品存储暂时防止此处，异步存储未完全实现
@@ -138,6 +139,7 @@ namespace GameServer.Services
                 ItemID = 2,
                 ItemCount = 20,
             });
+
             DBService.Instance.Entities.Characters.Add(character);
             sender.Session.User.Player.Characters.Add(character);
             DBService.Instance.Entities.SaveChanges();
@@ -179,6 +181,7 @@ namespace GameServer.Services
             message.Response.gameEnter.Character = character.Info;
 
             //道具系统测试
+            /*
             int itemId = 2;
             bool hasItem = character.ItemManager.HasItem(itemId);
             Log.InfoFormat("HasItem:[{0}]{1}", itemId, hasItem);
@@ -198,6 +201,7 @@ namespace GameServer.Services
 
             Log.InfoFormat("item:[{0}][{1}]", itemId, item);
             DBService.Instance.Save();
+            */
             //测试结束
 
             byte[] data = PackageHandler.PackMessage(message);

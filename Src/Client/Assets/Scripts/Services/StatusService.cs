@@ -17,20 +17,23 @@ namespace Services
         public delegate bool StatusNotifyHandler(NStatus status);
 
         Dictionary<StatusType, StatusNotifyHandler> eventMap = new Dictionary<StatusType, StatusNotifyHandler>();
-
+        HashSet<StatusNotifyHandler> notifyHandlers = new HashSet<StatusNotifyHandler>();
         public void Init()
         {
 
         }
-
+        //防止角色进入，重复注册事件
         public void RegisterStatusNotify(StatusType function, StatusNotifyHandler action)
         {
+            if (notifyHandlers.Contains(action))
+                return;
             if (!eventMap.ContainsKey(function))
             {
                 eventMap[function] = action;
             }
             else
                 eventMap[function] += action;
+            notifyHandlers.Add(action);
         }
         public StatusService()
         {

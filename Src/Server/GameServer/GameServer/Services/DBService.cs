@@ -23,10 +23,13 @@ namespace GameServer.Services
         }
         //设定间隔存储，缓解服务器压力
         //float time = 0;
-        public void Save()
+        public void Save(bool async = false)
         {
             //DateTime.Now.Ticks - time > xxx;
-            entities.SaveChangesAsync();
+            if (async)
+                entities.SaveChangesAsync();
+            else
+                entities.SaveChanges();
         }
     }
 }
