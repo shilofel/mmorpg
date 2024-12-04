@@ -79,9 +79,9 @@ class UICharEquip : UIWindow
             {
                 if(item !=null)
                 {
-                    GameObject go = Instantiate(itemPrefab, itemListRoot);
+                    GameObject go = Instantiate(itemEquipedPrefab, slots[i]);
                     UIEquipItem ui = go.GetComponent<UIEquipItem>();
-                    ui.SetEquipItem(i, item, this, false);
+                    ui.SetEquipItem(i, item, this, true);
                 }
             }
         }

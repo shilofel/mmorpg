@@ -1134,7 +1134,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114747263192737768}
         m_MethodName: OnCloseClick
         m_Mode: 1
         m_Arguments:
@@ -1818,10 +1818,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tabButtons:
   - {fileID: 114609219655112526}
-  - {fileID: 0}
   tabPages:
   - {fileID: 1887130394811494}
-  - {fileID: 0}
   index: -1
 --- !u!114 &114900107272977482
 MonoBehaviour:

@@ -203,7 +203,9 @@ namespace GameServer.Services
             DBService.Instance.Save();
             */
             //测试结束
-
+            //character.ItemManager.AddItem(1001, 1);
+            //character.ItemManager.AddItem(2001, 1);
+            //DBService.Instance.Save();
             byte[] data = PackageHandler.PackMessage(message);
             sender.SendData(data, 0, data.Length);
             sender.Session.Character = character;

@@ -1,8 +1,57 @@
-2024-11-17 04:00:22,789 [ 1] INFO  Unity: LoadingManager start
-2024-11-17 04:00:25,838 [ 1] INFO  Unity: DataManager > DataManager()
-2024-11-17 04:00:30,490 [ 1] INFO  Unity: OnDestroy NetworkManager.
-2024-11-17 04:00:30,491 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2024-12-02 02:59:36,678 [ 1] INFO  Unity: LoadingManager start
+2024-12-02 02:59:39,825 [ 1] INFO  Unity: DataManager > DataManager()
+2024-12-02 02:59:45,358 [ 1] INFO  Unity: UserLoginRequest::user :user psw:111
+2024-12-02 02:59:45,360 [ 1] INFO  Unity: ConnectToServer() Start 
+2024-12-02 02:59:45,361 [ 1] INFO  Unity: DoConnect
+2024-12-02 02:59:45,362 [ 1] INFO  Unity: NetClient.DoConnect on 127.0.0.1:8000
+2024-12-02 02:59:45,365 [ 1] INFO  Unity: Connect[0] to server 127.0.0.1:8000
+
+2024-12-02 02:59:45,367 [ 1] INFO  Unity: LoadingMesager::OnGameServerConnect :0 reason:Success
+2024-12-02 02:59:46,003 [ 1] INFO  Unity: OnLogin:Success [None]
+2024-12-02 02:59:46,005 [ 1] INFO  Unity: LoadLevel: CharSelect
+2024-12-02 02:59:46,267 [ 1] INFO  Unity: LevelLoadCompleted:1
+2024-12-02 02:59:47,090 [ 1] INFO  Unity: Select Char:[1]111[Wizard]
+2024-12-02 02:59:48,025 [ 1] INFO  Unity: UserSendGameEnterRequest::characterIdx :0
+2024-12-02 02:59:51,706 [ 1] INFO  Unity: OnUserGameEnter:Success [None]
+2024-12-02 02:59:51,708 [ 1] INFO  Unity: ItemManager:Init[ID:1,Count:20]
+2024-12-02 02:59:51,709 [ 1] INFO  Unity: ItemManager:Init[ID:2,Count:20]
+2024-12-02 02:59:51,712 [ 1] INFO  Unity: OnMapCharacterEnter:Map:1 Count:1
+2024-12-02 02:59:51,714 [ 1] INFO  Unity: AddCharacter:1:111 Map:1 Entity:(1:pos:(5000,4000,820),dir:(100,0,0),spd:0
+2024-12-02 02:59:51,716 [ 1] INFO  Unity: LoadLevel: MainCity
+2024-12-02 02:59:52,224 [ 1] WARN  Unity: No mesh data available for mesh Sphere001 on particle system fx_portal. Make sure Read/Write Enabled is set in the importer to work on the particle system renderer
+
+2024-12-02 02:59:52,238 [ 1] INFO  Unity: Wizard OnDestroy :ID:0 POS:(0, 0, 0) DIR:(0, 100, 0) SPD:0 
+2024-12-02 02:59:52,334 [ 1] INFO  Unity: LevelLoadCompleted:1
+2024-12-02 03:00:03,235 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, TabView+<Start>c__Iterator0.MoveNext () (at Assets/Scripts/UI/TabView.cs:16)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at D:/unity/Runtime/Export/Coroutines.cs:17)
+}</args></log4net.Error>
+2024-12-02 03:00:04,576 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, TabView.SelectTab (Int32 index) (at Assets/Scripts/UI/TabView.cs:29)
+TabButton.OnClick () (at Assets/TabButton.cs:31)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-12-02 03:00:04,988 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, TabView.SelectTab (Int32 index) (at Assets/Scripts/UI/TabView.cs:29)
+TabButton.OnClick () (at Assets/TabButton.cs:31)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2024-12-02 03:01:13,230 [ 1] INFO  Unity: OnDestroy NetworkManager.
+2024-12-02 03:01:13,230 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:180)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:175)
 
+2024-12-02 03:01:13,238 [ 1] INFO  Unity: Character_1_111 OnDestroy :ID:1 POS:(5000, 4000, 820) DIR:(100, 0, 0) SPD:0 

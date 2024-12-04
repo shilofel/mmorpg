@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/25/2024 01:27:40
+-- Date Created: 12/02/2024 02:34:07
 -- Generated from EDMX file: D:\Unity\mymorpg\Src\Server\GameServer\GameServer\Entities.edmx
 -- --------------------------------------------------
 
@@ -60,7 +60,6 @@ CREATE TABLE [dbo].[Users] (
     [Username] nvarchar(50)  NOT NULL,
     [Password] nvarchar(50)  NOT NULL,
     [RegisterDate] datetime  NULL,
-    [Property1] nvarchar(max)  NOT NULL,
     [Player_ID] int  NOT NULL
 );
 GO

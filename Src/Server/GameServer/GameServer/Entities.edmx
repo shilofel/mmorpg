@@ -36,7 +36,6 @@
     <Property Name="Username" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="RegisterDate" Type="datetime" Nullable="true" />
-    <Property Name="Property1" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Player_ID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Players">
@@ -140,7 +139,6 @@
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="RegisterDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Player" Relationship="ExtremeWorldModel.UserPlayer" FromRole="User" ToRole="Player" />
-          <Property Name="Property1" Type="String" Nullable="false" />
         </EntityType>
         <EntityContainer Name="ExtremeWorldEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Users" EntityType="ExtremeWorldModel.TUser" />
@@ -246,7 +244,6 @@
           <ScalarProperty Name="Username" ColumnName="Username" />
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
-          <ScalarProperty Name="Property1" ColumnName="Property1" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

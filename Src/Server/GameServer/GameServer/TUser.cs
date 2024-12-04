@@ -18,7 +18,6 @@ namespace GameServer
         public string Username { get; set; }
         public string Password { get; set; }
         public Nullable<System.DateTime> RegisterDate { get; set; }
-        public string Property1 { get; set; }
     
         public virtual TPlayer Player { get; set; }
     }
