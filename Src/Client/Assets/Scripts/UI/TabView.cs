@@ -2,12 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TabView : MonoBehaviour {
 
     public TabButton[] tabButtons;
     public GameObject[] tabPages;
-
+    public UnityAction<int> OnTabSelect;
     public int index = -1;
 	// Use this for initialization
 	IEnumerator Start () {

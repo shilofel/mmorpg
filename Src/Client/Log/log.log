@@ -1,45 +1,8 @@
-2024-12-02 03:31:50,310 [ 1] INFO  Unity: LoadingManager start
-2024-12-02 03:31:53,410 [ 1] INFO  Unity: DataManager > DataManager()
-2024-12-02 03:31:58,395 [ 1] INFO  Unity: UserLoginRequest::user :user psw:111
-2024-12-02 03:31:58,397 [ 1] INFO  Unity: ConnectToServer() Start 
-2024-12-02 03:31:58,398 [ 1] INFO  Unity: DoConnect
-2024-12-02 03:31:58,399 [ 1] INFO  Unity: NetClient.DoConnect on 127.0.0.1:8000
-2024-12-02 03:31:58,401 [ 1] INFO  Unity: Connect[0] to server 127.0.0.1:8000
-
-2024-12-02 03:31:58,404 [ 1] INFO  Unity: LoadingMesager::OnGameServerConnect :0 reason:Success
-2024-12-02 03:31:58,482 [ 1] INFO  Unity: OnLogin:Success [None]
-2024-12-02 03:31:58,484 [ 1] INFO  Unity: LoadLevel: CharSelect
-2024-12-02 03:31:58,763 [ 1] INFO  Unity: LevelLoadCompleted:1
-2024-12-02 03:31:59,431 [ 1] INFO  Unity: Select Char:[1]111[Wizard]
-2024-12-02 03:32:00,175 [ 1] INFO  Unity: UserSendGameEnterRequest::characterIdx :0
-2024-12-02 03:32:00,192 [ 1] INFO  Unity: OnUserGameEnter:Success [None]
-2024-12-02 03:32:00,194 [ 1] INFO  Unity: ItemManager:Init[ID:1,Count:20]
-2024-12-02 03:32:00,194 [ 1] INFO  Unity: ItemManager:Init[ID:2,Count:20]
-2024-12-02 03:32:00,195 [ 1] INFO  Unity: ItemManager:Init[ID:1001,Count:2]
-2024-12-02 03:32:00,196 [ 1] INFO  Unity: ItemManager:Init[ID:2001,Count:2]
-2024-12-02 03:32:00,199 [ 1] INFO  Unity: OnMapCharacterEnter:Map:1 Count:1
-2024-12-02 03:32:00,201 [ 1] INFO  Unity: AddCharacter:5:111 Map:1 Entity:(5:pos:(5000,4000,820),dir:(100,0,0),spd:0
-2024-12-02 03:32:00,204 [ 1] INFO  Unity: LoadLevel: MainCity
-2024-12-02 03:32:00,643 [ 1] INFO  Unity: UserSendGameEnterRequest::characterIdx :0
-2024-12-02 03:32:00,672 [ 1] INFO  Unity: OnUserGameEnter:Success [None]
-2024-12-02 03:32:00,673 [ 1] INFO  Unity: ItemManager:Init[ID:1,Count:20]
-2024-12-02 03:32:00,674 [ 1] INFO  Unity: ItemManager:Init[ID:2,Count:20]
-2024-12-02 03:32:00,674 [ 1] INFO  Unity: ItemManager:Init[ID:1001,Count:2]
-2024-12-02 03:32:00,674 [ 1] INFO  Unity: ItemManager:Init[ID:2001,Count:2]
-2024-12-02 03:32:00,675 [ 1] INFO  Unity: OnMapCharacterEnter:Map:1 Count:1
-2024-12-02 03:32:00,676 [ 1] INFO  Unity: AddCharacter:6:111 Map:1 Entity:(6:pos:(5000,4000,820),dir:(100,0,0),spd:0
-2024-12-02 03:32:00,677 [ 1] INFO  Unity: OnMapCharacterEnter:Map:1 Count:2
-2024-12-02 03:32:00,677 [ 1] INFO  Unity: AddCharacter:6:111 Map:1 Entity:(6:pos:(5000,4000,820),dir:(100,0,0),spd:0
-2024-12-02 03:32:00,678 [ 1] INFO  Unity: AddCharacter:5:111 Map:1 Entity:(5:pos:(5000,4000,820),dir:(100,0,0),spd:0
-2024-12-02 03:32:00,702 [ 1] WARN  Unity: No mesh data available for mesh Sphere001 on particle system fx_portal. Make sure Read/Write Enabled is set in the importer to work on the particle system renderer
-
-2024-12-02 03:32:00,721 [ 1] INFO  Unity: Wizard OnDestroy :ID:0 POS:(0, 0, 0) DIR:(0, 100, 0) SPD:0 
-2024-12-02 03:32:00,813 [ 1] INFO  Unity: LevelLoadCompleted:1
-2024-12-02 03:32:08,035 [ 1] INFO  Unity: OnDestroy NetworkManager.
-2024-12-02 03:32:08,036 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2024-12-23 06:15:11,192 [ 1] INFO  Unity: LoadingManager start
+2024-12-23 06:15:14,506 [ 1] INFO  Unity: DataManager > DataManager()
+2024-12-23 06:15:32,306 [ 1] INFO  Unity: OnDestroy NetworkManager.
+2024-12-23 06:15:32,308 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:180)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:175)
 
-2024-12-02 03:32:08,037 [ 1] INFO  Unity: Character_5_111 OnDestroy :ID:5 POS:(5000, 4000, 820) DIR:(100, 0, 0) SPD:0 
-2024-12-02 03:32:08,038 [ 1] INFO  Unity: Character_6_111 OnDestroy :ID:6 POS:(5000, 4000, 820) DIR:(100, 0, 0) SPD:0 

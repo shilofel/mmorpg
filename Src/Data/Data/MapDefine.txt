@@ -19,7 +19,7 @@
   },
   "3": {
     "ID": 3,
-    "Name": "落日森林",
+    "Name": "野外2",
     "Type": "Normal",
     "SubType": "Normal",
     "PKMode": false,

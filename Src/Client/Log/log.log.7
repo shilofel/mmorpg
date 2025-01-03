@@ -1,113 +1,33 @@
-2024-12-02 02:38:00,168 [ 1] INFO  Unity: LoadingManager start
-2024-12-02 02:38:03,315 [ 1] INFO  Unity: DataManager > DataManager()
-2024-12-02 02:38:18,941 [ 1] INFO  Unity: UserLoginRequest::user :user psw:111
-2024-12-02 02:38:18,942 [ 1] INFO  Unity: ConnectToServer() Start 
-2024-12-02 02:38:18,943 [ 1] INFO  Unity: DoConnect
-2024-12-02 02:38:18,945 [ 1] INFO  Unity: NetClient.DoConnect on 127.0.0.1:8000
-2024-12-02 02:38:18,947 [ 1] INFO  Unity: Connect[0] to server 127.0.0.1:8000
+2024-12-23 05:26:58,257 [ 1] INFO  Unity: LoadingManager start
+2024-12-23 05:27:02,047 [ 1] INFO  Unity: DataManager > DataManager()
+2024-12-23 05:27:08,185 [ 1] INFO  Unity: UserLoginRequest::user :user psw:111
+2024-12-23 05:27:08,199 [ 1] INFO  Unity: ConnectToServer() Start 
+2024-12-23 05:27:08,200 [ 1] INFO  Unity: DoConnect
+2024-12-23 05:27:08,202 [ 1] INFO  Unity: NetClient.DoConnect on 127.0.0.1:8000
+2024-12-23 05:27:08,205 [ 1] INFO  Unity: Connect[0] to server 127.0.0.1:8000
 
-2024-12-02 02:38:18,949 [ 1] INFO  Unity: LoadingMesager::OnGameServerConnect :0 reason:Success
-2024-12-02 02:38:19,650 [ 1] INFO  Unity: OnLogin:Success [None]
-2024-12-02 02:38:19,652 [ 1] INFO  Unity: LoadLevel: CharSelect
-2024-12-02 02:38:19,923 [ 1] INFO  Unity: LevelLoadCompleted:1
-2024-12-02 02:38:21,192 [ 1] INFO  Unity: Select Char:[1]111[Wizard]
-2024-12-02 02:38:21,924 [ 1] INFO  Unity: UserSendGameEnterRequest::characterIdx :0
-2024-12-02 02:38:22,014 [ 1] INFO  Unity: OnUserGameEnter:Success [None]
-2024-12-02 02:38:22,016 [ 1] INFO  Unity: ItemManager:Init[ID:1,Count:20]
-2024-12-02 02:38:22,016 [ 1] INFO  Unity: ItemManager:Init[ID:2,Count:20]
-2024-12-02 02:38:22,024 [ 1] INFO  Unity: OnMapCharacterEnter:Map:1 Count:1
-2024-12-02 02:38:22,026 [ 1] INFO  Unity: AddCharacter:1:111 Map:1 Entity:(1:pos:(5000,4000,820),dir:(100,0,0),spd:0
-2024-12-02 02:38:22,029 [ 1] INFO  Unity: LoadLevel: MainCity
-2024-12-02 02:38:22,537 [ 1] WARN  Unity: No mesh data available for mesh Sphere001 on particle system fx_portal. Make sure Read/Write Enabled is set in the importer to work on the particle system renderer
+2024-12-23 05:27:08,219 [ 1] INFO  Unity: LoadingMesager::OnGameServerConnect :0 reason:Success
+2024-12-23 05:27:08,620 [ 1] INFO  Unity: OnLogin:Success [None]
+2024-12-23 05:27:08,629 [ 1] INFO  Unity: LoadLevel: CharSelect
+2024-12-23 05:27:09,005 [ 1] INFO  Unity: LevelLoadCompleted:1
+2024-12-23 05:27:11,151 [ 1] INFO  Unity: Select Char:[1]111[Wizard]
+2024-12-23 05:27:12,178 [ 1] INFO  Unity: UserSendGameEnterRequest::characterIdx :0
+2024-12-23 05:27:12,216 [ 1] INFO  Unity: OnUserGameEnter:Success [None]
+2024-12-23 05:27:12,234 [ 1] INFO  Unity: ItemManager:Init[ID:1,Count:20]
+2024-12-23 05:27:12,235 [ 1] INFO  Unity: ItemManager:Init[ID:2,Count:20]
+2024-12-23 05:27:12,236 [ 1] INFO  Unity: ItemManager:Init[ID:1001,Count:2]
+2024-12-23 05:27:12,236 [ 1] INFO  Unity: ItemManager:Init[ID:2001,Count:2]
+2024-12-23 05:27:12,328 [ 1] INFO  Unity: OnMapCharacterEnter:Map:1 Count:1
+2024-12-23 05:27:12,343 [ 1] INFO  Unity: AddCharacter:4:111 Map:1 Entity:(4:pos:(5000,4000,820),dir:(100,0,0),spd:0
+2024-12-23 05:27:12,357 [ 1] INFO  Unity: LoadLevel: MainCity
+2024-12-23 05:27:12,958 [ 1] WARN  Unity: No mesh data available for mesh Sphere001 on particle system fx_portal. Make sure Read/Write Enabled is set in the importer to work on the particle system renderer
 
-2024-12-02 02:38:22,545 [ 1] INFO  Unity: Wizard OnDestroy :ID:0 POS:(0, 0, 0) DIR:(0, 100, 0) SPD:0 
-2024-12-02 02:38:22,631 [ 1] INFO  Unity: LevelLoadCompleted:1
-2024-12-02 02:38:24,295 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
-{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, TabView+<Start>c__Iterator0.MoveNext () (at Assets/Scripts/UI/TabView.cs:16)
-UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at D:/unity/Runtime/Export/Coroutines.cs:17)
-}</args></log4net.Error>
-2024-12-02 02:58:36,299 [ 1] INFO  Unity: ProcessReceive exception:System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
-
-  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer, Int32 offset, Int32 size, SocketFlags flags) [0x00000] in <filename unknown>:0 
-  at Network.NetClient.ProcessRecv () [0x00084] in D:\Unity\mymorpg\Src\Client\Assets\Scripts\Network\NetClient.cs:340 
-
-2024-12-02 02:58:36,301 [ 1] WARN  Unity: CloseConnection(), errorCode: 1001
-UnityEngine.Debug:LogWarning(Object)
-Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:180)
-Network.NetClient:ProcessRecv() (at Assets/Scripts/Network/NetClient.cs:354)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:434)
-
-2024-12-02 02:58:36,306 [ 1] INFO  Unity: DoConnect
-2024-12-02 02:58:36,307 [ 1] INFO  Unity: NetClient.DoConnect on 127.0.0.1:8000
-2024-12-02 02:58:36,308 [ 1] INFO  Unity: Connect[0] to server 127.0.0.1:8000
-
-2024-12-02 02:58:38,311 [ 1] WARN  Unity: CloseConnection(), errorCode: 1005
-UnityEngine.Debug:LogWarning(Object)
-Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:180)
-Network.NetClient:DoConnect() (at Assets/Scripts/Network/NetClient.cs:274)
-Network.NetClient:Connect(Int32) (at Assets/Scripts/Network/NetClient.cs:169)
-Network.NetClient:KeepConnect() (at Assets/Scripts/Network/NetClient.cs:315)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:432)
-
-2024-12-02 02:58:38,312 [ 1] ERROR Unity: DoConnect SocketException:[10061,ConnectionRefused,10061]System.Net.Sockets.SocketException: 由于目标计算机积极拒绝，无法连接。
-
-  at System.Net.Sockets.Socket.Connect (System.Net.EndPoint remoteEP, Boolean requireSocketPolicy) [0x00000] in <filename unknown>:0 
-  at System.Net.Sockets.Socket+Worker.Connect () [0x00000] in <filename unknown>:0  
-UnityEngine.Debug:LogErrorFormat(String, Object[])
-Network.NetClient:DoConnect() (at Assets/Scripts/Network/NetClient.cs:276)
-Network.NetClient:Connect(Int32) (at Assets/Scripts/Network/NetClient.cs:169)
-Network.NetClient:KeepConnect() (at Assets/Scripts/Network/NetClient.cs:315)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:432)
-
-2024-12-02 02:58:38,405 [ 1] INFO  Unity: DoConnect
-2024-12-02 02:58:38,406 [ 1] INFO  Unity: NetClient.DoConnect on 127.0.0.1:8000
-2024-12-02 02:58:38,409 [ 1] INFO  Unity: Connect[1] to server 127.0.0.1:8000
-
-2024-12-02 02:58:40,412 [ 1] WARN  Unity: CloseConnection(), errorCode: 1005
-UnityEngine.Debug:LogWarning(Object)
-Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:180)
-Network.NetClient:DoConnect() (at Assets/Scripts/Network/NetClient.cs:274)
-Network.NetClient:Connect(Int32) (at Assets/Scripts/Network/NetClient.cs:169)
-Network.NetClient:KeepConnect() (at Assets/Scripts/Network/NetClient.cs:315)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:432)
-
-2024-12-02 02:58:40,413 [ 1] ERROR Unity: DoConnect SocketException:[10061,ConnectionRefused,10061]System.Net.Sockets.SocketException: 由于目标计算机积极拒绝，无法连接。
-
-  at System.Net.Sockets.Socket.Connect (System.Net.EndPoint remoteEP, Boolean requireSocketPolicy) [0x00000] in <filename unknown>:0 
-  at System.Net.Sockets.Socket+Worker.Connect () [0x00000] in <filename unknown>:0  
-UnityEngine.Debug:LogErrorFormat(String, Object[])
-Network.NetClient:DoConnect() (at Assets/Scripts/Network/NetClient.cs:276)
-Network.NetClient:Connect(Int32) (at Assets/Scripts/Network/NetClient.cs:169)
-Network.NetClient:KeepConnect() (at Assets/Scripts/Network/NetClient.cs:315)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:432)
-
-2024-12-02 02:58:40,463 [ 1] INFO  Unity: DoConnect
-2024-12-02 02:58:40,463 [ 1] INFO  Unity: NetClient.DoConnect on 127.0.0.1:8000
-2024-12-02 02:58:40,465 [ 1] INFO  Unity: Connect[2] to server 127.0.0.1:8000
-
-2024-12-02 02:58:42,468 [ 1] WARN  Unity: CloseConnection(), errorCode: 1005
-UnityEngine.Debug:LogWarning(Object)
-Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:180)
-Network.NetClient:DoConnect() (at Assets/Scripts/Network/NetClient.cs:274)
-Network.NetClient:Connect(Int32) (at Assets/Scripts/Network/NetClient.cs:169)
-Network.NetClient:KeepConnect() (at Assets/Scripts/Network/NetClient.cs:315)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:432)
-
-2024-12-02 02:58:42,469 [ 1] ERROR Unity: DoConnect SocketException:[10061,ConnectionRefused,10061]System.Net.Sockets.SocketException: 由于目标计算机积极拒绝，无法连接。
-
-  at System.Net.Sockets.Socket.Connect (System.Net.EndPoint remoteEP, Boolean requireSocketPolicy) [0x00000] in <filename unknown>:0 
-  at System.Net.Sockets.Socket+Worker.Connect () [0x00000] in <filename unknown>:0  
-UnityEngine.Debug:LogErrorFormat(String, Object[])
-Network.NetClient:DoConnect() (at Assets/Scripts/Network/NetClient.cs:276)
-Network.NetClient:Connect(Int32) (at Assets/Scripts/Network/NetClient.cs:169)
-Network.NetClient:KeepConnect() (at Assets/Scripts/Network/NetClient.cs:315)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:432)
-
-2024-12-02 02:58:42,469 [ 1] INFO  Unity: LoadingMesager::OnGameServerConnect :1 reason:Cannot connect to server
-2024-12-02 02:59:32,852 [ 1] INFO  Unity: OnDestroy NetworkManager.
-2024-12-02 02:59:32,853 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2024-12-23 05:27:12,972 [ 1] INFO  Unity: Wizard OnDestroy :ID:0 POS:(0, 0, 0) DIR:(0, 100, 0) SPD:0 
+2024-12-23 05:27:13,086 [ 1] INFO  Unity: LevelLoadCompleted:1
+2024-12-23 05:27:36,927 [ 1] INFO  Unity: OnDestroy NetworkManager.
+2024-12-23 05:27:36,928 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:180)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:175)
 
-2024-12-02 02:59:32,857 [ 1] INFO  Unity: Character_1_111 OnDestroy :ID:1 POS:(5000, 4000, 820) DIR:(100, 0, 0) SPD:0 
+2024-12-23 05:27:36,934 [ 1] INFO  Unity: Character_4_111 OnDestroy :ID:4 POS:(5000, 4000, 820) DIR:(100, 0, 0) SPD:0 

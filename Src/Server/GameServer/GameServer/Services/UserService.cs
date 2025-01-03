@@ -125,7 +125,7 @@ namespace GameServer.Services
             bag.Items = new byte[0];
             bag.Unlocked = 20;
             TCharacterItem it = new TCharacterItem();
-            character.Bag = DBService.Instance.Entities.TCharacterBags.Add(bag);
+            character.Bag = DBService.Instance.Entities.CharacterBags.Add(bag);
 
             character.Items.Add(new TCharacterItem()
             {
@@ -206,6 +206,7 @@ namespace GameServer.Services
             //character.ItemManager.AddItem(1001, 1);
             //character.ItemManager.AddItem(2001, 1);
             //DBService.Instance.Save();
+
             byte[] data = PackageHandler.PackMessage(message);
             sender.SendData(data, 0, data.Length);
             sender.Session.Character = character;

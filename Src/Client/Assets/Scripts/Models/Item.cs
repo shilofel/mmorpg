@@ -25,7 +25,7 @@ namespace Models
             this.Id = id;
             this.Count = count;
             DataManager.Instance.Items.TryGetValue(this.Id, out this.Define);
-            DataManager.Instance.equips.TryGetValue(this.Id, out this.equipInfo);
+            DataManager.Instance.Equips.TryGetValue(this.Id, out this.equipInfo);
         }
 
         public override string ToString()

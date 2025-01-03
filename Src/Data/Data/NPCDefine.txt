@@ -7,7 +7,7 @@
   },
   "2": {
     "ID": 2,
-    "Name": "埃布尔",
+    "Name": "多丽丝",
     "Description": "杂货商人",
     "Type": "Functional",
     "Function": "InvokeShop",
@@ -15,14 +15,14 @@
   },
   "3": {
     "ID": 3,
-    "Name": "多丽丝",
+    "Name": "埃布尔",
     "Description": "副本NPC",
     "Type": "Functional",
     "Function": "InvokeInsrance"
   },
   "4": {
     "ID": 4,
-    "Name": "奥德里奇",
+    "Name": "奥德利奇",
     "Description": "装备NPC",
     "Type": "Functional",
     "Function": "InvokeShop",

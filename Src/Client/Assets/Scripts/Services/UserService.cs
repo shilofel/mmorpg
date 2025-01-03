@@ -254,9 +254,15 @@ namespace Services
             {
                 if (response.Character != null)
                 {
+                    User.Instance.CurrentCharacter = response.Character;
                     ItemManager.Instance.init(response.Character.Items);
                     BagManager.Instance.init(response.Character.Bag);
                     EquipManager.Instance.Init(response.Character.Equips);
+                    //NQuestInfo quest = new NQuestInfo();
+                    //quest.QuestId = 1001;
+                    //response.Character.Quests.Add(quest);
+                    QuestManager.Instance.Init(response.Character.Quests);
+                    //QuestManager.Instance.Init();
                 }
             }
 
