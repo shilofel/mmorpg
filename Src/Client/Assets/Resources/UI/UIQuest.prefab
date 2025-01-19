@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 224861964745721638}
   - component: {fileID: 222289531874354660}
   - component: {fileID: 114583250918077652}
-  - component: {fileID: 114498957701115678}
   m_Layer: 5
   m_Name: Sub
   m_TagString: Untagged
@@ -1030,8 +1029,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tabButtons:
   - {fileID: 114621805213872514}
+  - {fileID: 114884807156735786}
   tabPages:
   - {fileID: 1757392086989554}
+  - {fileID: 1031179024485290}
   index: -1
 --- !u!114 &114017601068106844
 MonoBehaviour:
@@ -2238,20 +2239,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u53EF\u63A5\u4EFB\u52A1"
---- !u!114 &114498957701115678
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1031179024485290}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b06f7de3afb90a459f687822d7a3cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tabButtons: []
-  tabPages: []
-  index: -1
 --- !u!114 &114520059769379720
 MonoBehaviour:
   m_ObjectHideFlags: 1
