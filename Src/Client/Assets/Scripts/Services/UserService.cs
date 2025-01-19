@@ -256,7 +256,7 @@ namespace Services
                 {
                     User.Instance.CurrentCharacter = response.Character;
                     ItemManager.Instance.init(response.Character.Items);
-                    BagManager.Instance.init(response.Character.Bag);
+                    BagManager.Instance.init(response.Character.Bag);              
                     EquipManager.Instance.Init(response.Character.Equips);
                     //NQuestInfo quest = new NQuestInfo();
                     //quest.QuestId = 1001;

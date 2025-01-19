@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Managers;
 using Models;
+using System;
 
 public class NPCController : MonoBehaviour {
 
@@ -16,6 +17,8 @@ public class NPCController : MonoBehaviour {
     Color orignColor;
 
     private bool inInteractive = false;
+    //添加任务图标的刷新与销毁
+    NpcQuestStatus questStatus;
 	// Use this for initialization
 	void Start () {
         renderer = this.gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
@@ -23,8 +26,27 @@ public class NPCController : MonoBehaviour {
         orignColor = renderer.sharedMaterial.color;
         npc = NPCManager.Instance.GetNPCDefine(npcID);
         this.StartCoroutine(Actions());
-	}
+        RefreshNpcStates();
+        QuestManager.Instance.onQuestStatesChanged += OnQuestStatesChanged;
+    }
 
+    void OnQuestStatesChanged(Quest quest)
+    {
+        this.RefreshNpcStates();
+    }
+
+    private void RefreshNpcStates()
+    {
+        questStatus = QuestManager.Instance.GetQuestStatusByNpc(this.npcID);
+        UIWorldElementManager.Instance.AddNpcQuestStatus(this.transform, questStatus);
+    }
+
+    private void OnDestroy()
+    {
+        QuestManager.Instance.onQuestStatesChanged -= OnQuestStatesChanged;
+        if (UIWorldElementManager.Instance != null)
+            UIWorldElementManager.Instance.RemoveNpcQuestStatus(this.transform);
+    }
     IEnumerator Actions()
     {
         while(true)
@@ -32,7 +54,7 @@ public class NPCController : MonoBehaviour {
             if (inInteractive)
                 yield return new WaitForSeconds(2f);
             else
-                yield return new WaitForSeconds(Random.Range(6f,10f));
+                yield return new WaitForSeconds(UnityEngine.Random.Range(5f,10f));
             this.Relax();
         }
     }

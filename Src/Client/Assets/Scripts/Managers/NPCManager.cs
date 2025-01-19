@@ -42,9 +42,9 @@ namespace Managers
 
         public bool Interative(NPCDefine npc)
         {
-            if(npc.Type == NPCType.Task)
+            if (DoTaskInteractive(npc))
             {
-                return DoTaskInteractive(npc);
+                return true;
             }
             else if (npc.Type == NPCType.Functional)
             {

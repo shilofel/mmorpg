@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 12/26/2024 06:30:46
+-- Date Created: 01/13/2025 03:02:41
 -- Generated from EDMX file: D:\Unity\mymorpg\Src\Server\GameServer\GameServer\Entities.edmx
 -- --------------------------------------------------
 
@@ -117,7 +117,8 @@ CREATE TABLE [dbo].[CharacterQuests] (
     [Target1] int  NOT NULL,
     [Target2] int  NOT NULL,
     [Target3] int  NOT NULL,
-    [Status] int  NOT NULL
+    [Status] int  NOT NULL,
+    [QuestID] int  NOT NULL
 );
 GO
 

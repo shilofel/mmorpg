@@ -30,6 +30,8 @@ namespace Managers
 
         public Dictionary<int, Dictionary<NpcQuestStatus, List<Quest>>> npcQuests = new Dictionary<int, Dictionary<NpcQuestStatus, List<Quest>>>();
 
+        public UnityAction<Quest> onQuestStatesChanged;
+
         public void Init(List<NQuestInfo> quests)
         {
             this.questInfos = quests;
@@ -40,23 +42,33 @@ namespace Managers
 
         private void InitQuests()
         {
+            //初始化已有任务
             foreach (var info in this.questInfos)
             {
                 Quest quest = new Quest(info);
-                this.AddNpcQuest(quest.Define.AcceptNPC, quest);
-                this.AddNpcQuest(quest.Define.SubmitNPC, quest);
                 this.allQuests[quest.Info.QuestId] = quest;
             }
 
-            foreach(var kv in DataManager.Instance.Quests)
+            this.CheckAvailableQuests();
+
+            foreach(var kv in allQuests)
+            {
+                this.AddNpcQuest(kv.Value.Define.AcceptNPC, kv.Value);
+                this.AddNpcQuest(kv.Value.Define.SubmitNPC, kv.Value);
+            }
+        }
+
+        private void CheckAvailableQuests()
+        {
+            foreach (var kv in DataManager.Instance.Quests)
             {
                 if (kv.Value.LimitClass != CharacterClass.None && kv.Value.LimitClass != User.Instance.CurrentCharacter.Class)
-                    continue;
+                    continue;//职业不符
                 if (kv.Value.LimitLevel > User.Instance.CurrentCharacter.Level)
-                    continue;
+                    continue;//等级不符
                 if (this.allQuests.ContainsKey(kv.Key))
-                    continue;
-                if(kv.Value.PreQuest > 0)
+                    continue;//任务已存在
+                if (kv.Value.PreQuest > 0)
                 {
                     Quest preQuest;
                     if (this.allQuests.TryGetValue(kv.Value.PreQuest, out preQuest))
@@ -71,8 +83,6 @@ namespace Managers
                 }
 
                 Quest quest = new Quest(kv.Value);
-                this.AddNpcQuest(quest.Define.AcceptNPC, quest);
-                this.AddNpcQuest(quest.Define.SubmitNPC, quest);
                 this.allQuests[quest.Define.ID] = quest;
             }
         }
@@ -128,6 +138,7 @@ namespace Managers
             }
         }
 
+        //获取npc任务状态
         public NpcQuestStatus GetQuestStatusByNpc(int npcId)
         {
             Dictionary<NpcQuestStatus, List<Quest>> status = new Dictionary<NpcQuestStatus, List<Quest>>();
@@ -181,14 +192,57 @@ namespace Managers
             UIQuestDialog dlg = (UIQuestDialog)sender;
             if(result == UIWindow.WindowResult.Yes)
             {
-                MessageBox.Show(dlg.quest.Define.DialogAccept);
-
+                if (dlg.quest.Info == null)
+                    QuestService.Instance.SendQuestAccept(dlg.quest);
+                else if (dlg.quest.Info.Status == QuestStatus.Completed)
+                    QuestService.Instance.SendQuestSubmit(dlg.quest);
+                //MessageBox.Show(dlg.quest.Define.DialogAccept);
             }
             else if (result == UIWindow.WindowResult.No)
             {
                 MessageBox.Show(dlg.quest.Define.DialogDeny);
-
             }
+        }
+
+        private Quest RefreshQuestStatus(NQuestInfo quest)
+        {
+            this.npcQuests.Clear();
+            Quest result;
+            if(this.allQuests.ContainsKey(quest.QuestId))
+            {
+                //更新任务状态
+                this.allQuests[quest.QuestId].Info = quest;
+                result = this.allQuests[quest.QuestId];
+            }
+            else
+            {
+                result = new Quest(quest);
+                this.allQuests[quest.QuestId] = result;
+            }
+
+            CheckAvailableQuests();
+
+            foreach(var kv in allQuests)
+            {
+                this.AddNpcQuest(kv.Value.Define.AcceptNPC, kv.Value);
+                this.AddNpcQuest(kv.Value.Define.SubmitNPC, kv.Value);
+            }
+
+            if (onQuestStatesChanged != null)
+                onQuestStatesChanged(result);
+            return result;
+        }
+
+        public void OnQuestSubmited(NQuestInfo info)
+        {
+            var quest = this.RefreshQuestStatus(info);
+            MessageBox.Show(quest.Define.DialogAccept);
+        }
+
+        public void OnQuestAccepted(NQuestInfo info)
+        {
+            var quest = this.RefreshQuestStatus(info);
+            MessageBox.Show(quest.Define.DialogFinish);
         }
     }
 }

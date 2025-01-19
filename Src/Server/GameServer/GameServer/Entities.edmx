@@ -93,6 +93,7 @@
     <Property Name="Target2" Type="int" Nullable="false" />
     <Property Name="Target3" Type="int" Nullable="false" />
     <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="QuestID" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="UserPlayer">
     <End Role="User" Type="ExtremeWorldModel.Store.Users" Multiplicity="*" />
@@ -276,6 +277,7 @@
           <Property Name="Target2" Type="Int32" Nullable="false" />
           <Property Name="Target3" Type="Int32" Nullable="false" />
           <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="QuestID" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="TCharacterTCharacterQuest">
           <End Type="ExtremeWorldModel.TCharacter" Role="TCharacter" Multiplicity="1" />
@@ -356,6 +358,7 @@
           <ScalarProperty Name="Target2" ColumnName="Target2" />
           <ScalarProperty Name="Target3" ColumnName="Target3" />
           <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="QuestID" ColumnName="QuestID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

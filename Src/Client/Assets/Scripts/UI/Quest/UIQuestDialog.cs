@@ -36,8 +36,8 @@ class UIQuestDialog : UIWindow
         {
             if(this.quest.Info.Status == SkillBridge.Message.QuestStatus.Completed)
             {
-                openButton.SetActive(true);
-                submitButton.SetActive(false);
+                openButton.SetActive(false);
+                submitButton.SetActive(true);
             }
             else
             {

@@ -50,7 +50,7 @@ namespace Services
             Debug.LogFormat("OnQuestAccept:{0},ERR:{1}",message.Result,message.Errormsg);
             if(message.Result == Result.Success)
             {
-                //QuestManager.Instance.OnQuestAccepted(message.Quest);
+                QuestManager.Instance.OnQuestAccepted(message.Quest);
             }
             else
             {
@@ -78,7 +78,7 @@ namespace Services
             Debug.LogFormat("OnQuestSubmit:{0},ERR:{1}", message.Result, message.Errormsg);
             if (message.Result == Result.Success)
             {
-                //QuestManager.Instance.OnQuestSubmited(message.Quest);
+                QuestManager.Instance.OnQuestSubmited(message.Quest);
             }
             else
             {

@@ -37,6 +37,7 @@ public class UIWorldElementManager : MonoSingleton<UIWorldElementManager> {
         if(this.elementStatus.ContainsKey(owner))
         {
             elementStatus[owner].GetComponent<UIQuestStates>().SetQuestStatus(status);
+            return;
         }
         GameObject go = Instantiate(npcStatusPrefab, this.transform);
         go.name = "NpcQuestStatus" + owner.name;
