@@ -1,58 +1,120 @@
-2025-01-18 02:35:36,586 [ 1] INFO  Unity: LoadingManager start
-2025-01-18 02:35:39,649 [ 1] INFO  Unity: DataManager > DataManager()
-2025-01-18 02:35:44,526 [ 1] INFO  Unity: UserLoginRequest::user :user psw:123
-2025-01-18 02:35:44,527 [ 1] INFO  Unity: ConnectToServer() Start 
-2025-01-18 02:35:44,528 [ 1] INFO  Unity: DoConnect
-2025-01-18 02:35:44,530 [ 1] INFO  Unity: NetClient.DoConnect on 127.0.0.1:8000
-2025-01-18 02:35:44,533 [ 1] INFO  Unity: Connect[0] to server 127.0.0.1:8000
+2025-01-29 03:05:54,795 [ 1] INFO  Unity: LoadingManager start
+2025-01-29 03:05:58,722 [ 1] INFO  Unity: DataManager > DataManager()
+2025-01-29 03:06:39,846 [ 1] INFO  Unity: UserLoginRequest::user :user psw:123
+2025-01-29 03:06:39,856 [ 1] INFO  Unity: ConnectToServer() Start 
+2025-01-29 03:06:39,858 [ 1] INFO  Unity: DoConnect
+2025-01-29 03:06:39,859 [ 1] INFO  Unity: NetClient.DoConnect on 127.0.0.1:8000
+2025-01-29 03:06:39,862 [ 1] INFO  Unity: Connect[0] to server 127.0.0.1:8000
 
-2025-01-18 02:35:44,536 [ 1] INFO  Unity: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-01-18 02:35:46,649 [ 1] INFO  Unity: UserLoginRequest::user :user psw:123
-2025-01-18 02:36:09,371 [ 1] INFO  Unity: UserLoginRequest::user :user psw:123
-2025-01-18 02:36:09,684 [ 1] INFO  Unity: OnLogin:Success [None]
-2025-01-18 02:36:09,686 [ 1] INFO  Unity: LoadLevel: CharSelect
-2025-01-18 02:36:10,008 [ 1] INFO  Unity: LevelLoadCompleted:1
-2025-01-18 02:36:11,307 [ 1] INFO  Unity: Select Char:[1]you[Warrior]
-2025-01-18 02:36:12,046 [ 1] INFO  Unity: UserSendGameEnterRequest::characterIdx :0
-2025-01-18 02:36:12,158 [ 1] INFO  Unity: OnUserGameEnter:Success [None]
-2025-01-18 02:36:12,160 [ 1] INFO  Unity: ItemManager:Init[ID:1,Count:20]
-2025-01-18 02:36:12,161 [ 1] INFO  Unity: ItemManager:Init[ID:2,Count:20]
-2025-01-18 02:36:12,162 [ 1] INFO  Unity: ItemManager:Init[ID:3,Count:5]
-2025-01-18 02:36:12,170 [ 1] INFO  Unity: OnMapCharacterEnter:Map:1 Count:1
-2025-01-18 02:36:12,172 [ 1] INFO  Unity: AddCharacter:1:you Map:1 Entity:(1:pos:(5000,4000,820),dir:(100,0,0),spd:0
-2025-01-18 02:36:12,174 [ 1] INFO  Unity: LoadLevel: MainCity
-2025-01-18 02:36:12,730 [ 1] WARN  Unity: No mesh data available for mesh Sphere001 on particle system fx_portal. Make sure Read/Write Enabled is set in the importer to work on the particle system renderer
+2025-01-29 03:06:39,872 [ 1] INFO  Unity: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-01-29 03:06:50,301 [ 1] INFO  Unity: OnLogin:Success [None]
+2025-01-29 03:06:50,311 [ 1] INFO  Unity: LoadLevel: CharSelect
+2025-01-29 03:06:50,655 [ 1] INFO  Unity: LevelLoadCompleted:1
+2025-01-29 03:06:53,050 [ 1] INFO  Unity: Select Char:[1]you[Warrior]
+2025-01-29 03:06:53,823 [ 1] INFO  Unity: UserSendGameEnterRequest::characterIdx :0
+2025-01-29 03:06:53,978 [ 1] INFO  Unity: OnUserGameEnter:Success [None]
+2025-01-29 03:06:53,992 [ 1] INFO  Unity: ItemManager:Init[ID:1,Count:20]
+2025-01-29 03:06:53,992 [ 1] INFO  Unity: ItemManager:Init[ID:2,Count:20]
+2025-01-29 03:06:53,993 [ 1] INFO  Unity: ItemManager:Init[ID:3,Count:5]
+2025-01-29 03:06:53,994 [ 1] INFO  Unity: ItemManager:Init[ID:4,Count:10]
+2025-01-29 03:06:54,079 [ 1] INFO  Unity: OnMapCharacterEnter:Map:1 Count:1
+2025-01-29 03:06:54,090 [ 1] INFO  Unity: AddCharacter:1:you Map:1 Entity:(1:pos:(5000,4000,820),dir:(100,0,0),spd:0
+2025-01-29 03:06:54,101 [ 1] INFO  Unity: LoadLevel: MainCity
+2025-01-29 03:06:54,712 [ 1] WARN  Unity: No mesh data available for mesh Sphere001 on particle system fx_portal. Make sure Read/Write Enabled is set in the importer to work on the particle system renderer
 
-2025-01-18 02:36:12,738 [ 1] INFO  Unity: Warrior OnDestroy :ID:0 POS:(0, 0, 0) DIR:(0, 100, 0) SPD:0 
-2025-01-18 02:36:12,802 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
-{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, GameObjectManager.CreateCharacterObject (Entities.Character cha) (at Assets/Scripts/GameObject/GameObjectManager.cs:80)
-GameObjectManager+<InitGameObjects>c__Iterator0.MoveNext () (at Assets/Scripts/GameObject/GameObjectManager.cs:59)
-UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at D:/unity/Runtime/Export/Coroutines.cs:17)
-UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
-GameObjectManager:OnStart() (at Assets/Scripts/GameObject/GameObjectManager.cs:20)
-MonoSingleton`1:Awake() (at Assets/Scripts/Utilities/MonoSingleton.cs:33)
-}</args></log4net.Error>
-2025-01-18 02:36:12,829 [ 1] INFO  Unity: LevelLoadCompleted:1
-2025-01-18 02:36:12,831 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
-{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, NPCController.RefreshNpcStates () (at Assets/Scripts/GameObject/NPCController.cs:41)
-NPCController.Start () (at Assets/Scripts/GameObject/NPCController.cs:29)
-}</args></log4net.Error>
-2025-01-18 02:36:12,833 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
-{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, NPCController.RefreshNpcStates () (at Assets/Scripts/GameObject/NPCController.cs:41)
-NPCController.Start () (at Assets/Scripts/GameObject/NPCController.cs:29)
-}</args></log4net.Error>
-2025-01-18 02:36:12,834 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
-{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, NPCController.RefreshNpcStates () (at Assets/Scripts/GameObject/NPCController.cs:41)
-NPCController.Start () (at Assets/Scripts/GameObject/NPCController.cs:29)
-}</args></log4net.Error>
-2025-01-18 02:36:12,834 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
-{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, NPCController.RefreshNpcStates () (at Assets/Scripts/GameObject/NPCController.cs:41)
-NPCController.Start () (at Assets/Scripts/GameObject/NPCController.cs:29)
-}</args></log4net.Error>
-2025-01-18 02:37:23,170 [ 1] INFO  Unity: OnDestroy NetworkManager.
-2025-01-18 02:37:23,170 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-01-29 03:06:54,735 [ 1] INFO  Unity: Warrior OnDestroy :ID:0 POS:(0, 0, 0) DIR:(0, 100, 0) SPD:0 
+2025-01-29 03:06:54,879 [ 1] INFO  Unity: LevelLoadCompleted:1
+2025-01-29 03:06:55,797 [ 1] INFO  Unity: MoveForward
+2025-01-29 03:06:55,802 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-29 03:06:55,848 [ 1] INFO  Unity: SetDirection:(98, -19, 0)
+2025-01-29 03:06:55,849 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-29 03:06:55,948 [ 1] INFO  Unity: SetDirection:(93, -37, 0)
+2025-01-29 03:06:55,948 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-29 03:06:56,031 [ 1] INFO  Unity: SetDirection:(85, -53, 0)
+2025-01-29 03:06:56,033 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-29 03:06:56,117 [ 1] INFO  Unity: SetDirection:(74, -67, 0)
+2025-01-29 03:06:56,118 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-29 03:06:56,218 [ 1] INFO  Unity: SetDirection:(59, -81, 0)
+2025-01-29 03:06:56,219 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-29 03:06:56,316 [ 1] INFO  Unity: SetDirection:(41, -91, 0)
+2025-01-29 03:06:56,317 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-29 03:06:56,434 [ 1] INFO  Unity: SetDirection:(24, -97, 0)
+2025-01-29 03:06:56,435 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-29 03:06:58,088 [ 1] INFO  Unity: SetDirection:(42, -91, 0)
+2025-01-29 03:06:58,089 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-29 03:06:58,909 [ 1] INFO  Unity: SetPosition:(5371, 3191, 806)
+2025-01-29 03:06:58,910 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-29 03:06:59,424 [ 1] INFO  Unity: SetDirection:(58, -81, 0)
+2025-01-29 03:06:59,426 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-29 03:06:59,574 [ 1] INFO  Unity: SetDirection:(72, -70, 0)
+2025-01-29 03:06:59,575 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-29 03:07:00,379 [ 1] INFO  Unity: SetDirection:(83, -55, 0)
+2025-01-29 03:07:00,379 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-29 03:07:01,264 [ 1] INFO  Unity: SetPosition:(5855, 2699, 806)
+2025-01-29 03:07:01,264 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-29 03:07:01,628 [ 1] INFO  Unity: Stop
+2025-01-29 03:07:01,628 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:0
+2025-01-29 03:07:02,999 [ 1] INFO  Unity: MoveForward
+2025-01-29 03:07:02,999 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-29 03:07:03,548 [ 1] INFO  Unity: SetDirection:(92, -39, 0)
+2025-01-29 03:07:03,549 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-29 03:07:04,383 [ 1] INFO  Unity: SetDirection:(97, -22, 0)
+2025-01-29 03:07:04,384 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-29 03:07:04,519 [ 1] INFO  Unity: SetDirection:(100, -4, 0)
+2025-01-29 03:07:04,520 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-29 03:07:04,615 [ 1] INFO  Unity: SetDirection:(99, 14, 0)
+2025-01-29 03:07:04,616 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-29 03:07:05,433 [ 1] INFO  Unity: SetDirection:(95, 32, 0)
+2025-01-29 03:07:05,434 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-29 03:07:06,806 [ 1] INFO  Unity: TeleporterObject:Character [you] Enter Teleporter [4:出城传入点2]
+2025-01-29 03:07:06,854 [ 1] INFO  Unity: SetPosition:(7018, 2618, 806)
+2025-01-29 03:07:06,855 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-29 03:07:06,955 [ 1] INFO  Unity: SetDirection:(99, 14, 0)
+2025-01-29 03:07:06,956 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-29 03:07:07,092 [ 1] INFO  Unity: SetDirection:(100, -4, 0)
+2025-01-29 03:07:07,094 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-29 03:07:08,392 [ 1] INFO  Unity: TeleporterObject:Character [you] Enter Teleporter [2:主城->副本]
+2025-01-29 03:07:08,393 [ 1] INFO  Unity: MapTeleportRequest: TeleporterID:[2]
+2025-01-29 03:07:08,432 [ 1] INFO  Unity: Stop
+2025-01-29 03:07:08,433 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:0
+2025-01-29 03:08:03,583 [ 1] INFO  Unity: OnMapCharacterLeave:CharId:1
+2025-01-29 03:09:23,043 [ 1] INFO  Unity: MoveBack
+2025-01-29 03:09:23,043 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:-300
+2025-01-29 03:09:23,130 [ 1] INFO  Unity: TeleporterObject:Character [you] Enter Teleporter [4:出城传入点2]
+2025-01-29 03:09:23,626 [ 1] INFO  Unity: Stop
+2025-01-29 03:09:23,627 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:0
+2025-01-29 03:13:26,796 [ 1] INFO  Unity: MoveBack
+2025-01-29 03:13:26,797 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:-300
+2025-01-29 03:13:28,013 [ 1] INFO  Unity: Stop
+2025-01-29 03:13:28,014 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:0
+2025-01-29 03:13:28,386 [ 1] INFO  Unity: MoveForward
+2025-01-29 03:13:28,386 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-29 03:13:28,463 [ 1] INFO  Unity: TeleporterObject:Character [you] Enter Teleporter [4:出城传入点2]
+2025-01-29 03:13:30,036 [ 1] INFO  Unity: TeleporterObject:Character [you] Enter Teleporter [2:主城->副本]
+2025-01-29 03:13:30,037 [ 1] INFO  Unity: MapTeleportRequest: TeleporterID:[2]
+2025-01-29 03:13:30,098 [ 1] INFO  Unity: Stop
+2025-01-29 03:13:30,099 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:0
+2025-01-29 03:13:30,217 [ 1] INFO  Unity: MoveForward
+2025-01-29 03:13:30,218 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-29 03:13:30,487 [ 1] INFO  Unity: Stop
+2025-01-29 03:13:30,488 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:0
+2025-01-29 03:13:39,277 [ 1] INFO  Unity: MoveBack
+2025-01-29 03:13:39,278 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:-300
+2025-01-29 03:13:39,674 [ 1] INFO  Unity: TeleporterObject:Character [you] Enter Teleporter [4:出城传入点2]
+2025-01-29 03:13:39,995 [ 1] INFO  Unity: Stop
+2025-01-29 03:13:39,996 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:0
+2025-01-29 03:13:43,066 [ 1] INFO  Unity: MoveForward
+2025-01-29 03:13:43,066 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-29 03:13:43,067 [ 1] INFO  Unity: SetPosition:(7377, 2622, 806)
+2025-01-29 03:13:43,068 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-29 03:13:43,402 [ 1] INFO  Unity: TeleporterObject:Character [you] Enter Teleporter [2:主城->副本]
+2025-01-29 03:13:43,402 [ 1] INFO  Unity: MapTeleportRequest: TeleporterID:[2]
+2025-01-29 03:13:43,734 [ 1] INFO  Unity: Stop
+2025-01-29 03:13:43,734 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:0
+2025-01-29 03:14:03,421 [ 1] INFO  Unity: OnDestroy NetworkManager.
+2025-01-29 03:14:03,422 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:181)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:176)
 
-2025-01-18 02:37:23,174 [ 1] INFO  Unity: Character_1_you OnDestroy :ID:0 POS:(0, 0, 0) DIR:(0, 100, 0) SPD:0 
+2025-01-29 03:14:03,427 [ 1] INFO  Unity: Character_1_you OnDestroy :ID:1 POS:(7577, 2622, 806) DIR:(100, -4, 0) SPD:0 
