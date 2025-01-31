@@ -300,8 +300,7 @@ namespace Services
             MapService.Instance.CurrentMapId = 0;
             if (response.Result == Result.Success)
             {
-
-                //Models.User.Instance.Info.Player.Characters.Clear();
+                Models.User.Instance.Info.Player.Characters.Clear();
                 //Models.User.Instance.Info.Player.Characters.AddRange(response.Characters);
             }
 
