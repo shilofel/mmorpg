@@ -1,93 +1,191 @@
-2025-01-30 01:38:54,203 [ 1] INFO  Unity: LoadingManager start
-2025-01-30 01:38:57,321 [ 1] INFO  Unity: DataManager > DataManager()
-2025-01-30 01:39:03,266 [ 1] INFO  Unity: UserLoginRequest::user :user psw:123
-2025-01-30 01:39:03,266 [ 1] INFO  Unity: ConnectToServer() Start 
-2025-01-30 01:39:03,268 [ 1] INFO  Unity: DoConnect
-2025-01-30 01:39:03,269 [ 1] INFO  Unity: NetClient.DoConnect on 127.0.0.1:8000
-2025-01-30 01:39:03,272 [ 1] INFO  Unity: Connect[0] to server 127.0.0.1:8000
+2025-01-30 01:46:37,921 [ 1] INFO  Unity: LoadingManager start
+2025-01-30 01:46:41,968 [ 1] INFO  Unity: DataManager > DataManager()
+2025-01-30 01:46:49,446 [ 1] INFO  Unity: UserLoginRequest::user :user psw:123
+2025-01-30 01:46:49,459 [ 1] INFO  Unity: ConnectToServer() Start 
+2025-01-30 01:46:49,460 [ 1] INFO  Unity: DoConnect
+2025-01-30 01:46:49,461 [ 1] INFO  Unity: NetClient.DoConnect on 127.0.0.1:8000
+2025-01-30 01:46:49,465 [ 1] INFO  Unity: Connect[0] to server 127.0.0.1:8000
 
-2025-01-30 01:39:03,276 [ 1] INFO  Unity: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-01-30 01:39:12,482 [ 1] INFO  Unity: OnLogin:Success [None]
-2025-01-30 01:39:12,483 [ 1] INFO  Unity: LoadLevel: CharSelect
-2025-01-30 01:39:12,976 [ 1] INFO  Unity: LevelLoadCompleted:1
-2025-01-30 01:39:13,850 [ 1] INFO  Unity: Select Char:[1]you[Warrior]
-2025-01-30 01:39:14,692 [ 1] INFO  Unity: UserSendGameEnterRequest::characterIdx :0
-2025-01-30 01:39:14,809 [ 1] INFO  Unity: OnUserGameEnter:Success [None]
-2025-01-30 01:39:14,810 [ 1] INFO  Unity: ItemManager:Init[ID:1,Count:20]
-2025-01-30 01:39:14,811 [ 1] INFO  Unity: ItemManager:Init[ID:2,Count:20]
-2025-01-30 01:39:14,812 [ 1] INFO  Unity: ItemManager:Init[ID:3,Count:5]
-2025-01-30 01:39:14,812 [ 1] INFO  Unity: ItemManager:Init[ID:4,Count:10]
-2025-01-30 01:39:14,827 [ 1] INFO  Unity: OnMapCharacterEnter:Map:1 Count:1
-2025-01-30 01:39:14,829 [ 1] INFO  Unity: AddCharacter:1:you Map:1 Entity:(1:pos:(5000,4000,820),dir:(100,0,0),spd:0
-2025-01-30 01:39:14,831 [ 1] INFO  Unity: LoadLevel: MainCity
-2025-01-30 01:39:15,500 [ 1] WARN  Unity: No mesh data available for mesh Sphere001 on particle system fx_portal. Make sure Read/Write Enabled is set in the importer to work on the particle system renderer
+2025-01-30 01:46:49,476 [ 1] INFO  Unity: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-01-30 01:46:52,568 [ 1] INFO  Unity: OnLogin:Success [None]
+2025-01-30 01:46:52,576 [ 1] INFO  Unity: LoadLevel: CharSelect
+2025-01-30 01:46:52,943 [ 1] INFO  Unity: LevelLoadCompleted:1
+2025-01-30 01:46:55,785 [ 1] INFO  Unity: Select Char:[1]you[Warrior]
+2025-01-30 01:46:56,558 [ 1] INFO  Unity: UserSendGameEnterRequest::characterIdx :0
+2025-01-30 01:46:56,709 [ 1] INFO  Unity: OnUserGameEnter:Success [None]
+2025-01-30 01:46:56,724 [ 1] INFO  Unity: ItemManager:Init[ID:1,Count:20]
+2025-01-30 01:46:56,724 [ 1] INFO  Unity: ItemManager:Init[ID:2,Count:20]
+2025-01-30 01:46:56,725 [ 1] INFO  Unity: ItemManager:Init[ID:3,Count:5]
+2025-01-30 01:46:56,726 [ 1] INFO  Unity: ItemManager:Init[ID:4,Count:10]
+2025-01-30 01:46:56,834 [ 1] INFO  Unity: OnMapCharacterEnter:Map:1 Count:1
+2025-01-30 01:46:56,844 [ 1] INFO  Unity: AddCharacter:1:you Map:1 Entity:(1:pos:(5000,4000,820),dir:(100,0,0),spd:0
+2025-01-30 01:46:56,857 [ 1] INFO  Unity: LoadLevel: MainCity
+2025-01-30 01:46:57,446 [ 1] WARN  Unity: No mesh data available for mesh Sphere001 on particle system fx_portal. Make sure Read/Write Enabled is set in the importer to work on the particle system renderer
 
-2025-01-30 01:39:15,509 [ 1] INFO  Unity: Warrior OnDestroy :ID:0 POS:(0, 0, 0) DIR:(0, 100, 0) SPD:0 
-2025-01-30 01:39:15,598 [ 1] INFO  Unity: LevelLoadCompleted:1
-2025-01-30 01:44:50,134 [ 1] INFO  Unity: ProcessReceive exception:System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
-
-  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer, Int32 offset, Int32 size, SocketFlags flags) [0x00000] in <filename unknown>:0 
-  at Network.NetClient.ProcessRecv () [0x00084] in D:\Unity\mymorpg\Src\Client\Assets\Scripts\Network\NetClient.cs:341 
-
-2025-01-30 01:44:50,135 [ 1] WARN  Unity: CloseConnection(), errorCode: 1001
-UnityEngine.Debug:LogWarning(Object)
-Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:181)
-Network.NetClient:ProcessRecv() (at Assets/Scripts/Network/NetClient.cs:355)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:435)
-
-2025-01-30 01:44:50,147 [ 1] INFO  Unity: DoConnect
-2025-01-30 01:44:50,148 [ 1] INFO  Unity: NetClient.DoConnect on 127.0.0.1:8000
-2025-01-30 01:44:50,150 [ 1] INFO  Unity: Connect[0] to server 127.0.0.1:8000
-
-2025-01-30 01:44:52,157 [ 1] WARN  Unity: CloseConnection(), errorCode: 1005
-UnityEngine.Debug:LogWarning(Object)
-Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:181)
-Network.NetClient:DoConnect() (at Assets/Scripts/Network/NetClient.cs:275)
-Network.NetClient:Connect(Int32) (at Assets/Scripts/Network/NetClient.cs:170)
-Network.NetClient:KeepConnect() (at Assets/Scripts/Network/NetClient.cs:316)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:433)
-
-2025-01-30 01:44:52,158 [ 1] ERROR Unity: DoConnect SocketException:[10061,ConnectionRefused,10061]System.Net.Sockets.SocketException: 由于目标计算机积极拒绝，无法连接。
-
-  at System.Net.Sockets.Socket.Connect (System.Net.EndPoint remoteEP, Boolean requireSocketPolicy) [0x00000] in <filename unknown>:0 
-  at System.Net.Sockets.Socket+Worker.Connect () [0x00000] in <filename unknown>:0  
+2025-01-30 01:46:57,467 [ 1] INFO  Unity: Warrior OnDestroy :ID:0 POS:(0, 0, 0) DIR:(0, 100, 0) SPD:0 
+2025-01-30 01:47:00,203 [ 1] INFO  Unity: LevelLoadCompleted:1
+2025-01-30 01:47:02,137 [ 1] INFO  Unity: SetDirection:(98, -18, 0)
+2025-01-30 01:47:02,138 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:0
+2025-01-30 01:47:02,222 [ 1] INFO  Unity: MoveForward
+2025-01-30 01:47:02,227 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-30 01:47:02,240 [ 1] INFO  Unity: SetDirection:(93, -36, 0)
+2025-01-30 01:47:02,241 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-30 01:47:02,320 [ 1] INFO  Unity: SetDirection:(86, -52, 0)
+2025-01-30 01:47:02,321 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-30 01:47:02,406 [ 1] INFO  Unity: SetDirection:(75, -66, 0)
+2025-01-30 01:47:02,407 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-30 01:47:02,504 [ 1] INFO  Unity: SetDirection:(60, -80, 0)
+2025-01-30 01:47:02,505 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-30 01:47:02,590 [ 1] INFO  Unity: SetDirection:(45, -89, 0)
+2025-01-30 01:47:02,591 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-30 01:47:02,670 [ 1] INFO  Unity: SetDirection:(29, -96, 0)
+2025-01-30 01:47:02,671 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-30 01:47:02,755 [ 1] INFO  Unity: SetDirection:(12, -99, 0)
+2025-01-30 01:47:02,755 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-30 01:47:02,838 [ 1] INFO  Unity: SetDirection:(-6, -100, 0)
+2025-01-30 01:47:02,839 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-30 01:47:02,939 [ 1] INFO  Unity: SetDirection:(-26, -96, 0)
+2025-01-30 01:47:02,940 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-30 01:47:03,024 [ 1] INFO  Unity: SetDirection:(-43, -90, 0)
+2025-01-30 01:47:03,025 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-30 01:47:03,123 [ 1] INFO  Unity: SetDirection:(-60, -80, 0)
+2025-01-30 01:47:03,124 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-30 01:47:03,223 [ 1] INFO  Unity: SetDirection:(-74, -67, 0)
+2025-01-30 01:47:03,223 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-30 01:47:05,028 [ 1] INFO  Unity: SetPosition:(4674, 3397, 806)
+2025-01-30 01:47:05,029 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-30 01:47:06,463 [ 1] INFO  Unity: SetDirection:(-85, -53, 0)
+2025-01-30 01:47:06,464 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-30 01:47:06,677 [ 1] INFO  Unity: SetDirection:(-93, -36, 0)
+2025-01-30 01:47:06,678 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-30 01:47:07,879 [ 1] INFO  Unity: SetDirection:(-98, -19, 0)
+2025-01-30 01:47:07,880 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-30 01:47:08,236 [ 1] INFO  Unity: SetPosition:(3862, 2924, 806)
+2025-01-30 01:47:08,237 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-30 01:47:12,038 [ 1] INFO  Unity: SetDirection:(-100, -2, 0)
+2025-01-30 01:47:12,040 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-30 01:47:17,636 [ 1] INFO  Unity: TeleporterObject:Character [you] Enter Teleporter [2:主城->副本]
+2025-01-30 01:47:17,638 [ 1] INFO  Unity: MapTeleportRequest: TeleporterID:[2]
+2025-01-30 01:47:17,663 [ 1] INFO  Unity: OnMapCharacterLeave:CharId:1
+2025-01-30 01:47:20,175 [ 1] INFO  Unity: Stop
+2025-01-30 01:47:20,176 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:0
+2025-01-30 01:47:22,336 [ 1] INFO  Unity: MoveForward
+2025-01-30 01:47:22,336 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-30 01:47:23,311 [ 1] INFO  Unity: SetDirection:(-98, -19, 0)
+2025-01-30 01:47:23,311 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:300
+2025-01-30 01:47:23,578 [ 1] INFO  Unity: TeleporterObject:Character [you] Enter Teleporter [1:主城->野外]
+2025-01-30 01:47:23,578 [ 1] INFO  Unity: MapTeleportRequest: TeleporterID:[1]
+2025-01-30 01:47:23,597 [ 1] INFO  Unity: OnMapCharacterEnter:Map:2 Count:1
+2025-01-30 01:47:23,598 [ 1] INFO  Unity: AddCharacter:1:you Map:2 Entity:(1:pos:(2313,4006,6),dir:(100,0,0),spd:300
+2025-01-30 01:47:26,078 [ 1] INFO  Unity: LoadLevel: Map01
+2025-01-30 01:47:26,121 [ 1] INFO  Unity: Stop
+2025-01-30 01:47:26,122 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:0
+2025-01-30 01:47:26,388 [ 1] INFO  Unity: OnMapCharacterEnter:Map:2 Count:1
+2025-01-30 01:47:26,389 [ 1] INFO  Unity: AddCharacter:2: Map:2 Entity:(2:pos:(5887,1573,7),dir:(9,100,0),spd:0
+2025-01-30 01:47:48,941 [ 1] ERROR Unity: Character[1001] Resource[Monster/M1001] not existed.
 UnityEngine.Debug:LogErrorFormat(String, Object[])
-Network.NetClient:DoConnect() (at Assets/Scripts/Network/NetClient.cs:277)
-Network.NetClient:Connect(Int32) (at Assets/Scripts/Network/NetClient.cs:170)
-Network.NetClient:KeepConnect() (at Assets/Scripts/Network/NetClient.cs:316)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:433)
+GameObjectManager:CreateCharacterObject(Character) (at Assets/Scripts/GameObject/GameObjectManager.cs:71)
+GameObjectManager:OnCharacterEnter(Character) (at Assets/Scripts/GameObject/GameObjectManager.cs:39)
+Services.CharacterManager:AddCharacter(NCharacterInfo) (at Assets/Scripts/Managers/CharacterManager.cs:58)
+Services.MapService:OnMapCharacterEnter(Object, MapCharacterEnterResponse) (at Assets/Scripts/Services/MapService.cs:60)
+Network.MessageDistributer`1:RaiseEvent(Object, MapCharacterEnterResponse)
+Network.MessageDispatch`1:Dispatch(Object, NetMessageResponse)
+Network.MessageDistributer`1:Distribute()
+Network.NetClient:ProceeMessage() (at Assets/Scripts/Network/NetClient.cs:422)
+Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:440)
 
-2025-01-30 01:44:52,208 [ 1] INFO  Unity: DoConnect
-2025-01-30 01:44:52,209 [ 1] INFO  Unity: NetClient.DoConnect on 127.0.0.1:8000
-2025-01-30 01:44:52,211 [ 1] INFO  Unity: Connect[1] to server 127.0.0.1:8000
-
-2025-01-30 01:44:54,217 [ 1] WARN  Unity: CloseConnection(), errorCode: 1005
-UnityEngine.Debug:LogWarning(Object)
-Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:181)
-Network.NetClient:DoConnect() (at Assets/Scripts/Network/NetClient.cs:275)
-Network.NetClient:Connect(Int32) (at Assets/Scripts/Network/NetClient.cs:170)
-Network.NetClient:KeepConnect() (at Assets/Scripts/Network/NetClient.cs:316)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:433)
-
-2025-01-30 01:44:54,218 [ 1] ERROR Unity: DoConnect SocketException:[10061,ConnectionRefused,10061]System.Net.Sockets.SocketException: 由于目标计算机积极拒绝，无法连接。
-
-  at System.Net.Sockets.Socket.Connect (System.Net.EndPoint remoteEP, Boolean requireSocketPolicy) [0x00000] in <filename unknown>:0 
-  at System.Net.Sockets.Socket+Worker.Connect () [0x00000] in <filename unknown>:0  
+2025-01-30 01:48:06,530 [ 1] INFO  Unity: OnMapCharacterEnter:Map:2 Count:1
+2025-01-30 01:48:06,531 [ 1] INFO  Unity: AddCharacter:3: Map:2 Entity:(3:pos:(5540,1682,4),dir:(20,98,0),spd:0
+2025-01-30 01:48:09,854 [ 1] ERROR Unity: Character[1002] Resource[Monster/M1002] not existed.
 UnityEngine.Debug:LogErrorFormat(String, Object[])
-Network.NetClient:DoConnect() (at Assets/Scripts/Network/NetClient.cs:277)
-Network.NetClient:Connect(Int32) (at Assets/Scripts/Network/NetClient.cs:170)
-Network.NetClient:KeepConnect() (at Assets/Scripts/Network/NetClient.cs:316)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:433)
+GameObjectManager:CreateCharacterObject(Character) (at Assets/Scripts/GameObject/GameObjectManager.cs:71)
+GameObjectManager:OnCharacterEnter(Character) (at Assets/Scripts/GameObject/GameObjectManager.cs:39)
+Services.CharacterManager:AddCharacter(NCharacterInfo) (at Assets/Scripts/Managers/CharacterManager.cs:58)
+Services.MapService:OnMapCharacterEnter(Object, MapCharacterEnterResponse) (at Assets/Scripts/Services/MapService.cs:60)
+Network.MessageDistributer`1:RaiseEvent(Object, MapCharacterEnterResponse)
+Network.MessageDispatch`1:Dispatch(Object, NetMessageResponse)
+Network.MessageDistributer`1:Distribute()
+Network.NetClient:ProceeMessage() (at Assets/Scripts/Network/NetClient.cs:422)
+Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:440)
 
-2025-01-30 01:44:54,262 [ 1] INFO  Unity: DoConnect
-2025-01-30 01:44:54,262 [ 1] INFO  Unity: NetClient.DoConnect on 127.0.0.1:8000
-2025-01-30 01:44:54,264 [ 1] INFO  Unity: Connect[2] to server 127.0.0.1:8000
+2025-01-30 01:48:09,854 [ 1] INFO  Unity: OnMapCharacterEnter:Map:2 Count:1
+2025-01-30 01:48:09,856 [ 1] INFO  Unity: AddCharacter:4: Map:2 Entity:(4:pos:(4775,2865,14),dir:(-30,95,0),spd:0
+2025-01-30 01:48:11,158 [ 1] ERROR Unity: Character[1003] Resource[Monster/M1003] not existed.
+UnityEngine.Debug:LogErrorFormat(String, Object[])
+GameObjectManager:CreateCharacterObject(Character) (at Assets/Scripts/GameObject/GameObjectManager.cs:71)
+GameObjectManager:OnCharacterEnter(Character) (at Assets/Scripts/GameObject/GameObjectManager.cs:39)
+Services.CharacterManager:AddCharacter(NCharacterInfo) (at Assets/Scripts/Managers/CharacterManager.cs:58)
+Services.MapService:OnMapCharacterEnter(Object, MapCharacterEnterResponse) (at Assets/Scripts/Services/MapService.cs:60)
+Network.MessageDistributer`1:RaiseEvent(Object, MapCharacterEnterResponse)
+Network.MessageDispatch`1:Dispatch(Object, NetMessageResponse)
+Network.MessageDistributer`1:Distribute()
+Network.NetClient:ProceeMessage() (at Assets/Scripts/Network/NetClient.cs:422)
+Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:440)
 
-2025-01-30 01:44:55,768 [ 1] INFO  Unity: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-01-30 01:44:57,409 [ 1] INFO  Unity: OnDestroy NetworkManager.
-2025-01-30 01:44:57,410 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-01-30 01:48:11,159 [ 1] INFO  Unity: OnMapCharacterEnter:Map:2 Count:1
+2025-01-30 01:48:11,160 [ 1] INFO  Unity: AddCharacter:5: Map:2 Entity:(5:pos:(5683,4173,0),dir:(28,-96,0),spd:0
+2025-01-30 01:48:12,473 [ 1] ERROR Unity: Character[1005] Resource[Monster/M1005] not existed.
+UnityEngine.Debug:LogErrorFormat(String, Object[])
+GameObjectManager:CreateCharacterObject(Character) (at Assets/Scripts/GameObject/GameObjectManager.cs:71)
+GameObjectManager:OnCharacterEnter(Character) (at Assets/Scripts/GameObject/GameObjectManager.cs:39)
+Services.CharacterManager:AddCharacter(NCharacterInfo) (at Assets/Scripts/Managers/CharacterManager.cs:58)
+Services.MapService:OnMapCharacterEnter(Object, MapCharacterEnterResponse) (at Assets/Scripts/Services/MapService.cs:60)
+Network.MessageDistributer`1:RaiseEvent(Object, MapCharacterEnterResponse)
+Network.MessageDispatch`1:Dispatch(Object, NetMessageResponse)
+Network.MessageDistributer`1:Distribute()
+Network.NetClient:ProceeMessage() (at Assets/Scripts/Network/NetClient.cs:422)
+Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:440)
+
+2025-01-30 01:48:12,583 [ 1] INFO  Unity: SetPosition:(2313, 4006, -57)
+2025-01-30 01:48:12,584 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:0
+2025-01-30 01:48:12,765 [ 1] INFO  Unity: LevelLoadCompleted:1
+2025-01-30 01:48:12,778 [ 1] INFO  Unity: SetPosition:(2313, 4006, 6)
+2025-01-30 01:48:12,779 [ 1] INFO  Unity: MapEntityUpdateSync:ID :1 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:0
+2025-01-30 01:49:52,114 [ 1] WARN  Unity: A meta data file (.meta) exists but its asset 'Assets/Models/Monsters/M1001/Materials' can't be found. When moving or deleting files outside of Unity, please ensure that the corresponding .meta file is moved or deleted along with it.
+
+2025-01-30 01:49:52,252 [ 1] WARN  Unity: Removing Assets/Models/Monsters/M1001/Materials because the asset does not exist
+
+2025-01-30 01:49:57,129 [ 1] ERROR Unity: Time range (447398) for take '待机' in file 'R001_Idle' is larger than maximum allowed (100000). Check your file - it most likely has keys in far negative or positive timeline.
+
+
+2025-01-30 01:49:57,219 [ 1] ERROR Unity: ImportFBX Errors:
+Time range (447392) for scale curve(s) on node 'Bone009' on take '待机' larger than maximum allowed (100000). These curves won't be imported. Check your file - it most likely has keys in far negative or positive timeline.
+Time range (447392) for translation curve(s) on node 'Bone009' on take '待机' larger than maximum allowed (100000). These curves won't be imported. Check your file - it most likely has keys in far negative or positive timeline.
+
+
+2025-01-30 01:49:57,979 [ 1] ERROR Unity: Time range (447392) for take '奔跑' in file 'R001_Move_Forward' is larger than maximum allowed (100000). Check your file - it most likely has keys in far negative or positive timeline.
+
+
+2025-01-30 01:49:58,041 [ 1] ERROR Unity: ImportFBX Errors:
+Time range (447392) for scale curve(s) on node 'Bone002' on take '奔跑' larger than maximum allowed (100000). These curves won't be imported. Check your file - it most likely has keys in far negative or positive timeline.
+Time range (447392) for scale curve(s) on node 'Bone003' on take '奔跑' larger than maximum allowed (100000). These curves won't be imported. Check your file - it most likely has keys in far negative or positive timeline.
+Time range (447392) for scale curve(s) on node 'Bone009' on take '奔跑' larger than maximum allowed (100000). These curves won't be imported. Check your file - it most likely has keys in far negative or positive timeline.
+Time range (447392) for translation curve(s) on node 'Bone002' on take '奔跑' larger than maximum allowed (100000). These curves won't be imported. Check your file - it most likely has keys in far negative or positive timeline.
+Time range (447392) for translation curve(s) on node 'Bone003' on take '奔跑' larger than maximum allowed (100000). These curves won't be imported. Check your file - it most likely has keys in far negative or positive timeline.
+Time range (447392) for translation curve(s) on node 'Bone009' on take '奔跑' larger than maximum allowed (100000). These curves won't be imported. Check your file - it most likely has keys in far negative or positive timeline.
+Time range (447393) for rotation curve(s) on node 'Bone001' on take '奔跑' larger than maximum allowed (100000). These curves won't be imported. Check your file - it most likely has keys in far negative or positive timeline.
+Time range (447393) for rotation curve(s) on node 'Bone002' on take '奔跑' larger than maximum allowed (100000). These curves won't be imported. Check your file - it most likely has keys in far negative or positive timeline.
+Time range (447393) for rotation curve(s) on node 'Bone003' on take '奔跑' larger than maximum allowed (100000). These curves won't be imported. Check your file - it most likely has keys in far negative or positive timeline.
+Time range (447393) for scale curve(s) on node 'Bone001' on take '奔跑' larger than maximum allowed (100000). These curves won't be imported. Check your file - it most likely has keys in far negative or positive timeline.
+Time range (447393) for translation curve(s) on node 'Bone001' on take '奔跑' larger than maximum allowed (100000). These curves won't be imported. Check your file - it most likely has keys in far negative or positive timeline.
+
+
+2025-01-30 01:49:59,494 [ 1] ERROR Unity: Time range (447396) for take '跳跃' in file 'R001_Jump' is larger than maximum allowed (100000). Check your file - it most likely has keys in far negative or positive timeline.
+
+
+2025-01-30 01:49:59,550 [ 1] ERROR Unity: ImportFBX Errors:
+Time range (447392) for scale curve(s) on node 'Bone009' on take '跳跃' larger than maximum allowed (100000). These curves won't be imported. Check your file - it most likely has keys in far negative or positive timeline.
+Time range (447392) for translation curve(s) on node 'Bone009' on take '跳跃' larger than maximum allowed (100000). These curves won't be imported. Check your file - it most likely has keys in far negative or positive timeline.
+
+
+2025-01-30 01:50:15,746 [ 1] WARN  Unity: Unable to open Assets/Models/Monsters/R001/FBX/R001_Move_Forward.FBX: Check external application preferences.
+
+2025-01-30 01:50:15,754 [ 1] WARN  Unity: Unable to open Assets/Models/Monsters/R001/FBX/R001_Move_Forward.FBX: Check external application preferences.
+
+2025-01-30 01:50:22,956 [ 1] INFO  Unity: Character_1_you OnDestroy :ID:1 POS:(2313, 4006, 6) DIR:(100, 0, 0) SPD:0 
+2025-01-30 01:50:22,957 [ 1] INFO  Unity: OnDestroy NetworkManager.
+2025-01-30 01:50:22,958 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:181)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:176)
 
-2025-01-30 01:44:57,414 [ 1] INFO  Unity: Character_1_you OnDestroy :ID:1 POS:(5000, 4000, 820) DIR:(100, 0, 0) SPD:0 

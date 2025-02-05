@@ -18,7 +18,7 @@ namespace Managers
     {
         public Dictionary<int, Item> Items = new Dictionary<int, Item>();
 
-        public void init(List<NItemInfo> items)
+        public void Init(List<NItemInfo> items)
         {
             this.Items.Clear();
             foreach (var info in items)

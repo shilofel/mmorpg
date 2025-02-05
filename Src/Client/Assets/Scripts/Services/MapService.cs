@@ -36,24 +36,13 @@ namespace Services
 
         }
 
-
-        private void OnMapCharacterLeave(object sender, MapCharacterLeaveResponse response)
-        {
-            Debug.LogFormat("OnMapCharacterLeave:CharId:{0}", response.characterId);
-            //如果是自己离开，清除所有；如果不是，清除其他人
-            if (response.characterId != User.Instance.CurrentCharacter.Id)
-                CharacterManager.Instance.RemoveCharacter(response.characterId);
-            else
-                CharacterManager.Instance.Clear();
-        }
-
         private void OnMapCharacterEnter(object sender, MapCharacterEnterResponse response)
         {
             Debug.LogFormat("OnMapCharacterEnter:Map:{0} Count:{1}", response.mapId, response.Characters.Count);
             //如果当前角色是进入地图的角色，变更地图
             foreach(var cha in response.Characters)
             {
-                if(User.Instance.CurrentCharacter == null||User.Instance.CurrentCharacter.Id == cha.Id)
+                if(User.Instance.CurrentCharacter == null||(cha.Type == CharacterType.Player&&User.Instance.CurrentCharacter.Id == cha.Id))
                 {
                     User.Instance.CurrentCharacter = cha;
                 }
@@ -64,6 +53,16 @@ namespace Services
                 this.EnterMap(response.mapId);
                 this.CurrentMapId = response.mapId;
             }
+        }
+
+        private void OnMapCharacterLeave(object sender, MapCharacterLeaveResponse response)
+        {
+            Debug.LogFormat("OnMapCharacterLeave:CharId:{0}", response.entityId);
+            //如果是自己离开，清除所有；如果不是，清除其他人
+            if (response.entityId != User.Instance.CurrentCharacter.entityId)
+                CharacterManager.Instance.RemoveCharacter(response.entityId);
+            else
+                CharacterManager.Instance.Clear();
         }
 
         private void EnterMap(int mapId)

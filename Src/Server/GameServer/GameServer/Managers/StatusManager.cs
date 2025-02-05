@@ -51,7 +51,7 @@ namespace GameServer.Managers
             this.AddStatus(StatusType.Item, id, count, action);
         }
 
-        public void ApplyResponse(NetMessageResponse response)
+        public void PostProcess(NetMessageResponse response)
         {
             if (response.statusNotify == null)
                 response.statusNotify = new StatusNotify();

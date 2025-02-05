@@ -14,6 +14,14 @@ namespace Entities
         //数据表配置
         public Common.Data.CharacterDefine Define;
 
+        public int Id
+        {
+            get
+            {
+                return this.Info.Id;
+            }
+        }
+
         public string Name
         {
             get
@@ -27,13 +35,22 @@ namespace Entities
 
         public bool IsPlayer
         {
-            get { return this.Info.Id == Models.User.Instance.CurrentCharacter.Id; }
+            get { return this.Info.Type == CharacterType.Player; }
+        }
+
+        public bool IsCurrentPlayer
+        {
+            get
+            {
+                if (!IsPlayer) return false;
+                return this.Info.Id == Models.User.Instance.CurrentCharacter.Id;
+            }
         }
 
         public Character(NCharacterInfo info) : base(info.Entity)
         {
             this.Info = info;
-            this.Define = DataManager.Instance.Characters[info.Tid];
+            this.Define = DataManager.Instance.Characters[info.configId];
         }
 
         public void MoveForward()

@@ -73,7 +73,7 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
             }
 
             GameObject go = (GameObject)Instantiate(obj, this.transform);
-            go.name = "Character_" + cha.Info.Id + "_" + cha.Info.Name;
+            go.name = "Character_" + cha.Id + "_" + cha.Name;
 
             Characters[cha.entityId] = go;
             
@@ -92,13 +92,13 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
         if (ec != null)
         {
             ec.entity = cha;
-            ec.isPlayer = cha.IsPlayer;
+            ec.isPlayer = cha.IsCurrentPlayer;
         }
         //赋值InputPlayerController
         PlayerInputController pc = go.GetComponent<PlayerInputController>();
         if (pc != null)
         {
-            if (cha.Info.Id == Models.User.Instance.CurrentCharacter.Id)
+            if (cha.IsCurrentPlayer)
             {
                 User.Instance.CurrentCharacterObject = go;
                 MainPlayerCamera.Instance.player = go;

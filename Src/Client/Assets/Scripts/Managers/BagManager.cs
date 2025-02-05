@@ -19,7 +19,7 @@ namespace Managers
         public BagItem[] Items;
         NBagInfo Info;
 
-        unsafe public void init(NBagInfo info)
+        unsafe public void Init(NBagInfo info)
         {
             this.Info = info;
             this.Unlocked = info.Unlocked;

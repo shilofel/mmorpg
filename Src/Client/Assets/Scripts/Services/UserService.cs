@@ -255,9 +255,10 @@ namespace Services
                 if (response.Character != null)
                 {
                     User.Instance.CurrentCharacter = response.Character;
-                    ItemManager.Instance.init(response.Character.Items);
-                    BagManager.Instance.init(response.Character.Bag);              
+                    ItemManager.Instance.Init(response.Character.Items);
+                    BagManager.Instance.Init(response.Character.Bag);              
                     EquipManager.Instance.Init(response.Character.Equips);
+                    FriendManager.Instance.Init(response.Character.Friends);
                     //NQuestInfo quest = new NQuestInfo();
                     //quest.QuestId = 1001;
                     //response.Character.Quests.Add(quest);
