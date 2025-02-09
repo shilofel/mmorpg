@@ -68,7 +68,7 @@ namespace Managers
         }
 
         //内存映射到Items数组
-        unsafe void Analyze(byte[] data)
+        private unsafe void Analyze(byte[] data)
         {
             //指针必须在fixed()内
             fixed(byte * pt = data)
