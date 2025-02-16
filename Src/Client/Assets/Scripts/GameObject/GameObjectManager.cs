@@ -7,6 +7,7 @@ using Services;
 using SkillBridge.Message;
 using Models;
 using System;
+using Managers;
 
 //使用单例确保切换场景，对象不被销毁
 public class GameObjectManager : MonoSingleton<GameObjectManager>

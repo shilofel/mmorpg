@@ -223,10 +223,5 @@ namespace Network
             }
         }
 
-        public void Subscribe<T1>(Action onGameLeave)
-        {
-            throw new NotImplementedException();
-        }
-
     }
 }

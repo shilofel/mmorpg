@@ -1,178 +1,31 @@
-2025-02-10 03:58:52,963 [ 1] INFO  Unity: LoadingManager start
-2025-02-10 03:58:56,749 [ 1] INFO  Unity: DataManager > DataManager()
-2025-02-10 03:59:02,637 [ 1] INFO  Unity: UserLoginRequest::user :wzh psw:123
-2025-02-10 03:59:02,639 [ 1] INFO  Unity: ConnectToServer() Start 
-2025-02-10 03:59:02,640 [ 1] INFO  Unity: DoConnect
-2025-02-10 03:59:02,641 [ 1] INFO  Unity: NetClient.DoConnect on 127.0.0.1:8000
-2025-02-10 03:59:02,644 [ 1] INFO  Unity: Connect[0] to server 127.0.0.1:8000
+2025-02-17 03:20:46,911 [ 1] INFO  Unity: LoadingManager start
+2025-02-17 03:20:50,075 [ 1] INFO  Unity: DataManager > DataManager()
+2025-02-17 03:20:58,329 [ 1] INFO  Unity: UserLoginRequest::user :user psw:123
+2025-02-17 03:20:58,330 [ 1] INFO  Unity: ConnectToServer() Start 
+2025-02-17 03:20:58,332 [ 1] INFO  Unity: DoConnect
+2025-02-17 03:20:58,333 [ 1] INFO  Unity: NetClient.DoConnect on 127.0.0.1:8000
+2025-02-17 03:20:58,336 [ 1] INFO  Unity: Connect[0] to server 127.0.0.1:8000
 
-2025-02-10 03:59:02,647 [ 1] INFO  Unity: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-02-10 03:59:05,571 [ 1] INFO  Unity: OnLogin:Success [None]
-2025-02-10 03:59:05,573 [ 1] INFO  Unity: LoadLevel: CharSelect
-2025-02-10 03:59:05,948 [ 1] INFO  Unity: LevelLoadCompleted:1
-2025-02-10 03:59:07,173 [ 1] INFO  Unity: Select Char:[1]my[Warrior]
-2025-02-10 03:59:07,917 [ 1] INFO  Unity: UserSendGameEnterRequest::characterIdx :0
-2025-02-10 03:59:08,041 [ 1] INFO  Unity: OnUserGameEnter:Success [None]
-2025-02-10 03:59:08,043 [ 1] INFO  Unity: ItemManager:Init[ID:1,Count:20]
-2025-02-10 03:59:08,043 [ 1] INFO  Unity: ItemManager:Init[ID:2,Count:20]
-2025-02-10 03:59:08,056 [ 1] INFO  Unity: OnMapCharacterEnter:Map:1 Count:1
-2025-02-10 03:59:08,058 [ 1] INFO  Unity: AddCharacter:1:my Map:1 Entity:(5:pos:(5000,4000,820),dir:(100,0,0),spd:0
-2025-02-10 03:59:08,060 [ 1] INFO  Unity: LoadLevel: MainCity
-2025-02-10 03:59:08,606 [ 1] WARN  Unity: No mesh data available for mesh Sphere001 on particle system fx_portal. Make sure Read/Write Enabled is set in the importer to work on the particle system renderer
+2025-02-17 03:20:58,339 [ 1] INFO  Unity: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-02-17 03:20:58,446 [ 1] INFO  Unity: OnLogin:Success [None]
+2025-02-17 03:20:58,448 [ 1] INFO  Unity: LoadLevel: CharSelect
+2025-02-17 03:20:58,864 [ 1] INFO  Unity: LevelLoadCompleted:1
+2025-02-17 03:20:59,818 [ 1] INFO  Unity: Select Char:[2]iii[Warrior]
+2025-02-17 03:21:00,483 [ 1] INFO  Unity: UserSendGameEnterRequest::characterIdx :0
+2025-02-17 03:21:00,504 [ 1] INFO  Unity: OnUserGameEnter:Success [None]
+2025-02-17 03:21:00,506 [ 1] INFO  Unity: ItemManager:Init[ID:1,Count:20]
+2025-02-17 03:21:00,507 [ 1] INFO  Unity: ItemManager:Init[ID:2,Count:20]
+2025-02-17 03:21:00,516 [ 1] INFO  Unity: OnMapCharacterEnter:Map:1 Count:1
+2025-02-17 03:21:00,518 [ 1] INFO  Unity: AddCharacter:2:iii Map:1 Entity:(10:pos:(5000,4000,820),dir:(100,0,0),spd:0
+2025-02-17 03:21:00,521 [ 1] INFO  Unity: LoadLevel: MainCity
+2025-02-17 03:21:01,150 [ 1] WARN  Unity: No mesh data available for mesh Sphere001 on particle system fx_portal. Make sure Read/Write Enabled is set in the importer to work on the particle system renderer
 
-2025-02-10 03:59:08,613 [ 1] INFO  Unity: Warrior OnDestroy :ID:0 POS:(0, 0, 0) DIR:(0, 100, 0) SPD:0 
-2025-02-10 03:59:08,696 [ 1] INFO  Unity: LevelLoadCompleted:1
-2025-02-10 03:59:10,083 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
-{1}</format><args>{ArgumentException: An element with the same key already exists in the dictionary., System.Collections.Generic.Dictionary`2[System.Type,UIManager+UIElement].Add (System.Type key, .UIElement value) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:404)
-UIManager..ctor () (at Assets/Scripts/UI/UIManager.cs:29)
-System.Reflection.MonoCMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:513)
-Rethrow as TargetInvocationException: Exception has been thrown by the target of an invocation.
-System.Reflection.MonoCMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:519)
-System.Reflection.MonoCMethod.Invoke (BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:528)
-System.Reflection.ConstructorInfo.Invoke (System.Object[] parameters) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/ConstructorInfo.cs:77)
-System.Activator.CreateInstance (System.Type type, Boolean nonPublic) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Activator.cs:372)
-System.Activator.CreateInstance (System.Type type) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Activator.cs:254)
-System.Activator.CreateInstance[UIManager] () (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Activator.cs:248)
-Singleton`1[UIManager].get_Instance () (at Assets/Scripts/Utilities/Singleton.cs:17)
-UIMain.OnClickFriend () (at Assets/Scripts/UI/UIMain.cs:53)
-UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
-UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
-UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
-UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
-UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
-UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
-UnityEngine.EventSystems.EventSystem:Update()
-}</args></log4net.Error>
-2025-02-10 03:59:18,194 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
-{1}</format><args>{ArgumentException: An element with the same key already exists in the dictionary., System.Collections.Generic.Dictionary`2[System.Type,UIManager+UIElement].Add (System.Type key, .UIElement value) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:404)
-UIManager..ctor () (at Assets/Scripts/UI/UIManager.cs:29)
-System.Reflection.MonoCMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:513)
-Rethrow as TargetInvocationException: Exception has been thrown by the target of an invocation.
-System.Reflection.MonoCMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:519)
-System.Reflection.MonoCMethod.Invoke (BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:528)
-System.Reflection.ConstructorInfo.Invoke (System.Object[] parameters) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/ConstructorInfo.cs:77)
-System.Activator.CreateInstance (System.Type type, Boolean nonPublic) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Activator.cs:372)
-System.Activator.CreateInstance (System.Type type) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Activator.cs:254)
-System.Activator.CreateInstance[UIManager] () (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Activator.cs:248)
-Singleton`1[UIManager].get_Instance () (at Assets/Scripts/Utilities/Singleton.cs:17)
-UIMain.OnClickFriend () (at Assets/Scripts/UI/UIMain.cs:53)
-UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
-UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
-UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
-UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
-UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
-UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
-UnityEngine.EventSystems.EventSystem:Update()
-}</args></log4net.Error>
-2025-02-10 04:00:30,273 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
-{1}</format><args>{ArgumentException: An element with the same key already exists in the dictionary., System.Collections.Generic.Dictionary`2[System.Type,UIManager+UIElement].Add (System.Type key, .UIElement value) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:404)
-UIManager..ctor () (at Assets/Scripts/UI/UIManager.cs:29)
-System.Reflection.MonoCMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:513)
-Rethrow as TargetInvocationException: Exception has been thrown by the target of an invocation.
-System.Reflection.MonoCMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:519)
-System.Reflection.MonoCMethod.Invoke (BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:528)
-System.Reflection.ConstructorInfo.Invoke (System.Object[] parameters) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/ConstructorInfo.cs:77)
-System.Activator.CreateInstance (System.Type type, Boolean nonPublic) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Activator.cs:372)
-System.Activator.CreateInstance (System.Type type) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Activator.cs:254)
-System.Activator.CreateInstance[UIManager] () (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Activator.cs:248)
-Singleton`1[UIManager].get_Instance () (at Assets/Scripts/Utilities/Singleton.cs:17)
-UIMain.OnClickFriend () (at Assets/Scripts/UI/UIMain.cs:53)
-UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
-UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
-UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
-UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
-UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
-UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
-UnityEngine.EventSystems.EventSystem:Update()
-}</args></log4net.Error>
-2025-02-10 04:00:38,618 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
-{1}</format><args>{ArgumentException: An element with the same key already exists in the dictionary., System.Collections.Generic.Dictionary`2[System.Type,UIManager+UIElement].Add (System.Type key, .UIElement value) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:404)
-UIManager..ctor () (at Assets/Scripts/UI/UIManager.cs:29)
-System.Reflection.MonoCMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:513)
-Rethrow as TargetInvocationException: Exception has been thrown by the target of an invocation.
-System.Reflection.MonoCMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:519)
-System.Reflection.MonoCMethod.Invoke (BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:528)
-System.Reflection.ConstructorInfo.Invoke (System.Object[] parameters) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/ConstructorInfo.cs:77)
-System.Activator.CreateInstance (System.Type type, Boolean nonPublic) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Activator.cs:372)
-System.Activator.CreateInstance (System.Type type) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Activator.cs:254)
-System.Activator.CreateInstance[UIManager] () (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Activator.cs:248)
-Singleton`1[UIManager].get_Instance () (at Assets/Scripts/Utilities/Singleton.cs:17)
-UIMain.OnClickBag () (at Assets/Scripts/UI/UIMain.cs:38)
-UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
-UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
-UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
-UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
-UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
-UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
-UnityEngine.EventSystems.EventSystem:Update()
-}</args></log4net.Error>
-2025-02-10 04:01:04,334 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
-{1}</format><args>{ArgumentException: An element with the same key already exists in the dictionary., System.Collections.Generic.Dictionary`2[System.Type,UIManager+UIElement].Add (System.Type key, .UIElement value) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:404)
-UIManager..ctor () (at Assets/Scripts/UI/UIManager.cs:29)
-System.Reflection.MonoCMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:513)
-Rethrow as TargetInvocationException: Exception has been thrown by the target of an invocation.
-System.Reflection.MonoCMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:519)
-System.Reflection.MonoCMethod.Invoke (BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:528)
-System.Reflection.ConstructorInfo.Invoke (System.Object[] parameters) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/ConstructorInfo.cs:77)
-System.Activator.CreateInstance (System.Type type, Boolean nonPublic) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Activator.cs:372)
-System.Activator.CreateInstance (System.Type type) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Activator.cs:254)
-System.Activator.CreateInstance[UIManager] () (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Activator.cs:248)
-Singleton`1[UIManager].get_Instance () (at Assets/Scripts/Utilities/Singleton.cs:17)
-UIMain.OnClickBag () (at Assets/Scripts/UI/UIMain.cs:38)
-UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
-UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
-UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
-UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
-UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
-UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
-UnityEngine.EventSystems.EventSystem:Update()
-}</args></log4net.Error>
-2025-02-10 04:01:05,400 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
-{1}</format><args>{ArgumentException: An element with the same key already exists in the dictionary., System.Collections.Generic.Dictionary`2[System.Type,UIManager+UIElement].Add (System.Type key, .UIElement value) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:404)
-UIManager..ctor () (at Assets/Scripts/UI/UIManager.cs:29)
-System.Reflection.MonoCMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:513)
-Rethrow as TargetInvocationException: Exception has been thrown by the target of an invocation.
-System.Reflection.MonoCMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:519)
-System.Reflection.MonoCMethod.Invoke (BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:528)
-System.Reflection.ConstructorInfo.Invoke (System.Object[] parameters) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/ConstructorInfo.cs:77)
-System.Activator.CreateInstance (System.Type type, Boolean nonPublic) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Activator.cs:372)
-System.Activator.CreateInstance (System.Type type) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Activator.cs:254)
-System.Activator.CreateInstance[UIManager] () (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Activator.cs:248)
-Singleton`1[UIManager].get_Instance () (at Assets/Scripts/Utilities/Singleton.cs:17)
-UIMain.OnClickChar () (at Assets/Scripts/UI/UIMain.cs:43)
-UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
-UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
-UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
-UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
-UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
-UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
-UnityEngine.EventSystems.EventSystem:Update()
-}</args></log4net.Error>
-2025-02-10 04:01:06,127 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
-{1}</format><args>{ArgumentException: An element with the same key already exists in the dictionary., System.Collections.Generic.Dictionary`2[System.Type,UIManager+UIElement].Add (System.Type key, .UIElement value) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:404)
-UIManager..ctor () (at Assets/Scripts/UI/UIManager.cs:29)
-System.Reflection.MonoCMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:513)
-Rethrow as TargetInvocationException: Exception has been thrown by the target of an invocation.
-System.Reflection.MonoCMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:519)
-System.Reflection.MonoCMethod.Invoke (BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:528)
-System.Reflection.ConstructorInfo.Invoke (System.Object[] parameters) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/ConstructorInfo.cs:77)
-System.Activator.CreateInstance (System.Type type, Boolean nonPublic) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Activator.cs:372)
-System.Activator.CreateInstance (System.Type type) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Activator.cs:254)
-System.Activator.CreateInstance[UIManager] () (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Activator.cs:248)
-Singleton`1[UIManager].get_Instance () (at Assets/Scripts/Utilities/Singleton.cs:17)
-UIMain.OnClickQuest () (at Assets/Scripts/UI/UIMain.cs:48)
-UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
-UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
-UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
-UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
-UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
-UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
-UnityEngine.EventSystems.EventSystem:Update()
-}</args></log4net.Error>
-2025-02-10 04:01:38,150 [ 1] INFO  Unity: OnDestroy NetworkManager.
-2025-02-10 04:01:38,151 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-02-17 03:21:01,158 [ 1] INFO  Unity: Warrior OnDestroy :ID:0 POS:(0, 0, 0) DIR:(0, 100, 0) SPD:0 
+2025-02-17 03:21:01,256 [ 1] INFO  Unity: LevelLoadCompleted:1
+2025-02-17 03:21:57,541 [ 1] INFO  Unity: Character_2_iii OnDestroy :ID:10 POS:(5000, 4000, 820) DIR:(100, 0, 0) SPD:0 
+2025-02-17 03:21:57,545 [ 1] INFO  Unity: OnDestroy NetworkManager.
+2025-02-17 03:21:57,546 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:181)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:176)
 
-2025-02-10 04:01:38,152 [ 1] INFO  Unity: Character_1_my OnDestroy :ID:5 POS:(5000, 4000, 820) DIR:(100, 0, 0) SPD:0 

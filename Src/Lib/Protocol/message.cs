@@ -285,10 +285,10 @@ namespace SkillBridge.Message
         public FriendRemoveRequest friendRemove { get; set; }
 
         [global::ProtoBuf.ProtoMember(19)]
-        public TeamInviteRequest teamInviteRequest { get; set; }
+        public TeamInviteRequest teamInviteReq { get; set; }
 
         [global::ProtoBuf.ProtoMember(20)]
-        public TeamInviteResponse teamInviteResponse { get; set; }
+        public TeamInviteResponse teamInviteRes { get; set; }
 
         [global::ProtoBuf.ProtoMember(21)]
         public TeamInfoRequest teamInfo { get; set; }
@@ -357,10 +357,10 @@ namespace SkillBridge.Message
         public FriendRemoveResponse friendRemove { get; set; }
 
         [global::ProtoBuf.ProtoMember(19)]
-        public TeamInviteRequest teamInviteRequest { get; set; }
+        public TeamInviteRequest teamInviteReq { get; set; }
 
         [global::ProtoBuf.ProtoMember(20)]
-        public TeamInviteResponse teamInviteResponse { get; set; }
+        public TeamInviteResponse teamInviteRes { get; set; }
 
         [global::ProtoBuf.ProtoMember(21)]
         public TeamInfoResponse teamInfo { get; set; }

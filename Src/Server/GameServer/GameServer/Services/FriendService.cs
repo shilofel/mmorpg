@@ -68,18 +68,18 @@ namespace GameServer.Services
 
             Log.InfoFormat("FriendAddRequest: FromId:{0},FromName:{1},ToId:{2},ToName:{3}",
                 request.FromId, request.FromName, request.ToId, request.ToName);
-            sender.Session.Response.friendAddReq = request;
-            sender.SendResponse();
+            friend.Session.Response.friendAddReq = request;
+            friend.SendResponse();
         }
 
         private void OnFriendAddResponse(NetConnection<NetSession> sender, FriendAddResponse response)
         {
             Character character = sender.Session.Character;
-            Log.InfoFormat("FriendAddRequest: character:{0},Result:{1},FromId:{2},ToId:{3}",
+            Log.InfoFormat("OnFriendAddResponse: character:{0},Result:{1},FromId:{2},ToId:{3}",
                 character.Id, response.Result, response.Request.FromId, response.Request.ToId);
             sender.Session.Response.friendAddRes = response;
             if (response.Result == Result.Success)
-            {//接受请求
+            {   //接受请求
                 var requester = SessionManager.Instance.GetSession(response.Request.FromId);
                 if(requester == null)
                 {
@@ -87,7 +87,7 @@ namespace GameServer.Services
                     sender.Session.Response.friendAddRes.Errormsg = "请求者已下线";
                 }
                 else
-                {//互相加好友
+                {   //互相加好友
                     //回发消息给请求者
                     character.FriendManager.AddFriend(requester.Session.Character);
                     requester.Session.Character.FriendManager.AddFriend(character);
@@ -98,7 +98,6 @@ namespace GameServer.Services
                     requester.SendResponse();
                 }
             }
-
             sender.SendResponse();
         }
 

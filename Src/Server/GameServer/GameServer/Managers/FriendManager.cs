@@ -93,25 +93,22 @@ namespace GameServer.Managers
             }
             else
             {
-                friendInfo.friendInfo = GetBasicInfo(character.Info);
+                friendInfo.friendInfo =  character.GetBasicInfo();
                 friendInfo.friendInfo.Name = character.Info.Name;
                 friendInfo.friendInfo.Class = character.Info.Class;
                 friendInfo.friendInfo.Level = character.Info.Level;
+
+                if(friend.Level != character.Info.Level)
+                {
+                    friend.Level = character.Info.Level;
+                }
+
                 character.FriendManager.UpdateFriendInfo(this.Owner.Info, 1);
                 friendInfo.Status = 1;
             }
+            Log.InfoFormat("{0}:{1} GetFriendInfo: {2}:{3} Status:{4}",
+            this,Owner.Id, this.Owner.Info.Name, friendInfo.Id,friendInfo.friendInfo.Name, friendInfo.Status);
             return friendInfo;
-        }
-
-        NCharacterInfo GetBasicInfo(NCharacterInfo info)
-        {
-            return new NCharacterInfo()
-            {
-                Id = info.Id,
-                Name = info.Name,
-                Class = info.Class,
-                Level = info.Level
-            };
         }
 
         public NFriendInfo GetFriendInfo(int friendId)
@@ -138,10 +135,26 @@ namespace GameServer.Managers
             this.friendChanged = true;
         }
 
+        public void OffLineNotify()
+        {
+            foreach (var f in this.friends)
+            {
+                //通知所有好友下线
+                var friend = CharacterManager.Instance.GetCharacter(f.friendInfo.Id);
+                if(friend!=null)
+                {
+                    friend.FriendManager.UpdateFriendInfo(this.Owner.Info, 0);
+                }
+            }
+            this.friendChanged = true;
+        }
+
         public void PostProcess(NetMessageResponse message)
         {
+            //有变化发送变化后情况，变化状态符置false  与组队做区分，timestamp确保队伍中每一个玩家得到通知
             if(friendChanged)
             {
+                Log.InfoFormat("PostProcess FriendManager {0}:{1}",this.Owner.Id,this.Owner.Info.Name);
                 this.InitFriends();
                 if(message.friendList == null)
                 {

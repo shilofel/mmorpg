@@ -206,8 +206,8 @@ message NetMessageRequest{
 	FriendListRequest friendList = 17;
 	FriendRemoveRequest friendRemove = 18;
 
-	TeamInviteRequest teamInviteRequest = 19;
-	TeamInviteResponse teamInviteResponse = 20;
+	TeamInviteRequest teamInviteReq = 19;
+	TeamInviteResponse teamInviteRes = 20;
 	TeamInfoRequest teamInfo = 21;
 	TeamLeaveRequest teamLeave = 22;
 }
@@ -235,8 +235,8 @@ message NetMessageResponse{
 	FriendListResponse friendList = 17;
 	FriendRemoveResponse friendRemove = 18;
 
-	TeamInviteRequest teamInviteRequest = 19;
-	TeamInviteResponse teamInviteResponse = 20;
+	TeamInviteRequest teamInviteReq = 19;
+	TeamInviteResponse teamInviteRes = 20;
 	TeamInfoResponse teamInfo = 21;
 	TeamLeaveResponse teamLeave = 22;
 	

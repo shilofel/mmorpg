@@ -42,11 +42,11 @@ namespace Services
             Debug.LogFormat("SendTeamInviteRequest::friendId :{0} friendName:{1}", friendId, friendName);
             NetMessage message = new NetMessage();
             message.Request = new NetMessageRequest();
-            message.Request.teamInviteRequest = new TeamInviteRequest();
-            message.Request.teamInviteRequest.FromId = User.Instance.CurrentCharacter.Id;
-            message.Request.teamInviteRequest.FromName = User.Instance.CurrentCharacter.Name;
-            message.Request.teamInviteRequest.ToId = friendId;
-            message.Request.teamInviteRequest.ToName = friendName;
+            message.Request.teamInviteReq = new TeamInviteRequest();
+            message.Request.teamInviteReq.FromId = User.Instance.CurrentCharacter.Id;
+            message.Request.teamInviteReq.FromName = User.Instance.CurrentCharacter.Name;
+            message.Request.teamInviteReq.ToId = friendId;
+            message.Request.teamInviteReq.ToName = friendName;
             NetClient.Instance.SendMessage(message);
         }
 
@@ -55,10 +55,10 @@ namespace Services
             Debug.LogFormat("SendTeamInviteResponse");
             NetMessage message = new NetMessage();
             message.Request = new NetMessageRequest();
-            message.Request.teamInviteResponse = new TeamInviteResponse();
-            message.Request.teamInviteResponse.Result = accept ? Result.Success : Result.Failed;
-            message.Request.teamInviteResponse.Errormsg = accept ? "组队成功" : "对方已拒绝";
-            message.Request.teamInviteResponse.Request = request;
+            message.Request.teamInviteRes = new TeamInviteResponse();
+            message.Request.teamInviteRes.Result = accept ? Result.Success : Result.Failed;
+            message.Request.teamInviteRes.Errormsg = accept ? "组队成功" : "对方已拒绝";
+            message.Request.teamInviteRes.Request = request;
             NetClient.Instance.SendMessage(message);
         }
 

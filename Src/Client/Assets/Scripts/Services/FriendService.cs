@@ -121,5 +121,7 @@ namespace Services
                 MessageBox.Show("删除失败", "删除好友", MessageBoxType.Error);
             }
         }
+
+
     }
 }

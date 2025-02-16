@@ -87,7 +87,7 @@ public class UIFriends : UIWindow
         }
         MessageBox.Show(string.Format("确实要邀请好友[{0}]加入队伍吗?", selectedItem.info.friendInfo.Name), "邀请好友组队", MessageBoxType.Confirm, "邀请", "取消").OnYes = () =>
         {
-            //TeamService.Instance.SendFriendInviteRequest(this.selectedItem.info.friendInfo.Id, this.selectedItem.info.friendInfo.Name);
+            TeamService.Instance.SendTeamInviteRequest(this.selectedItem.info.friendInfo.Id, this.selectedItem.info.friendInfo.Name);
         };
     }
 

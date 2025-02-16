@@ -60,4 +60,12 @@ public class UITeam : MonoBehaviour
                 this.Members[i].gameObject.SetActive(false);
         }
     }
+
+    public void OnClickFriendRemove()
+    {
+        MessageBox.Show("确实要离开队伍吗?", "退出队伍", MessageBoxType.Confirm, "确认", "取消").OnYes = () =>
+        {
+            TeamService.Instance.SendTeamLeaveRequest();
+        };
+    }
 }

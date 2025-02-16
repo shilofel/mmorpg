@@ -1,32 +1,31 @@
-2025-02-10 04:18:17,056 [ 1] INFO  Unity: LoadingManager start
-2025-02-10 04:18:20,347 [ 1] INFO  Unity: DataManager > DataManager()
-2025-02-10 04:18:27,727 [ 1] INFO  Unity: UserLoginRequest::user :wzh psw:123
-2025-02-10 04:18:27,728 [ 1] INFO  Unity: ConnectToServer() Start 
-2025-02-10 04:18:27,730 [ 1] INFO  Unity: DoConnect
-2025-02-10 04:18:27,731 [ 1] INFO  Unity: NetClient.DoConnect on 127.0.0.1:8000
-2025-02-10 04:18:27,734 [ 1] INFO  Unity: Connect[0] to server 127.0.0.1:8000
+2025-02-17 03:30:03,180 [ 1] INFO  Unity: LoadingManager start
+2025-02-17 03:30:08,542 [ 1] INFO  Unity: DataManager > DataManager()
+2025-02-17 03:30:14,756 [ 1] INFO  Unity: UserLoginRequest::user :user psw:123
+2025-02-17 03:30:14,771 [ 1] INFO  Unity: ConnectToServer() Start 
+2025-02-17 03:30:14,772 [ 1] INFO  Unity: DoConnect
+2025-02-17 03:30:14,775 [ 1] INFO  Unity: NetClient.DoConnect on 127.0.0.1:8000
+2025-02-17 03:30:14,780 [ 1] INFO  Unity: Connect[0] to server 127.0.0.1:8000
 
-2025-02-10 04:18:27,736 [ 1] INFO  Unity: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-02-10 04:18:27,831 [ 1] INFO  Unity: OnLogin:Success [None]
-2025-02-10 04:18:27,833 [ 1] INFO  Unity: LoadLevel: CharSelect
-2025-02-10 04:18:28,089 [ 1] INFO  Unity: LevelLoadCompleted:1
-2025-02-10 04:18:29,572 [ 1] INFO  Unity: Select Char:[1]my[Warrior]
-2025-02-10 04:18:30,312 [ 1] INFO  Unity: UserSendGameEnterRequest::characterIdx :0
-2025-02-10 04:18:30,329 [ 1] INFO  Unity: OnUserGameEnter:Success [None]
-2025-02-10 04:18:30,331 [ 1] INFO  Unity: ItemManager:Init[ID:1,Count:20]
-2025-02-10 04:18:30,332 [ 1] INFO  Unity: ItemManager:Init[ID:2,Count:20]
-2025-02-10 04:18:30,339 [ 1] INFO  Unity: OnMapCharacterEnter:Map:1 Count:1
-2025-02-10 04:18:30,341 [ 1] INFO  Unity: AddCharacter:1:my Map:1 Entity:(10:pos:(5000,4000,820),dir:(100,0,0),spd:0
-2025-02-10 04:18:30,343 [ 1] INFO  Unity: LoadLevel: MainCity
-2025-02-10 04:18:30,875 [ 1] WARN  Unity: No mesh data available for mesh Sphere001 on particle system fx_portal. Make sure Read/Write Enabled is set in the importer to work on the particle system renderer
+2025-02-17 03:30:14,792 [ 1] INFO  Unity: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-02-17 03:30:15,286 [ 1] INFO  Unity: OnLogin:Success [None]
+2025-02-17 03:30:15,298 [ 1] INFO  Unity: LoadLevel: CharSelect
+2025-02-17 03:30:15,986 [ 1] INFO  Unity: LevelLoadCompleted:1
+2025-02-17 03:30:17,225 [ 1] INFO  Unity: Select Char:[2]iii[Warrior]
+2025-02-17 03:30:17,991 [ 1] INFO  Unity: UserSendGameEnterRequest::characterIdx :0
+2025-02-17 03:30:18,047 [ 1] INFO  Unity: OnUserGameEnter:Success [None]
+2025-02-17 03:30:18,070 [ 1] INFO  Unity: ItemManager:Init[ID:1,Count:20]
+2025-02-17 03:30:18,071 [ 1] INFO  Unity: ItemManager:Init[ID:2,Count:20]
+2025-02-17 03:30:18,205 [ 1] INFO  Unity: OnMapCharacterEnter:Map:1 Count:1
+2025-02-17 03:30:18,216 [ 1] INFO  Unity: AddCharacter:2:iii Map:1 Entity:(15:pos:(5000,4000,820),dir:(100,0,0),spd:0
+2025-02-17 03:30:18,234 [ 1] INFO  Unity: LoadLevel: MainCity
+2025-02-17 03:30:19,308 [ 1] WARN  Unity: No mesh data available for mesh Sphere001 on particle system fx_portal. Make sure Read/Write Enabled is set in the importer to work on the particle system renderer
 
-2025-02-10 04:18:30,881 [ 1] INFO  Unity: Warrior OnDestroy :ID:0 POS:(0, 0, 0) DIR:(0, 100, 0) SPD:0 
-2025-02-10 04:18:30,968 [ 1] INFO  Unity: LevelLoadCompleted:1
-2025-02-10 04:18:43,871 [ 1] INFO  Unity: SendFriendAddRequest::friendId :111 friendName:
-2025-02-10 04:18:54,733 [ 1] INFO  Unity: OnDestroy NetworkManager.
-2025-02-10 04:18:54,734 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-02-17 03:30:19,345 [ 1] INFO  Unity: Warrior OnDestroy :ID:0 POS:(0, 0, 0) DIR:(0, 100, 0) SPD:0 
+2025-02-17 03:31:01,096 [ 1] INFO  Unity: LevelLoadCompleted:1
+2025-02-17 03:31:07,084 [ 1] INFO  Unity: Character_2_iii OnDestroy :ID:15 POS:(5000, 4000, 820) DIR:(100, 0, 0) SPD:0 
+2025-02-17 03:31:07,090 [ 1] INFO  Unity: OnDestroy NetworkManager.
+2025-02-17 03:31:07,091 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:181)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:176)
 
-2025-02-10 04:18:54,737 [ 1] INFO  Unity: Character_1_my OnDestroy :ID:10 POS:(5000, 4000, 820) DIR:(100, 0, 0) SPD:0 

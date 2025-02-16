@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Models;
 using System;
+using Managers;
 
 public class UIMain : MonoSingleton<UIMain> {
 
@@ -14,7 +15,8 @@ public class UIMain : MonoSingleton<UIMain> {
     // Use this for initialization
     protected override void OnStart () {
         this.UpdateAvatar();
-	}
+        TeamManager.Instance.ShowTeamUI(true);
+    }
 
     private void UpdateAvatar()
     {

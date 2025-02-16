@@ -259,6 +259,7 @@ namespace Services
                     BagManager.Instance.Init(response.Character.Bag);              
                     EquipManager.Instance.Init(response.Character.Equips);
                     FriendManager.Instance.Init(response.Character.Friends);
+                    TeamManager.Instance.Init();
                     //NQuestInfo quest = new NQuestInfo();
                     //quest.QuestId = 1001;
                     //response.Character.Quests.Add(quest);

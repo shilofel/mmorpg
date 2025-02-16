@@ -224,9 +224,10 @@ namespace GameServer.Services
         //角色离开地图，删除角色
         public void CharacterLeave(Character character)
         {
+            Log.InfoFormat("CharacterLeave:Character{0}:{1}", character.Id, character.Info.Name);
             CharacterManager.Instance.Remove(character.Id);
-            MapManager.Instance[character.Info.mapId].CharacterLeave(character);
             character.Clear();
+            MapManager.Instance[character.Info.mapId].CharacterLeave(character);
         }
     }
 }
