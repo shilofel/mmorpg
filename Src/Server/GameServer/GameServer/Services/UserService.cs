@@ -198,12 +198,12 @@ namespace GameServer.Services
             //character.ItemManager.AddItem(1001, 1);
             //character.ItemManager.AddItem(2001, 1);
             //DBService.Instance.Save();
-
-            sender.SendResponse();
-
             sender.Session.Character = character;
             //赋予后处理器
             sender.Session.PostResponser = character;
+
+            sender.SendResponse();
+
             MapManager.Instance[dbChar.MapID].CharacterEnter(sender, character);
         }
 

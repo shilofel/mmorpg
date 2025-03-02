@@ -55,6 +55,22 @@ public class UIMain : MonoSingleton<UIMain> {
         UIManager.Instance.Show<UIFriends>();
     }
 
+    public void OnClickGuild()
+    {
+        GuildManager.Instance.ShowGuild();
+    }
+    //public void OnClickRide()
+    //{
+    //    UIManager.Instance.Show<UIFriends>();
+    //}
+    //public void OnClickSetting()
+    //{
+    //    UIManager.Instance.Show<UIFriends>();
+    //}
+    //public void OnClickSkill()
+    //{
+    //    UIManager.Instance.Show<UIFriends>();
+    //}
 
     public void ShowTeamUI(bool show)
     {

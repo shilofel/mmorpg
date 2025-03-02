@@ -35,6 +35,9 @@ namespace GameServer
         public virtual DbSet<TCharacterQuest> CharacterQuests { get; set; }
         public virtual DbSet<TCharacterFriend> CharacterFriends { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<TGuild> Guilds { get; set; }
+        public virtual DbSet<TGuildMember> GuildMembers { get; set; }
+        public virtual DbSet<TGuildApply> GuildApplies { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

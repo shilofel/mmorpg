@@ -114,7 +114,7 @@ public class PlayerInputController : MonoBehaviour {
     private void LateUpdate()
     {
         Vector3 offset = this.rb.transform.position - lastPos;
-        this.speed = (int)(offset.magnitude*100f/Time.deltaTime);
+        this.speed = (int)(offset.magnitude*100f/TimeUtil.deltaTime);
 
         this.lastPos = this.rb.transform.position;
 

@@ -96,7 +96,7 @@ public class NPCController : MonoBehaviour {
         while(Mathf.Abs(Vector3.Angle(this.gameObject.transform.forward,faceTo))>5)
         {
             //差值
-            this.gameObject.transform.forward = Vector3.Lerp(this.gameObject.transform.forward, faceTo, Time.deltaTime * 5f);
+            this.gameObject.transform.forward = Vector3.Lerp(this.gameObject.transform.forward, faceTo, TimeUtil.deltaTime * 5f);
             yield return null;
         }
     }

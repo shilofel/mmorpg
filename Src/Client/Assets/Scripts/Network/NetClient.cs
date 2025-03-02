@@ -242,7 +242,7 @@ namespace Network
         
             if (this.lastSendTime == 0)
             {
-                this.lastSendTime = Time.time;
+                this.lastSendTime = TimeUtil.time;
             }
         }
 
