@@ -22,6 +22,7 @@ namespace GameServer.Services
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<GuildListRequest>(this.OnGuildList);
 
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<GuildLeaveRequest>(this.OnGuildLeave);
+            MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<GuildAdminRequest>(this.OnGuildAdmin);
         }
 
         public void Init()
@@ -142,6 +143,35 @@ namespace GameServer.Services
 
             DBService.Instance.Save();
             sender.SendResponse();
+        }
+
+        private void OnGuildAdmin(NetConnection<NetSession> sender, GuildAdminRequest message)
+        {
+            Character character = sender.Session.Character;
+            Log.InfoFormat("OnGuildAdmin: characterId:{1}", character.Id);
+
+            sender.Session.Response.guildAdmin = new GuildAdminResponse();
+            if (character.Guild == null)
+            {
+                sender.Session.Response.guildAdmin.Errormsg = "没有公会，无法操作";
+                sender.Session.Response.guildAdmin.Result = Result.Failed;
+                sender.SendResponse();
+                return;
+            }
+            //需要追加角色是否有权限执行对应操作的检查
+            character.Guild.ExecuteAdmin(message.Command, message.Target, character.Id);
+
+            var target = SessionManager.Instance.GetSession(message.Target);
+            if(target != null)
+            {
+                target.Session.Response.guildAdmin = new GuildAdminResponse();
+                target.Session.Response.guildAdmin.Command = message;
+                target.Session.Response.guildAdmin.Result = Result.Success;
+                target.SendResponse();
+            }
+
+            sender.Session.Response.guildAdmin.Command = message;
+            sender.Session.Response.guildAdmin.Result = Result.Success;
         }
     }
 }

@@ -26,6 +26,7 @@ namespace Services
             MessageDistributer.Instance.Subscribe<GuildListResponse>(this.OnGuildList);
             MessageDistributer.Instance.Subscribe<GuildResponse>(this.OnGuild);
             MessageDistributer.Instance.Subscribe<GuildLeaveResponse>(this.OnGuildLeave);
+            MessageDistributer.Instance.Subscribe<GuildAdminResponse>(this.OnGuildAdmin);
         }
 
         public void Dispose()
@@ -36,6 +37,7 @@ namespace Services
             MessageDistributer.Instance.Unsubscribe<GuildListResponse>(this.OnGuildList);
             MessageDistributer.Instance.Unsubscribe<GuildResponse>(this.OnGuild);
             MessageDistributer.Instance.Unsubscribe<GuildLeaveResponse>(this.OnGuildLeave);
+            MessageDistributer.Instance.Unsubscribe<GuildAdminResponse>(this.OnGuildAdmin);
         }
 
         public void Init()
@@ -84,14 +86,33 @@ namespace Services
             NetClient.Instance.SendMessage(message);
         }
 
-        internal void SendGuildJoinResponse(bool accept,GuildJoinRequest request)
+        internal void SendAdminCommand(GuildAdminCommand command, int characterId)
+        {
+            Debug.LogFormat("SendAdminCommand");
+            NetMessage message = new NetMessage();
+            message.Request = new NetMessageRequest();
+            message.Request.guildAdmin = new GuildAdminRequest();
+            message.Request.guildAdmin.Command = command;
+            message.Request.guildAdmin.Target = characterId;
+            NetClient.Instance.SendMessage(message);
+        }
+
+        private void OnGuildAdmin(object sender, GuildAdminResponse message)
+        {
+            //待实现
+            Debug.LogFormat("OnGuildAdmin:{0} {1}",message.Command,message.Result);
+            MessageBox.Show(string.Format("执行操作:{0} 结果:{1}{2}", message.Command,message.Result,message.Errormsg));
+        }
+
+        //回复申请加入公会的审批
+        internal void SendGuildJoinApply(bool accept,NGuildApplyInfo apply)
         {
             Debug.LogFormat("SendGuildJoinResponse");
             NetMessage message = new NetMessage();
             message.Request = new NetMessageRequest();
             message.Request.guildJoinRes = new GuildJoinResponse();
             message.Request.guildJoinRes.Result = Result.Success;
-            message.Request.guildJoinRes.Apply = request.Apply;
+            message.Request.guildJoinRes.Apply = apply;
             message.Request.guildJoinRes.Apply.Result = accept ? ApplyResult.Accept : ApplyResult.Reject;
             NetClient.Instance.SendMessage(message);
         }
@@ -102,11 +123,11 @@ namespace Services
 
             confirm.OnYes = () =>
             {
-                this.SendGuildJoinResponse(true, request);
+                this.SendGuildJoinApply(true, request.Apply);
             };
             confirm.OnNo = () =>
             {
-                this.SendGuildJoinResponse(false, request);
+                this.SendGuildJoinApply(false, request.Apply);
             };
         }
 
@@ -162,6 +183,8 @@ namespace Services
             if (this.OnGuildListResult != null)
                 this.OnGuildListResult(message.Guilds);
         }
+
+
 
         internal void SendGuildListRequest()
         {

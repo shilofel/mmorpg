@@ -15,7 +15,7 @@ namespace GameServer.Models
 
         public List<Character> members = new List<Character>();
 
-        public int timestamp;
+        public double timestamp;
 
         public Team(Character leader)
         {
@@ -30,7 +30,7 @@ namespace GameServer.Models
             }
             this.members.Add(member);
             member.Team = this;
-            timestamp = Time.timestamp;
+            timestamp = TimeUtil.timestamp;
         }
 
         public void Leave(Character member)
@@ -48,7 +48,7 @@ namespace GameServer.Models
                         this.Leader = null;
                 }
                 member.Team = null;
-                timestamp = Time.timestamp;
+                timestamp = TimeUtil.timestamp;
             }
         }
 

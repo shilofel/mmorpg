@@ -31,14 +31,14 @@
 
 using System;
 using System.Runtime.InteropServices;
-class Time
+class TimeUtil
 {
     [DllImport("kernel32.dll")]
     static extern bool QueryPerformanceCounter([In, Out] ref long lpPerformanceCount);
     [DllImport("kernel32.dll")]
     static extern bool QueryPerformanceFrequency([In, Out] ref long lpFrequency);
 
-    static Time()
+    static TimeUtil()
     {
         startupTicks = ticks;
     }
@@ -140,7 +140,7 @@ class Time
         lastTick = _ticks;
     }
 
-    public static int timestamp
+    public static double timestamp
     {
         get { return GetTimestamp(DateTime.Now); }
     }
@@ -153,9 +153,9 @@ class Time
         return dateTimeStart.Add(toNow);
     }
 
-    public static int GetTimestamp(System.DateTime time)
+    public static double GetTimestamp(System.DateTime time)
     {
         System.DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
-        return (int)(time - startTime).TotalSeconds;
+        return (time - startTime).TotalSeconds;
     }
 }

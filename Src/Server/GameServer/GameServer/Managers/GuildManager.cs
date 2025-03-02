@@ -33,7 +33,7 @@ namespace GameServer.Managers
         {
             this.Guilds.Add(guild.Id, guild);
             this.GuildNames.Add(guild.Name);
-            guild.timestamp = Time.timestamp;
+            guild.timestamp = TimeUtil.timestamp;
         }
 
         public bool CreateGuild(string name,string notice, Character leader)
