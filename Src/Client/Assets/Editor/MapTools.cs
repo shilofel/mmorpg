@@ -55,8 +55,9 @@ public class MapTools {
                 def.Position = GameObjectTool.WorldToLogicN(teleporter.transform.position);
                 def.Direction = GameObjectTool.WorldToLogicN(teleporter.transform.forward);
             }
-
+#if UNITY_EDITOR
             DataManager.Instance.SaveTeleporters();
+#endif
             EditorSceneManager.OpenScene("Assets/Levels/" + currentScene + ".unity");
             EditorUtility.DisplayDialog("提示", "传送点导出完成", "确定");
         }
@@ -109,9 +110,10 @@ public class MapTools {
                 def.MapID = map.Value.ID;
                 def.Position = GameObjectTool.WorldToLogicN(SpawnPoint.transform.position);
                 def.Direction = GameObjectTool.WorldToLogicN(SpawnPoint.transform.forward);
-            }  
-
+            }
+#if UNITY_EDITOR
             DataManager.Instance.SaveSpawnPoints();
+#endif
             EditorSceneManager.OpenScene("Assets/Levels/" + currentScene + ".unity");
             EditorUtility.DisplayDialog("提示", "刷怪点导出完成", "确定");
         }

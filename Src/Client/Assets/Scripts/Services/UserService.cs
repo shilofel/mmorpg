@@ -5,7 +5,7 @@ using System.Text;
 using Common;
 using Network;
 using UnityEngine;
-
+using UnityEditor;
 using SkillBridge.Message;
 using Models;
 using Managers;
@@ -22,6 +22,8 @@ namespace Services
         NetMessage pendingMessage = null;
 
         bool connected = false;
+        //当前游戏是否退出
+        bool isQuitGame = false;
 
         public UserService()
         {
@@ -261,33 +263,19 @@ namespace Services
                     FriendManager.Instance.Init(response.Character.Friends);
                     //TeamManager.Instance.Init();
                     QuestManager.Instance.Init(response.Character.Quests);
-                    //GuildManager.Instance.Init(response.Character.Guild);
+                    GuildManager.Instance.Init(response.Character.Guild);
                 }
-            }
-
-            if (this.OnCharacterCreate != null)
-            {
-                //this.OnCharacterCreate(response.Result, response.Errormsg);
             }
         }
 
-        public void SendGameLeave()
+        public void SendGameLeave(bool isQuitGame = false)
         {
+            this.isQuitGame = isQuitGame;
             Debug.LogFormat("UserSendGameLeaveRequest");
             NetMessage message = new NetMessage();
             message.Request = new NetMessageRequest();
             message.Request.gameLeave = new UserGameLeaveRequest();
-
-            if (this.connected && NetClient.Instance.Connected)
-            {
-                this.pendingMessage = null;
-                NetClient.Instance.SendMessage(message);
-            }
-            else
-            {
-                this.pendingMessage = message;
-                this.ConnectToServer();
-            }
+            NetClient.Instance.SendMessage(message);
         }
 
         void OnGameLeave(object sender, UserGameLeaveResponse response)
@@ -296,25 +284,16 @@ namespace Services
             Debug.LogFormat("OnGameLeave:{0} [{1}]", response.Result, response.Errormsg);
 
             //重置mapID防止无法重复进入
+            User.Instance.CurrentCharacter = null;
             MapService.Instance.CurrentMapId = 0;
-            if (response.Result == Result.Success)
+            if (this.isQuitGame)
             {
-                Models.User.Instance.Info.Player.Characters.Clear();
-                //Models.User.Instance.Info.Player.Characters.AddRange(response.Characters);
-            }
-
-            if (this.OnCharacterCreate != null)
-            {
-                //this.OnCharacterCreate(response.Result, response.Errormsg);
+//#if UNITY_EDITOR
+//                UnityEditor.Editor.EditorApplication.isPlaying = false;
+//#else
+//                Application.Quit();
+//#endif
             }
         }
-
-        /*private void OnCharacterEnter(object sender, MapCharacterEnterResponse response)
-        {
-            Debug.LogFormat("OnCharacterEnter:{0}", response.mapId);
-            NCharacterInfo info = response.Characters[0];
-            User.Instance.CurrentCharacter = info;
-            SceneManager.Instance.LoadScene(DataManager.Instance.Maps[response.mapId].Resource);
-        }*/
     }
 }

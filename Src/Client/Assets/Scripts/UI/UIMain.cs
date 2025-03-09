@@ -29,11 +29,11 @@ public class UIMain : MonoSingleton<UIMain> {
 		
 	}
 
-    public void BakToCharacterSelect()
-    {
-        SceneManager.Instance.LoadScene("CharSelect");
-        Services.UserService.Instance.SendGameLeave();
-    }
+    //public void BakToCharacterSelect()
+    //{
+    //    SceneManager.Instance.LoadScene("CharSelect");
+    //    Services.UserService.Instance.SendGameLeave();
+    //}
 
     public void OnClickBag()
     {
@@ -63,10 +63,10 @@ public class UIMain : MonoSingleton<UIMain> {
     //{
     //    UIManager.Instance.Show<UIFriends>();
     //}
-    //public void OnClickSetting()
-    //{
-    //    UIManager.Instance.Show<UIFriends>();
-    //}
+    public void OnClickSetting()
+    {
+        UIManager.Instance.Show<UISetting>();
+    }
     //public void OnClickSkill()
     //{
     //    UIManager.Instance.Show<UIFriends>();

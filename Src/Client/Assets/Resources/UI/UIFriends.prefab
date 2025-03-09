@@ -1302,6 +1302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 571b332a4be8f934695ba1f7e59c1141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Root: {fileID: 0}
   itemPrefab: {fileID: 1974643914013890, guid: 53677e8f634040247822798ebb6054be, type: 2}
   listMain: {fileID: 114257210998161832}
   itemRoot: {fileID: 224361462877732596}
