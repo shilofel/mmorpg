@@ -24,6 +24,9 @@ namespace GameServer.Entities
         
         public Guild Guild;
         public Team Team;
+
+        public Chat Chat;
+
         public double TeamUpdateTS;
         public double GuildUpdateTS;
 
@@ -60,6 +63,7 @@ namespace GameServer.Entities
             this.FriendManager.GetFriendInfos(this.Info.Friends);
 
             this.Guild = GuildManager.Instance.GetGuild(this.Data.GuildId);
+            this.Chat = new Chat(this);
         }
 
         public long Gold
@@ -108,6 +112,8 @@ namespace GameServer.Entities
             {
                 this.StatusManager.PostProcess(message);
             }
+
+            this.Chat.PostProcess(message);
         }
 
         public NCharacterInfo GetBasicInfo()

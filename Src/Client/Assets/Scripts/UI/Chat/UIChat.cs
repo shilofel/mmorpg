@@ -8,12 +8,13 @@ using Models;
 using Services;
 using Candlelight.UI;
 using System;
+using TMPro;
 
 public class UIChat : UIWindow
 {
-    public HyperText textArea;
+    public TextMeshProUGUI textArea;
 
-    public TabView cannelTab;
+    public TabView channelTab;
 
     public InputField chatText;
     public Text chatTarget;
@@ -22,13 +23,14 @@ public class UIChat : UIWindow
 
     private void Start()
     {
-        this.cannelTab.OnTabSelect += OnDisplayChannelSelected;
+        this.channelSelect.onValueChanged.AddListener(OnSendChannelChanged);
+        this.channelTab.OnTabSelect += OnDisplayChannelSelected;
         ChatManager.Instance.OnChat += RefreshUI;
     }
 
     private void OnDestroy()
     {
-        //ChatManager.Instance.OnChat -= RefreshUI;
+        ChatManager.Instance.OnChat -= RefreshUI;
     }
 
     private void Update()
@@ -36,7 +38,7 @@ public class UIChat : UIWindow
         InputManager.Instance.IsInputMode = chatText.isFocused;
     }
 
-    private void OnDisplayChannelSelected(int idx)
+    public void OnDisplayChannelSelected(int idx)
     {
         ChatManager.Instance.displayChannel = (ChatManager.LocalChannel)idx;
         RefreshUI();
@@ -45,7 +47,7 @@ public class UIChat : UIWindow
     public void RefreshUI()
     {
         this.textArea.text = ChatManager.Instance.GetCurrentMeesage();
-        this.channelSelect.value = (int)ChatManager.Instance.SendChannel - 1;
+        this.channelSelect.value = (int)ChatManager.Instance.sendChannel - 1;
         if(ChatManager.Instance.SendChannel == SkillBridge.Message.ChatChannel.Private)
         {
             this.chatTarget.gameObject.SetActive(true);
@@ -81,7 +83,7 @@ public class UIChat : UIWindow
         OnEndInput(this.chatText.text);
     }
 
-    private void OnEndInput(string text)
+    public void OnEndInput(string text)
     {
         if (!string.IsNullOrEmpty(text))
             this.SendChat(text);
@@ -89,13 +91,14 @@ public class UIChat : UIWindow
         this.chatText.text = "";
     }
 
-    void SendChat(string content)
+    public void SendChat(string content)
     {
         ChatManager.Instance.SendChat(content, ChatManager.Instance.PrivateID, ChatManager.Instance.PrivateName);
     }
     //切换聊天频道
-    public void OnSendChannelChanged(int idx)
+    public void OnSendChannelChanged(Int32 idx)
     {
+        //idx = channelSelect.value;
         //发送频道没有综合，即所有频道
         if (ChatManager.Instance.sendChannel == (ChatManager.LocalChannel)(idx + 1))
             return;

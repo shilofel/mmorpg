@@ -9,6 +9,7 @@ using Common.Data;
 using System.Text;
 using System.Collections.Generic;
 using System;
+using Services;
 
 namespace Managers
 {
@@ -34,7 +35,7 @@ namespace Managers
             ChatChannel.Private
         };
 
-        internal void StartPrivateChat(int targetId,string targetName)
+        internal void StartPrivateChat(int targetId, string targetName)
         {
             this.PrivateID = targetId;
             this.PrivateName = targetName;
@@ -46,7 +47,14 @@ namespace Managers
 
         public LocalChannel displayChannel;
         public LocalChannel sendChannel;
-        public List<ChatMessage> Messages = new List<ChatMessage>();
+        public List<ChatMessage>[] Messages = new List<ChatMessage>[6]
+            {new List<ChatMessage>(),
+            new List<ChatMessage>(),
+            new List<ChatMessage>(),
+            new List<ChatMessage>(),
+            new List<ChatMessage>(),
+            new List<ChatMessage>()
+    };
         public int PrivateID = 0;
         public string PrivateName = "";
 
@@ -68,20 +76,17 @@ namespace Managers
 
         public Action OnChat { get; internal set; }
 
-        void Init()
+        public void Init ()
         {
-
+            foreach(var message in Messages)
+            {
+                message.Clear();
+            }
         }
 
         public void SendChat(string content,int toId = 0,string toName ="")
         {
-            this.Messages.Add(new ChatMessage()
-            {
-                Channel = ChatChannel.System,
-                Message = content,
-                FromName = User.Instance.CurrentCharacter.Name,
-                FromId = User.Instance.CurrentCharacter.Id
-            });
+            ChatService.Instance.SendChat(this.SendChannel, content, toId, toName);
         }
 
         public bool SetSendChannel(LocalChannel channel)
@@ -105,9 +110,22 @@ namespace Managers
             return true;
         }
 
-        private void AddSystemMessage(string message,string from = "")
+        public void AddMessage(ChatChannel channel, List<ChatMessage> messages)
         {
-            this.Messages.Add(new ChatMessage()
+            for(int ch =0;ch<6;ch++)
+            {
+                if((this.ChannelFilter[ch]&channel)==channel)
+                {
+                    this.Messages[ch].AddRange(messages);
+                }
+            }
+            if (this.OnChat != null)
+                this.OnChat();
+        }
+
+        public void AddSystemMessage(string message,string from = "")
+        {
+            this.Messages[(int)LocalChannel.All].Add(new ChatMessage()
             {
                 Channel = ChatChannel.System,
                 Message = message,
@@ -120,7 +138,7 @@ namespace Managers
         internal string GetCurrentMeesage()
         {
             StringBuilder sb = new StringBuilder();
-            foreach(var message in this.Messages)
+            foreach(var message in this.Messages[(int)displayChannel])
             {
                 sb.AppendLine(FormMessage(message));
             }
@@ -151,10 +169,10 @@ namespace Managers
         {
             if (message.FromId == User.Instance.CurrentCharacter.Id)
             {
-                return "<a name=\"\" class=\"player\">[我]</a>";
+                return "<link =\"\"><#00FFE0><u>[我]</u></color></link>";
             }
             else
-                return string.Format("<a name = \"c:{0}:{1}\" class=\"player\">[{1}]</a>", message.FromId, message.FromName);
+                return string.Format("<link = \"c:{0}:{1}\"><#00FFE0><u>[{1}]</u></color></link>", message.FromId, message.FromName);
         }
     }
 }

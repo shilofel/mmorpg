@@ -697,13 +697,13 @@ message GuildAdminResponse
 //聊天
 enum CHAT_CHANNEL
 {
-	ALL = 1;
-	LOCAL = 2;
-	WORLD = 3;
+	ALL = -1;
+	LOCAL = 1;
+	WORLD = 2;
 	SYSTEM = 4;
-	PRIVATE = 5;
-	TEAM = 6;
-	GUILD = 7;
+	PRIVATE = 8;
+	TEAM = 16;
+	GUILD = 32;
 }
 
 message ChatMessage
