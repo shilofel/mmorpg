@@ -8,7 +8,7 @@ using SkillBridge.Message;
 
 namespace Models
 {
-    class Item
+    public class Item
     {
         public int Id;
         public int Count;

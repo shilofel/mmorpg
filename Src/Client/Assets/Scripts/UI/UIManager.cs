@@ -34,6 +34,7 @@ public class UIManager:Singleton<UIManager>
         this.UIResources.Add(typeof(UIGuildApplyList), new UIElement() { Resources = "UI/Guild/UIGuildApplyList", Cache = true });
         this.UIResources.Add(typeof(UISetting), new UIElement() { Resources = "UI/UISetting", Cache = true });
         this.UIResources.Add(typeof(UIPopCharMenu), new UIElement() { Resources = "UI/UIPopCharMenu", Cache = true });
+        this.UIResources.Add(typeof(UIRide), new UIElement() { Resources = "UI/UIRide", Cache = true });
     }
 
     ~UIManager()

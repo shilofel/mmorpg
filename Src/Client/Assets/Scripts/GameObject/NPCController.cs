@@ -80,12 +80,12 @@ public class NPCController : MonoBehaviour {
 
     IEnumerator DoInteractive()
     {
-        yield return FaceToPlayer();
+        yield return StartCoroutine(FaceToPlayer());
         if (NPCManager.Instance.Interative(npc))
         {
             anim.SetTrigger("Talk");
+            yield return new WaitForSeconds(3f);
         }
-        yield return new WaitForSeconds(3f);
         inInteractive = false;
     }
 
@@ -93,10 +93,10 @@ public class NPCController : MonoBehaviour {
     {
         //向量减法
         Vector3 faceTo = (User.Instance.CurrentCharacterObject.transform.position - this.transform.position).normalized;
-        while(Mathf.Abs(Vector3.Angle(this.gameObject.transform.forward,faceTo))>5)
+        while(Mathf.Abs(Vector3.Angle(this.gameObject.transform.forward,faceTo))>1f)
         {
             //差值
-            this.gameObject.transform.forward = Vector3.Lerp(this.gameObject.transform.forward, faceTo, TimeUtil.deltaTime * 5f);
+            this.gameObject.transform.forward = Vector3.Lerp(this.gameObject.transform.forward, faceTo, Time.deltaTime * 5f);
             yield return null;
         }
     }

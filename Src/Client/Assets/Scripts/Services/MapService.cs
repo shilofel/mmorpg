@@ -79,7 +79,7 @@ namespace Services
             }
         }
 
-        internal void SendMapEntitySync(EntityEvent entityEvent, NEntity entity)
+        internal void SendMapEntitySync(EntityEvent entityEvent, NEntity entity,int param)
         {
             Debug.LogFormat("MapEntityUpdateSync:ID :{0} POS:{1} DIR:{2} SPD:{3}", entity.Id, entity.Position.ToString(),entity.Direction.ToString(),entity.Speed);
             NetMessage message = new NetMessage();
@@ -89,7 +89,8 @@ namespace Services
             {
                 Id = entity.Id,
                 Event = entityEvent,
-                Entity = entity
+                Entity = entity,
+                Param = param
             };
 
             NetClient.Instance.SendMessage(message);

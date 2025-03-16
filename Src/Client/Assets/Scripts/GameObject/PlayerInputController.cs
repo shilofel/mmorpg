@@ -48,7 +48,7 @@ public class PlayerInputController : MonoBehaviour {
         if (character == null)
             return;
 
-        if (InputManager.Instance.IsInputMode) return;
+        if (InputManager.Instance != null &&InputManager.Instance.IsInputMode) return;
 
         float v = Input.GetAxis("Vertical");
         if (v > 0.01)
@@ -116,7 +116,7 @@ public class PlayerInputController : MonoBehaviour {
     private void LateUpdate()
     {
         Vector3 offset = this.rb.transform.position - lastPos;
-        this.speed = (int)(offset.magnitude*100f/TimeUtil.deltaTime);
+        this.speed = (int)(offset.magnitude*100f/Time.deltaTime);
 
         this.lastPos = this.rb.transform.position;
 
@@ -128,11 +128,11 @@ public class PlayerInputController : MonoBehaviour {
         this.transform.position = this.rb.transform.position;
     }
 
-    void SendEntityEvent(EntityEvent entityEvent)
+    public void SendEntityEvent(EntityEvent entityEvent,int param =0)
     {
         if (entityController != null)
-            entityController.OnEntityEvent(entityEvent);
+            entityController.OnEntityEvent(entityEvent, param);
         //事件、实体数据
-        MapService.Instance.SendMapEntitySync(entityEvent, character.EntityData);
+        MapService.Instance.SendMapEntitySync(entityEvent, character.EntityData, param);
     }
 }

@@ -59,10 +59,10 @@ public class UIMain : MonoSingleton<UIMain> {
     {
         GuildManager.Instance.ShowGuild();
     }
-    //public void OnClickRide()
-    //{
-    //    UIManager.Instance.Show<UIFriends>();
-    //}
+    public void OnClickRide()
+    {
+        UIManager.Instance.Show<UIRide>();
+    }
     public void OnClickSetting()
     {
         UIManager.Instance.Show<UISetting>();

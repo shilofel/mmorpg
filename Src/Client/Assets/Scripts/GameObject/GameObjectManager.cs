@@ -87,13 +87,13 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
     {
         go.transform.position = GameObjectTool.LogicToWorld(cha.position);
         go.transform.forward = GameObjectTool.LogicToWorld(cha.direction);
-
         //赋值实体控制器
         EntityController ec = go.GetComponent<EntityController>();
         if (ec != null)
         {
             ec.entity = cha;
             ec.isPlayer = cha.IsCurrentPlayer;
+            ec.Ride(cha.Info.Ride);
         }
         //赋值InputPlayerController
         PlayerInputController pc = go.GetComponent<PlayerInputController>();
@@ -101,7 +101,7 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
         {
             if (cha.IsCurrentPlayer)
             {
-                User.Instance.CurrentCharacterObject = go;
+                User.Instance.CurrentCharacterObject = pc;
                 MainPlayerCamera.Instance.player = go;
                 pc.enabled = true;
                 pc.character = cha;
@@ -112,6 +112,20 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
                 pc.enabled = false;
             }
         }
+    }
+
+    public RideController LoadRide(int rideId,Transform parent)
+    {
+        var rideDefine = DataManager.Instance.Rides[rideId];
+        UnityEngine.Object obj = Resloader.Load<UnityEngine.Object>(rideDefine.Resource);
+        if(obj == null)
+        {
+            Debug.LogErrorFormat("Ride[{0}] Reource[{1}] not existed", rideDefine.ID, rideDefine.Resource);
+            return null;
+        }
+        GameObject go = (GameObject)Instantiate(obj, parent);
+        go.name = "Ride_" + rideDefine.ID + "_" + rideDefine.Name;
+        return go.GetComponent<RideController>();
     }
 }
 
