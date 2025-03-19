@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Managers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,6 +36,7 @@ public class UIManager:Singleton<UIManager>
         this.UIResources.Add(typeof(UISetting), new UIElement() { Resources = "UI/UISetting", Cache = true });
         this.UIResources.Add(typeof(UIPopCharMenu), new UIElement() { Resources = "UI/UIPopCharMenu", Cache = true });
         this.UIResources.Add(typeof(UIRide), new UIElement() { Resources = "UI/UIRide", Cache = true });
+        this.UIResources.Add(typeof(UISystemConfig), new UIElement() { Resources = "UI/UISystemConfig", Cache = true });
     }
 
     ~UIManager()
@@ -44,7 +46,7 @@ public class UIManager:Singleton<UIManager>
 
     public T Show<T>()
     {
-        //SceneManager.Instance.PlaySound();
+        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Win_Open);
         Type type = typeof(T);
         if (this.UIResources.ContainsKey(type))
         {
@@ -69,7 +71,8 @@ public class UIManager:Singleton<UIManager>
 
     public void Close(Type type)
     {
-        if(this.UIResources.ContainsKey(type))
+        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Win_Close);
+        if (this.UIResources.ContainsKey(type))
         {
             UIElement info = UIResources[type];
             if(info.Cache)

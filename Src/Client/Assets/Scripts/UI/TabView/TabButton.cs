@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TabButton : MonoBehaviour {
+
     public Sprite activeImage;
     private Sprite normalImage;
 
@@ -13,6 +14,7 @@ public class TabButton : MonoBehaviour {
     public bool selected = false;
 
     private Image tabImage;
+
 	// Use this for initialization
 	void Start () {
         tabImage = this.GetComponent<Image>();
@@ -30,4 +32,5 @@ public class TabButton : MonoBehaviour {
     {
         this.tabView.SelectTab(this.tabIndex);
     }
+
 }

@@ -41,9 +41,12 @@ public class LoadingManager : MonoBehaviour {
         MapService.Instance.Init();
         UserService.Instance.Init();
         ShopManager.Instance.Init();
+        StatusService.Instance.Init();
         FriendService.Instance.Init();
-        //TestManager.Instance.Init();
-        // Fake Loading Simulate
+        TeamService.Instance.Init();
+        GuildService.Instance.Init();
+        ChatService.Instance.Init();
+        SoundManager.Instance.PlayMusic(SoundDefine.Music_Login);
         for (float i = 50; i < 100;)
         {
             i += Random.Range(0.1f, 1.5f);

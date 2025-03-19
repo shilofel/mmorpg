@@ -133,3 +133,101 @@ UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr return
 2025-03-16 23:44:06,911 [ 1] INFO  Unity: Stop
 2025-03-16 23:44:06,911 [ 1] INFO  Unity: MapEntityUpdateSync:ID :6 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:0
 2025-03-16 23:44:09,650 [ 1] INFO  Unity: MapEntityUpdateSync:ID :6 POS:SkillBridge.Message.NVector3 DIR:SkillBridge.Message.NVector3 SPD:0
+2025-03-16 23:47:14,377 [ 1] WARN  Unity: A meta data file (.meta) exists but its asset 'Assets/Models/Monsters/M1001/Materials' can't be found. When moving or deleting files outside of Unity, please ensure that the corresponding .meta file is moved or deleted along with it.
+
+2025-03-16 23:47:14,559 [ 1] WARN  Unity: Removing Assets/Models/Monsters/M1001/Materials because the asset does not exist
+
+2025-03-16 23:47:14,650 [ 1] WARN  Unity: GUID [f4ac66a187b3d7f4f8dbd6d7a6d0e61c] for asset 'Assets/References' conflicts with:
+  'Assets/Models/References' (current owner)
+Assigning a new guid.
+
+
+2025-03-16 23:47:14,650 [ 1] WARN  Unity: GUID [2f97a4abce96a514d85a519c60f83105] for asset 'Assets/References/Common.dll' conflicts with:
+  'Assets/Models/References/Common.dll' (current owner)
+Assigning a new guid.
+
+
+2025-03-16 23:47:14,650 [ 1] WARN  Unity: GUID [38dd9b9ee1bbf224090961cbcd609925] for asset 'Assets/References/Common.dll.mdb' conflicts with:
+  'Assets/Models/References/Common.dll.mdb' (current owner)
+Assigning a new guid.
+
+
+2025-03-16 23:47:14,651 [ 1] WARN  Unity: GUID [7051ae206486bf8469e5fd8a96c16220] for asset 'Assets/References/Protocol.dll' conflicts with:
+  'Assets/Models/References/Protocol.dll' (current owner)
+Assigning a new guid.
+
+
+2025-03-16 23:47:14,651 [ 1] WARN  Unity: GUID [44e58472c153b014c94822b1ea029043] for asset 'Assets/References/Protocol.dll.mdb' conflicts with:
+  'Assets/Models/References/Protocol.dll.mdb' (current owner)
+Assigning a new guid.
+
+
+2025-03-16 23:47:14,651 [ 1] WARN  Unity: GUID [fa0453de4cf2b234691badf218160bd7] for asset 'Assets/References/log4net.dll' conflicts with:
+  'Assets/Models/References/log4net.dll' (current owner)
+Assigning a new guid.
+
+
+2025-03-16 23:47:14,652 [ 1] WARN  Unity: GUID [e63ac4e6a16dda047a1dbc9b610b73e4] for asset 'Assets/References/log4net.dll.mdb' conflicts with:
+  'Assets/Models/References/log4net.dll.mdb' (current owner)
+Assigning a new guid.
+
+
+2025-03-16 23:47:14,652 [ 1] WARN  Unity: GUID [8525230445c57eb4f946072a035bf3cb] for asset 'Assets/References/log4net.xml' conflicts with:
+  'Assets/Models/References/log4net.xml' (current owner)
+Assigning a new guid.
+
+
+2025-03-16 23:47:14,652 [ 1] WARN  Unity: GUID [cb1abca692685ef4ea9f46848ae4b33d] for asset 'Assets/References/protobuf-net.dll' conflicts with:
+  'Assets/Models/References/protobuf-net.dll' (current owner)
+Assigning a new guid.
+
+
+2025-03-16 23:47:14,653 [ 1] WARN  Unity: GUID [072043ef8d171254882e73b37f824cbd] for asset 'Assets/References/protobuf-net.xml' conflicts with:
+  'Assets/Models/References/protobuf-net.xml' (current owner)
+Assigning a new guid.
+
+
+2025-03-16 23:47:20,176 [ 1] ERROR Unity: error CS1704: An assembly with the same name `Common' has already been imported. Consider removing one of the references or sign the assembly
+Assets/Models/References/Common.dll (Location of the symbol related to previous error)
+Assets/References/Common.dll (Location of the symbol related to previous error)
+error CS1704: An assembly with the same name `Protocol' has already been imported. Consider removing one of the references or sign the assembly
+Assets/Models/References/Protocol.dll (Location of the symbol related to previous error)
+Assets/References/Protocol.dll (Location of the symbol related to previous error)
+
+Compilation failed: 2 error(s), 0 warnings
+
+2025-03-16 23:47:20,183 [ 1] ERROR Unity: error CS1704: An assembly with the same name `Common' has already been imported. Consider removing one of the references or sign the assembly
+Assets/Models/References/Common.dll (Location of the symbol related to previous error)
+Assets/References/Common.dll (Location of the symbol related to previous error)
+error CS1704: An assembly with the same name `Protocol' has already been imported. Consider removing one of the references or sign the assembly
+Assets/Models/References/Protocol.dll (Location of the symbol related to previous error)
+Assets/References/Protocol.dll (Location of the symbol related to previous error)
+
+Compilation failed: 2 error(s), 0 warnings
+
+2025-03-16 23:47:20,183 [ 1] ERROR Unity: error CS1704: An assembly with the same name `Common' has already been imported. Consider removing one of the references or sign the assembly
+Assets/Models/References/Common.dll (Location of the symbol related to previous error)
+Assets/References/Common.dll (Location of the symbol related to previous error)
+error CS1704: An assembly with the same name `Protocol' has already been imported. Consider removing one of the references or sign the assembly
+Assets/Models/References/Protocol.dll (Location of the symbol related to previous error)
+Assets/References/Protocol.dll (Location of the symbol related to previous error)
+
+Compilation failed: 2 error(s), 0 warnings
+
+2025-03-16 23:47:23,328 [ 1] ERROR Unity: Assets/TabButton.cs(6,14): error CS0101: The namespace `global::' already contains a definition for `TabButton'
+
+2025-03-16 23:47:24,174 [ 1] WARN  Unity: The referenced script (Unknown) on this Behaviour is missing!
+
+2025-03-16 23:47:24,174 [ 1] WARN  Unity: The referenced script on this Behaviour (Game Object 'GameObjectManager') is missing!
+
+2025-03-16 23:47:24,191 [ 1] WARN  Unity: The referenced script (Unknown) on this Behaviour is missing!
+
+2025-03-16 23:47:24,192 [ 1] WARN  Unity: The referenced script on this Behaviour (Game Object 'MainCamera') is missing!
+
+2025-03-16 23:47:50,437 [ 1] INFO  Unity: Character_1_klm OnDestroy :ID:6 POS:(3432, 3287, 806) DIR:(-91, 41, 0) SPD:0 
+2025-03-16 23:47:50,441 [ 1] INFO  Unity: OnDestroy NetworkManager.
+2025-03-16 23:47:50,442 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+UnityEngine.Debug:LogWarning(Object)
+Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:181)
+Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:176)
+
