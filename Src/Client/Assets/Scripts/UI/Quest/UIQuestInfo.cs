@@ -21,6 +21,8 @@ public class UIQuestInfo : MonoBehaviour
     public Text rewardMoney;
     public Text rewardExp;
 
+    public Button navButton;
+    private int npc = 0;
     private void Start()
     {
 
@@ -55,6 +57,16 @@ public class UIQuestInfo : MonoBehaviour
         this.rewardExp.text = quest.Define.RewardExp.ToString();
         this.rewardMoney.text = quest.Define.RewardGold.ToString();
 
+        if(quest.Info==null)
+        {
+            this.npc = quest.Define.AcceptNPC;
+        }
+        else if (quest.Info.Status == SkillBridge.Message.QuestStatus.Completed)
+        {
+            this.npc = quest.Define.SubmitNPC;
+        }
+
+        this.navButton.gameObject.SetActive(this.npc > 0);
         foreach (var fitter in this.GetComponentsInChildren<ContentSizeFitter>())
         {
             fitter.SetLayoutVertical();
@@ -64,5 +76,12 @@ public class UIQuestInfo : MonoBehaviour
     public void OnClickAbondon()
     {
 
+    }
+
+    public void OnClickNav()
+    {
+        Vector3 pos = NPCManager.Instance.GetNpcPosition(this.npc);
+        User.Instance.CurrentCharacterObject.StartNav(pos);
+        UIManager.Instance.Close<UIQuestSystem>();
     }
 }

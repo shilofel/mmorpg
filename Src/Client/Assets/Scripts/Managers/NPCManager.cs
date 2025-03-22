@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Common.Data;
+using UnityEngine;
 
 namespace Managers
 {
@@ -12,6 +13,7 @@ namespace Managers
         public delegate bool NPCACtionHandler(NPCDefine npc);
 
         Dictionary<NPCFunction, NPCACtionHandler> eventMap = new Dictionary<NPCFunction, NPCACtionHandler>();
+        Dictionary<int, Vector3> npcPositions = new Dictionary<int, Vector3>();
 
         public void RegisterNPCEvent(NPCFunction function,NPCACtionHandler action)
         {
@@ -68,6 +70,16 @@ namespace Managers
             if (!eventMap.ContainsKey(npc.Function))
                 return false;
             return eventMap[npc.Function](npc);
+        }
+
+        internal void UpdateNpcPosition(int npc,Vector3 pos)
+        {
+            this.npcPositions[npc] = pos;
+        }
+
+        public Vector3 GetNpcPosition(int npc)
+        {
+            return this.npcPositions[npc];
         }
     }
 }

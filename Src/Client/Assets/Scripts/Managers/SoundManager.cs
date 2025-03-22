@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using Models;
-public class SoundManager : Singleton<SoundManager>
+public class SoundManager : MonoSingleton<SoundManager>
 {
     public AudioMixer audioMixer;
     public AudioSource musicAudioSource;
