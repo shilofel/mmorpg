@@ -100,7 +100,7 @@ namespace Managers
             }
             if (channel == LocalChannel.Guild)
             {
-                if (User.Instance.CurrentCharacter.Guild == null)
+                if (User.Instance.CurrentCharacterInfo.Guild == null)
                 {
                     this.AddSystemMessage("你没有加入任何公会");
                 }
@@ -167,7 +167,7 @@ namespace Managers
 
         private string FormatFromPlayer(ChatMessage message)
         {
-            if (message.FromId == User.Instance.CurrentCharacter.Id)
+            if (message.FromId == User.Instance.CurrentCharacterInfo.Id)
             {
                 return "<link =\"\"><#00FFE0><u>[我]</u></color></link>";
             }

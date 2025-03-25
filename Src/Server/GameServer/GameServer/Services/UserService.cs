@@ -110,6 +110,8 @@ namespace GameServer.Services
                 MapPosX = 5000,
                 MapPosY = 4000,
                 MapPosZ = 820,
+                HP =1000,
+                MP = 1000,
                 Gold = 1000000,
                 Equips = new byte[28]
             };

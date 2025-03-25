@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using SkillBridge.Message;
 using UnityEngine;
+using Common.Battle;
+using Managers;
 
 namespace Entities
 {
@@ -13,6 +15,8 @@ namespace Entities
 
         //数据表配置
         public Common.Data.CharacterDefine Define;
+
+        public Attributes Attributes;
 
         public int Id
         {
@@ -43,7 +47,7 @@ namespace Entities
             get
             {
                 if (!IsPlayer) return false;
-                return this.Info.Id == Models.User.Instance.CurrentCharacter.Id;
+                return this.Info.Id == Models.User.Instance.CurrentCharacterInfo.Id;
             }
         }
 
@@ -51,6 +55,9 @@ namespace Entities
         {
             this.Info = info;
             this.Define = DataManager.Instance.Characters[info.configId];
+            this.Attributes = new Attributes();
+            var equips = EquipManager.Instance.GetEquipedDefines();
+            this.Attributes.Init(this.Define, this.Info.Level, equips,this.Info.attrDynamic);
         }
 
         public void MoveForward()

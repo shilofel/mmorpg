@@ -45,6 +45,7 @@ namespace GameServer.Entities
             //原先的TID等于现在的configId
             this.Info.configId = cha.TID;
             this.Info.Class = (CharacterClass)cha.Class;
+            this.Info.Exp = cha.Exp;
             this.Info.mapId = cha.MapID;
             this.Info.Gold = cha.Gold;
             this.Info.Ride = 0;
@@ -65,6 +66,32 @@ namespace GameServer.Entities
 
             this.Guild = GuildManager.Instance.GetGuild(this.Data.GuildId);
             this.Chat = new Chat(this);
+            this.Info.attrDynamic = new NAttributeDynamic();
+            this.Info.attrDynamic.Hp = cha.HP;
+            this.Info.attrDynamic.Mp = cha.MP;
+        }
+
+        internal void AddExp(int exp)
+        {
+            this.Exp = exp;
+            this.CheckLevelUp();
+        }
+
+        private void CheckLevelUp()
+        {
+            //经验公式 exp = power(LV,3)*10+LV*40+50
+            long needExp = (long)Math.Pow(this.Level, 3) * 10 + this.Level * 40 + 50;
+            if(Exp>needExp)
+            {
+                this.LevelUp();
+            }
+        }
+
+        private void LevelUp()
+        {
+            this.Level++;
+            Log.InfoFormat("character{0}:{1} Level UP",this.Info.Id,this.Info.Name);
+            CheckLevelUp();
         }
 
         public long Gold
@@ -87,6 +114,30 @@ namespace GameServer.Entities
                 if (this.Info.Ride == value)
                     return;
                 this.Info.Ride = value;
+            }
+        }
+
+        public long Exp
+        {
+            get { return this.Info.Exp; }
+            set
+            {
+                if (this.Data.Gold == value)
+                    return;
+                this.StatusManager.AddExpChange((int)(value - this.Data.Exp));
+                this.Data.Exp = value;
+            }
+        }
+
+        public int Level
+        {
+            get { return this.Data.Level; }
+            set
+            {
+                if (this.Data.Level == value)
+                    return;
+                this.StatusManager.AddLevelUp((int)(value - this.Data.Level));
+                this.Data.Level = value;
             }
         }
 

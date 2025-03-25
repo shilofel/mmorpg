@@ -10,6 +10,7 @@ using UnityEngine.Events;
 using Entities;
 using SkillBridge.Message;
 using Managers;
+using Models;
 
 namespace Services
 {
@@ -57,6 +58,9 @@ namespace Services
             {
                 OnCharacterEnter(character);
             }
+            //管理场景中所有角色，是当前palyer赋值
+            if (cha.entityId == User.Instance.CurrentCharacterInfo.entityId)
+                User.Instance.CurrentCharacter = character;
         }
 
 

@@ -143,6 +143,7 @@ public class MapTools {
                     {
                         var pos = new Vector3(x, y, z);
                         NavMeshHit hit;
+                        //做位置采样，0.5m有采样
                         if(NavMesh.SamplePosition(pos,out hit,0.5f,NavMesh.AllAreas))
                         {
                             if(hit.hit)
