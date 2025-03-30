@@ -771,7 +771,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u4EFB\u52A1"
+  m_Text: "\u516C\u4F1A\u5217\u8868"
 --- !u!114 &114288872287794556
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1351,6 +1351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 210a32de31ae40342ae15705ad529cea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Root: {fileID: 0}
   itemPrefab: {fileID: 1121035756159362, guid: 30fa8dde6e090fb4b940f202df8d6317, type: 2}
   listMain: {fileID: 114438432886655130}
   itemRoot: {fileID: 224692810731368712}

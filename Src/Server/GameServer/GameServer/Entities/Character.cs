@@ -13,7 +13,7 @@ using GameServer.Models;
 
 namespace GameServer.Entities
 {
-    class Character : CharacterBase,IPostResponser
+    class Character : Creature,IPostResponser
     {
        
         public TCharacter Data;
@@ -31,26 +31,18 @@ namespace GameServer.Entities
         public double GuildUpdateTS;
 
         public Character(CharacterType type,TCharacter cha):
-            base(new Core.Vector3Int(cha.MapPosX, cha.MapPosY, cha.MapPosZ),new Core.Vector3Int(100,0,0))
+            base(type,cha.TID, cha.Level,new Core.Vector3Int(cha.MapPosX, cha.MapPosY, cha.MapPosZ),new Core.Vector3Int(100,0,0))
         {
             this.Data = cha;
             this.Id = cha.ID;
             
-            this.Info = new NCharacterInfo();
-            this.Info.Type = type;
             this.Info.Id = cha.ID;
-            this.Info.entityId = this.entityId;
-            this.Info.Name = cha.Name;
-            this.Info.Level = 10;//cha.Level;
-            //原先的TID等于现在的configId
-            this.Info.configId = cha.TID;
             this.Info.Class = (CharacterClass)cha.Class;
             this.Info.Exp = cha.Exp;
             this.Info.mapId = cha.MapID;
             this.Info.Gold = cha.Gold;
             this.Info.Ride = 0;
-            this.Info.Entity = this.EntityData;
-            this.Define = DataManager.Instance.Characters[this.Info.configId];
+            this.Info.Name = cha.Name;
 
             this.ItemManager = new ItemManager(this);
             this.ItemManager.GetItemInfos(this.Info.Items);
@@ -103,6 +95,7 @@ namespace GameServer.Entities
                     return;
                 this.StatusManager.AddGoldChange((int)(value - this.Data.Gold));
                 this.Data.Gold = value;
+                this.Info.Gold = value;
             }
         }
 
@@ -126,6 +119,7 @@ namespace GameServer.Entities
                     return;
                 this.StatusManager.AddExpChange((int)(value - this.Data.Exp));
                 this.Data.Exp = value;
+                this.Info.Exp = value;
             }
         }
 
@@ -138,6 +132,7 @@ namespace GameServer.Entities
                     return;
                 this.StatusManager.AddLevelUp((int)(value - this.Data.Level));
                 this.Data.Level = value;
+                this.Info.Level = value;
             }
         }
 

@@ -22,4 +22,25 @@ namespace Common.Battle
         CRI = 10,
         MAX
     }
+
+    public enum SkillType
+    {
+        Normal,
+        Skill
+    }
+
+    public enum TargetType
+    {
+        None,
+        Target,
+        Position
+    }
+
+    public enum SkillResult
+    {
+        OK = 0,
+        InvalidTarget,
+        OutofMP,
+        Cooldown
+    }
 }

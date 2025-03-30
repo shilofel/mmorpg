@@ -17,7 +17,6 @@ namespace GameServer.Models
 {
     class Item
     {
-
         TCharacterItem dbItem;
 
         public int ItemID;
