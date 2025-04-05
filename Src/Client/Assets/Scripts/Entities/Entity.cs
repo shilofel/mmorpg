@@ -17,6 +17,8 @@ namespace Entities
         public Vector3Int direction;
         public int speed;
 
+        public IEntityController Controller;
+
         //从服务端同步的数据
         private NEntity entityData;
         public NEntity EntityData

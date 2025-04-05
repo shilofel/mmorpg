@@ -35,12 +35,4 @@ namespace Common.Battle
         Target,
         Position
     }
-
-    public enum SkillResult
-    {
-        OK = 0,
-        InvalidTarget,
-        OutofMP,
-        Cooldown
-    }
 }

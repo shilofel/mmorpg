@@ -242,6 +242,8 @@ message NetMessageRequest{
 	GuildAdminRequest guildAdmin = 29;
 
 	ChatRequest chat = 30;
+
+	SkillCastRequest skillCast = 50;
 }
 
 message NetMessageResponse{
@@ -281,6 +283,8 @@ message NetMessageResponse{
 	GuildAdminResponse guildAdmin = 29;
 
 	chatResponse chat = 30;
+
+	SkillCastResponse skillCast = 50;
 
 	StatusNotify statusNotify = 100;
 }
@@ -754,4 +758,34 @@ message chatResponse
 	repeated ChatMessage privateMessage = 6;
 	repeated ChatMessage teamMessage = 7;
 	repeated ChatMessage guildMessage = 8;
+}
+
+//Battle
+
+enum SKILL_RESULT
+{
+	OK = 0;
+	OUT_OF_MP = 1;
+	COOL_DOWN = 2;
+	INVALID_TARGET = 3;
+}
+
+message NSkillCastInfo
+{
+	int32 skillId = 1;
+	int32 casterId = 2;
+	int32 targetId = 3;
+	NVector3 position = 4;
+}
+
+message SkillCastRequest
+{
+	NSkillCastInfo castInfo = 1;
+}
+
+message SkillCastResponse
+{
+	Result result = 1;
+	string errormsg = 2;
+	NSkillCastInfo castInfo = 3;
 }

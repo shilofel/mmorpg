@@ -5,7 +5,7 @@ using UnityEngine;
 using Entities;
 using Managers;
 
-public class EntityController : MonoBehaviour,IEntityNotify
+public class EntityController : MonoBehaviour,IEntityNotify, IEntityController
 {
     public Animator anim;
     public Rigidbody rb;
@@ -38,7 +38,7 @@ public class EntityController : MonoBehaviour,IEntityNotify
         if (entity != null)
         {
             //注册接口
-            EntieyManager.Instance.RegisterEntityChangedNotify(entity.entityId, this);
+            EntityManager.Instance.RegisterEntityChangedNotify(entity.entityId, this);
             this.UpdateTransform();
         }
         //去除重力
@@ -149,5 +149,20 @@ public class EntityController : MonoBehaviour,IEntityNotify
     {
         Debug.LogFormat("MapEntityUpdateSync:ID :{0} POS:{1} DIR:{2} SPD:{3}", 
             entity.entityId, entity.position, entity.direction, entity.speed);
+    }
+    //点击设置目标
+    void OnMouseDown()
+    {
+        BattleManager.Instance.CurrentTarget = this.entity as Creature;
+    }
+
+    public void PlayAnim(string name)
+    {
+        this.anim.SetTrigger(name);
+    }
+
+    public void SetStandby(bool standby)
+    {
+        this.anim.SetBool("Standby", standby);
     }
 }

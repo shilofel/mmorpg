@@ -52,7 +52,7 @@ namespace Services
             Debug.LogFormat("AddCharacter:{0}:{1} Map:{2} Entity:{3}", cha.Id, cha.Name, cha.mapId, cha.Entity.String());
             Character character = new Character(cha);
             this.Characters[cha.entityId] = character;
-            EntieyManager.Instance.AddEntity(character);
+            EntityManager.Instance.AddEntity(character);
 
             if(OnCharacterEnter!=null)
             {
@@ -70,7 +70,7 @@ namespace Services
 
             if(Characters.ContainsKey(entityId))
             {
-                EntieyManager.Instance.RemoveEntity(this.Characters[entityId].Info.Entity);
+                EntityManager.Instance.RemoveEntity(this.Characters[entityId].Info.Entity);
                 if(OnCharacterLeave !=null)
                 {
                     OnCharacterLeave(this.Characters[entityId]);

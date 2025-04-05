@@ -94,6 +94,7 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
             ec.entity = cha;
             ec.isPlayer = cha.IsCurrentPlayer;
             ec.Ride(cha.Info.Ride);
+            cha.Controller = ec;
         }
         //赋值InputPlayerController
         PlayerInputController pc = go.GetComponent<PlayerInputController>();

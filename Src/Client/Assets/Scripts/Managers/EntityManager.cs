@@ -18,7 +18,7 @@ namespace Managers
         void OnEntityEvent(EntityEvent @event,int param);
         void OnEntityChanged(Entity entity);
     }
-    class EntieyManager:Singleton<EntieyManager>
+    class EntityManager:Singleton<EntityManager>
     {
         Dictionary<int, Entity> entities = new Dictionary<int, Entity>();
         //通知entityController
@@ -60,6 +60,13 @@ namespace Managers
                     notifiers[entity.entityId].OnEntityEvent(data.Event,data.Param);
                 }
             }
+        }
+
+        public Entity GetEntity(int entityId)
+        {
+            Entity entity = null;
+            entities.TryGetValue(entityId, out entity);
+            return entity;
         }
     }
 }

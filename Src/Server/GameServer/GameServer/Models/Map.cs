@@ -143,5 +143,15 @@ namespace GameServer.Models
                 this.SendCharacterEnterMap(kv.Value.connection, monster.Info);
             }
         }
+
+        internal void BroadcastBattleResponse(NetMessageResponse response)
+        {
+            //通知同地图所有角色
+            foreach(var kv in this.MapCharacters)
+            {
+                kv.Value.connection.Session.Response.skillCast = response.skillCast;
+                kv.Value.connection.SendResponse();
+            }
+        }
     }
 }
