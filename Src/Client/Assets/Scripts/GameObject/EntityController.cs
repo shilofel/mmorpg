@@ -153,6 +153,9 @@ public class EntityController : MonoBehaviour,IEntityNotify, IEntityController
     //点击设置目标
     void OnMouseDown()
     {
+        Creature target = this.entity as Creature;
+        if (target.IsCurrentPlayer)
+            return;
         BattleManager.Instance.CurrentTarget = this.entity as Creature;
     }
 

@@ -1,5 +1,6 @@
 ﻿using Battle;
 using Entities;
+using Services;
 using SkillBridge.Message;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,8 @@ namespace Managers
 {
     class BattleManager : Singleton<BattleManager>
     {
+        public delegate void TargetChangedHandler(Creature);
+        public event TargetChangedHandler OnTargetChanged;
 
         private Creature currentTarget;
         public Creature CurrentTarget
@@ -36,6 +39,8 @@ namespace Managers
 
         public void SetTarget(Creature target)
         {
+            if (this.currentTarget != target && this.OnTargetChanged != null)
+                this.OnTargetChanged(target);
             this.currentTarget = target;
             Debug.LogFormat("BattleManager.SetTarget:[{0}:{1}]", target.entityId, target.Name);
         }

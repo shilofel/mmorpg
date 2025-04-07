@@ -1,4 +1,5 @@
-﻿using Common.Data;
+﻿using Common.Battle;
+using Common.Data;
 using GameServer.Battle;
 using GameServer.Core;
 using SkillBridge.Message;
@@ -21,6 +22,7 @@ namespace GameServer.Entities
         public CharacterDefine Define;
 
         public SkillManager SkillMgr;
+        public Attributes Attributes;
 
         public Creature(CharacterType type, int configId, int level, Vector3Int pos, Vector3Int dir) :
            base(pos, dir)
@@ -35,6 +37,15 @@ namespace GameServer.Entities
             this.Define = DataManager.Instance.Characters[this.Info.configId];
             this.Info.Name = this.Define.Name;
             this.InitSkill();
+
+            this.Attributes = new Attributes();
+            this.Attributes.Init(this.Define, this.Info.Level, this.GetEquips(), this.Info.attrDynamic);
+            this.Info.attrDynamic = this.Attributes.DynamicAttr;
+        }
+
+        private List<EquipDefine> GetEquips()
+        {
+            return null;
         }
 
         void InitSkill()

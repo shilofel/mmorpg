@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Models;
 using System;
 using Managers;
+using Entities;
 
 public class UIMain : MonoSingleton<UIMain> {
 
@@ -12,10 +13,14 @@ public class UIMain : MonoSingleton<UIMain> {
     public Text AvatarLevel;
 
     public UITeam TeamWindow;
+
+    public UICreatureInfo targetUI;
     // Use this for initialization
     protected override void OnStart () {
         this.UpdateAvatar();
         TeamManager.Instance.ShowTeamUI(true);
+        this.targetUI.gameObject.SetActive(true);
+        BattleManager.Instance.OnTargetChanged += OnTargetChanged;
     }
 
     private void UpdateAvatar()
@@ -75,5 +80,18 @@ public class UIMain : MonoSingleton<UIMain> {
     public void ShowTeamUI(bool show)
     {
         TeamWindow.ShowTeam(show);
+    }
+
+    private void OnTargetChanged(Creature  target)
+    {
+       if(target!=null)
+        {
+            if (!targetUI.isActiveAndEnabled) targetUI.gameObject.SetActive(true);
+            targetUI.Target = target;
+        }
+       else
+        {
+            targetUI.gameObject.SetActive(false);
+        }
     }
 }

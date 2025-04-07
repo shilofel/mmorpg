@@ -24,18 +24,18 @@ namespace Common.Battle
 
         int Level;
 
-        private NAttributeDynamic dynamic;
+        public NAttributeDynamic DynamicAttr;
 
         public float HP
         {
-            get { return dynamic.Hp; }
-            set { dynamic.Hp = (int)Math.Min(MaxHP, value); }
+            get { return DynamicAttr.Hp; }
+            set { DynamicAttr.Hp = (int)Math.Min(MaxHP, value); }
         }
 
         public float MP
         {
-            get { return dynamic.Mp; }
-            set { dynamic.Mp = (int)Math.Min(MaxMP, value); }
+            get { return DynamicAttr.Mp; }
+            set { DynamicAttr.Mp = (int)Math.Min(MaxMP, value); }
         }
 
         public float MaxHP { get { return Final.MaxHP; } }
@@ -52,7 +52,7 @@ namespace Common.Battle
 
         public void Init(CharacterDefine define,int level,List<EquipDefine> equips,NAttributeDynamic dynamicAttr)
         {
-            this.dynamic = dynamicAttr;
+            this.DynamicAttr = dynamicAttr;
             this.LoadInitAttrbute(this.Initial, define);
             this.LoadGrowAttrbute(this.Growth, define);
             this.LoadEquipAttrbute(this.Equip, equips);
@@ -61,10 +61,17 @@ namespace Common.Battle
             this.InitSecondaryAttributes();
 
             this.InitFinalAttributes();
-            if (this.dynamic == null)
-                this.dynamic = new NAttributeDynamic();
-            this.HP = this.dynamic.Hp;
-            this.MP = this.dynamic.Mp;
+            if (this.DynamicAttr == null)
+            {
+                this.DynamicAttr = new NAttributeDynamic();
+                this.HP = this.MaxHP;
+                this.MP = this.MaxMP;
+            }
+            else
+            {
+                this.HP = this.DynamicAttr.Hp;
+                this.MP = this.DynamicAttr.Mp;
+            }
         }
 
         private void InitBasicAttributes()
@@ -128,6 +135,7 @@ namespace Common.Battle
         private void LoadEquipAttrbute(AttributeData attr, List<EquipDefine> equips)
         {
             attr.Reset();
+            if (equips == null) return;
             foreach(var define in equips)
             {
                 attr.MaxHP = define.MaxHP;

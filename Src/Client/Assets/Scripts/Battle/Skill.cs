@@ -39,6 +39,10 @@ namespace Battle
             {
                 if(target ==null||target == this.Owner)
                 return SkillResult.InvalidTarget;
+
+                int distance = (int)Vector3Int.Distance(this.Owner.position, target.position); //- this.Owner.Define.Radius - target.Define.Radius;
+                if (distance > this.Define.CastRange)
+                    return SkillResult.OutOfRange;
             }
             if (this.Define.CastTarget == Common.Battle.TargetType.Position && BattleManager.Instance.CurrentPosition == null)
             {

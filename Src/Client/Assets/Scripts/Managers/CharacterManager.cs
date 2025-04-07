@@ -47,20 +47,17 @@ namespace Services
             this.Characters.Clear();
         }
 
-        public void AddCharacter(SkillBridge.Message.NCharacterInfo cha)
+        public void AddCharacter(Character character)
         {
-            Debug.LogFormat("AddCharacter:{0}:{1} Map:{2} Entity:{3}", cha.Id, cha.Name, cha.mapId, cha.Entity.String());
-            Character character = new Character(cha);
-            this.Characters[cha.entityId] = character;
+            Debug.LogFormat("AddCharacter:{0}:{1} Map:{2} Entity:{3}", character.Id, character.Name, character.Info.mapId, character.Info.Entity.String());
+ 
+            this.Characters[character.entityId] = character;
             EntityManager.Instance.AddEntity(character);
 
             if(OnCharacterEnter!=null)
             {
                 OnCharacterEnter(character);
             }
-            //管理场景中所有角色，是当前palyer赋值
-            if (cha.entityId == User.Instance.CurrentCharacterInfo.entityId)
-                User.Instance.CurrentCharacter = character;
         }
 
 

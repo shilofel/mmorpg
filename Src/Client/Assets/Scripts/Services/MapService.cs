@@ -9,6 +9,7 @@ using UnityEngine;
 using SkillBridge.Message;
 using Models;
 using Common.Data;
+using Entities;
 
 namespace Services
 {
@@ -45,8 +46,15 @@ namespace Services
                 if(User.Instance.CurrentCharacterInfo == null||(cha.Type == CharacterType.Player&&User.Instance.CurrentCharacterInfo.Id == cha.Id))
                 {
                     User.Instance.CurrentCharacterInfo = cha;
+                    if (User.Instance.CurrentCharacter == null)
+                        User.Instance.CurrentCharacter = new Character(cha);
+                    else
+                        User.Instance.CurrentCharacter.UpdateInfo(cha);
+
+                    CharacterManager.Instance.AddCharacter(User.Instance.CurrentCharacter);
+                    continue;
                 }
-                CharacterManager.Instance.AddCharacter(cha);
+                CharacterManager.Instance.AddCharacter(new Character(cha));
             }
             if(CurrentMapId != response.mapId)
             {
