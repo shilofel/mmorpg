@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using SkillBridge.Message;
-
+using GameServer.Battle;
 using Common;
 using Network;
 using GameServer.Entities;
@@ -41,11 +41,14 @@ namespace GameServer.Models
         SpawnManager SpawnManager = new SpawnManager();
 
         public MonsterManager MonsterManager = new MonsterManager();
+        public Battle.Battle Battle;
+
         internal Map(MapDefine define)
         {
             this.Define = define;
             this.SpawnManager.Init(this);
             this.MonsterManager.Init(this);
+            this.Battle = new Battle.Battle(this);
         }
 
         public void Update()

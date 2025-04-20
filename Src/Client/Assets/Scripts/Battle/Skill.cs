@@ -6,6 +6,7 @@ using Common.Battle;
 using Common.Data;
 using Entities;
 using Managers;
+using Services;
 using SkillBridge.Message;
 using UnityEngine;
 
@@ -17,8 +18,11 @@ namespace Battle
         public Creature Owner;
         public SkillDefine Define;
         public float cd = 0;
+        public float skillTime;
+        public NDamageInfo Damage;
         public bool IsCasting = false;
         private int castTime = 0;
+        private int hit = 0;
 
         public float CD
         {
@@ -60,11 +64,16 @@ namespace Battle
             return SkillResult.Ok;
         }
 
-        public void BeginCast()
+        public void BeginCast(NDamageInfo damage)
         {
             this.IsCasting = true;
             this.castTime = 0;
             this.cd = this.Define.CD;
+
+            this.skillTime = 0;
+            this.Damage = damage;
+            this.hit = 0;
+
             this.Owner.PlayAnim(this.Define.SkillAnim);
         }
 
@@ -73,9 +82,29 @@ namespace Battle
         {
             if(this.IsCasting)
             {
+                this.skillTime += delta;
+                if(skillTime > 0.5&& this.hit == 0)
+                {
+                    this.DoHit();
+                }
+                if (skillTime >= this.Define.CD)
+                {
+                    this.skillTime = 0;
+                    this.IsCasting = false;
+                }
             }
 
             UpdateCD(delta);
+        }
+
+        private void DoHit()
+        {
+            if(this.Damage != null)
+            {
+                var cha = CharacterManager.Instance.GetCharacter(Damage.entityId);
+                cha.DoDamage(this.Damage);
+            }
+            this.hit++;
         }
 
         public void UpdateCD(float delta)

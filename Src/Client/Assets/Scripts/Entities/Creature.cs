@@ -123,12 +123,12 @@ namespace Entities
             this.position = position;
         }
 
-        public void CastSkill(int skillId, Creature target, NVector3 position)
+        public void CastSkill(int skillId, Creature target, NVector3 position,NDamageInfo damage)
         {
             //设置为战斗状态
             this.SetStandby(true);
             var skill = this.SkillMgr.GetSkill(skillId);
-            skill.BeginCast();
+            skill.BeginCast(damage);
         }
 
         public void SetStandby(bool standby)
@@ -147,6 +147,13 @@ namespace Entities
         {
             base.OnUpdate(delta);
             this.SkillMgr.OnUpdate(delta);
+        }
+
+        public void DoDamage(NDamageInfo damage)
+        {
+            Debug.LogFormat("DoDamage:{0}", damage.Damage);
+            this.Attributes.HP -= damage.Damage;
+            this.PlayAnim("Hurt");
         }
     }
 }

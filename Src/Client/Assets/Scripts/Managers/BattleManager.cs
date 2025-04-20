@@ -12,7 +12,7 @@ namespace Managers
 {
     class BattleManager : Singleton<BattleManager>
     {
-        public delegate void TargetChangedHandler(Creature);
+        public delegate void TargetChangedHandler(Creature target);
         public event TargetChangedHandler OnTargetChanged;
 
         private Creature currentTarget;
