@@ -63,6 +63,9 @@ public class DataManager : Singleton<DataManager>
         json = File.ReadAllText(this.DataPath + "QuestDefine.txt");
         this.Quests = JsonConvert.DeserializeObject<Dictionary<int, QuestDefine>>(json);
 
+        json = File.ReadAllText(this.DataPath + "SkillDefine.txt");
+        this.Skills = JsonConvert.DeserializeObject<Dictionary<int, Dictionary<int, SkillDefine>>>(json);
+
         json = File.ReadAllText(this.DataPath + "RideDefine.txt");
         this.Rides = JsonConvert.DeserializeObject<Dictionary<int, RideDefine>>(json);
     }

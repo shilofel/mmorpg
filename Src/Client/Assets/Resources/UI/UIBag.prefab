@@ -2377,11 +2377,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1441924223442180}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65e02baf66e40a843a6f9b805d630a8e, type: 3}
+  m_Script: {fileID: 11500000, guid: 17282dcb0ac03ee4fbc340b87547f7bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeImage: {fileID: 0}
-  tabView: {fileID: 0}
+  activeImage: {fileID: 21300000, guid: bfee66ad0d707a84b897c9a0ba044a67, type: 3}
+  tabView: {fileID: 114066888808738396}
   tabIndex: 0
   selected: 0
 --- !u!114 &114281803474147134
@@ -3778,6 +3778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 267a588ec364a594fa6e2ee6df0c22cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Root: {fileID: 0}
   money: {fileID: 114391630183667028}
   pages:
   - {fileID: 224298987071505056}
@@ -4016,11 +4017,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1859006008498542}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65e02baf66e40a843a6f9b805d630a8e, type: 3}
+  m_Script: {fileID: 11500000, guid: 17282dcb0ac03ee4fbc340b87547f7bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeImage: {fileID: 0}
-  tabView: {fileID: 0}
+  activeImage: {fileID: 21300000, guid: bfee66ad0d707a84b897c9a0ba044a67, type: 3}
+  tabView: {fileID: 114066888808738396}
   tabIndex: 0
   selected: 0
 --- !u!114 &114862674515784950

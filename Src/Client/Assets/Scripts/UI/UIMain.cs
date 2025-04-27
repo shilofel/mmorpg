@@ -72,10 +72,10 @@ public class UIMain : MonoSingleton<UIMain> {
     {
         UIManager.Instance.Show<UISetting>();
     }
-    //public void OnClickSkill()
-    //{
-    //    UIManager.Instance.Show<UIFriends>();
-    //}
+    public void OnClickSkill()
+    {
+        UIManager.Instance.Show<UISkill>();
+    }
 
     public void ShowTeamUI(bool show)
     {
