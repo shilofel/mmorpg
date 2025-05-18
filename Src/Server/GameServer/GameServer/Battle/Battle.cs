@@ -38,9 +38,9 @@ namespace GameServer.Battle
             }
         }
 
-        internal void Update()
+        public void Update()
         {
-            if(this.Actions.Count==0)
+            if(this.Actions.Count!=0)
             {
                 NSkillCastInfo skillCast = this.Actions.Dequeue();
                 this.ExecuteAction(skillCast);

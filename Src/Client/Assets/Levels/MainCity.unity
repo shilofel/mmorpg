@@ -9637,7 +9637,7 @@ Prefab:
     - target: {fileID: 114039707823483680, guid: 031ad334fda11224f899520007b6487c,
         type: 2}
       propertyPath: ID
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 65087724994515414, guid: 031ad334fda11224f899520007b6487c,
         type: 2}
@@ -15943,6 +15943,26 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 224421750205417660, guid: 1dc584f0683b64648992881d937261e8,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 21.499992
+      objectReference: {fileID: 0}
+    - target: {fileID: 224764526564899464, guid: 1dc584f0683b64648992881d937261e8,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 417.27502
+      objectReference: {fileID: 0}
+    - target: {fileID: 224713172703344102, guid: 1dc584f0683b64648992881d937261e8,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 153.42499
+      objectReference: {fileID: 0}
+    - target: {fileID: 224346321342023450, guid: 1dc584f0683b64648992881d937261e8,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 285.35
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1dc584f0683b64648992881d937261e8, type: 2}
   m_IsPrefabAsset: 0
@@ -19384,7 +19404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49fcc1645410d534798867f72ef3a516, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 3
+  ID: 2
 --- !u!65 &551985831
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -33,6 +33,7 @@ namespace GameServer.Managers
             foreach(var map in Maps.Values)
             {
                 map.Update();
+                map.Battle.Update();
             }
         }
     }

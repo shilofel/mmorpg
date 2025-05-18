@@ -13,6 +13,8 @@ namespace Entities
 {
     public class Character:Creature
     {
+        public bool mapTeleport = false;
+
         public Character(NCharacterInfo info):base(info)
         {
 

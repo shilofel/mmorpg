@@ -22,7 +22,7 @@ public class PlayerInputController : MonoBehaviour {
     public int speed;
     public bool onAir = false;
 
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
     private bool autoNav = false;
 	// 角色状态设置为idle
 	void Start () {
@@ -194,6 +194,7 @@ public class PlayerInputController : MonoBehaviour {
 
         Vector3Int goLogicPos = (GameObjectTool.WorldToLogic(this.rb.transform.position));
         float logicOffset = (goLogicPos - this.character.position).magnitude;
+
         if (logicOffset > 50)
         {
             this.character.SetPosition(GameObjectTool.WorldToLogic(this.rb.transform.position));

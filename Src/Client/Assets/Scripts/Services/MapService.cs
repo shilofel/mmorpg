@@ -80,6 +80,7 @@ namespace Services
                 MapDefine map = DataManager.Instance.Maps[mapId];
                 User.Instance.CurrentMapData = map;
                 SceneManager.Instance.LoadScene(map.Resource);
+                //User.Instance.CurrentCharacter.SetPosition(GameObjectTool.WorldToLogic(User.Instance.CurrentCharacter.position));
             }
             else
             {
@@ -89,7 +90,7 @@ namespace Services
 
         internal void SendMapEntitySync(EntityEvent entityEvent, NEntity entity,int param)
         {
-            Debug.LogFormat("MapEntityUpdateSync:ID :{0} POS:{1} DIR:{2} SPD:{3}", entity.Id, entity.Position.ToString(),entity.Direction.ToString(),entity.Speed);
+            Debug.LogFormat("MapEntityUpdateSync:ID :{0} POS:{1} DIR:{2} SPD:{3}", entity.Id, entity.Position.String(),entity.Direction.String(),entity.Speed);
             NetMessage message = new NetMessage();
             message.Request = new NetMessageRequest();
             message.Request.mapEntitySync = new MapEntitySyncRequest();

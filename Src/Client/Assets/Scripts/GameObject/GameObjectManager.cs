@@ -102,6 +102,11 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
         {
             if (cha.IsCurrentPlayer)
             {
+                if (pc.agent != null)
+                {
+                    pc.agent.Warp(go.transform.position);
+                }
+                
                 User.Instance.CurrentCharacterObject = pc;
                 MainPlayerCamera.Instance.player = go;
                 pc.enabled = true;

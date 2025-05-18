@@ -17,7 +17,8 @@ namespace Managers
 
         private Creature currentTarget;
         public Creature CurrentTarget
-        { get { return currentTarget; }
+        {
+            get { return currentTarget; }
             set
             {
                 this.SetTarget(value);
