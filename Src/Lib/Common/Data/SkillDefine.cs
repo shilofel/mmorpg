@@ -26,10 +26,13 @@ namespace Common.Data
         public string SkillAnim { get; set; }
         public float Duration { get; set; }
         public float Interval { get; set; }
+        //记录第几次伤害是在什么时间造成的时间表
+        public List<float> HitTimes { get; set; }
         public List<int> Buff { get; set; }
         public float AD { get; set; }
         public float AP { get; set; }
         public float ADFator { get; set; }
         public float APFator { get; set; }
+ 
     }
 }

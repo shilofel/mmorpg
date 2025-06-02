@@ -769,6 +769,14 @@ enum SKILL_RESULT
 	COOL_DOWN = 2;
 	INVALID_TARGET = 3;
 	OUT_OF_RANGE = 4;
+	CASTING = 5; //正在释放
+}
+
+enum SKILL_STATUS
+{
+	NONE = 0;
+	CASTING = 1; //施法中
+	RUNNING = 2;//执行中
 }
 
 message NSkillCastInfo
