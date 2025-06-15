@@ -62,6 +62,11 @@ namespace Entities
             get { return this.Info.Type == CharacterType.Player; }
         }
 
+        internal int Distance(Creature target)
+        {
+            return (int)Vector3Int.Distance(this.position, target.position);
+        }
+
         public bool IsCurrentPlayer
         {
             get
@@ -154,6 +159,12 @@ namespace Entities
             Debug.LogFormat("DoDamage:{0}", damage.Damage);
             this.Attributes.HP -= damage.Damage;
             this.PlayAnim("Hurt");
+        }
+
+        internal void DoSkillHit(int skillId, int hitId, List<NDamageInfo> damages)
+        {
+            var skill = this.SkillMgr.GetSkill(skillId);
+            skill.DoHit(hitId, damages);
         }
     }
 }

@@ -285,6 +285,7 @@ message NetMessageResponse{
 	chatResponse chat = 30;
 
 	SkillCastResponse skillCast = 50;
+	SkillHitResponse skillHits = 51;
 
 	StatusNotify statusNotify = 100;
 }
@@ -787,11 +788,20 @@ message NSkillCastInfo
 	NVector3 position = 4;
 }
 
+message NSkillHitInfo
+{
+	int32 skillId = 1;
+	int32 casterId = 2;
+	int32 hitId = 3;
+	repeated NDamageInfo damages = 4;
+}
+
 message NDamageInfo 
 {
 	int32 entityId = 1;
 	int32 damage = 2;
-	bool will_dead = 3; // 伤害是否造成目标死亡
+	bool crit = 3;
+	bool will_dead = 4; // 伤害是否造成目标死亡
 }
 
 message SkillCastRequest
@@ -806,4 +816,9 @@ message SkillCastResponse
 	NSkillCastInfo castInfo = 3;
 	NDamageInfo damage = 4;
 }
-
+message SkillHitResponse
+{
+	Result result = 1;
+	string errormsg = 2;
+	repeated NSkillHitInfo hits = 3;
+}

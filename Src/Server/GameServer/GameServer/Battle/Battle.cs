@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GameServer.Managers;
+using GameServer.Core;
 
 namespace GameServer.Battle
 {
@@ -21,6 +22,8 @@ namespace GameServer.Battle
         Queue<NSkillCastInfo> Actions = new Queue<NSkillCastInfo>();
 
         List<Creature> DeahPool = new List<Creature>();
+
+        List<NSkillHitInfo> Hits = new List<NSkillHitInfo>();
 
         public Battle(Map map)
         {
@@ -46,6 +49,8 @@ namespace GameServer.Battle
                 this.ExecuteAction(skillCast);
             }
             this.UpdateUnits();
+
+            this.BroadcastHitsMessage();
         }
 
         public void JoinBattle(Creature unit)
@@ -79,6 +84,17 @@ namespace GameServer.Battle
             this.Map.BroadcastBattleResponse(message);
         }
 
+        private void BroadcastHitsMessage()
+        {
+            if (this.Hits.Count == 0) return;
+            NetMessageResponse message = new NetMessageResponse();
+            message.skillHits = new SkillHitResponse();
+            message.skillHits.Hits.AddRange(this.Hits);
+            message.skillHits.Result = Result.Success;
+            message.skillHits.Errormsg = "";
+            this.Map.BroadcastBattleResponse(message);
+        }
+
         private void UpdateUnits()
         {
             //更新角色死亡信息，加入死亡池并脱离战斗
@@ -94,6 +110,24 @@ namespace GameServer.Battle
             {
                 this.LeaveBattle(unit);
             }
+        }
+        //战斗场景中物体遍历，找寻范围内物体
+        internal List<Creature> FindUnitsInRange(Vector3Int pos, int range)
+        {
+            List<Creature> result = new List<Creature>();
+            foreach( var unit in this.AllUnits)
+            {
+                if(unit.Value.Distance(pos)<range)
+                {
+                    result.Add(unit.Value);
+                }
+            }
+            return result;
+        }
+
+        public void AddHitInfo(NSkillHitInfo hitInfo)
+        {
+            this.Hits.Add(hitInfo);
         }
     }
 }

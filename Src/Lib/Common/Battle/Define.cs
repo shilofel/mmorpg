@@ -33,6 +33,7 @@ namespace Common.Battle
     {
         None,
         Target,
-        Position
+        Position,
+        Self
     }
 }

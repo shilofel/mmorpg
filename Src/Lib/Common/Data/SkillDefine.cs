@@ -31,8 +31,8 @@ namespace Common.Data
         public List<int> Buff { get; set; }
         public float AD { get; set; }
         public float AP { get; set; }
-        public float ADFator { get; set; }
-        public float APFator { get; set; }
+        public float ADFactor { get; set; }
+        public float APFactor { get; set; }
  
     }
 }

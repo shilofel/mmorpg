@@ -8362,27 +8362,27 @@ Prefab:
     - target: {fileID: 224470530507063922, guid: 395912489e441e4488d082c432b41144,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: -577.5
+      value: -19.5
       objectReference: {fileID: 0}
     - target: {fileID: 224470530507063922, guid: 395912489e441e4488d082c432b41144,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0.000030517578
+      value: -386.50003
       objectReference: {fileID: 0}
     - target: {fileID: 224216677698040088, guid: 395912489e441e4488d082c432b41144,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.9922979
       objectReference: {fileID: 0}
     - target: {fileID: 224829652922680974, guid: 395912489e441e4488d082c432b41144,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: -577.5
+      value: -19.5
       objectReference: {fileID: 0}
     - target: {fileID: 224829652922680974, guid: 395912489e441e4488d082c432b41144,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0.000030517578
+      value: -386.50003
       objectReference: {fileID: 0}
     - target: {fileID: 114467857612075482, guid: 395912489e441e4488d082c432b41144,
         type: 2}
@@ -15966,6 +15966,12 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1dc584f0683b64648992881d937261e8, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &461110278 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114481249101685388, guid: 1dc584f0683b64648992881d937261e8,
+    type: 2}
+  m_PrefabInternal: {fileID: 461110277}
+  m_Script: {fileID: 11500000, guid: a9b02f4c1d1da204889a71a087cb4152, type: 3}
 --- !u!1 &462407651
 GameObject:
   m_ObjectHideFlags: 0
@@ -44571,6 +44577,7 @@ MonoBehaviour:
   AvatarLevel: {fileID: 61509426}
   TeamWindow: {fileID: 1700586883}
   targetUI: {fileID: 594922088}
+  skillSlots: {fileID: 461110278}
 --- !u!114 &1415483397
 MonoBehaviour:
   m_ObjectHideFlags: 0

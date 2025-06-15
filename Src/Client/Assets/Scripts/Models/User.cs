@@ -13,6 +13,8 @@ namespace Models
     {
         SkillBridge.Message.NUserInfo userInfo;
 
+        public delegate void CharacterInitHandler();
+        public event CharacterInitHandler OnCharacterInit;
 
         public SkillBridge.Message.NUserInfo Info
         {
@@ -50,6 +52,12 @@ namespace Models
                 this.CurrentRide = 0;
                 CurrentCharacterObject.SendEntityEvent(EntityEvent.Ride, CurrentRide);
             }
+        }
+
+        internal void CharacterInited()
+        {
+            if (OnCharacterInit != null)
+                OnCharacterInit();
         }
 
     }

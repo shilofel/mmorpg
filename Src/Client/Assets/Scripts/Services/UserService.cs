@@ -288,6 +288,7 @@ namespace Services
             //重置mapID防止无法重复进入
             User.Instance.CurrentCharacterInfo = null;
             MapService.Instance.CurrentMapId = 0;
+            User.Instance.CurrentCharacter = null;
             if (this.isQuitGame)
             {
 //#if UNITY_EDITOR

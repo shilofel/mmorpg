@@ -1,5 +1,7 @@
 ﻿using Common;
 using Common.Data;
+using Common.Utils;
+using GameServer.Core;
 using GameServer.Entities;
 using SkillBridge.Message;
 using System;
@@ -15,6 +17,7 @@ namespace GameServer.Battle
         public NSkillInfo Info;
         public Creature Owner;
         public SkillDefine Define;
+        public NSkillHitInfo HitInfo;
 
         public SkillStatus Status;
 
@@ -109,8 +112,103 @@ namespace GameServer.Battle
 
         private void DoHit()
         {
+            this.InitHitInfo();
             this.Hit++;
             Log.InfoFormat("Skill[{0}] DoHit:[{2}]", this.Define.Name, this.Hit);
+            //子弹
+            if(this.Define.Bullet)
+            {
+                CastBullet();
+                return;
+            }
+            //范围
+            if(this.Define.AOERange>0)
+            {
+                this.HitRange();
+                return;
+            }
+
+            if(this.Define.CastTarget == Common.Battle.TargetType.Target)
+            {
+                this.HitTarget(Context.Target); 
+            }
+        }
+
+        void CastBullet()
+        {
+            
+        }
+
+        void HitRange()
+        {
+            Vector3Int pos;
+            if (this.Define.CastTarget == Common.Battle.TargetType.Target)
+            {
+                pos = Context.Target.Position;
+            }
+            else if (this.Define.CastTarget == Common.Battle.TargetType.Position)
+            {
+                pos = Context.Position;
+            }
+            else
+            {
+                pos = this.Owner.Position;
+            }
+
+            List<Creature> units = this.Context.Battle.FindUnitsInRange(pos, this.Define.AOERange);
+            foreach (var target in units)
+            {
+                this.HitTarget(target);
+            }
+        }
+
+        void HitTarget(Creature target)
+        {
+            if (this.Define.CastTarget == Common.Battle.TargetType.Self && (target != Context.Caster)) return;
+            else if (target == Context.Caster) return;
+
+            NDamageInfo damage = this.CalcSkillDamage(Context.Caster, target);
+            Log.InfoFormat("Skill[{0}] HitTarget:[{1}]  Damage:[{2}]  Crit:[{3}]", this.Define.Name, target.Name, damage.Damage, damage.Crit);
+            target.DoDamage(damage);
+            this.HitInfo.Damages.Add(damage);
+        }
+        //根据属性计算伤害值
+        NDamageInfo CalcSkillDamage(Creature caster, Creature target)
+        {
+            float ad = this.Define.AD + caster.Attributes.AD * this.Define.ADFactor;
+            float ap = this.Define.AP + caster.Attributes.AP * this.Define.APFactor;
+
+            float addmg = ad * (1 - target.Attributes.DEF / (target.Attributes.DEF + 100));
+            float apdmg = ap * (1 - target.Attributes.MDEF / (target.Attributes.MDEF + 100));
+
+            float final = addmg + apdmg;
+
+            bool isCrit = IsCrit(caster.Attributes.CRI);
+            if (isCrit)
+                final = final * 2;
+
+            //随机浮动
+            final = final * (float)MathUtil.Random.NextDouble() * 0.1f - 0.05f;
+
+            NDamageInfo damage = new NDamageInfo();
+            damage.entityId = target.entityId;
+            damage.Damage = Math.Max(1, (int)final);
+            damage.Crit = isCrit;
+            return damage;
+        }
+
+        bool IsCrit(float crit)
+        {
+            return MathUtil.Random.NextDouble() < crit;
+        }
+
+        private void InitHitInfo()
+        {
+            this.HitInfo = new NSkillHitInfo();
+            this.HitInfo.casterId = this.Context.Caster.entityId;
+            this.HitInfo.skillId = this.Info.Id;
+            this.HitInfo.hitId = this.Hit;
+            Context.Battle.AddHitInfo(this.HitInfo);
         }
 
         private void DoSkillDamage(BattleContext context)

@@ -64,7 +64,7 @@
     <Compile Include="Data\ShopItemDefine.cs" />
     <Compile Include="Data\ShopDefine.cs" />
     <Compile Include="Data\NPCDefine.cs" />
-    <Compile Include="Data\SkillConfig.cs" />
+    <Compile Include="Data\SkillDefine.cs" />
     <Compile Include="Data\SpawnRuleDefine.cs" />
     <Compile Include="Data\SpawnPointDefine.cs" />
     <Compile Include="Data\SpawnType.cs" />

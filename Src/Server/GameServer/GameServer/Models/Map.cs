@@ -152,7 +152,10 @@ namespace GameServer.Models
             //通知同地图所有角色
             foreach(var kv in this.MapCharacters)
             {
-                kv.Value.connection.Session.Response.skillCast = response.skillCast;
+                if(response.skillCast!=null)
+                    kv.Value.connection.Session.Response.skillCast = response.skillCast;
+                if (response.skillHits != null)
+                    kv.Value.connection.Session.Response.skillHits = response.skillHits;
                 kv.Value.connection.SendResponse();
             }
         }

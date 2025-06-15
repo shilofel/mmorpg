@@ -18,12 +18,14 @@ namespace Services
         public BattleService()
         {
             MessageDistributer.Instance.Subscribe<SkillCastResponse>(this.OnSkillCast);
+            MessageDistributer.Instance.Subscribe<SkillHitResponse>(this.OnSkillHits);
             //MessageDistributer.Instance.Subscribe<MapCharacterEnterResponse>(this.OnCharacterEnter);
         }
 
         public void Dispose()
         {
             MessageDistributer.Instance.Unsubscribe<SkillCastResponse>(this.OnSkillCast);
+            MessageDistributer.Instance.Unsubscribe<SkillHitResponse>(this.OnSkillHits);
         }
 
         public void Init()
@@ -63,6 +65,24 @@ namespace Services
             else
             {
                 ChatManager.Instance.AddSystemMessage(message.Errormsg);
+            }
+        }
+
+        private void OnSkillHits(object sender, SkillHitResponse message)
+        {
+            Debug.LogFormat("OnSkillHits::count :{0}"
+               , message.Hits.Count);
+
+            if(message.Result == Result.Success)
+            {
+                foreach(var hit in message.Hits)
+                {
+                    Creature caster = EntityManager.Instance.GetEntity(hit.casterId) as Creature;
+                    if(caster !=null)
+                    {
+                        caster.DoSkillHit(hit.skillId, hit.hitId, hit.Damages);
+                    }
+                }
             }
         }
     }
