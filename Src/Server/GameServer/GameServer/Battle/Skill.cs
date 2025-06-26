@@ -17,7 +17,6 @@ namespace GameServer.Battle
         public NSkillInfo Info;
         public Creature Owner;
         public SkillDefine Define;
-        public NSkillHitInfo HitInfo;
 
         public SkillStatus Status;
 
@@ -32,6 +31,7 @@ namespace GameServer.Battle
         private float skillTime = 0;
         private int Hit = 0;
         BattleContext Context;
+        List<Bullet> Bullets = new List<Bullet>();
 
         public bool Instant
         {
@@ -112,34 +112,46 @@ namespace GameServer.Battle
 
         private void DoHit()
         {
-            this.InitHitInfo();
+            NSkillHitInfo hitInfo = this.InitHitInfo(false);
             this.Hit++;
-            Log.InfoFormat("Skill[{0}] DoHit:[{2}]", this.Define.Name, this.Hit);
+            Log.InfoFormat("Skill[{0}] DoHit:[{1}]", this.Define.Name, this.Hit);
             //子弹
-            if(this.Define.Bullet)
+            if (this.Define.Bullet)
             {
-                CastBullet();
+                CastBullet(hitInfo);
                 return;
             }
+            //不为子弹
+            DoHit(hitInfo);
+        }
+
+        //传入hitInfo做伤害计算
+        public void DoHit(NSkillHitInfo hitInfo)
+        {
+            Context.Battle.AddHitInfo(hitInfo);
+            Log.InfoFormat("Skill[{0}] DoHit:[{1}] isBullet:{2}", this.Define.Name, this.Hit,hitInfo.isBullet);
             //范围
-            if(this.Define.AOERange>0)
+            if (this.Define.AOERange>0)
             {
-                this.HitRange();
+                this.HitRange(hitInfo);
                 return;
             }
 
             if(this.Define.CastTarget == Common.Battle.TargetType.Target)
             {
-                this.HitTarget(Context.Target); 
+                this.HitTarget(Context.Target, hitInfo); 
             }
         }
 
-        void CastBullet()
+        void CastBullet(NSkillHitInfo hitInfo)
         {
-            
+            Context.Battle.AddHitInfo(hitInfo);
+            Log.InfoFormat("Skill[{0}] CastBullet:[{1}]", this.Define.Name, this.Define.BulletResource);
+            Bullet bullet = new Bullet(this,this.Context.Target,hitInfo);
+            this.Bullets.Add(bullet);
         }
 
-        void HitRange()
+        void HitRange(NSkillHitInfo hitInfo)
         {
             Vector3Int pos;
             if (this.Define.CastTarget == Common.Battle.TargetType.Target)
@@ -158,11 +170,11 @@ namespace GameServer.Battle
             List<Creature> units = this.Context.Battle.FindUnitsInRange(pos, this.Define.AOERange);
             foreach (var target in units)
             {
-                this.HitTarget(target);
+                this.HitTarget(target, hitInfo);
             }
         }
 
-        void HitTarget(Creature target)
+        void HitTarget(Creature target,NSkillHitInfo hit)
         {
             if (this.Define.CastTarget == Common.Battle.TargetType.Self && (target != Context.Caster)) return;
             else if (target == Context.Caster) return;
@@ -170,7 +182,7 @@ namespace GameServer.Battle
             NDamageInfo damage = this.CalcSkillDamage(Context.Caster, target);
             Log.InfoFormat("Skill[{0}] HitTarget:[{1}]  Damage:[{2}]  Crit:[{3}]", this.Define.Name, target.Name, damage.Damage, damage.Crit);
             target.DoDamage(damage);
-            this.HitInfo.Damages.Add(damage);
+            hit.Damages.Add(damage);
         }
         //根据属性计算伤害值
         NDamageInfo CalcSkillDamage(Creature caster, Creature target)
@@ -202,13 +214,14 @@ namespace GameServer.Battle
             return MathUtil.Random.NextDouble() < crit;
         }
 
-        private void InitHitInfo()
+        private NSkillHitInfo InitHitInfo(bool isBullet)
         {
-            this.HitInfo = new NSkillHitInfo();
-            this.HitInfo.casterId = this.Context.Caster.entityId;
-            this.HitInfo.skillId = this.Info.Id;
-            this.HitInfo.hitId = this.Hit;
-            Context.Battle.AddHitInfo(this.HitInfo);
+            NSkillHitInfo HitInfo = new NSkillHitInfo();
+            HitInfo.casterId = this.Context.Caster.entityId;
+            HitInfo.skillId = this.Info.Id;
+            HitInfo.hitId = this.Hit;
+            HitInfo.isBullet = isBullet;
+            return HitInfo;
         }
 
         private void DoSkillDamage(BattleContext context)
@@ -256,6 +269,24 @@ namespace GameServer.Battle
                     }
                 }
                 else
+                {
+                    if (!this.Define.Bullet)
+                    {
+                        this.Status = SkillStatus.None;
+                        Log.InfoFormat("Skill[{0}] UpdateCasting finish", this.Define.Name);
+                    }
+                }
+            }
+
+            if(this.Define.Bullet)
+            {
+                bool finish = true;
+                foreach(Bullet bullet in this.Bullets)
+                {
+                    bullet.Update();
+                    if (!bullet.Stoped) finish = false;
+                }
+                if(finish && this.Hit>= this.Define.HitTimes.Count)
                 {
                     this.Status = SkillStatus.None;
                     Log.InfoFormat("Skill[{0}] UpdateCasting finish", this.Define.Name);

@@ -46,7 +46,24 @@ public class UISkillSlot : MonoBehaviour, IPointerClickHandler
         }
     }
 
+    public void OnPositionSelected(Vector3 pos)
+    {
+        BattleManager.Instance.CurrentPosition = GameObjectTool.WorldToLogicN(pos);
+        this.CastSkill();
+    }
     public void OnPointerClick(PointerEventData eventData)
+    {
+        if(this.skill.Define.CastTarget == Common.Battle.TargetType.Position)
+        {
+            TargetSelector.ShowSelector(User.Instance.CurrentCharacter.position,
+                this.skill.Define.CastRange, this.skill.Define.AOERange, OnPositionSelected);
+            return;
+        }
+
+        CastSkill();
+    }
+
+    public void CastSkill()
     {
         SkillResult result = this.skill.CanCast(BattleManager.Instance.CurrentTarget);
         switch(result)

@@ -133,7 +133,7 @@ namespace Entities
             //设置为战斗状态
             this.SetStandby(true);
             var skill = this.SkillMgr.GetSkill(skillId);
-            skill.BeginCast(damage);
+            skill.BeginCast(target);
         }
 
         public void SetStandby(bool standby)
@@ -156,15 +156,17 @@ namespace Entities
 
         public void DoDamage(NDamageInfo damage)
         {
-            Debug.LogFormat("DoDamage:{0}", damage.Damage);
+            Debug.LogFormat("DoDamage:{0} DMG:{1} CRIT:{2}",this.Name, damage.Damage,damage.Crit);
             this.Attributes.HP -= damage.Damage;
             this.PlayAnim("Hurt");
         }
 
-        internal void DoSkillHit(int skillId, int hitId, List<NDamageInfo> damages)
+        internal void DoSkillHit(NSkillHitInfo hit)
         {
-            var skill = this.SkillMgr.GetSkill(skillId);
-            skill.DoHit(hitId, damages);
+            Debug.LogFormat("DoSkillHit: Caster:{0} Skill:{1} Hit:{2} IsBullet:{3}", hit.casterId,
+                hit.skillId,hit.hitId,hit.isBullet);
+            var skill = this.SkillMgr.GetSkill(hit.skillId);
+            skill.DoHit(hit);
         }
     }
 }

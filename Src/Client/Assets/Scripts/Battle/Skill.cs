@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Scripts.Battle;
 using Common.Battle;
 using Common.Data;
 using Entities;
@@ -20,13 +21,15 @@ namespace Battle
         public float cd = 0;
 
         public float skillTime;
-        public NDamageInfo Damage;
+        public Creature Target;
         public bool IsCasting = false;
         private float castTime = 0;
-        private int Hit = 0;
+        public int Hit = 0;
         private SkillStatus Status;
 
         Dictionary<int, List<NDamageInfo>> HitMap = new Dictionary<int, List<NDamageInfo>>();
+
+        List<Bullet> Bullets = new List<Bullet>();
         public float CD
         {
             get { return cd; }
@@ -68,22 +71,22 @@ namespace Battle
             return SkillResult.Ok;
         }
 
-        public void BeginCast(NDamageInfo damage)
+        public void BeginCast(Creature target)
         {
             this.IsCasting = true;
             this.castTime = 0;
             this.cd = this.Define.CD;
-
+            this.Target = target;
+            this.Owner.PlayAnim(this.Define.SkillAnim);
             this.skillTime = 0;
-            this.Damage = damage;
-            this.Hit = 0;
+            this.Bullets.Clear();
+            this.HitMap.Clear();
 
             if (this.Define.CastTime > 0)
                 this.Status = SkillStatus.Casting;
             else
                 this.Status = SkillStatus.Running;
 
-            this.Owner.PlayAnim(this.Define.SkillAnim);
         }
 
 
@@ -140,21 +143,57 @@ namespace Battle
                 }
                 else
                 {
+                    if (!this.Define.Bullet)
+                    {
+                        this.Status = SkillStatus.None;
+                        this.IsCasting = false;
+                        Debug.LogFormat("Skill[{0}] UpdateCasting finish", this.Define.Name);
+                    }
+                }
+            }
+
+            if (this.Define.Bullet)
+            {
+                bool finish = true;
+                foreach (Bullet bullet in this.Bullets)
+                {
+                    bullet.Update();
+                    if (!bullet.Stoped) finish = false;
+                }
+                if (finish && this.Hit >= this.Define.HitTimes.Count)
+                {
                     this.Status = SkillStatus.None;
                     this.IsCasting = false;
                     Debug.LogFormat("Skill[{0}] UpdateCasting finish", this.Define.Name);
                 }
             }
         }
-
         private void DoHit()
         {
+            if (this.Define.Bullet)
+            {
+                this.CastBullet();
+            }
+            else
+                this.DoHitDamages(this.Hit);
+            this.Hit++;
+        }
+
+        public void DoHitDamages(int hit)
+        {
             List<NDamageInfo> damages;
-            if(this.HitMap.TryGetValue(this.Hit,out damages))
+            if(this.HitMap.TryGetValue(hit, out damages))
             {
                 DoHitDamages(damages);
             }
             this.Hit++;
+        }
+
+        private void CastBullet()
+        {
+            Bullet bullet = new Bullet(this);
+            Debug.LogFormat("Skill[{0}] CastBullet:[{1}]", this.Define.Name, this.Define.BulletResource);
+            this.Bullets.Add(bullet);
         }
 
         public void UpdateCD(float delta)
@@ -169,10 +208,20 @@ namespace Battle
             }
         }
 
+        //服务器传回的hit信息
+        internal void DoHit(NSkillHitInfo hit)
+        {
+            if(hit.isBullet|| !this.Define.Bullet)
+            {
+                this.DoHit(hit.hitId, hit.Damages);
+            }
+        }
+
         internal void DoHit(int hitId, List<NDamageInfo> damages)
         {
             //服务端信息早到时，置入Map暂存
-            if (hitId <= this.Hit)
+            //hit是本地攻击id  当未来的hitid提前到达时暂存
+            if (hitId > this.Hit)
                 this.HitMap[hitId] = damages;
             else
                 DoHitDamages(damages);
@@ -187,6 +236,5 @@ namespace Battle
                 target.DoDamage(dmg);
             }
         }
-
     }
 }

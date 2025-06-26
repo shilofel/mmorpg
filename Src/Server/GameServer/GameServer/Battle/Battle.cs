@@ -83,7 +83,7 @@ namespace GameServer.Battle
             message.skillCast.Errormsg = context.Result.ToString();
             this.Map.BroadcastBattleResponse(message);
         }
-
+        //广播hit信息
         private void BroadcastHitsMessage()
         {
             if (this.Hits.Count == 0) return;
