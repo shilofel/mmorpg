@@ -14,9 +14,8 @@ namespace GameServer.Battle
         public Battle Battle;
         public Creature Caster;
         public Creature Target;
-        public Vector3Int Position;
+        public Vector3Int Position { get { return this.CastSkill.Position; } }
         public NSkillCastInfo CastSkill;
-        public NDamageInfo Damage;
 
         public SkillResult Result;
 

@@ -1,4 +1,5 @@
 ﻿using Common;
+using Common.Battle;
 using Common.Data;
 using Common.Utils;
 using GameServer.Core;
@@ -48,7 +49,7 @@ namespace GameServer.Battle
         {
             this.Owner = owner;
             this.Info = info;
-            this.Define = DataManager.Instance.Skills[(int)this.Owner.Define.Class][this.Info.Id];
+            this.Define = DataManager.Instance.Skills[(int)this.Owner.Define.TID][this.Info.Id];
         }
 
         public SkillResult CanCast(BattleContext context)
@@ -94,7 +95,8 @@ namespace GameServer.Battle
                 this.Context = context;
                 this.skillTime = 0;
 
-                if(this.Instant)
+                this.AddBuff(TriggerType.SkillCast);
+                if (this.Instant)
                 {
                     this.DoHit();
                 }
@@ -167,7 +169,7 @@ namespace GameServer.Battle
                 pos = this.Owner.Position;
             }
 
-            List<Creature> units = this.Context.Battle.FindUnitsInRange(pos, this.Define.AOERange);
+            List<Creature> units = this.Context.Battle.FindUnitsInMapRange(pos, this.Define.AOERange);
             foreach (var target in units)
             {
                 this.HitTarget(target, hitInfo);
@@ -183,6 +185,8 @@ namespace GameServer.Battle
             Log.InfoFormat("Skill[{0}] HitTarget:[{1}]  Damage:[{2}]  Crit:[{3}]", this.Define.Name, target.Name, damage.Damage, damage.Crit);
             target.DoDamage(damage);
             hit.Damages.Add(damage);
+
+            this.AddBuff(TriggerType.SkillHit);
         }
         //根据属性计算伤害值
         NDamageInfo CalcSkillDamage(Creature caster, Creature target)
@@ -222,14 +226,6 @@ namespace GameServer.Battle
             HitInfo.hitId = this.Hit;
             HitInfo.isBullet = isBullet;
             return HitInfo;
-        }
-
-        private void DoSkillDamage(BattleContext context)
-        {
-            context.Damage = new NDamageInfo();
-            context.Damage.entityId = context.Target.entityId;
-            context.Damage.Damage = 100;
-            context.Target.DoDamage(context.Damage);
         }
 
         //更新cd
@@ -317,6 +313,26 @@ namespace GameServer.Battle
             if (cd < 0)
             {
                 this.cd = 0;
+            }
+        }
+
+        private void AddBuff(TriggerType trigger)
+        {
+            if (this.Define.Buff == null || this.Define.Buff.Count == 0) return;
+            foreach(var buffId in this.Define.Buff)
+            {
+                var buffDefine = DataManager.Instance.Buffs[buffId];
+
+                if (buffDefine.Trigger != trigger) continue;
+
+                if(buffDefine.Target == TargetType.Self)
+                {
+                    this.Owner.AddBuff(this.Context, buffDefine);
+                }
+                else if (buffDefine.Target == TargetType.Target)
+                {
+                    this.Context.Target.AddBuff(this.Context, buffDefine);
+                }
             }
         }
     }

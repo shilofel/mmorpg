@@ -27,6 +27,7 @@ public class LoadingManager : MonoBehaviour {
         Common.Log.Init("Unity");
         Common.Log.Info("LoadingManager start");
 
+        DataManager.Instance.Load();
         UITips.SetActive(true);
         UILoading.SetActive(false);
         UILogin.SetActive(false);

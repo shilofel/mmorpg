@@ -31,9 +31,23 @@ namespace Common.Battle
 
     public enum TargetType
     {
-        None,
+        None =0,
         Target,
-        Position,
-        Self
+        Self,
+        Position
+    }
+
+    public enum BuffEffect
+    {
+        None = 0,
+        stun = 1,
+        Invincible = 2 // 无敌
+    }
+
+    public enum TriggerType
+    {
+        None = 0,
+        SkillCast = 1,//技能释放
+        SkillHit = 2//技能命中
     }
 }

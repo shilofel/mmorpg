@@ -19,6 +19,7 @@ namespace Services
         {
             MessageDistributer.Instance.Subscribe<SkillCastResponse>(this.OnSkillCast);
             MessageDistributer.Instance.Subscribe<SkillHitResponse>(this.OnSkillHits);
+            MessageDistributer.Instance.Subscribe<BuffResponse>(this.OnBuff);
             //MessageDistributer.Instance.Subscribe<MapCharacterEnterResponse>(this.OnCharacterEnter);
         }
 
@@ -26,6 +27,7 @@ namespace Services
         {
             MessageDistributer.Instance.Unsubscribe<SkillCastResponse>(this.OnSkillCast);
             MessageDistributer.Instance.Unsubscribe<SkillHitResponse>(this.OnSkillHits);
+            MessageDistributer.Instance.Unsubscribe<BuffResponse>(this.OnBuff);
         }
 
         public void Init()
@@ -59,7 +61,7 @@ namespace Services
                 if (caster != null)
                 {
                     Creature target = EntityManager.Instance.GetEntity(message.castInfo.targetId) as Creature;
-                    caster.CastSkill(message.castInfo.skillId, target, message.castInfo.Position,message.Damage);
+                    caster.CastSkill(message.castInfo.skillId, target, message.castInfo.Position);
                 }
             }
             else
@@ -82,6 +84,19 @@ namespace Services
                     {
                         caster.DoSkillHit(hit);
                     }
+                }
+            }
+        }
+
+        private void OnBuff(object sender, BuffResponse message)
+        {
+            Debug.LogFormat("OnBuff::count :{0}", message.Buffs.Count);
+
+            if (message.Result == Result.Success)
+            {
+                foreach (var buff in message.Buffs)
+                {
+                    Debug.LogFormat("Buff:{0}:{1}:{2}", buff.buffId,buff.buffType,buff.Action);
                 }
             }
         }

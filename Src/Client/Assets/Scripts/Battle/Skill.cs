@@ -40,7 +40,7 @@ namespace Battle
             this.Owner = owner;
             this.Info = info;
             this.cd = 0;
-            this.Define = DataManager.Instance.Skills[(int)this.Owner.Define.Class][this.Info.Id];
+            this.Define = DataManager.Instance.Skills[(int)this.Owner.Define.TID][this.Info.Id];
         }
 
         public SkillResult CanCast(Creature target)

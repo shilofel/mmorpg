@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Common;
+using GameServer.Core;
 using GameServer.Entities;
 using SkillBridge.Message;
 
@@ -44,6 +45,26 @@ namespace GameServer.Managers
         public Creature GetCreature(int entityId)
         {
             return GetEntity(entityId) as Creature;
+        }
+
+        public List<T> GetMapEntities<T>(int mapId, Predicate<Entity> match) where T:Creature 
+        {
+            List<T> result = new List<T>();
+            foreach (var entity in this.MapEntities[mapId])
+            {
+                if (entity is T && match.Invoke(entity))
+                    result.Add((T)entity);
+            }
+            return result;
+        }
+
+        public List<T> GetMapEntitiesInRange<T>(int mapId, Vector3Int pos, int range) where T : Creature
+        {
+            return this.GetMapEntities<T>(mapId, (entity) =>
+             {
+                 T creature = entity as T;
+                 return creature.Distance(pos) < range;
+             });
         }
     }
 }

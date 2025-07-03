@@ -128,7 +128,7 @@ namespace Entities
             this.position = position;
         }
 
-        public void CastSkill(int skillId, Creature target, NVector3 position,NDamageInfo damage)
+        public void CastSkill(int skillId, Creature target, NVector3 position)
         {
             //设置为战斗状态
             this.SetStandby(true);

@@ -16,9 +16,9 @@ namespace Common.Battle
         //装备属性
         AttributeData Equip = new AttributeData();
         //基本属性——初始 成长 装备合计值 
-        AttributeData Basic = new AttributeData();
+        public AttributeData Basic = new AttributeData();
         //Buff属性
-        AttributeData Buff = new AttributeData();
+        public AttributeData Buff = new AttributeData();
         //最终属性
         public AttributeData Final = new AttributeData();
 
@@ -102,7 +102,7 @@ namespace Common.Battle
             this.Basic.CRI = this.Basic.DEX * 0.0002f + this.Initial.CRI + this.Equip.CRI;
         }
 
-        private void InitFinalAttributes()
+        public void InitFinalAttributes()
         {
             for (int i = (int)AttributeType.MaxHP; i < (int)AttributeType.MAX; i++)
             {
