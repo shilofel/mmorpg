@@ -141,7 +141,7 @@ namespace Entities
             //设置为战斗状态
             this.SetStandby(true);
             var skill = this.SkillMgr.GetSkill(skillId);
-            skill.BeginCast(target);
+            skill.BeginCast(target,position);
         }
 
         public void SetStandby(bool standby)
@@ -223,6 +223,23 @@ namespace Entities
         internal void AddEffect(BuffEffect effect)
         {
             this.EffectMar.AddEffect(effect);
+        }
+
+        internal void FaceTo(Vector3Int position)
+        {
+            this.SetDirection(GameObjectTool.WorldToLogic(GameObjectTool.LogicToWorld(position - this.position).normalized));
+            this.UpdateEntityData();
+            if (this.Controller != null)
+                this.Controller.UpdateDirection();
+        }
+
+        internal void PlayEffect(EffectType type, string name, Creature target, float duration)
+        {
+            if (string.IsNullOrEmpty(name)) return;
+            if(this.Controller != null)
+            {
+                this.Controller.PlayEffect(type, name, target, duration);
+            }
         }
     }
 }

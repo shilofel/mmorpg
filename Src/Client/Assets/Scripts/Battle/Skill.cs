@@ -22,6 +22,7 @@ namespace Battle
 
         public float skillTime;
         public Creature Target;
+        private NVector3 TargetPosition;
         public bool IsCasting = false;
         private float castTime = 0;
         public int Hit = 0;
@@ -71,16 +72,26 @@ namespace Battle
             return SkillResult.Ok;
         }
 
-        public void BeginCast(Creature target)
+        public void BeginCast(Creature target,NVector3 pos)
         {
             this.IsCasting = true;
             this.castTime = 0;
             this.cd = this.Define.CD;
             this.Target = target;
+            this.TargetPosition = pos;
             this.Owner.PlayAnim(this.Define.SkillAnim);
             this.skillTime = 0;
             this.Bullets.Clear();
             this.HitMap.Clear();
+
+            if(this.Define.CastTarget == Common.Battle.TargetType.Position)
+            {
+                this.Owner.FaceTo(this.TargetPosition.ToVector3Int());
+            }
+            else if (this.Define.CastTarget == Common.Battle.TargetType.Target)
+            {
+                this.Owner.FaceTo(this.Target.position);
+            }
 
             if (this.Define.CastTime > 0)
                 this.Status = SkillStatus.Casting;
@@ -194,6 +205,7 @@ namespace Battle
             Bullet bullet = new Bullet(this);
             Debug.LogFormat("Skill[{0}] CastBullet:[{1}]", this.Define.Name, this.Define.BulletResource);
             this.Bullets.Add(bullet);
+            this.Owner.PlayEffect(EffectType.Bullet,this.Define.BulletResource,this.Target,bullet.duration);
         }
 
         public void UpdateCD(float delta)

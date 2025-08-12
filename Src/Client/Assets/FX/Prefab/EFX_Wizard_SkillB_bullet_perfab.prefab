@@ -826,7 +826,7 @@ GameObject:
   - component: {fileID: 114556816228735280}
   - component: {fileID: 114015271821647270}
   - component: {fileID: 114417346102078284}
-  - component: {fileID: 114637052991271464}
+  - component: {fileID: 114529026872816092}
   m_Layer: 0
   m_Name: EFX_Wizard_SkillB_bullet_perfab
   m_TagString: Untagged
@@ -4572,6 +4572,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   child: {fileID: 4048322050108702}
   delayTime: 0.25
+--- !u!114 &114529026872816092
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1444965777611158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06ba6451417b82549b6f6704a2d64526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 1
 --- !u!114 &114542154965397394
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4624,18 +4636,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   child: {fileID: 4731989026709226}
   delayTime: 0.001
---- !u!114 &114637052991271464
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1444965777611158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecf074bbcc64b034bb044bc1995a87a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifeTime: 5
 --- !u!114 &114643013347801860
 MonoBehaviour:
   m_ObjectHideFlags: 1

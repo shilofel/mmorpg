@@ -95,7 +95,7 @@ namespace GameServer.Battle
                 this.Context = context;
                 this.skillTime = 0;
 
-                this.AddBuff(TriggerType.SkillCast);
+                this.AddBuff(TriggerType.SkillCast,this.Context.Target);
                 if (this.Instant)
                 {
                     this.DoHit();
@@ -186,7 +186,7 @@ namespace GameServer.Battle
             target.DoDamage(damage);
             hit.Damages.Add(damage);
 
-            this.AddBuff(TriggerType.SkillHit);
+            this.AddBuff(TriggerType.SkillHit,target);
         }
         //根据属性计算伤害值
         NDamageInfo CalcSkillDamage(Creature caster, Creature target)
@@ -316,7 +316,7 @@ namespace GameServer.Battle
             }
         }
 
-        private void AddBuff(TriggerType trigger)
+        private void AddBuff(TriggerType trigger,Creature target)
         {
             if (this.Define.Buff == null || this.Define.Buff.Count == 0) return;
             foreach(var buffId in this.Define.Buff)
@@ -331,7 +331,7 @@ namespace GameServer.Battle
                 }
                 else if (buffDefine.Target == TargetType.Target)
                 {
-                    this.Context.Target.AddBuff(this.Context, buffDefine);
+                    target.AddBuff(this.Context, buffDefine);
                 }
             }
         }

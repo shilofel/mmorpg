@@ -52,14 +52,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4124966660267406}
-  - component: {fileID: 114243865699388666}
+  - component: {fileID: 114644022606561818}
   m_Layer: 0
   m_Name: EFX_Wizard_AtkA_Bullet_prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4056874116239200
 Transform:
   m_ObjectHideFlags: 1
@@ -202,7 +202,7 @@ TrailRenderer:
   m_MinVertexDistance: 0
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!114 &114243865699388666
+--- !u!114 &114644022606561818
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -210,7 +210,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1956113079464192}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecf074bbcc64b034bb044bc1995a87a7, type: 3}
+  m_Script: {fileID: 11500000, guid: 06ba6451417b82549b6f6704a2d64526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 1

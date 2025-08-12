@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 4871485649871648}
   - component: {fileID: 114120056314224360}
   - component: {fileID: 114953895483985674}
-  - component: {fileID: 114870570415806622}
+  - component: {fileID: 114964476247853898}
   m_Layer: 0
   m_Name: EFX_Wizard_SkillB_prefab
   m_TagString: Untagged
@@ -489,18 +489,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   child: {fileID: 4012034198241112}
   delayTime: 2
---- !u!114 &114870570415806622
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1777430795226506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecf074bbcc64b034bb044bc1995a87a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifeTime: 2
 --- !u!114 &114953895483985674
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -514,6 +502,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   child: {fileID: 4563804555267658}
   delayTime: 2
+--- !u!114 &114964476247853898
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1777430795226506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06ba6451417b82549b6f6704a2d64526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 1
 --- !u!198 &198167448497576528
 ParticleSystem:
   m_ObjectHideFlags: 1

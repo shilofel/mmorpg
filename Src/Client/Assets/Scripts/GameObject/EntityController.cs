@@ -32,6 +32,7 @@ public class EntityController : MonoBehaviour,IEntityNotify, IEntityController
 
     public Transform rideBone;
 
+    public EntityEffecctManager EffectMgr;
     // Use this for initialization
     void Start()
     {
@@ -167,5 +168,23 @@ public class EntityController : MonoBehaviour,IEntityNotify, IEntityController
     public void SetStandby(bool standby)
     {
         this.anim.SetBool("Standby", standby);
+    }
+
+    public void UpdateDirection()
+    {
+        this.direction = GameObjectTool.LogicToWorld(entity.direction);
+        this.transform.forward = this.direction;
+        this.lastRotation = this.rotation;
+    }
+
+    public void PlayEffect(EffectType type, string name, Creature target, float duration)
+    {
+        Transform transform = target.Controller.GetTransform();
+        this.EffectMgr.PlayEffect(type, name, transform, duration);
+    }
+
+    public Transform GetTransform()
+    {
+        return this.transform;
     }
 }

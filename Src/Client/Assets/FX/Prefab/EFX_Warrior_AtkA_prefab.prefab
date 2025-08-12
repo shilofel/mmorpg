@@ -105,7 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4970650937392170}
   - component: {fileID: 114714077698272650}
-  - component: {fileID: 114416448906438620}
+  - component: {fileID: 114981405480754536}
   m_Layer: 0
   m_Name: EFX_Warrior_AtkA_prefab
   m_TagString: Untagged
@@ -196,18 +196,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114416448906438620
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1902622250041544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecf074bbcc64b034bb044bc1995a87a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifeTime: 1
 --- !u!114 &114714077698272650
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -221,6 +209,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   child: {fileID: 4354240306547476}
   delayTime: 0.2
+--- !u!114 &114981405480754536
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1902622250041544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06ba6451417b82549b6f6704a2d64526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 1
 --- !u!198 &198002774612789818
 ParticleSystem:
   m_ObjectHideFlags: 1

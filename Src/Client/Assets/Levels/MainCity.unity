@@ -1450,6 +1450,8 @@ MonoBehaviour:
   camera: {fileID: 900712916}
   viewPoint: {fileID: 0}
   player: {fileID: 0}
+  followSpeed: 5
+  rotateSpeed: 5
 --- !u!1001 &41858629
 Prefab:
   m_ObjectHideFlags: 0
@@ -8372,7 +8374,7 @@ Prefab:
     - target: {fileID: 224216677698040088, guid: 395912489e441e4488d082c432b41144,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0.9922979
+      value: 0.9922978
       objectReference: {fileID: 0}
     - target: {fileID: 224829652922680974, guid: 395912489e441e4488d082c432b41144,
         type: 2}
@@ -8392,12 +8394,12 @@ Prefab:
     - target: {fileID: 224129496916362490, guid: 395912489e441e4488d082c432b41144,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 0.000017657383
       objectReference: {fileID: 0}
     - target: {fileID: 224216677698040088, guid: 395912489e441e4488d082c432b41144,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0.99999994
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 395912489e441e4488d082c432b41144, type: 2}

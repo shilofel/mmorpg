@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4131350516342130}
-  - component: {fileID: 114308847267003798}
+  - component: {fileID: 114551078205970602}
   m_Layer: 0
   m_Name: EFX_Wizard_SkillA_Bullet_prefab
   m_TagString: Untagged
@@ -339,7 +339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollSpeed: 2
---- !u!114 &114308847267003798
+--- !u!114 &114551078205970602
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -347,7 +347,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1005759160301016}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecf074bbcc64b034bb044bc1995a87a7, type: 3}
+  m_Script: {fileID: 11500000, guid: 06ba6451417b82549b6f6704a2d64526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 1

@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 4075175075567390}
   - component: {fileID: 114429922621938778}
   - component: {fileID: 114776946422752838}
-  - component: {fileID: 114597907116373560}
+  - component: {fileID: 114366935802411350}
   m_Layer: 0
   m_Name: EFX_Wizard_SkillC_prefab
   m_TagString: Untagged
@@ -228,6 +228,18 @@ Transform:
   m_Father: {fileID: 4521295356599352}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -180, y: 0, z: 0}
+--- !u!114 &114366935802411350
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1951086284093696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06ba6451417b82549b6f6704a2d64526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 1
 --- !u!114 &114429922621938778
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -241,18 +253,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   child: {fileID: 4065426619427794}
   delayTime: 0.35
---- !u!114 &114597907116373560
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1951086284093696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecf074bbcc64b034bb044bc1995a87a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifeTime: 2
 --- !u!114 &114776946422752838
 MonoBehaviour:
   m_ObjectHideFlags: 1

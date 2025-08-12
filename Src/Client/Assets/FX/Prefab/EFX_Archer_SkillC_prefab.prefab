@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 4049749368655258}
   - component: {fileID: 114627160667227344}
   - component: {fileID: 114014380686918666}
-  - component: {fileID: 114515687756895004}
+  - component: {fileID: 114322161685094918}
   m_Layer: 0
   m_Name: EFX_Archer_SkillC_prefab
   m_TagString: Untagged
@@ -303,7 +303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   child: {fileID: 4282588482176324}
   delayTime: 0.5
---- !u!114 &114515687756895004
+--- !u!114 &114322161685094918
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -311,7 +311,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1614927795924220}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecf074bbcc64b034bb044bc1995a87a7, type: 3}
+  m_Script: {fileID: 11500000, guid: 06ba6451417b82549b6f6704a2d64526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 1

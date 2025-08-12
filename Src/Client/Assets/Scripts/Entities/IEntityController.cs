@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 namespace Entities
 {
@@ -9,5 +10,8 @@ namespace Entities
     {
         void PlayAnim(string name);
         void SetStandby(bool standby);
+        Transform GetTransform();
+        void UpdateDirection();
+        void PlayEffect(EffectType type, string name, Creature target, float duration);
     }
 }
