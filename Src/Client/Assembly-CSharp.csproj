@@ -63,6 +63,14 @@
   <ItemGroup>
     <Compile Include="Assets\FX\Scripts\DelayActiveChild.cs" />
     <Compile Include="Assets\FX\Scripts\uv_l.cs" />
+    <Compile Include="Assets\LeanTween\Framework\LeanAudio.cs" />
+    <Compile Include="Assets\LeanTween\Framework\LeanSmooth.cs" />
+    <Compile Include="Assets\LeanTween\Framework\LeanTest.cs" />
+    <Compile Include="Assets\LeanTween\Framework\LeanTween.cs" />
+    <Compile Include="Assets\LeanTween\Framework\LeanTweenExt.cs" />
+    <Compile Include="Assets\LeanTween\Framework\LTDescr.cs" />
+    <Compile Include="Assets\LeanTween\Framework\LTDescrOptional.cs" />
+    <Compile Include="Assets\LeanTween\Framework\LTSeq.cs" />
     <Compile Include="Assets\Scripts\Assets\Resloader.cs" />
     <Compile Include="Assets\Scripts\Battle\Buff.cs" />
     <Compile Include="Assets\Scripts\Battle\BuffManager.cs" />
@@ -81,6 +89,7 @@
     <Compile Include="Assets\Scripts\GameObject\EffectType.cs" />
     <Compile Include="Assets\Scripts\GameObject\EntityController.cs" />
     <Compile Include="Assets\Scripts\GameObject\EntityEffecctManager.cs" />
+    <Compile Include="Assets\Scripts\GameObject\FXManager.cs" />
     <Compile Include="Assets\Scripts\GameObject\GameObjectManager.cs" />
     <Compile Include="Assets\Scripts\GameObject\GameObjectTool.cs" />
     <Compile Include="Assets\Scripts\GameObject\MainPlayerCamera.cs" />
@@ -181,6 +190,7 @@
     <Compile Include="Assets\Scripts\UI\UIManager.cs" />
     <Compile Include="Assets\Scripts\UI\UIMessageBox.cs" />
     <Compile Include="Assets\Scripts\UI\UINameBar.cs" />
+    <Compile Include="Assets\Scripts\UI\UIPopupText.cs" />
     <Compile Include="Assets\Scripts\UI\UIRegister.cs" />
     <Compile Include="Assets\Scripts\UI\UISetting.cs" />
     <Compile Include="Assets\Scripts\UI\UISystemConfig.cs" />
@@ -282,6 +292,7 @@
     <None Include="Assets\Models\References\log4net.xml" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\ThirdParty\Effects\ImageEffects\Readme.txt" />
+    <None Include="Assets\LeanTween\ReadMe.txt" />
     <None Include="Assets\Resources\log4net.xml" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
     <None Include="Assets\ThirdParty\Candlelight\Asset Store Products\Effects\TessellationShaders\Shaders\BumpedSpecularDisplacement.shader" />
@@ -309,6 +320,7 @@
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\LeanTween\License.txt" />
     <None Include="Assets\ThirdParty\Effects\Projectors\Shaders\ProjectorMultiply.shader" />
     <None Include="Assets\ThirdParty\Effects\Projectors\Shaders\Projector.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />

@@ -787,6 +787,7 @@ message NSkillCastInfo
 	int32 casterId = 2;
 	int32 targetId = 3;
 	NVector3 position = 4;
+	SKILL_RESULT result = 5;
 }
 
 message NSkillHitInfo
@@ -815,7 +816,7 @@ message SkillCastResponse
 {
 	Result result = 1;
 	string errormsg = 2;
-	NSkillCastInfo castInfo = 3;
+	repeated NSkillCastInfo castInfo = 3;
 	NDamageInfo damage = 4;
 }
 message SkillHitResponse

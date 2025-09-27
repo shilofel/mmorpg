@@ -131,7 +131,7 @@ namespace GameServer.Battle
 
             NDamageInfo damage = this.CalcBuffDamage(Context.Caster);
             Log.InfoFormat("Buff[{0}] DoBuffDamage:[{1}]  Damage:[{2}]  Crit:[{3}]", this.Define.Name, Owner.Name, damage.Damage, damage.Crit);
-            Owner.DoDamage(damage);
+            Owner.DoDamage(damage, Context.Caster);
 
             NBuffInfo buff = new NBuffInfo()
             {

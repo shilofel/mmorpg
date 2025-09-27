@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4950412348593688}
-  - component: {fileID: 114670678507837728}
+  - component: {fileID: 114214352101238862}
   m_Layer: 0
   m_Name: EFX_Wizard_AttkA_hit_prefab
   m_TagString: Untagged
@@ -133,7 +133,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114670678507837728
+--- !u!114 &114214352101238862
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1059658096841852}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecf074bbcc64b034bb044bc1995a87a7, type: 3}
+  m_Script: {fileID: 11500000, guid: 06ba6451417b82549b6f6704a2d64526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 1

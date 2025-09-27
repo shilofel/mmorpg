@@ -28,6 +28,8 @@ namespace GameServer.Entities
         public Attributes Attributes;
         public bool IsDeath = false;
 
+        public CharState State;
+
         public Creature(CharacterType type, int configId, int level, Vector3Int pos, Vector3Int dir) :
            base(pos, dir)
         {
@@ -59,14 +61,22 @@ namespace GameServer.Entities
             return (int)Vector3Int.Distance(this.Position, Position);
         }
 
-        internal void DoDamage(NDamageInfo damage)
+        internal void DoDamage(NDamageInfo damage, Creature source)
         {
+            this.State = CharState.InBattle;
             this.Attributes.HP -= damage.Damage;
             if(this.Attributes.HP<0)
             {
                 this.IsDeath = true;
                 damage.WillDead = true;
             }
+            //子类重载
+            this.OnDamege(damage, source);
+        }
+
+        protected virtual void OnDamege(NDamageInfo damage, Creature source)
+        {
+            
         }
 
         public List<EquipDefine> GetEquips()
@@ -90,6 +100,32 @@ namespace GameServer.Entities
         {
             Skill skill = this.SkillMgr.GetSkill(skillId);
             context.Result = skill.Cast(context);
+            //释放成功进战
+            if(context.Result == SkillResult.Ok)
+            {
+                this.State = CharState.InBattle;
+            }
+            //为空代表是怪物释放的，不为空由客户端传递而来是角色释放
+            if(context.CastSkill == null)
+            {
+                if(context.Result == Skill.Ok)
+                {
+                    context.CastSkill = new NSkillCastInfo
+                    {
+                        casterId = this.entityId,
+                        targetId = context.Target.entityId,
+                        skillId = skill.Define.ID,
+                        Position = new NVector3(),
+                        Result = context.Result
+                    };
+                    context.Battle.AddCastSkillInfo(context.CastSkill);
+                }
+            }
+            else
+            {
+                context.CastSkill.Result = context.Result;
+                context.Battle.AddCastSkillInfo(context.CastSkill);
+            }
         }
 
         public override void Update()

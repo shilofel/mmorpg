@@ -50,4 +50,11 @@ namespace Common.Battle
         SkillCast = 1,//技能释放
         SkillHit = 2//技能命中
     }
+
+    public enum CharState
+    {
+        None = 0,
+        Idle = 1,//空闲
+        InBattle = 2//战斗中
+    }
 }

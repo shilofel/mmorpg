@@ -121,7 +121,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4760300467875518}
-  - component: {fileID: 114672027152463910}
+  - component: {fileID: 114025461946767256}
   m_Layer: 0
   m_Name: EFX_Wizard_SkillA_Hit_prefab
   m_TagString: Untagged
@@ -226,7 +226,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114672027152463910
+--- !u!114 &114025461946767256
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1867480806179434}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecf074bbcc64b034bb044bc1995a87a7, type: 3}
+  m_Script: {fileID: 11500000, guid: 06ba6451417b82549b6f6704a2d64526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 1

@@ -8,6 +8,7 @@ public class UIWorldElementManager : MonoSingleton<UIWorldElementManager> {
 
     public GameObject nameBarPrefab;
     public GameObject npcStatusPrefab;
+    public GameObject popupTextPrefab;
 
     private Dictionary<Transform, GameObject> elementNames = new Dictionary<Transform, GameObject>();
     private Dictionary<Transform, GameObject> elementStatus = new Dictionary<Transform, GameObject>();
@@ -54,5 +55,13 @@ public class UIWorldElementManager : MonoSingleton<UIWorldElementManager> {
             Destroy(this.elementStatus[owner]);
             this.elementStatus.Remove(owner);
         }
+    }
+
+    public void ShowPopupText(PopupType type, Vector3 position,float damage,bool isCrit)
+    {
+        GameObject go = Instantiate(popupTextPrefab, position, Quaternion.identity,this.transform);
+        go.name = "Popup";
+        go.GetComponent<UIPopupText>().InitPopup(type, damage, isCrit);
+        go.SetActive(true);
     }
 }

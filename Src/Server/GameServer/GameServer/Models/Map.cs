@@ -141,6 +141,7 @@ namespace GameServer.Models
         internal void MonsterEnter(Monster monster)
         {
             Log.InfoFormat("MonsterEnter: Map:{0} monsterId:{1}", this.Define.ID, monster.Id);
+            monster.OnEnterMap(this);
             foreach (var kv in this.MapCharacters)
             {
                 this.SendCharacterEnterMap(kv.Value.connection, monster.Info);

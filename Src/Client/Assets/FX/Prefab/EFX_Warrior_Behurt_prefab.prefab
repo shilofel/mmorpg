@@ -54,7 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4845603973060520}
   - component: {fileID: 114327356700605434}
-  - component: {fileID: 114748341202773526}
+  - component: {fileID: 114024340565150444}
   m_Layer: 0
   m_Name: EFX_Warrior_Behurt_prefab
   m_TagString: Untagged
@@ -165,6 +165,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114024340565150444
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1489525249477396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06ba6451417b82549b6f6704a2d64526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 1
 --- !u!114 &114327356700605434
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -178,18 +190,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   child: {fileID: 4348891542478808}
   delayTime: 0.3
---- !u!114 &114748341202773526
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1489525249477396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecf074bbcc64b034bb044bc1995a87a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifeTime: 1
 --- !u!198 &198207679875342532
 ParticleSystem:
   m_ObjectHideFlags: 1
