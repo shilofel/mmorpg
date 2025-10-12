@@ -51,7 +51,7 @@ namespace Common.Battle
         SkillHit = 2//技能命中
     }
 
-    public enum CharState
+    public enum BattleState
     {
         None = 0,
         Idle = 1,//空闲

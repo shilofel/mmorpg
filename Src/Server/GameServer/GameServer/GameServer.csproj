@@ -97,6 +97,7 @@
     <Compile Include="Battle\SkillManager.cs" />
     <Compile Include="CommandHelper.cs" />
     <Compile Include="Config.cs" />
+    <Compile Include="Core\Vector3.cs" />
     <Compile Include="Entities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -155,6 +156,10 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Services\AI\AIAgent.cs" />
+    <Compile Include="Services\AI\AIBase.cs" />
+    <Compile Include="Services\AI\AIBoss.cs" />
+    <Compile Include="Services\AI\AIMonsterPassive.cs" />
     <Compile Include="Services\BagService.cs" />
     <Compile Include="Services\BattleService.cs" />
     <Compile Include="Services\ChatService.cs" />

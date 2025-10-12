@@ -57,8 +57,13 @@ namespace GameServer.Battle
             {
                 this.hitInfo.isBullet = true;
                 this.skill.DoHit(this.hitInfo);
-                this.Stoped = true;
+                this.Stop();
             }
+        }
+
+        void Stop()
+        {
+            this.Stoped = true;
         }
 
         private void UpdatePos()

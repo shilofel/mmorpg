@@ -30,5 +30,7 @@ namespace Common.Data
         public float MDEF { get; set; }
         public float SPD { get; set; }
         public float CRI { get; set; }
+
+        public string AI { get; set; }
     }
 }

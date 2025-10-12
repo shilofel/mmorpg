@@ -1,4 +1,6 @@
-﻿using GameServer.Battle;
+﻿using Common.Battle;
+using GameServer.AI;
+using GameServer.Battle;
 using GameServer.Core;
 using GameServer.Models;
 using SkillBridge.Message;
@@ -12,13 +14,14 @@ namespace GameServer.Entities
 {
     class Monster : Creature
     {
-        //攻击目标
-        Creature Target;
-        Map Map;
+        AIAgent AI;
+        public Map Map;
+        private Vector3Int moveTarget;
+        Vector3 movePosition;
         public Monster(int tid, int level, Vector3Int pos, Vector3Int dir) : base(CharacterType.Monster, tid, level, pos, dir)
         {
-
-        }
+            this.AI = new AIAgent(this)
+;        }
 
         public void OnEnterMap(Map map)
         {
@@ -26,35 +29,17 @@ namespace GameServer.Entities
         }
         public override void Update()
         {
-            if(this.State == Common.Battle.CharState.InBattle)
-            {
-                this.UpdateBattle();
-            }
             base.Update();
+            this.UpdateMovement();
+            this.AI.Update();
         }
 
-        private void UpdateBattle()
-        {
-            if(this.Target!=null)
-            {
-                BattleContext context = new BattleContext(this.Map.Battle)
-                {
-                    Target = this.Target,
-                    Caster = this,
-                };
-                Skill skill = this.FindSkill(context);
-                if (skill != null)
-                {
-                    this.CastSkill(context,skill.Define.ID);
-                }
-            }
-        }
-
-        private Skill FindSkill(BattleContext context)
+        public Skill FindSkill(BattleContext context,SkillType type)
         {
             Skill cancast = null;
             foreach(var skill in this.SkillMgr.Skills)
             {
+                if ((skill.Define.Type & type) != skill.Define.Type) continue;
                 var result = skill.CanCast(context);
                 //正在释放无法释放技能
                 if (result == SkillResult.Casting)
@@ -69,11 +54,61 @@ namespace GameServer.Entities
 
         protected override void OnDamege(NDamageInfo damage, Creature source)
         {
-            if(this.Target == null)
+            if(this.AI != null)
             {
                 //攻击攻击自身的角色
-                this.Target = source;
+                this.AI.OnDamage(damage,source);
             }
         }
+
+        internal void MoveTo(Vector3Int position)
+        {
+            if(State == CharacterState.Idle)
+            {
+                State = CharacterState.Move;
+            }
+            //已抵达不重复进行
+            if(this.moveTarget!=position)
+            {
+                this.moveTarget = position;
+                this.movePosition = Position;
+                var dist = (this.moveTarget - this.Position);
+
+                this.Direction = dist.normalized;
+                this.Speed = this.Define.Speed;
+
+                NEntitySync sync = new NEntitySync();
+                sync.Entity = this.EntityData;
+                sync.Event = EntityEvent.MoveFwd;
+                sync.Id = this.entityId;
+
+                this.Map.UpdateEntity(sync);
+            }
+        }
+
+        private void UpdateMovement()
+        {
+            if (State == CharacterState.Move)
+            {
+                if(this.Distance(this.moveTarget)<50)
+                {
+                    this.StopMove();
+                }
+                //时间帧短会导致无法产生有效移动，需要使用Vector3
+                if(this.Speed > 0)
+                {
+                    Vector3 dir = this.Direction;
+                    //Vector3Int 默认*100,需要除以100
+                    this.movePosition += dir * this.Speed * TimeUtil.deltaTime / 100f;
+                    this.Position = movePosition;
+                }
+            }
+        }
+
+        internal void StopMove()
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

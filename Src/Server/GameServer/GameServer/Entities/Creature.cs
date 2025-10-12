@@ -28,7 +28,8 @@ namespace GameServer.Entities
         public Attributes Attributes;
         public bool IsDeath = false;
 
-        public CharState State;
+        public BattleState BattleState;
+        public CharacterState State;
 
         public Creature(CharacterType type, int configId, int level, Vector3Int pos, Vector3Int dir) :
            base(pos, dir)
@@ -48,6 +49,7 @@ namespace GameServer.Entities
             this.Attributes = new Attributes();
             this.Attributes.Init(this.Define, this.Info.Level, this.GetEquips(), this.Info.attrDynamic);
             this.Info.attrDynamic = this.Attributes.DynamicAttr;
+            this.State = CharacterState.Idle;
         }
 
 
@@ -63,7 +65,7 @@ namespace GameServer.Entities
 
         internal void DoDamage(NDamageInfo damage, Creature source)
         {
-            this.State = CharState.InBattle;
+            this.BattleState = BattleState.InBattle;
             this.Attributes.HP -= damage.Damage;
             if(this.Attributes.HP<0)
             {
@@ -103,12 +105,12 @@ namespace GameServer.Entities
             //释放成功进战
             if(context.Result == SkillResult.Ok)
             {
-                this.State = CharState.InBattle;
+                this.BattleState = BattleState.InBattle;
             }
             //为空代表是怪物释放的，不为空由客户端传递而来是角色释放
             if(context.CastSkill == null)
             {
-                if(context.Result == Skill.Ok)
+                if(context.Result == SkillResult.Ok)
                 {
                     context.CastSkill = new NSkillCastInfo
                     {

@@ -89,6 +89,9 @@
       <Name>Protocol</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\..\..\Tools\protoc-3.2.0-win32\bin\protobuf-net.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy $(TargetDir)Common.* $(ProjectDir)..\..\Client\Assets\Models\References\ /Y
