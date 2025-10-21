@@ -100,8 +100,8 @@ namespace GameServer.Battle
             {
                 message.skillCast = new SkillCastResponse();
                 message.skillCast.castInfoes.AddRange(this.CastSkills);
-                message.skillHits.Result = Result.Success;
-                message.skillHits.Errormsg = "";
+                message.skillCast.Result = Result.Success;
+                message.skillCast.Errormsg = "";
             }
 
             if (this.Hits.Count > 0)

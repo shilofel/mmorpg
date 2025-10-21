@@ -55,7 +55,7 @@ public class EffectController:MonoBehaviour
             this.time += Time.deltaTime;
             if(this.target!=null)
             {
-                this.targetPos = this.target.position += this.offset;
+                this.targetPos = this.target.position + this.offset;
             }
 
             this.transform.LookAt(this.targetPos);

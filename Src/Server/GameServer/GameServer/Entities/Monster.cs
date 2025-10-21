@@ -107,7 +107,16 @@ namespace GameServer.Entities
 
         internal void StopMove()
         {
-            throw new NotImplementedException();
+            this.State = CharacterState.Idle;
+            this.moveTarget = Vector3Int.zero;
+            this.Speed = 0;
+
+            NEntitySync sync = new NEntitySync();
+            sync.Entity = this.EntityData;
+            sync.Event = EntityEvent.Idle;
+            sync.Id = this.entityId;
+
+            this.Map.UpdateEntity(sync);
         }
 
     }
