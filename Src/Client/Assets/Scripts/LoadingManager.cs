@@ -8,6 +8,7 @@ using SkillBridge.Message;
 using ProtoBuf;
 using Services;
 using Managers;
+using Assets.Scripts.Services;
 //todo 添加地图初始化
 public class LoadingManager : MonoBehaviour {
 
@@ -48,6 +49,8 @@ public class LoadingManager : MonoBehaviour {
         GuildService.Instance.Init();
         ChatService.Instance.Init();
         SoundManager.Instance.PlayMusic(SoundDefine.Music_Login);
+        ArenaService.Instance.Init();
+
         for (float i = 50; i < 100;)
         {
             i += Random.Range(0.1f, 1.5f);
