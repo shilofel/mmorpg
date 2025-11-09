@@ -13,26 +13,43 @@ namespace GameServer.Managers
         public Dictionary<int, Entity> AllEntities = new Dictionary<int, Entity>();
         public Dictionary<int, List<Entity>> MapEntities = new Dictionary<int, List<Entity>>();
 
+        public int GetMapIndex(int mapId,int instanceId)
+        {
+            return mapId * 1000 + instanceId;
+        }
+        //添加所有实体
         //记录在一张地图中的所有实体对象
-        public void AddEntity(int mapId,Entity entity)
+        public void AddEntity(int mapId,int instanceId,Entity entity)
         {
             //加入唯一id,递增键值
             entity.EntityData.Id = ++this.idx;
-            AllEntities.Add(entity.EntityData.Id,entity);
-            List<Entity> entities = null;
+            AllEntities.Add(entity.EntityData.Id, entity);
 
-            if(!MapEntities.TryGetValue(mapId,out entities))
+            this.AddMapEntity(mapId, instanceId, entity);
+        }
+        //向地图添加实体
+        public void AddMapEntity(int mapId,int instanceId,Entity entity)
+        {
+            List<Entity> entities = null;
+            int index = GetMapIndex(mapId, instanceId);
+            if (!MapEntities.TryGetValue(mapId, out entities))
             {
                 entities = new List<Entity>();
-                MapEntities[mapId] = entities;
+                MapEntities[index] = entities;
             }
             entities.Add(entity);
         }
 
-        public void RemoveEntity(int mapId, Entity entity)
+        public void RemoveEntity(int mapId, int instanceId,Entity entity)
         {
             this.AllEntities.Remove(entity.entityId);
-            this.MapEntities[mapId].Remove(entity);
+            this.RemoveMapEntity(mapId, instanceId, entity);
+        }
+
+        internal void RemoveMapEntity(int mapId, int instanceId, Entity entity)
+        {
+            int index = GetMapIndex(mapId, instanceId);
+            this.MapEntities[index].Remove(entity);
         }
 
         private Entity GetEntity(int entityId)

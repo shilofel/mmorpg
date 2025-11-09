@@ -33,6 +33,8 @@ namespace GameServer.Models
         {
             get { return this.Define.ID; }
         }
+
+        public int InstanceID { get; set; }
         internal MapDefine Define;
 
         //地图角色使用characterId为key值
@@ -43,9 +45,10 @@ namespace GameServer.Models
         public MonsterManager MonsterManager = new MonsterManager();
         public Battle.Battle Battle;
 
-        internal Map(MapDefine define)
+        internal Map(MapDefine define,int instance)
         {
             this.Define = define;
+            this.InstanceID = instance;
             this.SpawnManager.Init(this);
             this.MonsterManager.Init(this);
             this.Battle = new Battle.Battle(this);
@@ -54,23 +57,22 @@ namespace GameServer.Models
         public void Update()
         {
             SpawnManager.Update();
+            this.Battle.Update();
         }
 
         internal void CharacterEnter(NetConnection<NetSession> conn, Character character)
         {
             Log.InfoFormat("CharacterEnter: Map:{0} characterId:{1}", this.Define.ID, character.Id);
-            character.Info.mapId = this.ID;
-            //告诉自己进入某地图
-            this.MapCharacters[character.Id] = new MapCharacter(conn, character); 
+            AddCharacter(conn, character);
 
             conn.Session.Response.mapCharacterEnter = new MapCharacterEnterResponse();
             conn.Session.Response.mapCharacterEnter.mapId = this.Define.ID;
 
             //告知其他角色自己进入某地图
-            foreach(var kv in this.MapCharacters)
+            foreach (var kv in this.MapCharacters)
             {
                 conn.Session.Response.mapCharacterEnter.Characters.Add(kv.Value.character.Info);
-                if(kv.Value.character!=character)
+                if (kv.Value.character != character)
                     this.SendCharacterEnterMap(kv.Value.connection, character.Info);
             }
             //通知怪物入场
@@ -82,9 +84,22 @@ namespace GameServer.Models
             conn.SendResponse();
         }
 
+        public void AddCharacter(NetConnection<NetSession> conn, Character character)
+        {
+            Log.InfoFormat("AddCharacter: Map:{0} characterId:{1}", this.Define.ID, character.Id);
+            character.Info.mapId = this.ID;
+
+            character.OnEnterMap(this);
+            //告诉自己进入某地图
+            if(this.MapCharacters.ContainsKey(character.Id))
+                this.MapCharacters[character.Id] = new MapCharacter(conn, character);
+        }
+
         internal void CharacterLeave(Character character)
         {
             Log.InfoFormat("CharacterLeave: Map:{0} characterId:{1}", this.Define.ID, character.Id);
+
+            character.OnLeaveMap(this);
 
             //告知其他角色自己离开某地图
             foreach (var kv in this.MapCharacters)

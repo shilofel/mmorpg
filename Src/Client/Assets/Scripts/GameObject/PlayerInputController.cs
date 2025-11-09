@@ -24,8 +24,18 @@ public class PlayerInputController : MonoBehaviour {
 
     public NavMeshAgent agent;
     private bool autoNav = false;
-	// 角色状态设置为idle
-	void Start () {
+
+    public bool enableRigidbody
+    {
+        get { return !this.rb.isKinematic; }
+        set
+        {
+            this.rb.isKinematic = !value;
+            this.rb.detectCollisions = value;
+        }
+    }
+    // 角色状态设置为idle
+    void Start () {
         state = SkillBridge.Message.CharacterState.Idle;
         //角色为空，重新读取
         //if(this.character == null)
@@ -51,6 +61,7 @@ public class PlayerInputController : MonoBehaviour {
             agent = this.gameObject.AddComponent<NavMeshAgent>();
             //防止角色重合
             agent.stoppingDistance = 0.3f;
+            agent.updatePosition = false;
         }
 	}
 
@@ -61,6 +72,7 @@ public class PlayerInputController : MonoBehaviour {
 
     private IEnumerator BeginNav(Vector3 target)
     {
+        agent.updatePosition = true;
         agent.SetDestination(target);
         yield return null;
         autoNav = true;
@@ -84,6 +96,7 @@ public class PlayerInputController : MonoBehaviour {
             this.character.Stop();
             this.SendEntityEvent(EntityEvent.Idle);
         }
+        agent.updatePosition = false;
         NavPathRenderer.Instance.SetPath(null,Vector3.zero);
     }
 
@@ -110,9 +123,24 @@ public class PlayerInputController : MonoBehaviour {
         }
     }
 
+    internal void OnLevelLevel()
+    {
+        this.enableRigidbody = false;
+        this.rb.velocity = Vector3.zero;
+    }
+
+    internal void OnEnterLevel()
+    {
+        this.rb.velocity = Vector3.zero;
+        //恢复之前进行一次状态更新，确保位置正确，再启用刚体
+        this.entityController.UpdateTransform();
+        this.lastPos = this.rb.transform.position;
+        this.enableRigidbody = true;
+    }
+
     private void FixedUpdate()
     {
-        if (character == null)
+        if (character == null||!character.ready)
             return;
         if(autoNav)
         {
@@ -181,12 +209,13 @@ public class PlayerInputController : MonoBehaviour {
     }
 
     Vector3 lastPos;
+
     float lastSync = 0;
 
     //位置同步
     private void LateUpdate()
     {
-        if (this.character == null) return;
+        if (this.character == null||!character.ready) return;
         Vector3 offset = this.rb.transform.position - lastPos;
         this.speed = (int)(offset.magnitude*100f/Time.deltaTime);
 

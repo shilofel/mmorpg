@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class SceneManager : MonoSingleton<SceneManager>
 {
     UnityAction<float> onProgress = null;
-
+    public UnityAction onSceneLoadDone = null;
     // Use this for initialization
     protected override void OnStart()
     {
@@ -42,5 +42,7 @@ public class SceneManager : MonoSingleton<SceneManager>
         if (onProgress != null)
             onProgress(1f);
         Debug.Log("LevelLoadCompleted:" + obj.progress);
+        if (onSceneLoadDone != null)
+            onSceneLoadDone();
     }
 }

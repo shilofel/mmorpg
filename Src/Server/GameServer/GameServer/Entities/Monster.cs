@@ -23,9 +23,9 @@ namespace GameServer.Entities
             this.AI = new AIAgent(this)
 ;        }
 
-        public void OnEnterMap(Map map)
+        public override void OnEnterMap(Map map)
         {
-            this.Map = map;
+            
         }
         public override void Update()
         {

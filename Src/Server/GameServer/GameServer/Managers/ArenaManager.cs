@@ -11,12 +11,14 @@ using SkillBridge.Message;
 namespace GameServer.Managers
 {
     //引入副本概念
-    class ArenaManager
+    class ArenaManager : Singleton<ArenaManager>
     {
         public const int ArenaMapId = 5;
         public const int ManInstance = 100;
 
         Queue<int> InstanceIndexes = new Queue<int>();
+
+        Dictionary<int, Arena> Arenas = new Dictionary<int, Arena>();
 
         public void Init()
         {
@@ -24,6 +26,17 @@ namespace GameServer.Managers
             {
                 InstanceIndexes.Enqueue(i);
             }
+        }
+
+        public Arena NewArena(ArenaInfo info,NetConnection<NetSession> red,NetConnection<NetSession> blue)
+        {
+            var instance = InstanceIndexes.Dequeue();
+            var map = MapManager.Instance.GetInstance(ArenaMapId, instance);
+            Arena arena = new Arena(map,info,red,blue
+                );
+            this.Arenas[instance] = arena;
+            arena.PlayerEnter();
+            return arena;
         }
 
         //public Arena NewArena(ArenaInfo info,NetConnection<NetSession> red,NetConnection<NetSession> blue)
