@@ -18,7 +18,7 @@ namespace GameServer.Managers
 
         Queue<int> InstanceIndexes = new Queue<int>();
 
-        Dictionary<int, Arena> Arenas = new Dictionary<int, Arena>();
+        Arena[] Arenas = new Arena[ManInstance];
 
         public void Init()
         {
@@ -37,6 +37,22 @@ namespace GameServer.Managers
             this.Arenas[instance] = arena;
             arena.PlayerEnter();
             return arena;
+        }
+
+        internal void Update()
+        {
+            for(int i=0;i<Arenas.Length;i++)
+            {
+                if(Arenas[i]!=null)
+                {
+                    Arenas[i].Update();
+                }
+            }
+        }
+
+        public Arena GetArena(int arenaId)
+        {
+            return this.Arenas[arenaId];
         }
 
         //public Arena NewArena(ArenaInfo info,NetConnection<NetSession> red,NetConnection<NetSession> blue)
