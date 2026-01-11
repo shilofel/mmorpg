@@ -380,6 +380,12 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(64)]
         public ArenaReadyRequest arenaReady { get; set; }
 
+        [global::ProtoBuf.ProtoMember(70)]
+        public StoryStartRequest storyStart { get; set; }
+
+        [global::ProtoBuf.ProtoMember(72)]
+        public StoryEndRequest storyEnd { get; set; }
+
     }
 
     [global::ProtoBuf.ProtoContract()]
@@ -505,6 +511,12 @@ namespace SkillBridge.Message
 
         [global::ProtoBuf.ProtoMember(66)]
         public ArenaRoundEndResponse arenaRoundEnd { get; set; }
+
+        [global::ProtoBuf.ProtoMember(71)]
+        public StoryStartResponse storyStart { get; set; }
+
+        [global::ProtoBuf.ProtoMember(73)]
+        public StoryEndResponse storyEnd { get; set; }
 
         [global::ProtoBuf.ProtoMember(100)]
         public StatusNotify statusNotify { get; set; }
@@ -1923,6 +1935,74 @@ namespace SkillBridge.Message
 
         [global::ProtoBuf.ProtoMember(2, Name = @"arena_info")]
         public ArenaInfo ArenaInfo { get; set; }
+
+    }
+
+    [global::ProtoBuf.ProtoContract()]
+    public partial class StoryStartRequest : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1)]
+        public int storyId { get; set; }
+
+    }
+
+    [global::ProtoBuf.ProtoContract()]
+    public partial class StoryStartResponse : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"result")]
+        public Result Result { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"errormsg")]
+        [global::System.ComponentModel.DefaultValue("")]
+        public string Errormsg { get; set; } = "";
+
+        [global::ProtoBuf.ProtoMember(3)]
+        public int storyId { get; set; }
+
+        [global::ProtoBuf.ProtoMember(4)]
+        public int instanceId { get; set; }
+
+    }
+
+    [global::ProtoBuf.ProtoContract()]
+    public partial class StoryEndRequest : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1)]
+        public int storyId { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2)]
+        public int instanceId { get; set; }
+
+    }
+
+    [global::ProtoBuf.ProtoContract()]
+    public partial class StoryEndResponse : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"result")]
+        public Result Result { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"errormsg")]
+        [global::System.ComponentModel.DefaultValue("")]
+        public string Errormsg { get; set; } = "";
+
+        [global::ProtoBuf.ProtoMember(3)]
+        public int storyId { get; set; }
 
     }
 
