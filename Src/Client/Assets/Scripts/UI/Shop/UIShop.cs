@@ -23,7 +23,7 @@ public class UIShop : UIWindow
     {
         StartCoroutine(InitItems());
     }
-
+    //目前只初始化一次，在获取商店道具列表时存在问题
     IEnumerator InitItems()
     {
         int count = 0;

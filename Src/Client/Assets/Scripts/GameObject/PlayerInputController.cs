@@ -72,11 +72,25 @@ public class PlayerInputController : MonoBehaviour {
 
     private IEnumerator BeginNav(Vector3 target)
     {
+        agent.Warp(rb.transform.position);
         agent.updatePosition = true;
-        agent.SetDestination(target);
+
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(target, out hit, 2f, NavMesh.AllAreas))
+        {
+            agent.SetDestination(hit.position);
+        }
+        else
+        {
+            Debug.LogWarning("寻路目标点不在NavMesh上，取消寻路");
+            autoNav = false;
+            yield break;
+        }
+
         yield return null;
         autoNav = true;
-        if(state!=SkillBridge.Message.CharacterState.Move)
+        enableRigidbody = false;
+        if (state!=SkillBridge.Message.CharacterState.Move)
         {
             state = SkillBridge.Message.CharacterState.Move;
             this.character.MoveForward();
@@ -89,10 +103,22 @@ public class PlayerInputController : MonoBehaviour {
     {
         autoNav = false;
         agent.ResetPath();
+
+        // 关键修改3：停止寻路时，将Agent位置同步回刚体，并恢复刚体控制
+        if (rb != null)
+        {
+            // 将Agent的最终位置同步给刚体
+            rb.MovePosition(agent.transform.position);
+            // 恢复刚体物理
+            enableRigidbody = true;
+            // 清空刚体速度，避免残留运动
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
+
         if (state != SkillBridge.Message.CharacterState.Idle)
         {
             state = SkillBridge.Message.CharacterState.Idle;
-            this.rb.velocity = Vector3.zero;
             this.character.Stop();
             this.SendEntityEvent(EntityEvent.Idle);
         }

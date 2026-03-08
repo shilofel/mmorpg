@@ -32,7 +32,7 @@ namespace GameServer.Managers
         {
             List<Entity> entities = null;
             int index = GetMapIndex(mapId, instanceId);
-            if (!MapEntities.TryGetValue(mapId, out entities))
+            if (!MapEntities.TryGetValue(index, out entities))
             {
                 entities = new List<Entity>();
                 MapEntities[index] = entities;

@@ -70,7 +70,7 @@ namespace Managers
         //内存映射到Items数组
         private unsafe void Analyze(byte[] data)
         {
-            //指针必须在fixed()内
+            //指针必须在fixed()内，防止gc移动内存
             fixed(byte * pt = data)
             {
                 for(int i=0;i<this.Unlocked;i++)
@@ -133,7 +133,41 @@ namespace Managers
 
         public void RemoveItem(int id, int count)
         {
-          
+            if (count <= 0) return;
+            if (!DataManager.Instance.Items.ContainsKey(id))
+            {
+                Debug.LogError($"移除道具失败：ID={id} 的道具配置不存在");
+                return;
+            }
+
+            ushort removeCount = (ushort)count;
+
+            // 遍历背包，优先扣除已有同ID道具
+            for (int i = 0; i < Items.Length && removeCount > 0; i++)
+            {
+                if (this.Items[i].ItemId == id)
+                {
+                    if (this.Items[i].Count > removeCount)
+                    {
+                        // 当前格子数量足够，直接扣除
+                        this.Items[i].Count -= removeCount;
+                        removeCount = 0;
+                    }
+                    else
+                    {
+                        // 扣除当前格子全部数量，剩余继续扣
+                        removeCount -= this.Items[i].Count;
+                        this.Items[i].ItemId = 0; // 清空格子
+                        this.Items[i].Count = 0;
+                    }
+                }
+            }
+
+            // 剩余数量未扣除（道具不足）
+            if (removeCount > 0)
+            {
+                Debug.LogError($"移除道具失败：ID={id} 不足，需要{count}个，实际缺少{removeCount}个");
+            }
         }
     }
 }

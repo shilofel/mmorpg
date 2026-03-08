@@ -43,6 +43,7 @@ public class UIBag :UIWindow
                 ui.SetMainIcon(def.Icon, item.Count.ToString());
             }
         }
+        //未解锁的格子设为灰色
         for(int i=BagManager.Instance.Items.Length;i<slots.Count;i++)
         {
             slots[i].color = Color.gray;
