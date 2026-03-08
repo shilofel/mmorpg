@@ -91,7 +91,7 @@ namespace GameServer.Models
 
             character.OnEnterMap(this);
             //告诉自己进入某地图
-            if(this.MapCharacters.ContainsKey(character.Id))
+            if(!this.MapCharacters.ContainsKey(character.Id))
                 this.MapCharacters[character.Id] = new MapCharacter(conn, character);
         }
 

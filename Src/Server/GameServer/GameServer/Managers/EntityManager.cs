@@ -42,7 +42,7 @@ namespace GameServer.Managers
 
         public void RemoveEntity(int mapId, int instanceId,Entity entity)
         {
-            this.AllEntities.Remove(entity.entityId);
+            this.AllEntities.Remove(entity.EntityData.Id);
             this.RemoveMapEntity(mapId, instanceId, entity);
         }
 
@@ -64,10 +64,11 @@ namespace GameServer.Managers
             return GetEntity(entityId) as Creature;
         }
 
-        public List<T> GetMapEntities<T>(int mapId, Predicate<Entity> match) where T:Creature 
+        public List<T> GetMapEntities<T>(int mapId, int instanceId,Predicate<Entity> match) where T:Creature 
         {
             List<T> result = new List<T>();
-            foreach (var entity in this.MapEntities[mapId])
+            int index = GetMapIndex(mapId, instanceId);
+            foreach (var entity in this.MapEntities[index])
             {
                 if (entity is T && match.Invoke(entity))
                     result.Add((T)entity);
@@ -75,9 +76,9 @@ namespace GameServer.Managers
             return result;
         }
 
-        public List<T> GetMapEntitiesInRange<T>(int mapId, Vector3Int pos, int range) where T : Creature
+        public List<T> GetMapEntitiesInRange<T>(int mapId, int instanceId ,Vector3Int pos, int range) where T : Creature
         {
-            return this.GetMapEntities<T>(mapId, (entity) =>
+            return this.GetMapEntities<T>(mapId, instanceId, (entity) =>
              {
                  T creature = entity as T;
                  return creature.Distance(pos) < range;

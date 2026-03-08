@@ -154,7 +154,7 @@ namespace GameServer.Battle
 
         internal List<Creature> FindUnitsInMapRange(Vector3Int pos, int range)
         {
-            return EntityManager.Instance.GetMapEntitiesInRange<Creature>(this.Map.ID, pos, range);
+            return EntityManager.Instance.GetMapEntitiesInRange<Creature>(this.Map.ID,this.Map.InstanceID , pos, range);
         }
 
         public void AddCastSkillInfo(NSkillCastInfo cast)

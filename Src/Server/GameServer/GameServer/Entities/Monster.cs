@@ -25,8 +25,9 @@ namespace GameServer.Entities
 
         public override void OnEnterMap(Map map)
         {
-            
+            this.Map = map;
         }
+
         public override void Update()
         {
             base.Update();

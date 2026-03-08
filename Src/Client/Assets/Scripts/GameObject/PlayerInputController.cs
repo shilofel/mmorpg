@@ -126,7 +126,11 @@ public class PlayerInputController : MonoBehaviour {
     internal void OnLevelLevel()
     {
         this.enableRigidbody = false;
-        this.rb.velocity = Vector3.zero;
+        if (this.rb != null) // 增加空值判断，避免空引用异常
+        {
+            this.rb.velocity = Vector3.zero;
+            this.rb.angularVelocity = Vector3.zero; // 额外清空角速度，防止刚体残留旋转
+        }
     }
 
     internal void OnEnterLevel()

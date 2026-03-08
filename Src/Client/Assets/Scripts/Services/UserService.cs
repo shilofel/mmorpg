@@ -289,13 +289,20 @@ namespace Services
             User.Instance.CurrentCharacterInfo = null;
             MapService.Instance.CurrentMapId = 0;
             User.Instance.CurrentCharacter = null;
-            if (this.isQuitGame)
+            if (isQuitGame) // 确保这个变量被正确设为true（关键！）
             {
-//#if UNITY_EDITOR
-//                UnityEditor.Editor.EditorApplication.isPlaying = false;
-//#else
-//                Application.Quit();
-//#endif
+                // 编辑器环境：停止播放模式
+#if UNITY_EDITOR
+                if (EditorApplication.isPlaying)
+                {
+                    EditorApplication.isPlaying = false;
+                    Debug.Log("编辑器环境：停止PlayMode（模拟退出游戏）");
+                }
+#else
+                // 打包后的游戏：真正退出程序
+                Application.Quit();
+                Debug.Log("打包环境：执行Application.Quit()退出游戏");
+#endif
             }
         }
     }
