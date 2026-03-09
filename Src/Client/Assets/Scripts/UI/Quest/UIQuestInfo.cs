@@ -66,7 +66,7 @@ public class UIQuestInfo : MonoBehaviour
             this.npc = quest.Define.SubmitNPC;
         }
 
-        this.navButton.gameObject.SetActive(this.npc > 0);
+        //this.navButton.gameObject.SetActive(this.npc > 0);
         foreach (var fitter in this.GetComponentsInChildren<ContentSizeFitter>())
         {
             fitter.SetLayoutVertical();

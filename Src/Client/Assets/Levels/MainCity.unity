@@ -2451,7 +2451,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -54.9, y: -58.7}
+  m_AnchoredPosition: {x: -60, y: -36}
   m_SizeDelta: {x: 16.25, y: 33.492}
   m_Pivot: {x: 0.5, y: 0.35662678}
 --- !u!114 &61509426
@@ -8548,7 +8548,12 @@ PrefabInstance:
     - target: {fileID: 224129496916362490, guid: 395912489e441e4488d082c432b41144,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000027681777
+      value: 27823.092
+      objectReference: {fileID: 0}
+    - target: {fileID: 224129496916362490, guid: 395912489e441e4488d082c432b41144,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -17938.668
       objectReference: {fileID: 0}
     - target: {fileID: 224271819802641810, guid: 395912489e441e4488d082c432b41144,
         type: 3}
@@ -8578,7 +8583,7 @@ PrefabInstance:
     - target: {fileID: 224960192173876620, guid: 395912489e441e4488d082c432b41144,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000015258789
+      value: -8382.953
       objectReference: {fileID: 0}
     - target: {fileID: 224707183406430486, guid: 395912489e441e4488d082c432b41144,
         type: 3}
@@ -16316,21 +16321,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224764526564899464, guid: 1dc584f0683b64648992881d937261e8,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224764526564899464, guid: 1dc584f0683b64648992881d937261e8,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224764526564899464, guid: 1dc584f0683b64648992881d937261e8,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 224713172703344102, guid: 1dc584f0683b64648992881d937261e8,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -16357,6 +16347,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224346321342023450, guid: 1dc584f0683b64648992881d937261e8,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224764526564899464, guid: 1dc584f0683b64648992881d937261e8,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224764526564899464, guid: 1dc584f0683b64648992881d937261e8,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224764526564899464, guid: 1dc584f0683b64648992881d937261e8,
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -54246,6 +54251,16 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 224196315140678114, guid: 000c8d52898d60140882559578f3631f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -3912.4087
+      objectReference: {fileID: 0}
+    - target: {fileID: 224196315140678114, guid: 000c8d52898d60140882559578f3631f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 3296.8777
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 000c8d52898d60140882559578f3631f, type: 3}
 --- !u!114 &1700586883 stripped
@@ -65430,6 +65445,7 @@ GameObject:
   - component: {fileID: 2044175112}
   - component: {fileID: 2044175114}
   - component: {fileID: 2044175113}
+  - component: {fileID: 2044175115}
   m_Layer: 5
   m_Name: UIAvatar
   m_TagString: Untagged
@@ -65495,6 +65511,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2044175111}
   m_CullTransparentMesh: 0
+--- !u!114 &2044175115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044175111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e266f5d3e2397234cb0fed2b55f3ac76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  avaverName: {fileID: 880237128}
 --- !u!1 &2045350232
 GameObject:
   m_ObjectHideFlags: 0

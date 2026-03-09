@@ -78,6 +78,7 @@ public class UIQuestSystem : UIWindow
 
     private void OnQuestSelected(ListView.ListViewItem item)
     {
+        //添加清除select逻辑
         UIQuestItem questItem = item as UIQuestItem;
         this.questInfo.SetQuestInfo(questItem.quest);
     }
