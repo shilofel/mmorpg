@@ -160,6 +160,7 @@ GameObject:
   - component: {fileID: 224444293058691144}
   - component: {fileID: 222126991987256208}
   - component: {fileID: 114742447967443500}
+  - component: {fileID: 14260924382935173}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -223,6 +224,21 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &14260924382935173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066502561538656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 050db8fa0bb905240a92d15a66d23e33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainText: {fileID: 0}
+  secondImage: {fileID: 0}
+  mainImage: {fileID: 0}
 --- !u!1 &1096259382413848
 GameObject:
   m_ObjectHideFlags: 0
@@ -753,8 +769,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tabButtons:
-  - {fileID: 114621805213872514}
-  - {fileID: 114884807156735786}
+  - {fileID: 5513786101413888182}
+  - {fileID: 507864664077703664}
   tabPages:
   - {fileID: 1757392086989554}
   - {fileID: 1031179024485290}
@@ -1555,6 +1571,7 @@ GameObject:
   - component: {fileID: 222413658569102896}
   - component: {fileID: 114699491464606866}
   - component: {fileID: 114479698127261804}
+  - component: {fileID: 5513786101413888182}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1672,6 +1689,22 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &5513786101413888182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1341075018079344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17282dcb0ac03ee4fbc340b87547f7bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeImage: {fileID: 0}
+  tabView: {fileID: 0}
+  tabIndex: 0
+  selected: 0
 --- !u!1 &1360765898442716
 GameObject:
   m_ObjectHideFlags: 0
@@ -2135,7 +2168,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000021276253, y: 0.00002635598}
+  m_AnchoredPosition: {x: 0.0000051267266, y: 0.00000067214637}
   m_SizeDelta: {x: 0, y: 223.61}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &114629698321949044
@@ -2620,7 +2653,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 224595442625928666}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9999999
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3282,7 +3315,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000010131121, y: 0.000009725042}
+  m_AnchoredPosition: {x: 0.000025196934, y: 0.0000006944981}
   m_SizeDelta: {x: 0, y: 223.61}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &114834947889994310
@@ -4179,7 +4212,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 224714238797650544}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.99999994
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4824,6 +4857,7 @@ GameObject:
   - component: {fileID: 222820795630098918}
   - component: {fileID: 114562031024667078}
   - component: {fileID: 114887496988049322}
+  - component: {fileID: 507864664077703664}
   m_Layer: 5
   m_Name: Button (1)
   m_TagString: Untagged
@@ -4930,6 +4964,22 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &507864664077703664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959168838427254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17282dcb0ac03ee4fbc340b87547f7bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeImage: {fileID: 0}
+  tabView: {fileID: 0}
+  tabIndex: 0
+  selected: 0
 --- !u!1 &1967495653708088
 GameObject:
   m_ObjectHideFlags: 0

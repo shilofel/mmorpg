@@ -37,6 +37,7 @@ namespace Models
         public void AddGold(int gold)
         {
             this.CurrentCharacterInfo.Gold += gold;
+            
         }
 
         public int CurrentRide = 0;

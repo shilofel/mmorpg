@@ -18,6 +18,7 @@ namespace Managers
     {
         public Dictionary<int, Item> Items = new Dictionary<int, Item>();
 
+
         public void Init(List<NItemInfo> items)
         {
             this.Items.Clear();
@@ -33,7 +34,7 @@ namespace Managers
 
         public ItemDefine GetItem(int itemId)
         {
-            return null;
+            return Items[itemId].Define;
         }
 
         private bool OnItemNotify(NStatus status)

@@ -18,10 +18,12 @@ namespace Services
 
         Dictionary<StatusType, StatusNotifyHandler> eventMap = new Dictionary<StatusType, StatusNotifyHandler>();
         HashSet<StatusNotifyHandler> notifyHandlers = new HashSet<StatusNotifyHandler>();
+
         public void Init()
         {
 
         }
+
         //防止角色进入，重复注册事件
         public void RegisterStatusNotify(StatusType function, StatusNotifyHandler action)
         {

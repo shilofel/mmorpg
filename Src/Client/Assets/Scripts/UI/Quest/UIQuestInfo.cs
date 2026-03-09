@@ -36,7 +36,7 @@ public class UIQuestInfo : MonoBehaviour
     public void SetQuestInfo(Quest quest)
     {
         this.title.text = string.Format("[{0}]{1}", quest.Define.Type, quest.Define.Name);
-        if (overview == null)
+        if (overview != null)
         {
             this.overview.text = quest.Define.Overview;
         }

@@ -152,7 +152,7 @@ namespace GameServer.Entities
 
             if (this.Guild != null)
             {
-                //更新时间在变更时间之前，更新队伍信息
+                //更新公会信息
                 Log.InfoFormat("PostProcess > Guild:character:{0}:{1} {2}<{3}", this.Id, this.Info.Name, GuildUpdateTS, Guild.timestamp);
                 if (this.Info.Guild == null)
                 {

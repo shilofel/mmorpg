@@ -18,7 +18,9 @@ namespace Managers
         public int Unlocked;
         public BagItem[] Items;
         NBagInfo Info;
+        public delegate void OnItemChangeHandle();
 
+        public event OnItemChangeHandle OnItemChanged;
         unsafe public void Init(NBagInfo info)
         {
             this.Info = info;
@@ -128,8 +130,10 @@ namespace Managers
                     }
                 }
             }
-        }
 
+            if (OnItemChanged != null)
+                OnItemChanged();
+        }
 
         public void RemoveItem(int id, int count)
         {
@@ -168,6 +172,9 @@ namespace Managers
             {
                 Debug.LogError($"移除道具失败：ID={id} 不足，需要{count}个，实际缺少{removeCount}个");
             }
+
+            if (OnItemChanged != null)
+                OnItemChanged();
         }
     }
 }

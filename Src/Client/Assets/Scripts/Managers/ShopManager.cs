@@ -16,13 +16,17 @@ namespace Managers
 {
     class ShopManager : Singleton<ShopManager>
     {
-        public int Unlocked;
-        public BagItem[] Items;
-        NBagInfo Info;
-
+        UIShop uIShop;
         public void Init()
         {
             NPCManager.Instance.RegisterNPCEvent(NPCFunction.InvokeShop, OnOpenShop);
+            StatusService.Instance.RegisterStatusNotify(StatusType.Money, OnBuyItem);
+        }
+
+        public bool OnBuyItem(NStatus status)
+        {
+            uIShop.SetMoney();
+            return true;
         }
 
         private bool OnOpenShop(NPCDefine npc)
@@ -36,7 +40,7 @@ namespace Managers
             ShopDefine shop;
             if(DataManager.Instance.Shops.TryGetValue(shopId,out shop))
             {
-                UIShop uIShop = UIManager.Instance.Show<UIShop>();
+                uIShop = UIManager.Instance.Show<UIShop>();
                 if(uIShop != null)
                 {
                     uIShop.SetShop(shop);
