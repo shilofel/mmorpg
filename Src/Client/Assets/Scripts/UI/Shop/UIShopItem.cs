@@ -61,5 +61,4 @@ public class UIShopItem : MonoBehaviour,ISelectHandler
         this.Selected = true;
         this.shop.SelectShopItem(this);
     }
-
 }

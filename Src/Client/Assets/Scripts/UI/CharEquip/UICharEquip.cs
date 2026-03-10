@@ -28,6 +28,14 @@ class UICharEquip : UIWindow
 
     public Text[] attrs;
 
+    private UIEquipItem currentSelectedItem;
+    public void SelectItem(UIEquipItem item)
+    {
+        if (currentSelectedItem != null && currentSelectedItem != item)
+            currentSelectedItem.Selected = false;
+        currentSelectedItem = item;
+    }
+
     private void Start()
     {
         RefreshUI();

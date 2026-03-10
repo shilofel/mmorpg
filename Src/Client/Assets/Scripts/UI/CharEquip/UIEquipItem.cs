@@ -59,6 +59,7 @@ class UIEquipItem : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        owner.SelectItem(this);
         if(this.isEquiped)
         {
             UnEquip();
@@ -84,7 +85,7 @@ class UIEquipItem : MonoBehaviour, IPointerClickHandler
             if(oldEquip != null)
             {
                 var newmsg = MessageBox.Show(string.Format("要替换[{0}]吗?", oldEquip.Define.Name, "确认", MessageBoxType.Confirm));
-                msg.OnYes = () =>
+                newmsg.OnYes = () =>
                 {
                     this.owner.DoEquip(this.item);
                 };

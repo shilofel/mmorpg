@@ -195,7 +195,6 @@ public class UIShop : UIWindow
             selectedItem.Selected = false;
         }
         this.selectedItem = item;
-        selectedItem.Selected = true;
     }
 
     // 分页切换接口（可绑定UI按钮，如“上一页/下一页”）
