@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -56,6 +56,15 @@ public class ListView : MonoBehaviour
             selectedItem = value;
             if (onItemSelected != null)
                 onItemSelected.Invoke((ListViewItem)value);
+        }
+    }
+
+    public void ClearSelection()
+    {
+        if (selectedItem != null)
+        {
+            selectedItem.Selected = false;
+            selectedItem = null;
         }
     }
 

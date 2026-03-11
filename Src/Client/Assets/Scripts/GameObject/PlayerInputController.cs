@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -24,6 +24,7 @@ public class PlayerInputController : MonoBehaviour {
 
     public NavMeshAgent agent;
     private bool autoNav = false;
+    private Action onNavArrived;
 
     public bool enableRigidbody
     {
@@ -65,8 +66,11 @@ public class PlayerInputController : MonoBehaviour {
         }
 	}
 
-    public void StartNav(Vector3 target)
+    /// <param name="target">寻路目标位置</param>
+    /// <param name="onArrived">到达目标时回调，寻路被中断（如玩家按键移动）时不会触发</param>
+    public void StartNav(Vector3 target, Action onArrived = null)
     {
+        onNavArrived = onArrived;
         StartCoroutine(BeginNav(target));
     }
 
@@ -84,6 +88,7 @@ public class PlayerInputController : MonoBehaviour {
         {
             Debug.LogWarning("寻路目标点不在NavMesh上，取消寻路");
             autoNav = false;
+            onNavArrived = null;
             yield break;
         }
 
@@ -102,6 +107,7 @@ public class PlayerInputController : MonoBehaviour {
     public void StopNav()
     {
         autoNav = false;
+        onNavArrived = null;
         agent.ResetPath();
 
         // 关键修改3：停止寻路时，将Agent位置同步回刚体，并恢复刚体控制
@@ -135,6 +141,7 @@ public class PlayerInputController : MonoBehaviour {
             return;
         }
         if (agent.pathStatus != NavMeshPathStatus.PathComplete) return;
+        // 玩家按键移动，视为中途中断，不触发到达回调
         if(Mathf.Abs(Input.GetAxis("Vertical"))>0.1||Mathf.Abs(Input.GetAxis("Horizontal"))>0.1)
         {
             StopNav();
@@ -142,8 +149,12 @@ public class PlayerInputController : MonoBehaviour {
         }
 
         NavPathRenderer.Instance.SetPath(agent.path, agent.destination);
+        // 到达目标，触发回调后再停止寻路
         if (agent.isStopped||agent.remainingDistance< 1)
         {
+            var callback = onNavArrived;
+            onNavArrived = null;
+            callback?.Invoke();
             StopNav();
             return;
         }

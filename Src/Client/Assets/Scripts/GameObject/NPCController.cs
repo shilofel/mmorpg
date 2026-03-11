@@ -1,4 +1,4 @@
-﻿using Common.Data;
+using Common.Data;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -106,11 +106,17 @@ public class NPCController : MonoBehaviour {
 
     private void OnMouseDown()
     {
-        if(Vector3.Distance(this.transform.position,User.Instance.CurrentCharacterObject.transform.position)>2f)
+        float distance = Vector3.Distance(this.transform.position, User.Instance.CurrentCharacterObject.transform.position);
+        if (distance > 2f)
         {
-            User.Instance.CurrentCharacterObject.StartNav(this.transform.position);
+            // 距离过远：只寻路，到达后再交互
+            User.Instance.CurrentCharacterObject.StartNav(this.transform.position, Interactive);
         }
-        Interactive();
+        else
+        {
+            // 已在交互范围内：直接交互
+            Interactive();
+        }
     }
 
     private void OnMouseOver()

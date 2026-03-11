@@ -124,7 +124,6 @@ public class UIFriends : UIWindow
             UIFriendItem ui = go.GetComponent<UIFriendItem>();
             ui.SetFriendInfo(item);
             this.listMain.AddItem(ui);
-
         }
     }
 

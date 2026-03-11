@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -78,8 +78,15 @@ public class UIQuestSystem : UIWindow
 
     private void OnQuestSelected(ListView.ListViewItem item)
     {
-        //添加清除select逻辑
         UIQuestItem questItem = item as UIQuestItem;
+        if (questItem != null && questItem.owner != null)
+        {
+            // 跨列表互斥：选中主线时清空支线，反之亦然
+            if (questItem.owner == this.listMain)
+                this.listBranch.ClearSelection();
+            else if (questItem.owner == this.listBranch)
+                this.listMain.ClearSelection();
+        }
         this.questInfo.SetQuestInfo(questItem.quest);
     }
 }
