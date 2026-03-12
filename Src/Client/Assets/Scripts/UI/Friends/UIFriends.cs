@@ -14,14 +14,32 @@ public class UIFriends : UIWindow
     public GameObject itemPrefab;
     public ListView listMain;
     public Transform itemRoot;
+    public InputField searchInput;
 
     public UIFriendItem selectedItem;
+    private string currentSearchKeyword = "";
 
     private void Start()
     {
-        //FriendService.Instance.OnFriendUpdate = RefreshUI;
+        FriendService.Instance.OnFriendUpdate += RefreshUI;
         this.listMain.onItemSelected += this.OnFriendSelected;
+        
+        if (searchInput != null)
+        {
+            searchInput.onValueChanged.AddListener(OnSearchKeywordChanged);
+        }
+        
         RefreshUI();
+    }
+
+    private void OnDestroy()
+    {
+        FriendService.Instance.OnFriendUpdate -= RefreshUI;
+        
+        if (searchInput != null)
+        {
+            searchInput.onValueChanged.RemoveListener(OnSearchKeywordChanged);
+        }
     }
 
     private void Update()
@@ -32,6 +50,12 @@ public class UIFriends : UIWindow
     public void OnFriendSelected(ListView.ListViewItem item)
     {
         this.selectedItem = item as UIFriendItem;
+    }
+
+    private void OnSearchKeywordChanged(string keyword)
+    {
+        currentSearchKeyword = keyword;
+        RefreshUI();
     }
 
     public void OnClickFriendAdd()
@@ -118,9 +142,14 @@ public class UIFriends : UIWindow
 
     void InitFriendItems()
     {
-        foreach (var item in FriendManager.Instance.allFriends)
+        if (FriendManager.Instance.allFriends == null)
+            return;
+
+        var friends = FriendManager.Instance.GetFilteredAndSortedFriends(currentSearchKeyword);
+        
+        foreach (var item in friends)
         {
-            GameObject  go = Instantiate(itemPrefab,this.listMain.transform);
+            GameObject go = Instantiate(itemPrefab, this.listMain.transform);
             UIFriendItem ui = go.GetComponent<UIFriendItem>();
             ui.SetFriendInfo(item);
             this.listMain.AddItem(ui);

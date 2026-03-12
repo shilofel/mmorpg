@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -82,6 +82,8 @@ namespace Services
             if(message.Result == Result.Success)
             {
                 MessageBox.Show(message.Request.ToName + "接受了您的请求","添加好友成功");
+                if (OnFriendUpdate != null)
+                    OnFriendUpdate();
             }
 
             if (message.Result == Result.Failed)
@@ -93,7 +95,7 @@ namespace Services
         void OnFriendList(object sender, FriendListResponse message)
         {
             Debug.Log("OnFriendList");
-            FriendManager.Instance.allFriends = message.Friends;
+            FriendManager.Instance.Init(message.Friends);
             if (this.OnFriendUpdate != null)
                 this.OnFriendUpdate();
         }
@@ -114,6 +116,8 @@ namespace Services
             if (message.Result == Result.Success)
             {
                 MessageBox.Show("删除成功", "删除好友");
+                if (OnFriendUpdate != null)
+                    OnFriendUpdate();
             }
 
             if (message.Result == Result.Failed)
