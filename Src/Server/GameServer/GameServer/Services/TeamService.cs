@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -87,9 +87,10 @@ namespace GameServer.Services
         {
             Character character = sender.Session.Character;
             Log.InfoFormat("OnTeamLeave: character:{0},leader:{1},team:{2}",
-                character.Id, character.Team.Leader.Id, character.Team.Id);
+                character.Id, character.Team == null ? 0 : character.Team.Leader.Id, character.Team == null ? 0 : character.Team.Id);
             sender.Session.Response.teamLeave = new TeamLeaveResponse();
             sender.Session.Response.teamLeave.characterId = request.characterId;
+            
             if (character.Team != null)
             {
                 character.Team.Leave(character);

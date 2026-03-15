@@ -14,7 +14,6 @@ namespace Services
 {
     class TeamService : Singleton<TeamService>, IDisposable
     {
-        public UnityEngine.Events.UnityAction OnFriendUpdate;
 
         public TeamService()
         {

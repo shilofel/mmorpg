@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +11,6 @@ using Network;
 using GameServer.Entities;
 using GameServer.Managers;
 using Common.Data;
-using GameServer.Services;
 
 namespace GameServer.Models
 {
@@ -35,74 +34,56 @@ namespace GameServer.Models
         internal bool JoinApply(NGuildApplyInfo apply)
         {
             var oldApply = this.Data.Applies.FirstOrDefault(v => v.CharacterId == apply.characterId);
-            if(oldApply!=null)
+            if (oldApply != null)
             {
                 return false;
             }
 
-            var dbApply = DBService.Instance.Entities.GuildApplies.Create();
-            dbApply.GuildId = apply.GuildId;
-            dbApply.CharacterId = apply.characterId;
-            dbApply.Class = apply.Class;
-            dbApply.Level = apply.Level;
-            dbApply.Name = apply.Name;
-            dbApply.ApplyTime = DateTime.Now;
-
-            DBService.Instance.Entities.GuildApplies.Add(dbApply);
+            var dbApply = GuildManager.Instance.CreateApply(apply);
             this.Data.Applies.Add(dbApply);
-
-            DBService.Instance.Save();
             this.timestamp = TimeUtil.timestamp;
             return true;
         }
 
         internal bool JoinAppove(NGuildApplyInfo apply)
         {
-            var oldApply = this.Data.Applies.FirstOrDefault(v => v.CharacterId == apply.characterId&&v.Result==0);
+            var oldApply = this.Data.Applies.FirstOrDefault(v => v.CharacterId == apply.characterId && v.Result == 0);
             if (oldApply == null)
             {
                 return false;
             }
             oldApply.Result = (int)apply.Result;
-            if(apply.Result == ApplyResult.Accept)
+            if (apply.Result == ApplyResult.Accept)
             {
                 this.AddMember(apply.characterId, apply.Name, apply.Class, apply.Level, GuildTitle.None);
             }
 
-            DBService.Instance.Save();
             this.timestamp = TimeUtil.timestamp;
             return true;
         }
 
         public void AddMember(int characterId, string name, int @class, int level, GuildTitle title)
         {
-            DateTime now = DateTime.Now;
-            TGuildMember dbMember = new TGuildMember()
-            {
-                CharacterId = characterId,
-                Name = name,
-                Class = @class,
-                Level = level,
-                Title = (int)title,
-                JoinTime = now,
-                LastTime = now
-            };
-            this.Data.Members.Add(dbMember);
-            //角色在线
-            var character = CharacterManager.Instance.GetCharacter(characterId);
-            if (character != null)
-                character.Data.GuildId = this.Id;
-            else
-            {
-                //不在线，数据库修改
-                TCharacter dbChar = DBService.Instance.Entities.Characters.SingleOrDefault(c => c.ID == characterId);
-                dbChar.GuildId = this.Id;
-            }
+            GuildManager.Instance.AddMember(this, characterId, name, @class, level, title);
             timestamp = TimeUtil.timestamp;
         }
 
         public void Leave(Character cha)
         {
+            if (cha == null) return;
+
+            GuildManager.Instance.RemoveMember(this, cha.Id);
+
+            if (this.Data.LeaderID == cha.Id && this.Data.Members.Count > 0)
+            {
+                var newLeader = this.Data.Members.FirstOrDefault();
+                if (newLeader != null)
+                {
+                    GuildManager.Instance.TransferLeader(this, newLeader.CharacterId);
+                }
+            }
+
+            timestamp = TimeUtil.timestamp;
         }
 
         public void PostProcess(Character from, NetMessageResponse message)
@@ -112,7 +93,6 @@ namespace GameServer.Models
                 message.Guild = new GuildResponse();
                 message.Guild.Result = Result.Success;
                 message.Guild.Guild = this.GuildInfo(from);
-           
             }
         }
 
@@ -129,7 +109,7 @@ namespace GameServer.Models
                 memberCount = this.Data.Members.Count
             };
 
-            if(from !=null)
+            if (from != null)
             {
                 info.Members.AddRange(GetMemberInfos());
                 if (from.Id == this.Data.LeaderID)
@@ -142,7 +122,7 @@ namespace GameServer.Models
         private List<NGuildMemberInfo> GetMemberInfos()
         {
             List<NGuildMemberInfo> members = new List<NGuildMemberInfo>();
-            foreach(var member in this.Data.Members)
+            foreach (var member in this.Data.Members)
             {
                 var memberInfo = new NGuildMemberInfo()
                 {
@@ -153,7 +133,6 @@ namespace GameServer.Models
                     lastTime = (long)TimeUtil.GetTimestamp(member.LastTime)
                 };
                 var character = CharacterManager.Instance.GetCharacter(member.CharacterId);
-                //更新信息
                 if (character != null)
                 {
                     memberInfo.Info = character.GetBasicInfo();
@@ -161,19 +140,19 @@ namespace GameServer.Models
                     member.Name = character.Data.Name;
                     member.Level = character.Data.Level;
                     member.LastTime = DateTime.Now;
-                    if (member.Id == this.Data.LeaderID)
+                    if (member.CharacterId == this.Data.LeaderID)
                         this.Leader = character;
                 }
                 else
                 {
-                    memberInfo.Info = character.GetBasicInfo();
+                    memberInfo.Info = GetMemberInfo(member);
                     memberInfo.Status = 0;
-                    if (member.Id == this.Data.LeaderID)
+                    if (member.CharacterId == this.Data.LeaderID)
                         this.Leader = null;
                 }
                 members.Add(memberInfo);
             }
-            return members; 
+            return members;
         }
 
         NCharacterInfo GetMemberInfo(TGuildMember member)
@@ -208,36 +187,41 @@ namespace GameServer.Models
 
         TGuildMember GetDBMember(int characterId)
         {
-            foreach(var member in this.Data.Members)
+            foreach (var member in this.Data.Members)
             {
-                if (member.Id == characterId)
+                if (member.CharacterId == characterId)
                     return member;
             }
             return null;
         }
 
-        internal void ExecuteAdmin(GuildAdminCommand command,int targetId,int sourceId)
+        internal void ExecuteAdmin(GuildAdminCommand command, int targetId, int sourceId)
         {
             var target = GetDBMember(targetId);
             var source = GetDBMember(sourceId);
-            switch(command)
+            switch (command)
             {
                 case GuildAdminCommand.Promote:
-                    target.Title = (int)GuildTitle.VicePresident;
+                    if (target != null)
+                        target.Title = (int)GuildTitle.VicePresident;
                     break;
                 case GuildAdminCommand.Depost:
-                    target.Title = (int)GuildTitle.None;
+                    if (target != null)
+                        target.Title = (int)GuildTitle.None;
                     break;
                 case GuildAdminCommand.Transfer:
-                    target.Title = (int)GuildTitle.President;
-                    source.Title = (int)GuildTitle.None;
-                    this.Data.LeaderID = targetId;
-                    this.Data.LeaderName = target.Name;
+                    if (target != null)
+                    {
+                        GuildManager.Instance.TransferLeader(this, target.CharacterId);
+                    }
                     break;
                 case GuildAdminCommand.Kickout:
+                    if (target != null)
+                    {
+                        GuildManager.Instance.RemoveMember(this, target.CharacterId);
+                    }
                     break;
             }
-            DBService.Instance.Save();
             timestamp = TimeUtil.timestamp;
         }
     }

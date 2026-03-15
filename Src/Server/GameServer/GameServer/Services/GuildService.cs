@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -89,14 +89,15 @@ namespace GameServer.Services
             request.Apply.Level = character.Data.Level;
             if (guild.JoinApply(request.Apply))
             {
+                DBService.Instance.Save();
                 var leader = SessionManager.Instance.GetSession(guild.Data.LeaderID);
-                if(leader!=null)
-                {//给公会长发送请求
+                if (leader != null)
+                {
                     leader.Session.Response.guildJoinReq = request;
                     leader.SendResponse();
                 }
             }
-            else 
+            else
             {
                 sender.Session.Response.guildJoinRes = new GuildJoinResponse();
                 sender.Session.Response.guildJoinRes.Errormsg = "请勿重复申请";
@@ -109,19 +110,19 @@ namespace GameServer.Services
         {
             Character character = sender.Session.Character;
             Log.InfoFormat("OnGuildJoinResponse: GuildId:{0},characterId:{1},Name:{2}",
-        response.Apply.GuildId, response.Apply.characterId, response.Apply.Name);
+                response.Apply.GuildId, response.Apply.characterId, response.Apply.Name);
             var guild = GuildManager.Instance.GetGuild(response.Apply.GuildId);
 
             if (response.Result == Result.Success)
-            {   //接受请求
+            {
                 guild.JoinAppove(response.Apply);
+                DBService.Instance.Save();
             }
             var requester = SessionManager.Instance.GetSession(response.Apply.characterId);
 
             if (requester != null)
             {
                 requester.Session.Character.Guild = guild;
-                //回发消息给请求者
                 requester.Session.Response.guildJoinRes = response;
                 requester.Session.Response.guildJoinRes.Result = Result.Success;
                 requester.Session.Response.guildJoinRes.Errormsg = "加入公会成功";
@@ -133,22 +134,27 @@ namespace GameServer.Services
         private void OnGuildLeave(NetConnection<NetSession> sender, GuildLeaveRequest request)
         {
             Character character = sender.Session.Character;
-            Log.InfoFormat("OnGuildLeave: characterId:{1}",character.Id);
+            Log.InfoFormat("OnGuildLeave: characterId:{0}", character.Id);
 
             sender.Session.Response.guildLeave = new GuildLeaveResponse();
 
-            character.Guild.Leave(character);
-            sender.Session.Response.guildLeave.Result = Result.Success;
-
-
-            DBService.Instance.Save();
+            if (character.Guild != null)
+            {
+                character.Guild.Leave(character);
+                DBService.Instance.Save();
+                sender.Session.Response.guildLeave.Result = Result.Success;
+            }
+            else
+            {
+                sender.Session.Response.guildLeave.Result = Result.Failed;
+            }
             sender.SendResponse();
         }
 
         private void OnGuildAdmin(NetConnection<NetSession> sender, GuildAdminRequest message)
         {
             Character character = sender.Session.Character;
-            Log.InfoFormat("OnGuildAdmin: characterId:{1}", character.Id);
+            Log.InfoFormat("OnGuildAdmin: characterId:{0}", character.Id);
 
             sender.Session.Response.guildAdmin = new GuildAdminResponse();
             if (character.Guild == null)
@@ -158,11 +164,11 @@ namespace GameServer.Services
                 sender.SendResponse();
                 return;
             }
-            //需要追加角色是否有权限执行对应操作的检查
             character.Guild.ExecuteAdmin(message.Command, message.Target, character.Id);
+            DBService.Instance.Save();
 
             var target = SessionManager.Instance.GetSession(message.Target);
-            if(target != null)
+            if (target != null)
             {
                 target.Session.Response.guildAdmin = new GuildAdminResponse();
                 target.Session.Response.guildAdmin.Command = message;
@@ -172,6 +178,7 @@ namespace GameServer.Services
 
             sender.Session.Response.guildAdmin.Command = message;
             sender.Session.Response.guildAdmin.Result = Result.Success;
+            sender.SendResponse();
         }
     }
 }

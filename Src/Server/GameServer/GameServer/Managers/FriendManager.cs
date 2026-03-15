@@ -53,17 +53,6 @@ namespace GameServer.Managers
             friendChanged = true;
         }
 
-        public bool RemoveFriendByFriendId(int friendId)
-        {
-            var removeItem = this.Owner.Data.Friends.FirstOrDefault(v=>v.FriendID == friendId);
-            if (removeItem != null)
-            {
-                DBService.Instance.Entities.CharacterFriends.Remove(removeItem);
-                friendChanged = true;
-                return true;
-            }
-            return false;
-        }
 
         public bool RemoveFriendByID(int id)
         {

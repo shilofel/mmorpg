@@ -1,4 +1,4 @@
-﻿using Common.Data;
+using Common.Data;
 using GameServer.Core;
 using GameServer.Managers;
 using SkillBridge.Message;
@@ -29,6 +29,7 @@ namespace GameServer.Entities
 
         public double TeamUpdateTS;
         public double GuildUpdateTS;
+        
 
         public Character(CharacterType type,TCharacter cha):
             base(type,cha.TID, cha.Level,new Core.Vector3Int(cha.MapPosX, cha.MapPosY, cha.MapPosZ),new Core.Vector3Int(100,0,0))
@@ -139,9 +140,9 @@ namespace GameServer.Entities
         public void PostProcess(NetMessageResponse message)
         {
             this.FriendManager.PostProcess(message);
-            if(this.Team !=null)
+            
+            if(this.Team != null)
             {
-                //更新时间在变更时间之前，更新队伍信息
                 if(TeamUpdateTS < this.Team.timestamp)
                 {
                     Log.InfoFormat("PostProcess > team:character:{0}:{1} {2}<{3}", this.Id, this.Info.Name,TeamUpdateTS, Team.timestamp);

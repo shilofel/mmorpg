@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -99,9 +99,17 @@ namespace Services
 
         private void OnGuildAdmin(object sender, GuildAdminResponse message)
         {
-            //待实现
-            Debug.LogFormat("OnGuildAdmin:{0} {1}",message.Command,message.Result);
-            MessageBox.Show(string.Format("执行操作:{0} 结果:{1}{2}", message.Command,message.Result,message.Errormsg));
+            Debug.LogFormat("OnGuildAdmin:{0} {1}", message.Command, message.Result);
+            if (message.Result == Result.Success)
+            {
+                if (this.OnGuildUpdate != null)
+                    this.OnGuildUpdate();
+                MessageBox.Show(string.Format("执行操作:{0} 成功", message.Command));
+            }
+            else
+            {
+                MessageBox.Show(string.Format("执行操作:{0} 失败:{1}", message.Command, message.Errormsg));
+            }
         }
 
         //回复申请加入公会的审批
@@ -165,9 +173,12 @@ namespace Services
 
         private void OnGuildLeave(object sender, GuildLeaveResponse response)
         {
-            Debug.LogFormat("OnGuildJoinRes");
+            Debug.LogFormat("OnGuildLeave");
             if (response.Result == Result.Success)
             {
+                GuildManager.Instance.Init(null);
+                if (this.OnGuildUpdate != null)
+                    this.OnGuildUpdate();
                 MessageBox.Show("离开公会成功");
             }
 

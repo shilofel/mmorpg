@@ -1,4 +1,4 @@
-﻿using GameServer.Entities;
+using GameServer.Entities;
 using SkillBridge.Message;
 using System;
 using System.Collections.Generic;
@@ -49,6 +49,7 @@ namespace GameServer.Models
                 }
                 member.Team = null;
                 timestamp = TimeUtil.timestamp;
+                
             }
         }
 

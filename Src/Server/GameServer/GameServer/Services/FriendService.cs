@@ -114,7 +114,7 @@ namespace GameServer.Services
                 var friend = SessionManager.Instance.GetSession(request.friendId);
                 if(friend!=null)
                 {//好友在线
-                    friend.Session.Character.FriendManager.RemoveFriendByFriendId(character.Id);
+                    friend.Session.Character.FriendManager.RemoveFriendByID(character.Id);
                 }
                 else
                 {

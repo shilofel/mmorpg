@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Common;
@@ -7,6 +7,7 @@ using GameServer.Models;
 using GameServer.Services;
 using Network;
 using SkillBridge.Message;
+using Common.Data;
 
 namespace GameServer.Managers
 {
@@ -18,7 +19,7 @@ namespace GameServer.Managers
         public void Init()
         {
             this.Guilds.Clear();
-            foreach(var guild in DBService.Instance.Entities.Guilds)
+            foreach (var guild in DBService.Instance.Entities.Guilds)
             {
                 this.AddGuild(new Guild(guild));
             }
@@ -36,7 +37,7 @@ namespace GameServer.Managers
             guild.timestamp = TimeUtil.timestamp;
         }
 
-        public bool CreateGuild(string name,string notice, Character leader)
+        public bool CreateGuild(string name, string notice, Character leader)
         {
             DateTime now = DateTime.Now;
             TGuild dbGuild = DBService.Instance.Entities.Guilds.Create();
@@ -50,11 +51,10 @@ namespace GameServer.Managers
             Guild guild = new Guild(dbGuild);
             guild.AddMember(leader.Id, leader.Name, leader.Data.Class, leader.Data.Level, GuildTitle.President);
             leader.Guild = guild;
-            DBService.Instance.Save();
             leader.Data.GuildId = dbGuild.Id;
-            DBService.Instance.Save();
             this.AddGuild(guild);
 
+            DBService.Instance.Save();
             return true;
         }
 
@@ -70,11 +70,89 @@ namespace GameServer.Managers
         internal List<NGuildInfo> GetGuildInfos()
         {
             List<NGuildInfo> result = new List<NGuildInfo>();
-            foreach(var kv in this.Guilds)
+            foreach (var kv in this.Guilds)
             {
                 result.Add(kv.Value.GuildInfo(null));
             }
             return result;
+        }
+
+        internal TGuildApply CreateApply(NGuildApplyInfo apply)
+        {
+            var dbApply = DBService.Instance.Entities.GuildApplies.Create();
+            dbApply.GuildId = apply.GuildId;
+            dbApply.CharacterId = apply.characterId;
+            dbApply.Class = apply.Class;
+            dbApply.Level = apply.Level;
+            dbApply.Name = apply.Name;
+            dbApply.ApplyTime = DateTime.Now;
+            DBService.Instance.Entities.GuildApplies.Add(dbApply);
+            return dbApply;
+        }
+
+        internal void AddMember(Guild guild, int characterId, string name, int @class, int level, GuildTitle title)
+        {
+            DateTime now = DateTime.Now;
+            TGuildMember dbMember = new TGuildMember()
+            {
+                CharacterId = characterId,
+                Name = name,
+                Class = @class,
+                Level = level,
+                Title = (int)title,
+                JoinTime = now,
+                LastTime = now
+            };
+            guild.Data.Members.Add(dbMember);
+
+            var character = CharacterManager.Instance.GetCharacter(characterId);
+            if (character != null)
+            {
+                character.Data.GuildId = guild.Id;
+                character.Guild = guild;
+            }
+            else
+            {
+                var dbChar = DBService.Instance.Entities.Characters.FirstOrDefault(c => c.ID == characterId);
+                if (dbChar != null)
+                    dbChar.GuildId = guild.Id;
+            }
+        }
+
+        internal void RemoveMember(Guild guild, int characterId)
+        {
+            var member = guild.Data.Members.FirstOrDefault(m => m.CharacterId == characterId);
+            if (member == null) return;
+
+            guild.Data.Members.Remove(member);
+            DBService.Instance.Entities.GuildMembers.Remove(member);
+
+            var character = CharacterManager.Instance.GetCharacter(characterId);
+            if (character != null)
+            {
+                character.Data.GuildId = 0;
+                character.Guild = null;
+            }
+            else
+            {
+                var dbChar = DBService.Instance.Entities.Characters.FirstOrDefault(c => c.ID == characterId);
+                if (dbChar != null)
+                    dbChar.GuildId = 0;
+            }
+        }
+
+        internal void TransferLeader(Guild guild, int newLeaderId)
+        {
+            var newLeader = guild.Data.Members.FirstOrDefault(m => m.CharacterId == newLeaderId);
+            if (newLeader == null) return;
+
+            var oldLeader = guild.Data.Members.FirstOrDefault(m => m.CharacterId == guild.Data.LeaderID);
+            if (oldLeader != null)
+                oldLeader.Title = (int)GuildTitle.None;
+
+            newLeader.Title = (int)GuildTitle.President;
+            guild.Data.LeaderID = newLeader.CharacterId;
+            guild.Data.LeaderName = newLeader.Name;
         }
     }
 }

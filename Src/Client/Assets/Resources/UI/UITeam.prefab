@@ -1054,8 +1054,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: -350}
-  m_SizeDelta: {x: 332, y: 350}
+  m_AnchoredPosition: {x: 0.000061035156, y: -357.6}
+  m_SizeDelta: {x: 302.9, y: 357.6}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &222557312948333380
 CanvasRenderer:
@@ -1078,7 +1078,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1222,7 +1222,7 @@ RectTransform:
   m_GameObject: {fileID: 1530524359925040}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224043170317977248}
   m_Father: {fileID: 0}
@@ -1271,7 +1271,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 1
+  m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1289,7 +1289,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamTitle: {fileID: 114487301386602656}
-  Members: []
+  Members:
+  - {fileID: 114073991892493866}
+  - {fileID: 114911097288434812}
+  - {fileID: 114106652014514900}
+  - {fileID: 114029526005599864}
+  - {fileID: 114086692619809498}
   list: {fileID: 114536569523299424}
 --- !u!114 &114740557548296646
 MonoBehaviour:
@@ -2507,7 +2512,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -0.000014382495, y: 0.00011505996}
+  m_AnchoredPosition: {x: -0.069803245, y: 0.26996878}
   m_SizeDelta: {x: 274.68988, y: 273.87}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &114093932765504844
