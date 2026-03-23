@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -27,7 +27,7 @@ public class EffectController:MonoBehaviour
     IEnumerator Run()
     {
         yield return new WaitForSeconds(this.lifeTime);
-        this.gameObject.SetActive(false);
+        FXManager.Instance.ReturnToPool(this.gameObject);
     }
 
     public void Init(EffectType type,Transform source,Transform target,Vector3 offset, float duration)
@@ -61,7 +61,7 @@ public class EffectController:MonoBehaviour
             this.transform.LookAt(this.targetPos);
             if(Vector3.Distance(this.targetPos,this.transform.position)<0.5f)
             {
-                Destroy(this.gameObject);
+                FXManager.Instance.ReturnToPool(this.gameObject);
                 return;
             }
             this.transform.position = Vector3.Lerp(this.transform.position, this.targetPos,Time.deltaTime/(this.lifeTime- this.time));

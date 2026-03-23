@@ -1,4 +1,4 @@
-﻿using Common.Battle;
+using Common.Battle;
 using GameServer.AI;
 using GameServer.Battle;
 using GameServer.Core;
@@ -18,10 +18,28 @@ namespace GameServer.Entities
         public Map Map;
         private Vector3Int moveTarget;
         Vector3 movePosition;
+        
+        // 刷新点ID
+        public int SpawnPointID { get; set; }
+        
+        public Vector3Int SpawnPosition
+        {
+            get 
+            { 
+                // 从DataManager获取刷新点配置
+                if (this.Map != null && DataManager.Instance.SpawnPoints.ContainsKey(this.Map.ID) && 
+                    DataManager.Instance.SpawnPoints[this.Map.ID].ContainsKey(this.SpawnPointID))
+                {
+                    return DataManager.Instance.SpawnPoints[this.Map.ID][this.SpawnPointID].Position;
+                }
+                return this.Position; // 如果找不到配置，返回当前位置
+            }
+        }
+
         public Monster(int tid, int level, Vector3Int pos, Vector3Int dir) : base(CharacterType.Monster, tid, level, pos, dir)
         {
-            this.AI = new AIAgent(this)
-;        }
+            this.AI = new AIAgent(this);
+        }
 
         public override void OnEnterMap(Map map)
         {

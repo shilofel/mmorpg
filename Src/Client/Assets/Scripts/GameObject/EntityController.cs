@@ -1,4 +1,4 @@
-﻿using SkillBridge.Message;
+using SkillBridge.Message;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

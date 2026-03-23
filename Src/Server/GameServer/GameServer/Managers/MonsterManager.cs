@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Common;
 using GameServer.Entities;
@@ -16,9 +16,10 @@ namespace GameServer.Managers
         {
             this.Map = map;
         }
-        internal Monster Create(int spawnMonID,int spawnLevel,NVector3 position, NVector3 direction)
+        internal Monster Create(int spawnMonID,int spawnLevel,NVector3 position, NVector3 direction, int spawnPointID = 0)
         {
             Monster monster = new Monster(spawnMonID, spawnLevel, position, direction);
+            monster.SpawnPointID = spawnPointID;
             EntityManager.Instance.AddEntity(this.Map.ID, this.Map.InstanceID, monster);
             //怪物没有dbID，直接使用实体id
             monster.Id = monster.entityId;

@@ -62,7 +62,7 @@ public class UIBuffIcons : MonoBehaviour {
         this.buffs.Clear();
     }
 
-    private void OnBuffRemove(Buff buff)
+    private void OnBuffAdd(Buff buff)
     {
         GameObject go = Instantiate(prefabBuff, this.transform);
         go.name = buff.Define.Name;
@@ -72,7 +72,7 @@ public class UIBuffIcons : MonoBehaviour {
         this.buffs[buff.BuffId] = go;
     }
 
-    private void OnBuffAdd(Buff buff)
+    private void OnBuffRemove(Buff buff)
     {
         GameObject go;
         if (this.buffs.TryGetValue(buff.BuffId, out go))

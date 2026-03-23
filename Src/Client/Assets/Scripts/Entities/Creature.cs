@@ -206,7 +206,7 @@ namespace Entities
             var buff = this.BuffMgr.RemoveBuff(buffId);
             if (buff != null && this.OnBuffRemove != null)
             {
-                this.OnBuffAdd(buff);
+                this.OnBuffRemove(buff);
             }
         }
 

@@ -12,12 +12,12 @@ public class UINameBar : MonoBehaviour {
 
     public Character character;
 
-
+    public UIBuffIcons buffIcons;
     // Use this for initialization
     void Start () {
 		if(this.character!=null)
         {
-            
+            buffIcons.SetOwner(this.character);
         }
 	}
 	

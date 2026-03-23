@@ -70,13 +70,13 @@ public class UISkillSlot : MonoBehaviour, IPointerClickHandler
         {
             case SkillResult.InvalidTarget:
                 MessageBox.Show("技能:" + this.skill.Define.Name + "目标无效");
-                break;
+                return;
             case SkillResult.OutOfMp:
                 MessageBox.Show("技能:" + this.skill.Define.Name + "MP不足");
-                break;
+                return;
             case SkillResult.CoolDown:
                 MessageBox.Show("技能:" + this.skill.Define.Name + "正在冷却");
-                break;
+                return;
         }
 
         BattleManager.Instance.CastSkill(skill);

@@ -94,6 +94,7 @@ namespace GameServer.Battle
                 this.cd = this.Define.CD;
                 this.Context = context;
                 this.skillTime = 0;
+                this.Bullets.Clear();
 
                 this.AddBuff(TriggerType.SkillCast,this.Context.Target);
                 if (this.Instant)
