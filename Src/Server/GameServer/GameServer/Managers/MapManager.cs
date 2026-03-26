@@ -19,7 +19,7 @@ namespace GameServer.Managers
                 int instanceCount = 1;
                 if(mapdefine.Type == Common.Data.MapType.Arena)
                 {
-                    instanceCount = ArenaManager.ManInstance + 1;
+                    instanceCount = ArenaManager.MaxInstance + 1;
                 }
                 this.Maps[mapdefine.ID] = new Dictionary<int, Map>();
                 for(int i =0;i<instanceCount;i++)

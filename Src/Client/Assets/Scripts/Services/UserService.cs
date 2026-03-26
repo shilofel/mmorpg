@@ -266,6 +266,7 @@ namespace Services
                     //TeamManager.Instance.Init();
                     QuestManager.Instance.Init(response.Character.Quests);
                     GuildManager.Instance.Init(response.Character.Guild);
+                    ArenaManager.Instance.Init();
                 }
             }
         }

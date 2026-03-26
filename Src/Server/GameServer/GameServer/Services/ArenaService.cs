@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +23,7 @@ namespace GameServer.Services
 
         public void Init()
         {
-
+            ArenaManager.Instance.Init();
         }
 
         private void OnArenaChallengeRequest(NetConnection<NetSession> sender, ArenaChallengeRequest request)
@@ -88,8 +88,8 @@ namespace GameServer.Services
         private void SendArenaBegin(Arena arena)
         {
             var arenaBegin = new ArenaBeginResponse();
-            arenaBegin.Result = Result.Failed;
-            arenaBegin.Errormsg = "对方不在线";
+            arenaBegin.Result = Result.Success;
+            arenaBegin.Errormsg = "";
             arenaBegin.ArenaInfo = arena.ArenaInfo;
             arena.Red.Session.Response.arenaBegin = arenaBegin;
             arena.Red.SendResponse();
@@ -100,7 +100,10 @@ namespace GameServer.Services
         private void OnArenaReady(NetConnection<NetSession> sender, ArenaReadyRequest message)
         {
             Arena arena = ArenaManager.Instance.GetArena(message.arenaId);
-            arena.EntityReady(message.entityId);
+            if (arena != null)
+            {
+                arena.EntityReady(message.entityId);
+            }
         }
 
         internal void SendArenaReady(Arena arena)

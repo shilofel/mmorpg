@@ -1,4 +1,4 @@
-﻿using Managers;
+using Managers;
 using SkillBridge.Message;
 using System;
 using System.Collections;
@@ -38,6 +38,9 @@ public class UIArena:MonoSingleton<UIArena>
             total--;
         }
         countDownText.text = "READY";
+        // 等待1秒后隐藏倒计时文本
+        yield return new WaitForSeconds(1f);
+        countDownText.text = "";
     }
 
     private void Update()
@@ -47,7 +50,19 @@ public class UIArena:MonoSingleton<UIArena>
 
     internal void ShowRoundStart(int round, ArenaInfo arenaInfo)
     {
+        countDownText.enabled = true;
         countDownText.text = "FIGHT";
+        // 等待1秒后隐藏FIGHT文本并隐藏整个UI
+        StartCoroutine(HideFightText());
+    }
+    
+    IEnumerator HideFightText()
+    {
+        yield return new WaitForSeconds(1f);
+        countDownText.text = "";
+        // 隐藏整个UI
+        roundText.enabled = false;
+        countDownText.enabled = false;
     }
 
     internal void ShowRoundResult(int round, ArenaInfo arenaInfo)

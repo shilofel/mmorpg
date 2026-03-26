@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Common;
@@ -14,15 +14,15 @@ namespace GameServer.Managers
     class ArenaManager : Singleton<ArenaManager>
     {
         public const int ArenaMapId = 5;
-        public const int ManInstance = 100;
+        public const int MaxInstance = 100;
 
         Queue<int> InstanceIndexes = new Queue<int>();
 
-        Arena[] Arenas = new Arena[ManInstance];
+        Arena[] Arenas = new Arena[MaxInstance];
 
         public void Init()
         {
-            for(int i=0;i<ManInstance;i++)
+            for(int i=0;i<MaxInstance;i++)
             {
                 InstanceIndexes.Enqueue(i);
             }
@@ -52,7 +52,11 @@ namespace GameServer.Managers
 
         public Arena GetArena(int arenaId)
         {
-            return this.Arenas[arenaId];
+            if (arenaId >= 0 && arenaId < this.Arenas.Length)
+            {
+                return this.Arenas[arenaId];
+            }
+            return null;
         }
 
         //public Arena NewArena(ArenaInfo info,NetConnection<NetSession> red,NetConnection<NetSession> blue)

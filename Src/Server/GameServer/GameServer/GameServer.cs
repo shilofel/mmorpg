@@ -37,6 +37,7 @@ namespace GameServer
             TeamService.Instance.Init();
             ChatService.Instance.Init();
             BattleService.Instance.Init();
+            ArenaService.Instance.Init();
             thread = new Thread(new ThreadStart(this.Update));
 
             return true;

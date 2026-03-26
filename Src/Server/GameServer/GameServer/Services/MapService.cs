@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -40,7 +40,11 @@ namespace GameServer.Services
             Log.InfoFormat("OnMapEntitySync: CharacterID:{0}:{1} EntityID:{2} Evt:{3} Entity:{4}",
                 character.Id, character.Info.Name, request.entitySync.Id, request.entitySync.Event, request.entitySync.Entity);
 
-            MapManager.Instance[character.Info.mapId].UpdateEntity(request.entitySync);
+            // 使用character.Map获取当前地图实例，这样可以正确处理竞技场地图
+            if (character.Map != null)
+            {
+                character.Map.UpdateEntity(request.entitySync);
+            }
         }
 
         void OnLogin(NetConnection<NetSession> sender, UserLoginRequest request)

@@ -6,6 +6,7 @@ using Entities;
 using SkillBridge.Message;
 using Services;
 using System;
+using Managers;
 
 public class PlayerInputController : MonoBehaviour {
 
@@ -189,6 +190,22 @@ public class PlayerInputController : MonoBehaviour {
             return;
         }
         if (InputManager.Instance != null &&InputManager.Instance.IsInputMode) return;
+
+        // 检查竞技场状态，如果在倒计时期间则不能操作
+        // 只有在ArenaManager存在且ArenaInfo不为null时，才限制操作
+        if (ArenaManager.Instance != null && ArenaManager.Instance.ArenaInfo != null && !ArenaManager.Instance.CanOperate)
+        {
+            // 如果当前正在移动，停止移动
+            if (state != SkillBridge.Message.CharacterState.Idle)
+            {
+                state = SkillBridge.Message.CharacterState.Idle;
+                this.rb.velocity = Vector3.zero;
+                character.Stop();
+                character.EntityData.Speed = 0;
+                this.SendEntityEvent(EntityEvent.Idle);
+            }
+            return;
+        }
 
         float v = Input.GetAxis("Vertical");
         if (v > 0.01)
