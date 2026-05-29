@@ -12,7 +12,7 @@ class UICharEquip : UIWindow
 {
     public Text title;
     public Text money;
-
+    public Text charName;
     public GameObject itemPrefab;
     public GameObject itemEquipedPrefab;
 
@@ -54,7 +54,7 @@ class UICharEquip : UIWindow
         ClearEquipedList();
         InitEquipedItems();
         this.money.text = User.Instance.CurrentCharacterInfo.Gold.ToString();
-
+        this.charName.text = User.Instance.CurrentCharacterInfo.Name + " Lv." + User.Instance.CurrentCharacterInfo.Level;
         InitAttributes();
     }
 

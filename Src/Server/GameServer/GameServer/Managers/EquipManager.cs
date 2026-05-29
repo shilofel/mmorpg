@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Common;
 using Common.Data;
@@ -18,6 +18,9 @@ namespace GameServer.Managers
                 return Result.Failed;
 
             UpdateEquip(character.Info.Equips,slot,itemId,isEquip);
+            
+            // 重新计算角色属性
+            character.RefreshAttributes();
 
             DBService.Instance.Save();
             return Result.Success;

@@ -92,7 +92,7 @@ namespace GameServer.Entities
             
         }
 
-        public List<EquipDefine> GetEquips()
+        virtual public List<EquipDefine> GetEquips()
         {
             return null;
         }

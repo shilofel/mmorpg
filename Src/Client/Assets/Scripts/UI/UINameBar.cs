@@ -8,8 +8,6 @@ public class UINameBar : MonoBehaviour {
 
     public Text avaverName;
 
-
-
     public Character character;
 
     public UIBuffIcons buffIcons;
@@ -17,15 +15,14 @@ public class UINameBar : MonoBehaviour {
     void Start () {
 		if(this.character!=null)
         {
+            this.UpdateInfo();
             buffIcons.SetOwner(this.character);
         }
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        this.UpdateInfo();
 
-        //this.transform.forward = Camera.main.transform.forward;
 	}
 
     void UpdateInfo()

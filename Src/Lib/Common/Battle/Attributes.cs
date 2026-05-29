@@ -1,4 +1,4 @@
-﻿using Common.Data;
+using Common.Data;
 using SkillBridge.Message;
 using System;
 using System.Collections.Generic;
@@ -138,17 +138,17 @@ namespace Common.Battle
             if (equips == null) return;
             foreach(var define in equips)
             {
-                attr.MaxHP = define.MaxHP;
-                attr.MaxMP = define.MaxMP;
-                attr.STR = define.STR;
-                attr.INT = define.INT;
-                attr.DEX = define.DEX;
-                attr.AD = define.AD;
-                attr.AP = define.AP;
-                attr.DEF = define.DEF;
-                attr.MDEF = define.MDEF;
-                attr.SPD = define.SPD;
-                attr.CRI = define.CRI;
+                attr.MaxHP += define.MaxHP;
+                attr.MaxMP += define.MaxMP;
+                attr.STR += define.STR;
+                attr.INT += define.INT;
+                attr.DEX += define.DEX;
+                attr.AD += define.AD;
+                attr.AP += define.AP;
+                attr.DEF += define.DEF;
+                attr.MDEF += define.MDEF;
+                attr.SPD += define.SPD;
+                attr.CRI += define.CRI;
             }
         }
     }

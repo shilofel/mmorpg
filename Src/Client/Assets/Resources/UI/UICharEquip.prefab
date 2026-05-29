@@ -1489,6 +1489,7 @@ MonoBehaviour:
   Root: {fileID: 0}
   title: {fileID: 114577373880627138}
   money: {fileID: 114481661367456388}
+  charName: {fileID: 114247056414699510}
   itemPrefab: {fileID: 1818610188425396, guid: cbbed7ab9ad1e0546acaae02f5b0eb8c, type: 3}
   itemEquipedPrefab: {fileID: 1238526387561194, guid: 12344346ca87f7c419ae63ce7d796236,
     type: 3}
@@ -1876,7 +1877,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 224055300052484038}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9999999
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3416,7 +3417,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000010968931, y: -0.000008660855}
+  m_AnchoredPosition: {x: 0.000010968931, y: 0.0000106022035}
   m_SizeDelta: {x: 0, y: 223.61}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &114524947017341434

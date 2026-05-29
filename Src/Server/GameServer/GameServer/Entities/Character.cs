@@ -190,5 +190,29 @@ namespace GameServer.Entities
         {
             this.FriendManager.OffLineNotify();
         }
+
+        public override List<EquipDefine> GetEquips()
+        {
+            List<EquipDefine> result = new List<EquipDefine>();
+            if (this.Info.Equips != null)
+            {
+                for (int i = 0; i < (int)EquipSlot.SlotMax; i++)
+                {
+                    int itemId = BitConverter.ToInt32(this.Info.Equips, i * sizeof(int));
+                    if (itemId > 0 && DataManager.Instance.Items.ContainsKey(itemId))
+                    {
+                        EquipDefine define = DataManager.Instance.Equips[itemId];
+                        if (define is EquipDefine)
+                            result.Add(define);
+                    }
+                }
+            }
+            return result;
+        }
+
+        public void RefreshAttributes()
+        {
+            this.Attributes.Init(this.Define, this.Info.Level, this.GetEquips(), this.Info.attrDynamic);
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -95,6 +95,16 @@ namespace Managers
             }
 
             this.Equips[(int)equip.equipInfo.Slot] = ItemManager.Instance.Items[equip.Id];
+            
+            // 重新计算属性
+            if (Models.User.Instance != null && Models.User.Instance.CurrentCharacter != null)
+            {
+                Models.User.Instance.CurrentCharacter.Attributes.Init(
+                    Models.User.Instance.CurrentCharacter.Define,
+                    Models.User.Instance.CurrentCharacter.Info.Level,
+                    this.GetEquipedDefines(),
+                    Models.User.Instance.CurrentCharacter.Info.attrDynamic);
+            }
 
             if (OnEquipChanged != null)
                 OnEquipChanged();
@@ -105,6 +115,17 @@ namespace Managers
             if(this.Equips[(int)slot] != null)
             {
                 this.Equips[(int)slot] = null;
+                
+                // 重新计算属性
+                if (Models.User.Instance != null && Models.User.Instance.CurrentCharacter != null)
+                {
+                    Models.User.Instance.CurrentCharacter.Attributes.Init(
+                        Models.User.Instance.CurrentCharacter.Define,
+                        Models.User.Instance.CurrentCharacter.Info.Level,
+                        this.GetEquipedDefines(),
+                        Models.User.Instance.CurrentCharacter.Info.attrDynamic);
+                }
+                
                 if (OnEquipChanged != null)
                     OnEquipChanged();
             }
