@@ -20,8 +20,8 @@ public class UIMain : MonoSingleton<UIMain> {
     // Use this for initialization
     protected override void OnStart () {
         this.UpdateAvatar();
-        TeamManager.Instance.ShowTeamUI(true);
-        this.targetUI.gameObject.SetActive(true);
+        //TeamManager.Instance.ShowTeamUI(true);
+        //this.targetUI.gameObject.SetActive(true);
         BattleManager.Instance.OnTargetChanged += OnTargetChanged;
         User.Instance.OnCharacterInit += this.skillSlots.UpdateSkills;
         this.skillSlots.UpdateSkills();
