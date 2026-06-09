@@ -36,62 +36,62 @@ public class UIQuestInfo : MonoBehaviour
     }
 
     public void SetQuestInfo(Quest quest)
+    {
+        this.quest = quest;
+        this.title.text = string.Format("[{0}]{1}", quest.Define.Type, quest.Define.Name);
+        if (overview != null)
         {
-            this.quest = quest;
-            this.title.text = string.Format("[{0}]{1}", quest.Define.Type, quest.Define.Name);
-            if (overview != null)
-            {
-                this.overview.text = quest.Define.Overview;
-            }
+            this.overview.text = quest.Define.Overview;
+        }
 
-            if (description != null)
+        if (description != null)
+        {
+            if (quest.Info == null)
             {
-                if (quest.Info == null)
-                {
-                    this.description.text = quest.Define.Dialog;
-                }
-                else
-                {
-                    if (quest.Info.Status == SkillBridge.Message.QuestStatus.Finished)
-                        this.description.text = quest.Define.DialogFinish;
-                }
+                this.description.text = quest.Define.Dialog;
             }
-
-            this.rewardExp.text = quest.Define.RewardExp.ToString();
-            this.rewardMoney.text = quest.Define.RewardGold.ToString();
-
-            // 检查是否有道具奖励
-            bool hasRewardItems = HasRewardItems(quest.Define);
-            
-            // 如果没有道具奖励，隐藏整个奖励面板
-            if (rewardPanel != null)
+            else
             {
-                rewardPanel.SetActive(hasRewardItems);
-            }
-            
-            // 如果有道具奖励，显示对应的道具
-            if (hasRewardItems)
-            {
-                ShowRewardItems(quest.Define.RewardItem1, quest.Define.RewardItem1Count, 0);
-                ShowRewardItems(quest.Define.RewardItem2, quest.Define.RewardItem2Count, 1);
-                ShowRewardItems(quest.Define.RewardItem3, quest.Define.RewardItem3Count, 2);
-            }
-
-            if(quest.Info==null)
-            {
-                this.npc = quest.Define.AcceptNPC;
-            }
-            else if (quest.Info.Status == SkillBridge.Message.QuestStatus.Completed)
-            {
-                this.npc = quest.Define.SubmitNPC;
-            }
-
-            //this.navButton.gameObject.SetActive(this.npc > 0);
-            foreach (var fitter in this.GetComponentsInChildren<ContentSizeFitter>())
-            {
-                fitter.SetLayoutVertical();
+                if (quest.Info.Status == SkillBridge.Message.QuestStatus.Finished)
+                    this.description.text = quest.Define.DialogFinish;
             }
         }
+
+        this.rewardExp.text = quest.Define.RewardExp.ToString();
+        this.rewardMoney.text = quest.Define.RewardGold.ToString();
+
+        // 检查是否有道具奖励
+        bool hasRewardItems = HasRewardItems(quest.Define);
+            
+        // 如果没有道具奖励，隐藏整个奖励面板
+        if (rewardPanel != null)
+        {
+            rewardPanel.SetActive(hasRewardItems);
+        }
+            
+        // 如果有道具奖励，显示对应的道具
+        if (hasRewardItems)
+        {
+            ShowRewardItems(quest.Define.RewardItem1, quest.Define.RewardItem1Count, 0);
+            ShowRewardItems(quest.Define.RewardItem2, quest.Define.RewardItem2Count, 1);
+            ShowRewardItems(quest.Define.RewardItem3, quest.Define.RewardItem3Count, 2);
+        }
+
+        if(quest.Info==null)
+        {
+            this.npc = quest.Define.AcceptNPC;
+        }
+        else if (quest.Info.Status == SkillBridge.Message.QuestStatus.Completed)
+        {
+            this.npc = quest.Define.SubmitNPC;
+        }
+
+        //this.navButton.gameObject.SetActive(this.npc > 0);
+        foreach (var fitter in this.GetComponentsInChildren<ContentSizeFitter>())
+        {
+            fitter.SetLayoutVertical();
+        }
+    }
 
     public void OnClickAbondon()
     {

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -64,23 +64,29 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
 
     private void CreateCharacterObject(Character cha)
     {
-        if(!Characters.ContainsKey(cha.entityId) ||Characters[cha.entityId] == null)
+        // 防御性检查：如果已经存在该角色的GameObject，先清理旧的
+        if (Characters.ContainsKey(cha.entityId) && Characters[cha.entityId] != null)
         {
-            UnityEngine.Object obj = Resloader.Load<UnityEngine.Object>(cha.Define.Resource);
-            if (obj == null)
-            {
-                Debug.LogErrorFormat("Character[{0}] Resource[{1}] not existed.", cha.Define.TID, cha.Define.Resource);
-                return;
-            }
-
-            GameObject go = (GameObject)Instantiate(obj, this.transform);
-            go.name = "Character_" + cha.Id + "_" + cha.Name;
-
-            Characters[cha.entityId] = go;
-            
-            UIWorldElementManager.Instance.AddCharacterNameBar(go.transform, cha);
+            Debug.LogWarningFormat("角色对象已存在，清理旧对象: {0}", cha.entityId);
+            Destroy(Characters[cha.entityId]);
+            Characters.Remove(cha.entityId);
         }
-        this.InitGameObject(Characters[cha.entityId], cha);
+        
+        UnityEngine.Object obj = Resloader.Load<UnityEngine.Object>(cha.Define.Resource);
+        if (obj == null)
+        {
+            Debug.LogErrorFormat("Character[{0}] Resource[{1}] not existed.", cha.Define.TID, cha.Define.Resource);
+            return;
+        }
+
+        GameObject go = (GameObject)Instantiate(obj, this.transform);
+        go.name = "Character_" + cha.Id + "_" + cha.Name;
+
+        Characters[cha.entityId] = go;
+        
+        UIWorldElementManager.Instance.AddCharacterNameBar(go.transform, cha);
+        
+        this.InitGameObject(go, cha);
     }
 
     private void InitGameObject(GameObject go, Character cha)

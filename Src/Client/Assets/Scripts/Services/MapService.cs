@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -48,6 +48,17 @@ namespace Services
             {
                 if(User.Instance.CurrentCharacterInfo == null||(cha.Type == CharacterType.Player&&User.Instance.CurrentCharacterInfo.Id == cha.Id))
                 {
+                    // 检查是否是地图切换（从其他地图回到当前地图）
+                    bool isMapSwitch = User.Instance.CurrentCharacterInfo != null && 
+                                       User.Instance.CurrentCharacterInfo.mapId != cha.mapId;
+                    
+                    // 如果是地图切换，先移除旧的实体
+                    if (isMapSwitch && User.Instance.CurrentCharacter != null)
+                    {
+                        Debug.LogFormat("地图切换，移除旧实体: {0}", User.Instance.CurrentCharacterInfo.Id);
+                        CharacterManager.Instance.RemoveCharacter(User.Instance.CurrentCharacterInfo.entityId);
+                    }
+                    
                     User.Instance.CurrentCharacterInfo = cha;
                     if (User.Instance.CurrentCharacter == null)
                         User.Instance.CurrentCharacter = new Character(cha);
@@ -67,6 +78,7 @@ namespace Services
 
                     continue;
                 }
+                
                 CharacterManager.Instance.AddCharacter(new Character(cha));
             }
             

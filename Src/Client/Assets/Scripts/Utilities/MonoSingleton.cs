@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 
 public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
@@ -15,7 +15,6 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
             }
             return instance;
         }
-
     }
 
     void Awake()
@@ -28,6 +27,9 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
                 Destroy(this.gameObject);
                 return;
             }
+            
+            // 设置instance后再调用DontDestroyOnLoad，避免场景切换时的竞态条件
+            instance = this as T;
             DontDestroyOnLoad(this.gameObject);
         }
         this.OnStart();

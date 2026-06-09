@@ -144,7 +144,9 @@
     <Compile Include="Assets\Scripts\Services\TeamService.cs" />
     <Compile Include="Assets\Scripts\Services\UserService.cs" />
     <Compile Include="Assets\Scripts\UI\Arena\UIArena.cs" />
+    <Compile Include="Assets\Scripts\UI\Bag\ItemInfo.cs" />
     <Compile Include="Assets\Scripts\UI\Bag\UIBag.cs" />
+    <Compile Include="Assets\Scripts\UI\Bag\UIBagItem.cs" />
     <Compile Include="Assets\Scripts\UI\CharEquip\UICharEquip.cs" />
     <Compile Include="Assets\Scripts\UI\CharEquip\UIEquipItem.cs" />
     <Compile Include="Assets\Scripts\UI\Chat\UIChat.cs" />

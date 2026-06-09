@@ -1,14 +1,14 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class UIIconItem : MonoBehaviour
 {
     public Text mainText;
     public Image secondImage;
     public Image mainImage;
-
 
     // Use this for initialization
     void Start()

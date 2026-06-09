@@ -86,14 +86,25 @@ namespace Entities
             this.Info = info;
             this.Define = DataManager.Instance.Characters[info.configId];
             this.Attributes = new Attributes();
-            this.Attributes.Init(this.Define, this.Info.Level, GetEquips(),this.Info.attrDynamic);
+            
+            // 只有玩家角色才应用装备属性，怪物不应用
+            if (this.Info.Type == CharacterType.Player)
+            {
+                this.Attributes.Init(this.Define, this.Info.Level, GetEquips(), this.Info.attrDynamic);
+            }
+            else
+            {
+                // 怪物不应用装备属性
+                this.Attributes.Init(this.Define, this.Info.Level, null, this.Info.attrDynamic);
+            }
+            
             this.SkillMgr = new SkillManager(this);
             this.BuffMgr = new BuffManager(this);
             this.EffectMar = new EffectManager(this);
         }
      
 
-        public void UpdateInfo(NCharacterInfo info)
+        virtual public void UpdateInfo(NCharacterInfo info)
         {
             this.SetEntityData(info.Entity);
             this.Info = info;
