@@ -320,6 +320,9 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(14)]
         public QuestSubmitRequest questSubmit { get; set; }
 
+        [global::ProtoBuf.ProtoMember(80)]
+        public QuestAbandonRequest questAbandon { get; set; }
+
         [global::ProtoBuf.ProtoMember(15)]
         public FriendAddRequest friendAddReq { get; set; }
 
@@ -433,6 +436,9 @@ namespace SkillBridge.Message
 
         [global::ProtoBuf.ProtoMember(14)]
         public QuestSubmitResponse questSubmit { get; set; }
+
+        [global::ProtoBuf.ProtoMember(80)]
+        public QuestAbandonResponse questAbandon { get; set; }
 
         [global::ProtoBuf.ProtoMember(15)]
         public FriendAddRequest friendAddReq { get; set; }
@@ -990,6 +996,9 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(2, Name = @"errormsg")]
         [global::System.ComponentModel.DefaultValue("")]
         public string Errormsg { get; set; } = "";
+
+        [global::ProtoBuf.ProtoMember(3, Name = @"quest")]
+        public NQuestInfo Quest { get; set; }
 
     }
 

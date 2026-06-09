@@ -35,6 +35,7 @@ public class UIWorldElementManager : MonoSingleton<UIWorldElementManager> {
     //给任务npc添加任务标识
     public void AddNpcQuestStatus(Transform owner, NpcQuestStatus status)
     {
+        if (status == NpcQuestStatus.None) return;
         if(this.elementStatus.ContainsKey(owner))
         {
             elementStatus[owner].GetComponent<UIQuestStates>().SetQuestStatus(status);

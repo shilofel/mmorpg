@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -243,6 +243,35 @@ namespace Managers
         {
             var quest = this.RefreshQuestStatus(info);
             MessageBox.Show(quest.Define.DialogFinish);
+        }
+
+        public void OnQuestAbandoned(NQuestInfo info)
+        {
+            // 任务放弃后，更新状态而不是删除
+            if (info != null && this.allQuests.ContainsKey(info.QuestId))
+            {
+                Quest quest = this.allQuests[info.QuestId];
+                
+                // 更新任务信息（状态变为Failed）
+                quest.Info = info;
+                
+                // 重新检查可接取的任务（可能会把该任务重新加入可接取列表）
+                this.npcQuests.Clear();
+                this.CheckAvailableQuests();
+                
+                // 重新添加所有任务到NPC列表
+                foreach(var kv in allQuests)
+                {
+                    this.AddNpcQuest(kv.Value.Define.AcceptNPC, kv.Value);
+                    this.AddNpcQuest(kv.Value.Define.SubmitNPC, kv.Value);
+                }
+                
+                // 通知UI刷新
+                if (onQuestStatesChanged != null)
+                    onQuestStatesChanged(quest);
+                
+                MessageBox.Show("任务已放弃，可以重新接取");
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,12 +19,14 @@ namespace Services
         {
             MessageDistributer.Instance.Subscribe<QuestSubmitResponse>(this.OnQuestSubmit);
             MessageDistributer.Instance.Subscribe<QuestAcceptResponse>(this.OnQuestAccept);
+            MessageDistributer.Instance.Subscribe<QuestAbandonResponse>(this.OnQuestAbandon);
         }
 
         public void Dispose()
         {
             MessageDistributer.Instance.Unsubscribe<QuestSubmitResponse>(this.OnQuestSubmit);
             MessageDistributer.Instance.Unsubscribe<QuestAcceptResponse>(this.OnQuestAccept);
+            MessageDistributer.Instance.Unsubscribe<QuestAbandonResponse>(this.OnQuestAbandon);
         }
 
         public void Init()
@@ -83,6 +85,32 @@ namespace Services
             else
             {
                 MessageBox.Show("任务提交失败", "错误", MessageBoxType.Error);
+            }
+        }
+
+        public bool SendQuestAbandon(Quest quest)
+        {
+            Debug.Log("SendQuestAbandon");
+
+            NetMessage message = new NetMessage();
+            message.Request = new NetMessageRequest();
+            message.Request.questAbandon = new QuestAbandonRequest();
+            message.Request.questAbandon.QuestId = quest.Define.ID;
+
+            NetClient.Instance.SendMessage(message);
+            return true;
+        }
+
+        private void OnQuestAbandon(object sender, QuestAbandonResponse message)
+        {
+            Debug.LogFormat("OnQuestAbandon:{0},ERR:{1}", message.Result, message.Errormsg);
+            if (message.Result == Result.Success)
+            {
+                QuestManager.Instance.OnQuestAbandoned(message.Quest);
+            }
+            else
+            {
+                MessageBox.Show(message.Errormsg, "任务放弃失败", MessageBoxType.Error);
             }
         }
 

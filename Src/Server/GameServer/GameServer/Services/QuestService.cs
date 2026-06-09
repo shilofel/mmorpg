@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Common;
@@ -16,6 +16,7 @@ namespace GameServer.Services
         {
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<QuestSubmitRequest>(this.OnQuestSubmit);
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<QuestAcceptRequest>(this.OnQuestAccept);
+            MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<QuestAbandonRequest>(this.OnQuestAbandon);
         }
 
         public void Init()
@@ -44,6 +45,18 @@ namespace GameServer.Services
 
             Result result = character.QuestManager.SubmitQuest(sender, request.QuestId);
             sender.Session.Response.questSubmit.Result = result;
+            sender.SendResponse();
+        }
+
+        private void OnQuestAbandon(NetConnection<NetSession> sender, QuestAbandonRequest request)
+        {
+            Character character = sender.Session.Character;
+            Log.InfoFormat("QuestAbandonRequest::character:{0};QuestId:{1}", character.Id, request.QuestId);
+
+            sender.Session.Response.questAbandon = new QuestAbandonResponse();
+
+            Result result = character.QuestManager.AbandonQuest(sender, request.QuestId);
+            sender.Session.Response.questAbandon.Result = result;
             sender.SendResponse();
         }
     }

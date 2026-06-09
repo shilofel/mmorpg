@@ -223,6 +223,8 @@ message NetMessageRequest{
 	QuestAcceptRequest questAccept = 13;
 	QuestSubmitRequest questSubmit = 14;
 
+	QuestAbandonRequest questAbandon = 80;
+
 	FriendAddRequest friendAddReq = 15;
 	FriendAddResponse friendAddRes = 16;
 	FriendListRequest friendList = 17;
@@ -270,6 +272,7 @@ message NetMessageResponse{
 	QuestListResponse questList = 12;
 	QuestAcceptResponse questAccept = 13;
 	QuestSubmitResponse questSubmit = 14;
+	QuestAbandonResponse questAbandon = 80;
 
 	FriendAddRequest friendAddReq = 15;
 	FriendAddResponse friendAddRes = 16;
@@ -506,6 +509,7 @@ message QuestAbandonResponse
 {
 	RESULT result = 1;
 	string errormsg = 2;
+	NQuestInfo quest = 3;
 }
 
 //friends

@@ -26,5 +26,9 @@ public class UIIconItem : MonoBehaviour
     {
         this.mainImage.overrideSprite = Resloader.Load<Sprite>(iconName);
         this.mainText.text = text;
+        if(secondImage != null)
+        {
+            secondImage.enabled = true;
+        }
     }
 }
