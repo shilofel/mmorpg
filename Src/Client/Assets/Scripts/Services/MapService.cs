@@ -15,6 +15,8 @@ namespace Services
 {
     class MapService : Singleton<MapService>, IDisposable
     {
+        public delegate void CharacterEnter(Creature character);
+        public event CharacterEnter OnCharacterEnter;
 
         public int CurrentMapId { get; set; }
         //loadingDone为false，不进行实体的位置同步
@@ -61,7 +63,9 @@ namespace Services
                     
                     User.Instance.CurrentCharacterInfo = cha;
                     if (User.Instance.CurrentCharacter == null)
+                    {
                         User.Instance.CurrentCharacter = new Character(cha);
+                    }
                     else
                         User.Instance.CurrentCharacter.UpdateInfo(cha);
                     //角色开始进入地图，ready取消

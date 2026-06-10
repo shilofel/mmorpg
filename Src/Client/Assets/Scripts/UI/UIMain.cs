@@ -6,20 +6,22 @@ using Models;
 using System;
 using Managers;
 using Entities;
+using Services;
 
 public class UIMain : MonoSingleton<UIMain> {
 
-    public Text AvatarName;
-    public Text AvatarLevel;
+    public UICreatureInfo avatarUI;
+    public Text Level;
 
     public UITeam TeamWindow;
 
     public UICreatureInfo targetUI;
 
+
     public UISkillSlots skillSlots;
     // Use this for initialization
     protected override void OnStart () {
-        this.UpdateAvatar();
+        UpdateAvatar(User.Instance.CurrentCharacter);
         //TeamManager.Instance.ShowTeamUI(true);
         //this.targetUI.gameObject.SetActive(true);
         BattleManager.Instance.OnTargetChanged += OnTargetChanged;
@@ -27,10 +29,10 @@ public class UIMain : MonoSingleton<UIMain> {
         this.skillSlots.UpdateSkills();
     }
 
-    private void UpdateAvatar()
+    private void UpdateAvatar(Creature character)
     {
-        this.AvatarName.text = string.Format("{0}[{1}]", User.Instance.CurrentCharacterInfo.Name, User.Instance.CurrentCharacterInfo.Id);
-        this.AvatarLevel.text = User.Instance.CurrentCharacterInfo.Level.ToString();
+        avatarUI.Target = character;
+        //this.avatarUI.Name.text = string.Format("{0}[{1}]", User.Instance.CurrentCharacterInfo.Name, User.Instance.CurrentCharacterInfo.Id);
     }
 
     // Update is called once per frame

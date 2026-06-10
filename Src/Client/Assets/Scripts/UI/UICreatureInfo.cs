@@ -15,6 +15,8 @@ public class UICreatureInfo : MonoBehaviour
     public Slider HPBar;
     public Slider MPBar;
 
+    public Text Level;
+
     public Text HPText;
     public Text MPText;
 
