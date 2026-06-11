@@ -15,6 +15,7 @@ public class EffectController:MonoBehaviour
     Vector3 targetPos;
     Vector3 startPos;
     Vector3 offset;
+    public bool isPooled = false;
 
     private void OnEnable()
     {
@@ -27,7 +28,10 @@ public class EffectController:MonoBehaviour
     IEnumerator Run()
     {
         yield return new WaitForSeconds(this.lifeTime);
-        FXManager.Instance.ReturnToPool(this.gameObject);
+        if (this.isPooled)
+            FXManager.Instance.ReturnToPool(this.gameObject);
+        else
+            this.gameObject.SetActive(false);
     }
 
     public void Init(EffectType type,Transform source,Transform target,Vector3 offset, float duration)

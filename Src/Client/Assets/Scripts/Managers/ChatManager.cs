@@ -1,4 +1,4 @@
-﻿using Common;
+using Common;
 using Network;
 using UnityEngine;
 using UnityEngine.Events;
@@ -150,29 +150,32 @@ namespace Managers
             switch (message.Channel)
             {
                 case ChatChannel.Local:
-                    return string.Format("[本地]{0}{1}",FormatFromPlayer(message),message.Message);
+                    return string.Format("[本地]{0}{1}", FormatFromPlayer(message), message.Message);
                 case ChatChannel.World:
-                    return string.Format("<color=cyan>[世界]{0}{1}</color>", FormatFromPlayer(message), message.Message);
+                    return string.Format("<color=\"cyan\">[世界]{0}{1}</color>", FormatFromPlayer(message), message.Message);
                 case ChatChannel.System:
-                    return string.Format("<color=yellow>[系统]{0}</color>", message.Message);
+                    return string.Format("<color=\"yellow\">[系统]{0}</color>", message.Message);
                 case ChatChannel.Private:
-                    return string.Format("<color=magenta>[私聊]{0}{1}</color>", FormatFromPlayer(message), message.Message);
+                    return string.Format("<color=\"magenta\">[私聊]{0}{1}</color>", FormatFromPlayer(message), message.Message);
                 case ChatChannel.Team:
-                    return string.Format("<color=green>[队伍]{0}{1}</color>", FormatFromPlayer(message), message.Message);
+                    return string.Format("<color=\"green\">[队伍]{0}{1}</color>", FormatFromPlayer(message), message.Message);
                 case ChatChannel.Guild:
-                    return string.Format("<color=blue>[公会]{0}{1}</color>", FormatFromPlayer(message), message.Message);
+                    return string.Format("<color=\"blue\">[公会]{0}{1}</color>", FormatFromPlayer(message), message.Message);
             }
             return "";
         }
 
         private string FormatFromPlayer(ChatMessage message)
         {
-            if (message.FromId == User.Instance.CurrentCharacterInfo.Id)
+            if (User.Instance.CurrentCharacterInfo != null && message.FromId == User.Instance.CurrentCharacterInfo.Id)
             {
-                return "<link =\"\"><#00FFE0><u>[我]</u></color></link>";
+                return "<color=#00FFE0><u>[我]</u></color>";
             }
             else
-                return string.Format("<link = \"c:{0}:{1}\"><#00FFE0><u>[{1}]</u></color></link>", message.FromId, message.FromName);
+            {
+                string name = string.IsNullOrEmpty(message.FromName) ? "未知" : message.FromName;
+                return string.Format("<color=#00FFE0><u>[{0}]</u></color>", name);
+            }
         }
     }
 }

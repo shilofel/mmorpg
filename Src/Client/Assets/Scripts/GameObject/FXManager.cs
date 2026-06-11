@@ -42,6 +42,7 @@ public class FXManager : MonoSingleton<FXManager>
         {
             // 从池中取出
             go = pool.Dequeue();
+            go.name = name;  // 恢复原始名称，移除(Clone)后缀
             go.transform.position = pos;
             go.SetActive(true);
         }
@@ -57,7 +58,7 @@ public class FXManager : MonoSingleton<FXManager>
 
     public void ReturnToPool(GameObject effect)
     {
-        string name = effect.name;
+        string name = effect.name.Replace("(Clone)", "");
         if (effectPools.ContainsKey(name))
         {
             effect.SetActive(false);
@@ -77,6 +78,7 @@ public class FXManager : MonoSingleton<FXManager>
             Debug.LogErrorFormat("Effect:{0} not found", name);
             return;
         }
+        effect.isPooled = true;
         effect.Init(type, this.transform, target, pos, duration);
     }
 }

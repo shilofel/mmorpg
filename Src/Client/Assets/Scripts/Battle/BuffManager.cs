@@ -22,7 +22,7 @@ namespace Battle
         internal Buff AddBuff(int buffId, int buffType, int casterId)
         {
             BuffDefine define;
-            if(DataManager.Instance.Buffs.TryGetValue(buffId,out define))
+            if(DataManager.Instance.Buffs.TryGetValue(buffType, out define))
             {
                 Buff buff = new Buff(this.owner, buffId, define, casterId);
                 Buffs[buffId] = buff;

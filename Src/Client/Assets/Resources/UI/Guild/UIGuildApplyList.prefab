@@ -1187,6 +1187,8 @@ GameObject:
   - component: {fileID: 223915892783229444}
   - component: {fileID: 114815052006105516}
   - component: {fileID: 114937393278091036}
+  - component: {fileID: 7346965036611361571}
+  - component: {fileID: 90199677573530725}
   m_Layer: 0
   m_Name: Label
   m_TagString: Untagged
@@ -1214,8 +1216,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 32.200012, y: -65.725}
-  m_SizeDelta: {x: 597.15, y: 41.95}
+  m_AnchoredPosition: {x: 32.200012, y: -65.725006}
+  m_SizeDelta: {x: 598.05, y: 41.95}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!223 &223915892783229444
 Canvas:
@@ -1277,6 +1279,43 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!222 &7346965036611361571
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818602909182044}
+  m_CullTransparentMesh: 0
+--- !u!114 &90199677573530725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818602909182044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.46666667}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 8872433aafdc651469a7983d816495a5, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
 --- !u!1 &1934859540934022
 GameObject:
   m_ObjectHideFlags: 0
@@ -1393,7 +1432,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 224954050376779634}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.98964554
+  m_Size: 0.9896454
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -62,7 +62,10 @@ public class EntityEffecctManager:MonoBehaviour
             GameObject go = Instantiate(prefab, GameObjectManager.Instance.transform, true);
             go.transform.position = prefab.transform.position;
             go.transform.rotation = prefab.transform.rotation;
-            return go.GetComponent<EffectController>();
+            EffectController effect = go.GetComponent<EffectController>();
+            if (effect != null)
+                effect.isPooled = true;
+            return effect;
         }
         return null;
     }

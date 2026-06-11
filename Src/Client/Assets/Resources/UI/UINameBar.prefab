@@ -93,6 +93,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   avaverName: {fileID: 8683879555071235966}
   buffIcons: {fileID: 8683879556031130660}
+  classIcons:
+  - {fileID: 21300000, guid: ad85f842abb837d4ea32ecf8ec86cf22, type: 3}
+  - {fileID: 21300000, guid: 75df11e7e90295647a1f6b9da49d13c6, type: 3}
+  - {fileID: 21300000, guid: 340f2d027f3b3f240837f4bbf2b8c39c, type: 3}
+  - {fileID: 21300000, guid: 118c44fdefe96074ab1b7783a1c744d5, type: 3}
+  classIcon: {fileID: 8683879555280715230}
 --- !u!114 &8683879554591193364
 MonoBehaviour:
   m_ObjectHideFlags: 0
