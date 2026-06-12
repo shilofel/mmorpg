@@ -39,7 +39,7 @@ namespace GameServer.Services
         private void OnQuestSubmit(NetConnection<NetSession> sender, QuestSubmitRequest request)
         {
             Character character = sender.Session.Character;
-            Log.InfoFormat("QuestAcceptRequest::character:{0};QuestId:{1}", character.Id, request.QuestId);
+            Log.InfoFormat("QuestSubmitRequest::character:{0};QuestId:{1}", character.Id, request.QuestId);
 
             sender.Session.Response.questSubmit = new QuestSubmitResponse();
 

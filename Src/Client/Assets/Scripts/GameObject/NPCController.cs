@@ -40,8 +40,16 @@ public class NPCController : MonoBehaviour {
 
     private void RefreshNpcStates()
     {
-        questStatus = QuestManager.Instance.GetQuestStatusByNpc(this.npcID);
-        UIWorldElementManager.Instance.AddNpcQuestStatus(this.transform, questStatus);
+        NpcQuestStatus newStatus = QuestManager.Instance.GetQuestStatusByNpc(this.npcID);
+        if (newStatus == NpcQuestStatus.None)
+        {
+            UIWorldElementManager.Instance.RemoveNpcQuestStatus(this.transform);
+        }
+        else
+        {
+            UIWorldElementManager.Instance.AddNpcQuestStatus(this.transform, newStatus);
+        }
+        questStatus = newStatus;
     }
 
     private void OnDestroy()

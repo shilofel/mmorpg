@@ -116,7 +116,7 @@ namespace GameServer.Entities
             get { return this.Info.Exp; }
             set
             {
-                if (this.Data.Gold == value)
+                if (this.Data.Exp == value)
                     return;
                 this.StatusManager.AddExpChange((int)(value - this.Data.Exp));
                 this.Data.Exp = value;

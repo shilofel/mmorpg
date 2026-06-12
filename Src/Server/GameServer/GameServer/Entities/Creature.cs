@@ -1,4 +1,4 @@
-﻿using Common.Battle;
+using Common.Battle;
 using Common.Data;
 using GameServer.Battle;
 using GameServer.Core;
@@ -32,6 +32,9 @@ namespace GameServer.Entities
         public BattleState BattleState;
         public CharacterState State;
         public Map Map;
+
+        public float lastDamageTime = 0;
+        public float combatTimeout = 5f;
 
         public Creature(CharacterType type, int configId, int level, Vector3Int pos, Vector3Int dir) :
            base(pos, dir)
@@ -77,6 +80,7 @@ namespace GameServer.Entities
         internal void DoDamage(NDamageInfo damage, Creature source)
         {
             this.BattleState = BattleState.InBattle;
+            this.lastDamageTime = TimeUtil.time;
             this.Attributes.HP -= damage.Damage;
             if(this.Attributes.HP<0)
             {
@@ -145,6 +149,18 @@ namespace GameServer.Entities
         {
             this.SkillMgr.Update();
             this.BuffMgr.Update();
+            this.CheckCombatTimeout();
+        }
+
+        private void CheckCombatTimeout()
+        {
+            if (this.BattleState == BattleState.InBattle)
+            {
+                if (TimeUtil.time - this.lastDamageTime >= this.combatTimeout)
+                {
+                    this.BattleState = BattleState.Idle;
+                }
+            }
         }
 
         internal void AddBuff(BattleContext context, BuffDefine buffDefine)

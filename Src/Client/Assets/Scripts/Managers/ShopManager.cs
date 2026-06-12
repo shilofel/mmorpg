@@ -25,7 +25,8 @@ namespace Managers
 
         public bool OnBuyItem(NStatus status)
         {
-            uIShop.SetMoney();
+            if(uIShop!=null)
+                uIShop.SetMoney();
             return true;
         }
 

@@ -1,12 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using SkillBridge.Message;
+﻿using UnityEngine.UI;
 using Managers;
-using Models;
-using Services;
-using Candlelight.UI;
 using System;
 using TMPro;
 
@@ -64,6 +57,7 @@ public class UIChat : UIWindow
         }
     }
     //点击聊天中的超链接
+    /*
     public void OnClickChatLink(HyperText text, HyperText.LinkInfo link)
     {
         if (string.IsNullOrEmpty(link.Name))
@@ -76,7 +70,7 @@ public class UIChat : UIWindow
             menu.targetId = int.Parse(strs[1]);
             menu.targetName = strs[2];
         }
-    }
+    }*/
 
     public void ClickSend()
     {

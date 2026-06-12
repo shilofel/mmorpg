@@ -22,7 +22,7 @@ public class UIGuild : UIWindow
 
     private void Start()
     {
-        GuildService.Instance.OnGuildUpdate = UpdateUI;
+        GuildService.Instance.OnGuildUpdate += UpdateUI;
         this.listMain.onItemSelected += this.OnGuildMemberSelected;
         this.UpdateUI();
     }
@@ -40,7 +40,7 @@ public class UIGuild : UIWindow
         InitItems();
 
         this.panelAdmin.SetActive(GuildManager.Instance.myMemberInfo.Title > GuildTitle.None);
-        this.panelLeader.SetActive(GuildManager.Instance.myMemberInfo.Title > GuildTitle.President);
+        this.panelLeader.SetActive(GuildManager.Instance.myMemberInfo.Title >= GuildTitle.President);
     }
 
     public void OnGuildMemberSelected(ListView.ListViewItem item)

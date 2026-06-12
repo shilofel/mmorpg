@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,9 +37,16 @@ namespace Entities
                 {
                     battleStatus = value;
                     this.SetStandby(value);
+                    if (battleStatus)
+                    {
+                        lastBattleTime = Time.time;
+                    }
                 }
             }
         }
+
+        private float lastBattleTime = 0;
+        private float combatTimeout = 5f;
 
         public int Id
         {
@@ -173,11 +180,24 @@ namespace Entities
             
             this.SkillMgr.OnUpdate(delta);
             this.BuffMgr.OnUpdate(delta);
+            this.CheckCombatTimeout();
+        }
+
+        private void CheckCombatTimeout()
+        {
+            if (this.battleStatus)
+            {
+                if (Time.time - this.lastBattleTime >= this.combatTimeout)
+                {
+                    this.BattleStatus = false;
+                }
+            }
         }
 
         public void DoDamage(NDamageInfo damage,bool playHurt)
         {
             Debug.LogFormat("DoDamage:{0} DMG:{1} CRIT:{2}",this.Name, damage.Damage,damage.Crit);
+            this.BattleStatus = true;
             this.Attributes.HP -= damage.Damage;
             if(playHurt) this.PlayAnim("Hurt");
             if(this.Controller != null)

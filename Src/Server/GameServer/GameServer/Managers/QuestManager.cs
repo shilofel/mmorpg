@@ -134,7 +134,7 @@ namespace GameServer.Managers
                     }
                     if(quest.RewardExp > 0)
                     {
-                        //处理升级
+                        character.Exp += quest.RewardExp;
                     }
 
                     if(quest.RewardItem1 > 0)

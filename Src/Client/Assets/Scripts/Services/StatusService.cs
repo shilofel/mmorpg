@@ -44,6 +44,16 @@ namespace Services
 
         private void OnStatusNotify(object sender, StatusNotify notify)
         {
+            if (notify == null)
+            {
+                Debug.LogWarning("OnStatusNotify called with null notify");
+                return;
+            }
+            if (notify.Status == null)
+            {
+                Debug.LogWarning("OnStatusNotify called with null Status list");
+                return;
+            }
             foreach( NStatus status in notify.Status)
             {
                 Notify(status);
@@ -52,10 +62,25 @@ namespace Services
 
         private void Notify(NStatus status)
         {
+            if (status == null)
+            {
+                Debug.LogWarning("Notify called with null status");
+                return;
+            }
             Debug.LogFormat("StatusNotify:[{0}][{1}]{2}:{3}",status.Type,status.Action,status.Id,status.Value);
 
             if(status.Type == StatusType.Money)
             {
+                if (User.Instance == null)
+                {
+                    Debug.LogWarning("User.Instance is null when processing Money status");
+                    return;
+                }
+                if (User.Instance.CurrentCharacterInfo == null)
+                {
+                    Debug.LogWarning("User.Instance.CurrentCharacterInfo is null when processing Money status");
+                    return;
+                }
                 if (status.Action == StatusAction.Add)
                     User.Instance.AddGold(status.Value);
                 else if (status.Action == StatusAction.Delete)
@@ -63,8 +88,17 @@ namespace Services
             }
 
             StatusNotifyHandler handler;
-            if (eventMap.TryGetValue(status.Type, out handler))
-                handler(status);
+            if (eventMap.TryGetValue(status.Type, out handler) && handler != null)
+            {
+                try
+                {
+                    handler(status);
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogErrorFormat("StatusNotifyHandler exception: {0}, {1}", ex.Message, ex.StackTrace);
+                }
+            }
         }
 
         public void Dispose()

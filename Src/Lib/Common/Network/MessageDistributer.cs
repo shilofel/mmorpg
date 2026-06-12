@@ -1,4 +1,4 @@
-﻿// RayMix Libs - RayMix's .Net Libs
+// RayMix Libs - RayMix's .Net Libs
 // Copyright 2018 Ray@raymix.net.  All rights reserved.
 // https://www.raymix.net
 //
@@ -93,8 +93,14 @@ namespace Network
             messageHandlers[type] = (MessageHandler<Tm>)messageHandlers[type] - messageHandler;
         }
 
-        public void RaiseEvent<Tm>(T sender,Tm msg)
+        public void RaiseEvent<Tm>(T sender, Tm msg)
         {
+            if (msg == null)
+            {
+                Log.Warning("RaiseEvent called with null message");
+                return;
+            }
+            
             string key = msg.GetType().Name;
             if (messageHandlers.ContainsKey(key))
             {
